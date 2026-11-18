@@ -1,4 +1,4 @@
-# Phase 1 implementation evidence â€” 2026-11-18
+# Phase 1 implementation evidence — 2026-11-18
 
 ## Modules and contracts
 
@@ -55,7 +55,7 @@ Earlier absent-binary run: 47 passed / 4 skipped. First real integration run exp
 
 Observed low-pass: measured 1591.487745916 Hz vs analytic 1591.549430919 Hz (0.003876% error). High-pass: 1591.612597494 Hz (0.003969%). Search target 2300 Hz: measured 2300.380616684 Hz (0.016549%), 12/24 calls; R=2772.41649025622 ohm, C=2.495429196601475e-8 F. Analytic fc for selected search candidate: 2300.469110976 Hz.
 
-Actual simulator arguments: <resolved ngspice_con.exe> -n -b circuit.cir. Exact path/version are recorded per report. Each default sweep contains 601 AC samples, 1 Hzâ€“1 MHz. Temporary-path output is redacted.
+Actual simulator arguments: <resolved ngspice_con.exe> -n -b circuit.cir. Exact path/version are recorded per report. Each default sweep contains 601 AC samples, 1 Hz–1 MHz. Temporary-path output is redacted.
 
 ## Guardrails and remaining gates
 
@@ -72,3 +72,11 @@ Reproduced a real failure using an allowed 1 Mohm / 1 mF candidate: its cutoff f
 The adapter now checks every frequency against a complete logarithmic grid, with relative tolerance 1e-6 and zero absolute tolerance, instead of checking endpoints alone. This catches incorrect interior frequencies and errors hidden by an absolute tolerance on very low-frequency sweeps. Real ngspice-47 noninteger-decade sweeps span both endpoints; that grid and the traditional fixed points-per-decade grid are accepted. Verified real examples: 2–123456 Hz at 100 points/decade (480 rows), 1–1591.55 Hz at 100 (321 rows), and 3–99999 Hz at 17 (77 rows), each with analytic complex-response checks.
 
 Latest full suite with the same environment and command above: **78 passed**, including credential-scanner tests, synthetic grid-corruption unit tests and genuine simulator regressions. Raw simulation outputs remain ignored by Git. No Phase 2 implementation was added.
+
+## Active workspace and interrupted search evidence
+
+The repository now also exists at `C:/Users/Home/Documents/ChatGPT/Implement CircuForge`, the active project folder, with its complete local Git history and private origin preserved. The earlier visualization-workspace copy remains intact as the source of locally provisioned test dependencies/ngspice and original ignored evidence. Work continues on `codex/p1-search-failure-evidence`; no feature branch was pushed.
+
+The search now raises a structured SearchFailure on simulator or cutoff-metric failure. It retains previous measured evaluations, the attempted call count including the failed call, the failed candidate/spec, simulator status/return code and logs. CLI failure.json includes that context; circuit.cir and logs describe the failed attempt. The failed attempt has no fabricated cutoff. Eleven controlled unit tests cover first/later timeout, nonzero exit, parse and launch failures, metric failure, CLI evidence and budget exhaustion. Latest suite: **89 passed**.
+
+This managed Windows environment still denies Python directory creation under Documents, even after escalation. The real CLI's attempt to create runs/active-workspace-check failed with WinError 2; pytest cache creation emitted the same environmental warning. File checkout via Git and edits via the file tool work. Use an absolute output/cache path in the authorized visualization workspace for execution evidence; do not disable Windows protections. This limitation is separate from simulator success. External-tool paths are supplied through environment variables, not hardcoded in application code.

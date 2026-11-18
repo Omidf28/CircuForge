@@ -1,4 +1,4 @@
-# CircuForge â€” Wave2Circuit Research Edition
+# CircuForge — Wave2Circuit Research Edition
 
 Phase 1 implements typed RC low/high-pass specifications, fixed netlists, real ngspice AC simulation, complex response/cutoff extraction, and bounded measured R/C search. Local CPU only; no accounts required.
 
@@ -44,13 +44,13 @@ Use your distribution's package manager. Windows 11 / Python 3.12.7 / ngspice-47
 
 Default reference: 1 kohm, 100 nF, ideal zero-ohm voltage source and infinite load. Both RC topologies have fc=1/(2*pi*R*C); phase at cutoff is -45 degrees for low-pass, +45 for high-pass. All fields use SI units. Only continuous values are supported; E-series policies, nonideal source/load and unsupported circuits are rejected.
 
-Half-power cutoff is **-3.0102999566 dB**, relative to known unity passband gain, interpolated in log-frequency/dB. Default sweep: 100 points/decade, 1 Hzâ€“1 MHz. Verified cutoff tolerance: 0.1%. Coarser user-selected grids may fail this check. Batch print rounding is allowed up to 1e-5 dB apparent nonmonotonicity.
+Half-power cutoff is **-3.0102999566 dB**, relative to known unity passband gain, interpolated in log-frequency/dB. Default sweep: 100 points/decade, 1 Hz–1 MHz. Verified cutoff tolerance: 0.1%. Coarser user-selected grids may fail this check. Batch print rounding is allowed up to 1e-5 dB apparent nonmonotonicity.
 
-The starter-authorized first-slice search uses deterministic bisection along log R/C bounds, with measured ngspice objectives, duplicate detection and a hard call budget. Every candidate metric is recorded; raw waveform/log artifacts describe the selected candidate. Random/grid/SciPy comparative baselines remain Phase 2 work.
+The starter-authorized first-slice search uses deterministic bisection along log R/C bounds, with measured ngspice objectives, duplicate detection and a hard call budget. Every candidate metric is recorded; raw waveform/log artifacts describe the selected candidate. If a search aborts, failure.json preserves the attempted call count (including the failed attempt), prior measured results, failed candidate/spec, error status and captured logs; no replacement measurements are invented. Random/grid/SciPy comparative baselines remain Phase 2 work.
 
 ## Verified milestone
 
-**63 tests passed**, including 11 real simulator integration cases. Saved evidence:
+The initial milestone had **63 passing tests**. The latest Phase 1 follow-up has **89 passing tests**, including real simulator integration and controlled failure-accounting tests. Original saved evidence:
 
 | Case | Measured cutoff | Error | Calls |
 |---|---:|---:|---:|

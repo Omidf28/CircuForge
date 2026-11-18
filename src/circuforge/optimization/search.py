@@ -2,10 +2,29 @@
 
 from dataclasses import dataclass
 import math
+import time
 
 from circuforge.domain.specs import CircuitCandidate, DesignSpec
 from circuforge.simulation.metrics import cutoff_hz
-from circuforge.simulation.ngspice import Ngspice, SimulationResult
+from circuforge.simulation.ngspice import Ngspice, SimulationError, SimulationResult
+
+
+class SearchFailure(SimulationError):
+    """An aborted measured search, including every attempted simulator call."""
+
+    def __init__(self, cause: SimulationError, *, spec: DesignSpec,
+                 candidate: CircuitCandidate, history: list[dict]):
+        super().__init__(cause.status, str(cause), stdout=cause.stdout,
+                         stderr=cause.stderr, returncode=cause.returncode)
+        self.spec = spec
+        self.candidate = candidate
+        self.history = tuple(history)
+        self.simulator_calls = len(history)
+
+    def context(self) -> dict:
+        return {"spec": self.spec.model_dump(), "candidate": self.candidate.model_dump(),
+                "search_method": "log-bounds bisection", "simulator_calls": self.simulator_calls,
+                "search_history": self.history}
 
 
 @dataclass(frozen=True)
@@ -50,10 +69,22 @@ def search(spec: DesignSpec, simulator: Ngspice) -> SearchResult:
         if key in seen:
             break
         seen.add(key)
-        result = simulator.simulate(spec, candidate)
-        measured = cutoff_hz(result.response, candidate.topology)
+        started = time.monotonic()
+        try:
+            result = simulator.simulate(spec, candidate)
+            try:
+                measured = cutoff_hz(result.response, candidate.topology)
+            except ValueError as exc:
+                raise SimulationError("metric_error", str(exc), stdout=result.stdout,
+                                      stderr=result.stderr, returncode=result.returncode) from exc
+        except SimulationError as exc:
+            history.append({"candidate": candidate.model_dump(), "status": exc.status,
+                            "error": str(exc), "elapsed_s": time.monotonic() - started,
+                            "returncode": exc.returncode})
+            raise SearchFailure(exc, spec=spec, candidate=candidate, history=history) from exc
         error = abs(measured / spec.cutoff_hz - 1)
         history.append({"candidate": candidate.model_dump(), "measured_cutoff_hz": measured,
+                        "status": "success",
                         "relative_error": error, "elapsed_s": result.elapsed_s,
                         "returncode": result.returncode})
         if best is None or error < best[3]:

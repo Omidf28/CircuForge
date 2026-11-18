@@ -13,9 +13,10 @@ import pydantic
 
 from circuforge import __version__
 from circuforge.domain.specs import CircuitCandidate, DesignSpec
-from circuforge.optimization.search import search
+from circuforge.optimization.search import SearchFailure, search
 from circuforge.simulation.metrics import analytic_cutoff, cutoff_hz
 from circuforge.simulation.ngspice import Ngspice, SimulationError, preflight
+from circuforge.synthesis.rc import netlist
 
 
 def main(argv=None) -> int:
@@ -86,7 +87,13 @@ def main(argv=None) -> int:
     except SimulationError as exc:
         error = {"status": exc.status, "error": str(exc), "returncode": exc.returncode,
                  "stdout": exc.stdout, "stderr": exc.stderr}
+        if isinstance(exc, SearchFailure):
+            error.update(exc.context())
         if getattr(args, "output", None) and args.output.is_dir():
+            if isinstance(exc, SearchFailure):
+                (args.output / "circuit.cir").write_text(netlist(exc.spec, exc.candidate), encoding="ascii")
+                (args.output / "stdout.log").write_text(exc.stdout, encoding="utf-8")
+                (args.output / "stderr.log").write_text(exc.stderr, encoding="utf-8")
             (args.output / "failure.json").write_text(json.dumps(error, indent=2) + "\n", encoding="utf-8")
         print(json.dumps(error, indent=2), file=sys.stderr)
         return 2

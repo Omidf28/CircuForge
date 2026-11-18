@@ -1,4 +1,4 @@
-# CircuForge â€” portable handoff
+# CircuForge — portable handoff
 
 Updated 2026-11-18. Phase 1 automated numerical acceptance passes on Windows with real ngspice-47. Formal human gate review remains pending.
 
@@ -16,12 +16,12 @@ The starter's bounded first-slice search was implemented after core tests passed
 
 Exact commands, environment, corrected failure and implementation limits: docs/DEVELOPMENT.md. Newcomer setup: README.md.
 
-Final suite: python -m pytest -q -ra, with PYTHONPATH=.test-deps;src, PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 and CIRCUFORGE_NGSPICE pointing to .tools/Spice64/bin/ngspice_con.exe: **63 passed** including 11 real integration cases.
+Initial suite: python -m pytest -q -ra, with PYTHONPATH=.test-deps;src, PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 and CIRCUFORGE_NGSPICE pointing to .tools/Spice64/bin/ngspice_con.exe: **63 passed** including 11 real integration cases. Latest follow-up: **89 passed**; see the milestone log and docs/DEVELOPMENT.md.
 
 - Low-pass measured 1591.487745916 Hz vs analytic 1591.549430919 Hz: 0.003876% error.
 - High-pass measured 1591.612597494 Hz: 0.003969% error.
 - Search target 2300 Hz reached 2300.380616684 Hz: 0.016549% error, 12 of 24 calls.
-- Acceptance tolerance 0.1%; sweep 100 points/decade, 1 Hzâ€“1 MHz. Genuine JSON/CSV/netlists/logs saved under evidence/.
+- Acceptance tolerance 0.1%; sweep 100 points/decade, 1 Hz–1 MHz. Genuine JSON/CSV/netlists/logs saved under evidence/.
 
 ## Open reviews and next tasks
 
@@ -44,3 +44,4 @@ Canonical sources: planning/context.json, planning/phase-tasks.json. Run python 
 - 2026-11-18: created initial commit `20ef58f` on main with the credential hook enabled. Continued Phase 1 on `codex/p1-pipeline-hardening`: persisted explicit metric-error evidence for unbracketed cutoffs and verified the entire returned AC frequency grid. Added actual noninteger-decade ngspice regression cases and synthetic grid-corruption tests. Latest suite: **78 passed**. GitHub sign-in/remote creation and explicit push approval remain pending; nothing has been pushed.
 - 2026-11-18: GitHub login confirmed as Omidf28; created private https://github.com/Omidf28/CircuForge and connected origin. Verified `isPrivate: true` and empty remote refs with `git ls-remote origin`. Local Phase 1 hardening is committed as `a20044f` on its feature branch. Initial main commit `20ef58f` is ready for push; explicit owner push approval is still pending. No code has been pushed. Automated Phase 1 acceptance remains verified (78 tests); human electrical reviews remain open, and Phase 2 is not started.
 - 2026-11-18: owner explicitly approved the initial push. `git push -u origin main` succeeded; verified remote main is `20ef58fe266cee5837ed27f24ce6b60d60951c78` and repository remains private. Only initial main was pushed; follow-up work on `codex/p1-pipeline-hardening` remains local. No force-push or remote overwrite. Git/GitHub setup is complete. Phase 1 numerical acceptance remains verified, with human electrical review tasks still open.
+- 2026-11-18: imported complete local history into the previously empty active `Implement CircuForge` workspace; original copy retained. Created `codex/p1-search-failure-evidence`. Added structured partial-search failures and call accounting, with eleven controlled regression tests: **89 passed**. Repaired mojibake in generated development prose. Python output creation under Documents remains environment-blocked, so execution evidence/cache use the authorized visualization workspace. No feature branch push; human reviews and Phase 2 remain open.
