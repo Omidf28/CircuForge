@@ -50,7 +50,7 @@ The starter-authorized first-slice search uses deterministic bisection along log
 
 ## Verified milestone
 
-The initial milestone had **63 passing tests**. The latest Phase 1 follow-up has **107 passing tests** in the isolated test environment, including real simulator integration, controlled failure accounting and the minimum-sample sweep regression. Fresh package installation was also verified at the preceding milestone. Original saved evidence:
+The initial milestone had **63 passing tests**. The latest Phase 1 follow-up has **122 passing tests** in the isolated test environment, including real simulator integration, controlled failure accounting, minimum sample counts and tolerance-aware target feasibility. Fresh package installation was also verified at an earlier milestone. Original saved evidence:
 
 | Case | Measured cutoff | Error | Calls |
 |---|---:|---:|---:|
@@ -67,6 +67,8 @@ python scripts/verify_phase1.py --output /absolute/path/to/new/evidence-director
 ```
 
 Use an OS-appropriate absolute path. In this managed session, Python directory creation under Documents is blocked; select an output path in the authorized visualization workspace. The script saves raw evidence and a summary with human review explicitly pending. All eight cases passed; maximum measured cutoff error was 0.005891%.
+
+Target feasibility includes the selected relative-error tolerance. A target is rejected when the achievable RC cutoff interval and target*(1±tolerance) are disjoint. This permits rounded targets for fixed components without changing component bounds or claiming exact matching. `examples/fixed-target.json` demonstrates 1 kohm/100 nF with target 1591.5494 Hz and 0.1% tolerance; use it with the simulate command, optionally with --search. Simulation still determines the measured pass/fail result.
 
 Canonical plans: `planning/context.json`, `planning/phase-tasks.json`. Regenerate HTML/Markdown/JSON/CSV using `python planning/render_plan.py`. Browser overrides remain local and require export for sharing. Source: `src/circuforge`; tests: `tests/unit`, `tests/integration`.
 

@@ -1,0 +1,7 @@
+{
+  "filter_type": "rc_lowpass",
+  "cutoff_hz": 1591.5494,
+  "relative_error_tolerance": 0.001,
+  "resistance_ohm": {"minimum": 1000.0, "maximum": 1000.0},
+  "capacitance_f": {"minimum": 1e-7, "maximum": 1e-7}
+}

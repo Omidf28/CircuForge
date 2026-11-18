@@ -2,7 +2,7 @@
 
 Version 2.0.0 · assembled 2026-11-18 · architecture assumptions to verify in current environment
 
-Phase 1 verified on Windows with ngspice-47: 107 tests pass in the isolated test environment, including the resolved minimum-sample review finding. Fresh installation and eight electrical reference cases were also verified. Human reviews and later phases remain open. See planning/HANDOFF.md and docs/PHASE1_REVIEW.md.
+Phase 1 verified on Windows with ngspice-47: 122 tests pass in the isolated test environment, including resolved minimum-sample and target-tolerance review findings. Fresh installation and eight electrical reference cases were also verified. Human reviews and later phases remain open. See planning/HANDOFF.md and docs/PHASE1_REVIEW.md.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -158,7 +158,7 @@ Status: done · Estimate: 6 active hours
 
 **Depends on:** P0-C1
 
-**Evidence:** Pydantic SI schemas, low/high-pass types, continuous-value policy, explicit ideal source/load and bounds/infeasibility/injection tests. Minimum two-sample sweep validation now rejects the reproduced review case before simulator preflight; 107 tests pass.
+**Evidence:** Pydantic SI schemas, low/high-pass types, continuous-value policy, explicit ideal source/load and bounds/infeasibility/injection tests. Review fixes enforce at least two sweep samples and tolerance-aware target feasibility; 122 tests pass, including four genuine fixed-target CLI cases.
 
 #### P1-C2 · Codex · Implement ngspice adapter
 
@@ -172,7 +172,7 @@ Status: done · Estimate: 8 active hours
 
 **Depends on:** P0-C2, P1-C1
 
-**Evidence:** Real ngspice integration plus timeout, output-limit, absent binary, launch and nonzero-exit tests; full frequency grid and partial-search failures verified. Isolated test environment: 107 tests passed, including genuine two-sample low/high-pass sweeps. See docs/DEVELOPMENT.md.
+**Evidence:** Real ngspice integration plus timeout, output-limit, absent binary, launch and nonzero-exit tests; full frequency grid and partial-search failures verified. Isolated test environment: 122 tests passed, including genuine two-sample sweeps and fixed-target low/high-pass CLI cases. See docs/DEVELOPMENT.md.
 
 #### P1-C3 · Codex · Extract AC metrics
 

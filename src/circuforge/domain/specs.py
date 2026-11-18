@@ -77,8 +77,13 @@ class DesignSpec(Model):
         CircuitCandidate(resistance_ohm=self.resistance_ohm.maximum, capacitance_f=self.capacitance_f.maximum)
         low = 1 / (2 * math.pi * self.resistance_ohm.maximum * self.capacitance_f.maximum)
         high = 1 / (2 * math.pi * self.resistance_ohm.minimum * self.capacitance_f.minimum)
-        if not low <= self.cutoff_hz <= high:
-            raise ValueError(f"target infeasible within R/C bounds: achievable cutoff [{low:g}, {high:g}] Hz")
+        accepted_low = self.cutoff_hz * (1 - self.relative_error_tolerance)
+        accepted_high = self.cutoff_hz * (1 + self.relative_error_tolerance)
+        if high < accepted_low or low > accepted_high:
+            raise ValueError(
+                f"target infeasible within R/C bounds: achievable cutoff [{low:g}, {high:g}] Hz "
+                f"does not overlap accepted cutoff [{accepted_low:g}, {accepted_high:g}] Hz"
+            )
         if not self.sweep.start_hz < self.cutoff_hz < self.sweep.stop_hz:
             raise ValueError("target cutoff must be inside the sweep")
         return self

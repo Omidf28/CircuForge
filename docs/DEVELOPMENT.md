@@ -114,3 +114,11 @@ The Phase 1 review reproduced an accepted sweep from 100 to 100.000001 Hz at 100
 Added eight unit cases: three frequency scales reject single-sample sweeps, three density settings accept exactly one interval/two samples, and both CLI modes reject before preflight. Two new real integration cases verify that the minimum two-sample grid around a 101 Hz cutoff remains usable for low/high-pass, within 0.1% interpolation error.
 
 Executed the isolated virtualenv interpreter from the active checkout with PYTHONPATH=src, PYTEST_DISABLE_PLUGIN_AUTOLOAD=1, CIRCUFORGE_NGSPICE pointing to the verified ngspice-47 binary, and `-m pytest -q -ra -o cache_dir=C:/Users/Home/.codex/visualizations/2026/11/18/01a1ee7a-3b9d-7eb0-9f38-c053c726b534/Phase1_Verification/pytest-cache`: **107 passed in 6.83s**, no skips. This run imports the updated source rather than the preceding installed wheel. Human approval and Phase 2 remain unchanged.
+
+## Review regression: tolerance-aware feasibility
+
+The next review reproduced a rounded target of 1591.5494 Hz being rejected for fixed 1000 ohm / 1e-7 F bounds. The analytic reference is 1591.5494309189537 Hz; the existing real low-pass measurement 1591.4877459159616 Hz has relative error 3.873840424839514e-5 against that target, below the selected .001 tolerance. Exact-range validation incorrectly rejected an acceptable specification.
+
+The schema now rejects a target only when achievable [fc_min,fc_max] and accepted [target*(1-tolerance),target*(1+tolerance)] intervals are disjoint. Component bounds, target-inside-sweep validation, measured-error acceptance and analytic verification are unchanged. This is a Phase 1 schema correction, not implementation of Phase 2 optimizer baselines.
+
+Added eleven unit cases covering below/above, fixed/varying R bounds, acceptance/rejection, touching intervals and tightened tolerance; four genuine CLI integration cases verify direct simulation and bounded search for both RC topologies, each with exactly one call at fixed bounds. Added examples/fixed-target.json for reproduction. Using the same interpreter/environment and pytest command as the preceding section: **122 passed in 6.68s**, no skips. Human reviews remain open; nothing pushed.

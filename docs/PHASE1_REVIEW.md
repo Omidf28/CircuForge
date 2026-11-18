@@ -4,6 +4,8 @@ Automated fixture results support P0-H1, P0-H2 and P1-H1 review. They do not rec
 
 Review finding resolved (2026-11-18): sweeps that produce fewer than two frequency samples are now rejected during schema validation, before simulator preflight or output allocation. The reported 100–100.000001 Hz example is covered by regression tests. A real two-sample sweep remains supported for both topologies. Latest full suite: 107 passed; human approval remains pending.
 
+Second review finding resolved: feasibility now includes the declared target tolerance. With R=1000 ohm and C=1e-7 F fixed, the rounded target 1591.5494 Hz is accepted at 0.1% tolerance. It is still rejected at 1e-10 relative tolerance. Achievable and accepted cutoff intervals may overlap at a boundary. Unit tests cover both sides and fixed/varying bounds; four genuine CLI cases cover direct simulation/search for both topologies. Latest full suite: 122 passed. Human approval remains pending.
+
 ## Connectivity and reference
 
 Both sources are ideal voltage sources connected from `in` to ground `0`. Output is measured from `out` to `0`, with infinite load.
