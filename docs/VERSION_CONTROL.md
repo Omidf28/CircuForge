@@ -2,7 +2,9 @@
 
 The standalone CircuForge folder is the Git repository. It is separate from the unrelated VideoPlayer project. The initial verified implementation is committed on main. Development after the initial commit uses branches named codex/<task-id>-<description>.
 
-Local setup evidence (2026-11-18): initial commit `20ef58f` is on `main`; follow-up Phase 1 work uses `codex/p1-pipeline-hardening`. The initial staged scan checked 46 files with no common credential signatures. The hook ran successfully during the commit. GitHub CLI authentication is still pending; no origin or remote repository has been created, and nothing has been pushed. The owner's explicit approval is required before pushing the initial commit.
+Local setup evidence (2026-11-18): initial commit `20ef58f` is on `main`; follow-up Phase 1 commit `a20044f` is on `codex/p1-pipeline-hardening`. The initial staged scan checked 46 files with no common credential signatures. The hook ran successfully during both commits.
+
+GitHub CLI authentication is confirmed as `Omidf28`. Created and connected [Omidf28/CircuForge](https://github.com/Omidf28/CircuForge); GitHub reports `isPrivate: true`. `origin` uses the HTTPS URL without credentials. A local credential-helper setting invokes GitHub CLI; no token is stored in the repository or remote URL. `git ls-remote origin` succeeded with no refs, confirming the remote is empty at setup. Nothing has been pushed. The owner's explicit approval is required before pushing initial commit `20ef58f` on `main`; feature-branch work is separate.
 
 ## Credentials and generated files
 
