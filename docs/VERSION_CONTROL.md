@@ -2,6 +2,8 @@
 
 The standalone CircuForge folder is the Git repository. It is separate from the unrelated VideoPlayer project. The initial verified implementation is committed on main. Development after the initial commit uses branches named codex/<task-id>-<description>.
 
+Local setup evidence (2026-11-18): initial commit `20ef58f` is on `main`; follow-up Phase 1 work uses `codex/p1-pipeline-hardening`. The initial staged scan checked 46 files with no common credential signatures. The hook ran successfully during the commit. GitHub CLI authentication is still pending; no origin or remote repository has been created, and nothing has been pushed. The owner's explicit approval is required before pushing the initial commit.
+
 ## Credentials and generated files
 
 .gitignore excludes Python/Node dependencies, virtualenvs, local environment/configuration files, private keys, credential files, downloaded tools, temporary files and generated simulation evidence. Source, tests, examples, canonical plans and generated roadmap documents are versioned. Numerical summaries and reproducibility commands remain in docs; raw evidence remains local under evidence/ and can be shared separately after inspection.

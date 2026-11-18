@@ -49,7 +49,11 @@ def main(argv=None) -> int:
         (args.output / "circuit.cir").write_text(result.netlist, encoding="ascii")
         (args.output / "stdout.log").write_text(result.stdout, encoding="utf-8")
         (args.output / "stderr.log").write_text(result.stderr, encoding="utf-8")
-        measured = cutoff_hz(result.response, candidate.topology)
+        try:
+            measured = cutoff_hz(result.response, candidate.topology)
+        except ValueError as exc:
+            raise SimulationError("metric_error", str(exc), stdout=result.stdout,
+                                  stderr=result.stderr, returncode=result.returncode) from exc
         analytic = analytic_cutoff(candidate)
         analytic_error = abs(measured / analytic - 1)
         target_error = abs(measured / spec.cutoff_hz - 1)

@@ -62,3 +62,13 @@ Actual simulator arguments: <resolved ngspice_con.exe> -n -b circuit.cir. Exact 
 <=20,000 sweep points, <=30 seconds per call (default 10), <=1000 evaluations (default 32), 8 MiB combined output. Output size is polled every 10 ms and can briefly overshoot. This is a trusted local executable guard, not an OS security sandbox or kernel memory quota. Intermediate search candidate raw waveforms are not persisted; best-candidate raw evidence and full metric history are saved.
 
 Linux commands are documented but untested. Finite source/load and E-series are unsupported. No human electrical approval or independent clean-workstation review is claimed. P0-H1/P0-H2/P1-H1 remain open; four distinct R/C fixtures per topology support review. Phase 2 random/grid/SciPy comparisons follow review; PCB/LLM work remains deferred.
+
+## Phase 1 follow-up after version-control setup
+
+Initial commit: `20ef58f` on main. Further changes are on `codex/p1-pipeline-hardening`.
+
+Reproduced a real failure using an allowed 1 Mohm / 1 mF candidate: its cutoff falls below the default 1 Hz sweep start. Previously the CLI left raw logs but reported a generic input/artifact error without failure.json. It now records status `metric_error`, the genuine simulator return code 0, the cutoff-bracketing reason and simulator logs in failure.json; exit code remains 2. Simulator success is thus distinguishable from a measurable cutoff.
+
+The adapter now checks every frequency against a complete logarithmic grid, with relative tolerance 1e-6 and zero absolute tolerance, instead of checking endpoints alone. This catches incorrect interior frequencies and errors hidden by an absolute tolerance on very low-frequency sweeps. Real ngspice-47 noninteger-decade sweeps span both endpoints; that grid and the traditional fixed points-per-decade grid are accepted. Verified real examples: 2–123456 Hz at 100 points/decade (480 rows), 1–1591.55 Hz at 100 (321 rows), and 3–99999 Hz at 17 (77 rows), each with analytic complex-response checks.
+
+Latest full suite with the same environment and command above: **78 passed**, including credential-scanner tests, synthetic grid-corruption unit tests and genuine simulator regressions. Raw simulation outputs remain ignored by Git. No Phase 2 implementation was added.
