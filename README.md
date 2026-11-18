@@ -50,7 +50,7 @@ The starter-authorized first-slice search uses deterministic bisection along log
 
 ## Verified milestone
 
-The initial milestone had **63 passing tests**. The latest Phase 1 follow-up has **97 passing tests** in a newly installed isolated virtual environment, including real simulator integration and controlled failure-accounting tests. Original saved evidence:
+The initial milestone had **63 passing tests**. The latest Phase 1 follow-up has **107 passing tests** in the isolated test environment, including real simulator integration, controlled failure accounting and the minimum-sample sweep regression. Fresh package installation was also verified at the preceding milestone. Original saved evidence:
 
 | Case | Measured cutoff | Error | Calls |
 |---|---:|---:|---:|

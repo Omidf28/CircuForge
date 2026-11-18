@@ -2,7 +2,7 @@
   "title": "CircuForge · Wave2Circuit Research Edition",
   "version": "2.0.0",
   "date": "2026-11-18",
-  "purpose": "Phase 1 verified on Windows with ngspice-47: 97 tests pass in a fresh isolated installation and eight electrical review cases pass. Active code is in Implement CircuForge; human reviews and later phases remain open. See planning/HANDOFF.md and docs/PHASE1_REVIEW.md.",
+  "purpose": "Phase 1 verified on Windows with ngspice-47: 107 tests pass in the isolated test environment, including the resolved minimum-sample review finding. Fresh installation and eight electrical reference cases were also verified. Human reviews and later phases remain open. See planning/HANDOFF.md and docs/PHASE1_REVIEW.md.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
   "vision": "Given a validated filter specification, synthesize constrained analog circuit candidates, simulate them using real ngspice runs, optimize component values, quantify tolerance robustness, and report reproducible evidence. AI is an optional, benchmarked proposal mechanism—not the source of numerical truth.",
   "schedule": "Provisional 12-week two-person, part-time plan (roughly 12–15 team hours per person weekly). Phase gates and actual test evidence take precedence over dates. An MVP may take longer depending on simulator setup.",
@@ -335,7 +335,7 @@
             "P0-C1"
           ],
           "status": "done",
-          "evidence": "Pydantic SI schemas, low/high-pass types, continuous-value policy, explicit ideal source/load, bounds/infeasibility/injection tests; examples/*.json."
+          "evidence": "Pydantic SI schemas, low/high-pass types, continuous-value policy, explicit ideal source/load and bounds/infeasibility/injection tests. Minimum two-sample sweep validation now rejects the reproduced review case before simulator preflight; 107 tests pass."
         },
         {
           "id": "P1-C2",
@@ -350,7 +350,7 @@
             "P1-C1"
           ],
           "status": "done",
-          "evidence": "Real ngspice integration plus timeout, output-limit, absent binary, launch and nonzero-exit tests; full frequency grid and partial-search failures verified. Fresh isolated installation: 97 tests passed. See docs/DEVELOPMENT.md."
+          "evidence": "Real ngspice integration plus timeout, output-limit, absent binary, launch and nonzero-exit tests; full frequency grid and partial-search failures verified. Isolated test environment: 107 tests passed, including genuine two-sample low/high-pass sweeps. See docs/DEVELOPMENT.md."
         },
         {
           "id": "P1-C3",

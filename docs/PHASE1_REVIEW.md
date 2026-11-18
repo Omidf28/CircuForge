@@ -2,6 +2,8 @@
 
 Automated fixture results support P0-H1, P0-H2 and P1-H1 review. They do not record human approval. Each reviewer should record their name/date and comments in docs/DECISIONS.md before changing human task statuses.
 
+Review finding resolved (2026-11-18): sweeps that produce fewer than two frequency samples are now rejected during schema validation, before simulator preflight or output allocation. The reported 100–100.000001 Hz example is covered by regression tests. A real two-sample sweep remains supported for both topologies. Latest full suite: 107 passed; human approval remains pending.
+
 ## Connectivity and reference
 
 Both sources are ideal voltage sources connected from `in` to ground `0`. Output is measured from `out` to `0`, with infinite load.

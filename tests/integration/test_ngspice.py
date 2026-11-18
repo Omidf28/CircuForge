@@ -45,3 +45,20 @@ def test_real_noninteger_decade_sweep(start, stop, density):
     np.testing.assert_allclose(result.response.transfer,
                                analytic_response(candidate, result.response.frequency_hz).transfer,
                                rtol=2e-5, atol=1e-8)
+
+
+@pytest.mark.integration
+@pytest.mark.parametrize("topology", ["rc_lowpass", "rc_highpass"])
+def test_real_two_sample_sweep_is_still_usable(topology):
+    try:
+        executable_path()
+    except SimulationError as exc:
+        pytest.skip(str(exc))
+    target = 101.
+    candidate = CircuitCandidate(topology=topology, resistance_ohm=1000.,
+                                 capacitance_f=1 / (2 * np.pi * 1000 * target))
+    sweep = Sweep(start_hz=100., stop_hz=100 * 10 ** .01, points_per_decade=100)
+    spec = DesignSpec(filter_type=topology, cutoff_hz=target, sweep=sweep)
+    result = Ngspice().simulate(spec, candidate)
+    assert len(result.response.frequency_hz) == 2
+    assert abs(cutoff_hz(result.response, topology) / target - 1) < .001

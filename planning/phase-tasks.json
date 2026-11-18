@@ -86,7 +86,7 @@
             "P0-C1"
           ],
           "status": "done",
-          "evidence": "Pydantic SI schemas, low/high-pass types, continuous-value policy, explicit ideal source/load, bounds/infeasibility/injection tests; examples/*.json."
+          "evidence": "Pydantic SI schemas, low/high-pass types, continuous-value policy, explicit ideal source/load and bounds/infeasibility/injection tests. Minimum two-sample sweep validation now rejects the reproduced review case before simulator preflight; 107 tests pass."
         },
         {
           "id": "P1-C2",
@@ -101,7 +101,7 @@
             "P1-C1"
           ],
           "status": "done",
-          "evidence": "Real ngspice integration plus timeout, output-limit, absent binary, launch and nonzero-exit tests; full frequency grid and partial-search failures verified. Fresh isolated installation: 97 tests passed. See docs/DEVELOPMENT.md."
+          "evidence": "Real ngspice integration plus timeout, output-limit, absent binary, launch and nonzero-exit tests; full frequency grid and partial-search failures verified. Isolated test environment: 107 tests passed, including genuine two-sample low/high-pass sweeps. See docs/DEVELOPMENT.md."
         },
         {
           "id": "P1-C3",

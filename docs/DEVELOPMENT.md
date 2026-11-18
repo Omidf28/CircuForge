@@ -106,3 +106,11 @@ Executed `python scripts/verify_phase1.py --output C:/Users/Home/.codex/visualiz
 Search failure records also include preflight version and attempted command. A real AC run followed by an intentionally missing executable verifies that the first genuine measurement survives the next real launch failure. Missing simulator during search preflight records zero AC attempts. No fixture results are substituted for failed simulations.
 
 For the Documents write restriction, the roadmap renderer now supports `--output-dir`. Ran `python planning/render_plan.py --output-dir C:/Users/Home/.codex/visualizations/2026/11/18/01a1ee7a-3b9d-7eb0-9f38-c053c726b534/Phase1_Verification/generated` successfully: 9 phases/31 tasks, dependencies validated. Generated files were synchronized back using the file-edit tool; canonical source JSON remains in the active repository. Human task statuses were preserved.
+
+## Review regression: minimum AC sample count
+
+The Phase 1 review reproduced an accepted sweep from 100 to 100.000001 Hz at 100 points/decade. Its count was 1; genuine ngspice exited 0 with one data row, then Response rejected the data with parse_error. Sweep validation now requires expected_points >=2, matching the response/metric contract. The invalid request is rejected before output allocation and before constructing the simulator, including the --search CLI path.
+
+Added eight unit cases: three frequency scales reject single-sample sweeps, three density settings accept exactly one interval/two samples, and both CLI modes reject before preflight. Two new real integration cases verify that the minimum two-sample grid around a 101 Hz cutoff remains usable for low/high-pass, within 0.1% interpolation error.
+
+Executed the isolated virtualenv interpreter from the active checkout with PYTHONPATH=src, PYTEST_DISABLE_PLUGIN_AUTOLOAD=1, CIRCUFORGE_NGSPICE pointing to the verified ngspice-47 binary, and `-m pytest -q -ra -o cache_dir=C:/Users/Home/.codex/visualizations/2026/11/18/01a1ee7a-3b9d-7eb0-9f38-c053c726b534/Phase1_Verification/pytest-cache`: **107 passed in 6.83s**, no skips. This run imports the updated source rather than the preceding installed wheel. Human approval and Phase 2 remain unchanged.

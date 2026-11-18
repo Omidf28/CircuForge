@@ -32,6 +32,8 @@ class Sweep(Model):
     def bounded(self):
         if not 1e-9 <= self.start_hz < self.stop_hz <= 1e15:
             raise ValueError("sweep must satisfy 1e-9 <= start < stop <= 1e15 Hz")
+        if self.expected_points < 2:
+            raise ValueError("sweep must contain at least two frequency samples")
         if self.expected_points > 20000:
             raise ValueError("sweep exceeds 20000 point budget")
         return self
