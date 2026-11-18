@@ -1,0 +1,11 @@
+{
+  "filter_type": "rc_lowpass",
+  "cutoff_hz": 1591.5494309189535,
+  "source_amplitude_v": 1.0,
+  "source_impedance_ohm": 0.0,
+  "load": "infinite",
+  "value_policy": "continuous",
+  "resistance_ohm": {"minimum": 10.0, "maximum": 1000000.0},
+  "capacitance_f": {"minimum": 1e-12, "maximum": 0.001},
+  "sweep": {"start_hz": 1.0, "stop_hz": 1000000.0, "points_per_decade": 100}
+}

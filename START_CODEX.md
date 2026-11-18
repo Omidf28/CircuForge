@@ -1,0 +1,17 @@
+# Paste this into Codex after opening the extracted CircuForge folder
+
+Read `AGENTS.md`, `README.md`, `docs/PROJECT_SPEC.md`, `docs/ARCHITECTURE.md`, `docs/DECISIONS.md`, `planning/HANDOFF.md`, and relevant `planning/phase-tasks.json` tasks.
+
+I authorize you to **implement the first local CircuForge MVP vertical slice now**, not merely plan it. Respect task dependencies and `AGENTS.md`.
+
+1. Inspect current files and confirm this is a planning-only repository; don't claim software already exists.
+2. Set up a clean, minimal Python package with pytest, typed specs and ngspice preflight detection.
+3. Implement an allowlisted RC low-pass SPICE netlist and execute it using locally installed ngspice with subprocess timeout and safe temp files; capture the real AC simulation data.
+4. Parse complex frequency response and measure the -3 dB cutoff. Validate against analytical `fc = 1/(2*pi*R*C)` with documented frequency sweep resolution and tolerance.
+5. Provide one runnable CLI example, one analytic unit test and one real ngspice integration test (skip/block clearly when ngspice isn't installed, never fabricate output).
+6. After tests pass, implement bounded R/C parameter search for a specified target cutoff with measured results and a call counter.
+7. Write installation/run instructions for Windows and Linux and update `planning/HANDOFF.md` with completed tasks, exact test commands, outcomes and next steps.
+
+**Do not** build the frontend, large component library, PCB layout, LLM agents, OCR, fine-tuning or cloud deployment during this task. Do not spend money, request credentials, or install unnecessary infrastructure. If ngspice cannot run, provide precise preflight/installation instructions and implement testable offline components without claiming end-to-end success.
+
+At the end, summarize modified files, assumptions, commands/tests actually executed, observed results, blockers and suggested next task IDs.

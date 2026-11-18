@@ -1,0 +1,251 @@
+{
+  "title": "CircuForge · Wave2Circuit Research Edition",
+  "version": "2.0.0",
+  "date": "2026-11-18",
+  "purpose": "Phase 1 local numerical implementation verified on Windows with ngspice-47. Canonical task statuses carry evidence; human reviews and later phases remain open. See planning/HANDOFF.md.",
+  "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
+  "vision": "Given a validated filter specification, synthesize constrained analog circuit candidates, simulate them using real ngspice runs, optimize component values, quantify tolerance robustness, and report reproducible evidence. AI is an optional, benchmarked proposal mechanism—not the source of numerical truth.",
+  "schedule": "Provisional 12-week two-person, part-time plan (roughly 12–15 team hours per person weekly). Phase gates and actual test evidence take precedence over dates. An MVP may take longer depending on simulator setup.",
+  "target": "Research-first MVP with a usable local demo, two supported RC filter families, deterministic baseline optimizers, tolerance analysis, and published reproducible experiments. No 100-user or full PCB promise.",
+  "first48": [
+    {
+      "owner": "Human",
+      "title": "Check workstation and scope",
+      "body": "Install Python and ngspice or document the blocking installation issue; agree on Windows support, one selected filter family, budget, and handoff ownership. Avoid adding API credentials."
+    },
+    {
+      "owner": "Codex",
+      "title": "Prove first ngspice run",
+      "body": "Create the typed RC low-pass example, run a noninteractive AC sweep with a hard timeout, parse the output, calculate the −3 dB cutoff and check against the analytic RC reference."
+    },
+    {
+      "owner": "Human",
+      "title": "Validate physical assumptions",
+      "body": "Review voltage reference, source/load constraints, allowed component ranges, tolerance distributions and meaningful filter targets before the first optimization benchmark."
+    }
+  ],
+  "scope": {
+    "now": [
+      "Local-first Python engine, ngspice executable integration and tested AC-analysis pipeline on RC low-pass, then RC high-pass.",
+      "Structured circuit-design specification; basic validation, units, allowlisted topology templates, parameter bounds and physically meaningful target checks.",
+      "Numerical baseline optimization (grid/random search and SciPy differential evolution); repeatable seeds and a fixed simulation budget.",
+      "Tolerance evaluation of candidate designs with explicit assumptions, reproducible Monte Carlo sampling and valid reference calculations.",
+      "CLI and minimal result visualization/export (CSV/JSON/PNG); compact web UI only after verified core.",
+      "Research benchmark (initially 20 curated cases, expandable to 50–100), baselines, metrics, failure analysis and documentation."
+    ],
+    "later": [
+      "RLC and active topologies after independent fixtures and reviewer validation.",
+      "LLM proposal agent with structured tools, explicit cost caps and measured comparison to non-LLM baselines.",
+      "Manufacturer SPICE models and verified compatibility registry, KiCad schematic export, then constrained 2-layer PCB placement/routing experiments.",
+      "Datasheet RAG, fine-tuning, image/OCR, full schematic editor, real-board hardware tests, production multi-user hosting."
+    ]
+  },
+  "journey": [
+    {
+      "step": 1,
+      "title": "Specify",
+      "body": "Enter filter type, cutoff frequency, source/load assumptions, acceptable error, allowed E-series values and component bounds. Invalid or infeasible specs get explicit reasons."
+    },
+    {
+      "step": 2,
+      "title": "Synthesize",
+      "body": "Choose an allowed RC topology and generate a safe parameterized SPICE netlist; maintain provenance of every candidate."
+    },
+    {
+      "step": 3,
+      "title": "Simulate and optimize",
+      "body": "Run bounded ngspice AC sweeps; extract transfer function and measured cutoff, compare against analytic reference and optimize candidates using baseline algorithms."
+    },
+    {
+      "step": 4,
+      "title": "Verify and report",
+      "body": "Compare target vs simulated response, tolerance sensitivity and search cost; export reproducible artifacts and disclose limitations."
+    }
+  ],
+  "architecture": [
+    {
+      "title": "Domain and specification",
+      "body": "Pydantic typed structures for design targets, sources, loads, component bounds, E-series values, candidate topologies and validation; unit conversions centralized."
+    },
+    {
+      "title": "Synthesis and safe netlists",
+      "body": "Start with a finite allowlist of RC low-pass/high-pass topology templates; generate SPICE from trusted templates, never execute arbitrary LLM instructions, include directives or filesystem paths."
+    },
+    {
+      "title": "Simulation adapter",
+      "body": "Call locally installed ngspice via subprocess using argument lists, per-run temporary directories, timeouts, return-code checks and sanitized output; extract AC magnitude/phase into structured results. Set deterministic numeric configurations."
+    },
+    {
+      "title": "Optimization / robust design",
+      "body": "Separate objective calculation from simulator adapter; implement seeded random search, grid search and SciPy differential evolution with explicit evaluation budgets. Count simulator calls and cache identical candidates."
+    },
+    {
+      "title": "Evaluation and research",
+      "body": "Version benchmark instances; record seeds, environment, package versions, simulation settings, failure codes, objective components, runtime and token spend. Use analytic RC response as an independent oracle for initial fixtures."
+    },
+    {
+      "title": "Product API and UI",
+      "body": "Add FastAPI, React/TypeScript and plots only after CLI + deterministic tests work. Backend remains local-first and does not require GPU/cloud. Docker is optional and must handle ngspice executable paths explicitly."
+    }
+  ],
+  "intelligence": [
+    {
+      "title": "Physics over language",
+      "verdict": "Nonnegotiable",
+      "body": "An LLM may propose specifications or topologies but cannot certify electrical correctness. Only independent analytic checks and successful bounded ngspice simulations support verification."
+    },
+    {
+      "title": "LLM proposal stage",
+      "verdict": "After numeric baseline",
+      "body": "Evaluate LLM-guided structure selection using typed JSON/tool schemas; malformed outputs, timeouts and unsupported topologies are rejected without simulator execution. Compare against equal-budget random/classical baselines."
+    },
+    {
+      "title": "Component library",
+      "verdict": "Small verified registry first",
+      "body": "Distinguish symbol, footprint, and SPICE model. Start generic R/C, then verified L and manufacturer models; track compatible simulator syntax, license, pin mapping and model provenance."
+    },
+    {
+      "title": "RAG / fine-tune",
+      "verdict": "Defer",
+      "body": "RAG may later retrieve licensed datasheets with source attribution. Fine-tuning is not required for MVP; only consider it after a benchmark demonstrates a repeated failure that simpler tools cannot fix."
+    }
+  ],
+  "techniques": [
+    {
+      "title": "Analytic baseline",
+      "timing": "P1",
+      "body": "For ideal unloaded first-order RC low-pass use fc=1/(2πRC), and measure the −3 dB magnitude relative to passband gain with documented sweep resolution."
+    },
+    {
+      "title": "Fixed-budget comparisons",
+      "timing": "P3–P6",
+      "body": "Compare classical optimizers using equal ngspice evaluation counts; repeat seeds, collect success rates and distributional statistics rather than cherry-picked examples."
+    },
+    {
+      "title": "Tolerance robustness",
+      "timing": "P4",
+      "body": "Use explicit independent or correlated R/C distribution assumptions; report failure probabilities and quantiles with a declared sample size; distinguish simulated variability from measured manufacturing variability."
+    },
+    {
+      "title": "Research ablation",
+      "timing": "P6",
+      "body": "With vs without LLM topology suggestions; with vs without robustness penalty; compare accuracy, SPICE calls, elapsed time and cost, noting confounders."
+    }
+  ],
+  "providers": [
+    {
+      "name": "ngspice",
+      "recommendation": "Required simulator, locally installed",
+      "detail": "Use the executable through a Python adapter. Validate installation and supported command-line semantics on Windows and Linux before implementation claims.",
+      "sources": [
+        "ngspice"
+      ]
+    },
+    {
+      "name": "SciPy",
+      "recommendation": "Required numerical methods",
+      "detail": "Differential evolution and response processing; use deterministic seeds and bound physical parameters.",
+      "sources": [
+        "scipy"
+      ]
+    },
+    {
+      "name": "KiCad",
+      "recommendation": "Deferred optional EDA export",
+      "detail": "Do not block core inverse design on symbols, PCB footprints or a complete component library. Use official export interface after a verified MVP.",
+      "sources": [
+        "kicad"
+      ]
+    },
+    {
+      "name": "LLM API",
+      "recommendation": "Optional measured experiment",
+      "detail": "Do not require a paid key for Phase 1; use provider-neutral interface and token/cost budgets when activated.",
+      "sources": []
+    }
+  ],
+  "capacity": {
+    "registered": 2,
+    "dau": 2,
+    "analyses": 10,
+    "calls": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "days": 30,
+    "apiRequests": 1,
+    "budget": "Research MVP is local-first. API spending defaults to $0; set an explicit cap when an LLM phase starts. Hosting is optional. No cloud compute or GPU purchase required for early RC simulation."
+  },
+  "launchGates": [
+    {
+      "name": "Simulator correctness",
+      "target": "ngspice AC sweep and parsed −3 dB cutoff agree with analytic RC reference under declared sweep resolution and tolerances."
+    },
+    {
+      "name": "Safety and reproducibility",
+      "target": "Reject malformed inputs and unsupported topologies; per-run timeout, sandboxed temporary files, seed and environment information recorded."
+    },
+    {
+      "name": "Optimization evidence",
+      "target": "A target fc can be reached within predefined error and SPICE-call budgets; report failures, not only wins."
+    },
+    {
+      "name": "Robustness evidence",
+      "target": "Monte Carlo estimates reproducible under fixed seeds with explicitly documented R/C tolerances and sample counts."
+    },
+    {
+      "name": "Product usability",
+      "target": "Another student can run the CLI/demo from README on a clean system, inspect plots and reproduce a documented benchmark."
+    },
+    {
+      "name": "Research integrity",
+      "target": "All claims backed by versioned fixtures, baseline comparisons, experimental settings and raw CSV/JSON results."
+    }
+  ],
+  "workflow": [
+    {
+      "title": "Two-person division",
+      "body": "Partner A: AI/optimization/backend/evaluation. Partner B: circuit models, ngspice integration, physical fixtures and component compatibility. Both review tests, design constraints and research claims."
+    },
+    {
+      "title": "One vertical slice at a time",
+      "body": "Start with spec → RC netlist → ngspice AC → cutoff extraction → optimize → verify. Do not introduce frontend, PCB, agents or broad parts libraries before this end-to-end slice passes."
+    },
+    {
+      "title": "Evidence-driven completion",
+      "body": "Codex implements only authorized unblocked tasks. A task is complete only after running relevant tests, recording exact commands/results and identifying unverified behavior; no fictional benchmark numbers."
+    },
+    {
+      "title": "Agent permissions",
+      "body": "Implement local code and tests now; ask before paid API use, external deployments, purchasing services, introducing new secrets, modifying out-of-scope files or destructive actions."
+    }
+  ],
+  "planningHome": "Maintain canonical context.json, phase-tasks.json, generated roadmap files and progress evidence in Git. Use task IDs in commits and GitHub Issues if desired.",
+  "handoff": "Read AGENTS.md and planning/HANDOFF.md. P0-C1/C2 and P1-C1/C2/C3 have verified evidence. Reproduce tests and complete human P0-H1/H2 and P1-H1 reviews before Phase 2 baseline comparisons. First-slice bounded measured bisection is implemented; random/grid/SciPy remain Phase 2. Do not start PCB or LLM work.",
+  "sources": [
+    {
+      "id": "ngspice",
+      "title": "ngspice official website and documentation",
+      "url": "https://ngspice.sourceforge.io/"
+    },
+    {
+      "id": "scipy",
+      "title": "SciPy differential evolution documentation",
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.differential_evolution.html"
+    },
+    {
+      "id": "kicad",
+      "title": "KiCad documentation",
+      "url": "https://docs.kicad.org/"
+    },
+    {
+      "id": "pytest",
+      "title": "pytest documentation",
+      "url": "https://docs.pytest.org/"
+    },
+    {
+      "id": "githubprojects",
+      "title": "GitHub Projects",
+      "url": "https://docs.github.com/en/issues/planning-and-tracking-with-projects"
+    }
+  ]
+}

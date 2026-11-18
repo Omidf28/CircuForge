@@ -1,0 +1,6 @@
+{
+  "filter_type": "rc_lowpass",
+  "cutoff_hz": 2300.0,
+  "max_evaluations": 24,
+  "relative_error_tolerance": 0.001
+}

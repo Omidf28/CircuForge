@@ -1,0 +1,8 @@
+{
+  "filter_type": "rc_highpass",
+  "cutoff_hz": 1591.5494309189535,
+  "source_amplitude_v": 1.0,
+  "source_impedance_ohm": 0.0,
+  "load": "infinite",
+  "value_policy": "continuous"
+}

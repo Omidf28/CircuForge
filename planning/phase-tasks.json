@@ -1,0 +1,539 @@
+{
+  "phases": [
+    {
+      "id": "P0",
+      "number": 0,
+      "title": "Review reference circuit",
+      "window": "Week 1",
+      "outcome": "Environment, constraints and first executable SPICE proof.",
+      "gate": "ngspice executable detected; one low-pass test netlist generates a valid AC output, or failure logged with installation instructions.",
+      "dependsOn": [],
+      "optional": false,
+      "tasks": [
+        {
+          "id": "P0-H1",
+          "owner": "Human",
+          "title": "Agree boundaries",
+          "action": "Choose supported platform, source amplitude/load assumptions, component ranges and compute budget; review design safety.",
+          "deliverable": "docs/DECISIONS.md with bounded MVP decisions.",
+          "acceptance": "No unsupported circuits or implicit idealizations in requirements.",
+          "effort": 2,
+          "dependsOn": [],
+          "status": "todo"
+        },
+        {
+          "id": "P0-C1",
+          "owner": "Codex",
+          "title": "Scaffold tested Python project",
+          "action": "Create pyproject.toml, src package, pytest scaffolding, .gitignore, tooling docs and executable path detection.",
+          "deliverable": "Installable local package and ngspice preflight command.",
+          "acceptance": "pytest passes on deterministic tests even if ngspice missing; missing simulator is reported clearly.",
+          "effort": 4,
+          "dependsOn": [],
+          "status": "done",
+          "evidence": "Installable package built and installed locally; pytest unit tests pass; missing simulator preflight tested. See docs/DEVELOPMENT.md."
+        },
+        {
+          "id": "P0-C2",
+          "owner": "Codex",
+          "title": "Run first SPICE smoke test",
+          "action": "Generate allowed RC netlist in temp directory and call ngspice non-interactively with timeout.",
+          "deliverable": "Test fixture plus captured AC sweep output.",
+          "acceptance": "On installed ngspice, genuine exit 0 and numeric sweep; no fake output fallback.",
+          "effort": 4,
+          "dependsOn": [
+            "P0-C1"
+          ],
+          "status": "done",
+          "evidence": "ngspice-47 console exit 0; 601 real AC rows; evidence/lowpass-2026-11-18/{stdout.log,response.csv,report.json}."
+        },
+        {
+          "id": "P0-H2",
+          "owner": "Human",
+          "title": "Review reference circuit",
+          "action": "Review RC low-pass schematic, correct ground, source and load assumptions with teammate.",
+          "deliverable": "Signed-off idealized fixture and expected fc.",
+          "acceptance": "Expected fc and assumptions independently confirmed.",
+          "effort": 2,
+          "dependsOn": [
+            "P0-C2"
+          ],
+          "status": "todo"
+        }
+      ]
+    },
+    {
+      "id": "P1",
+      "number": 1,
+      "title": "Verify RC low/high-pass fixtures",
+      "window": "Weeks 2–3",
+      "outcome": "Typed specs, safe netlists and independently checked transfer functions.",
+      "gate": "RC cutoff and amplitude/phase checks pass analytical fixtures; invalid specs rejected.",
+      "dependsOn": [
+        "P0"
+      ],
+      "optional": false,
+      "tasks": [
+        {
+          "id": "P1-C1",
+          "owner": "Codex",
+          "title": "Define typed circuit specifications",
+          "action": "Define Pydantic models for RC type, cutoff, source/load, units, ranges and E-series policy; reject invalid.",
+          "deliverable": "schemas, unit tests and examples.",
+          "acceptance": "Invalid freq, nonpositive elements, unsupported topology and out-of-range values fail clearly.",
+          "effort": 6,
+          "dependsOn": [
+            "P0-C1"
+          ],
+          "status": "done",
+          "evidence": "Pydantic SI schemas, low/high-pass types, continuous-value policy, explicit ideal source/load, bounds/infeasibility/injection tests; examples/*.json."
+        },
+        {
+          "id": "P1-C2",
+          "owner": "Codex",
+          "title": "Implement ngspice adapter",
+          "action": "Subprocess integration with allowlisted templates, timeout, logs, temp dirs, return codes, failure reports.",
+          "deliverable": "simulator interface and tests.",
+          "acceptance": "No arbitrary command injection or unrestricted .include; proper failure on absent ngspice.",
+          "effort": 8,
+          "dependsOn": [
+            "P0-C2",
+            "P1-C1"
+          ],
+          "status": "done",
+          "evidence": "Real ngspice integration plus timeout, output-limit, absent binary, launch and nonzero-exit tests; no arbitrary-netlist interface; startup files disabled."
+        },
+        {
+          "id": "P1-C3",
+          "owner": "Codex",
+          "title": "Extract AC metrics",
+          "action": "Parse complex AC response, interpolation of −3 dB cutoff, gain/phase arrays.",
+          "deliverable": "metrics and analytic comparison tests.",
+          "acceptance": "Measured cutoff agrees with analytic first-order RC within documented discretization tolerance.",
+          "effort": 7,
+          "dependsOn": [
+            "P1-C2"
+          ],
+          "status": "done",
+          "evidence": "Eight real R/C/topology/amplitude fixtures compare complex response and phase to independent formula; cutoff error <0.1%; evidence low/high-pass reports."
+        },
+        {
+          "id": "P1-H1",
+          "owner": "Human",
+          "title": "Verify RC low/high-pass fixtures",
+          "action": "Cross-check both topologies, source/load simplifications and expected phase behavior.",
+          "deliverable": "Reference examples and review notes.",
+          "acceptance": "At least 4 reference cases with analytical solutions and independently checked expectations.",
+          "effort": 3,
+          "dependsOn": [
+            "P1-C3"
+          ],
+          "status": "todo"
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "number": 2,
+      "title": "Inspect failed optimizations",
+      "window": "Weeks 4–5",
+      "outcome": "Target cutoff to optimized RC values under physical constraints.",
+      "gate": "Two optimizer baselines run on valid test cases with equal simulation budgets.",
+      "dependsOn": [
+        "P1"
+      ],
+      "optional": false,
+      "tasks": [
+        {
+          "id": "P2-C1",
+          "owner": "Codex",
+          "title": "Define objective and feasibility",
+          "action": "Implement target cutoff/response objective and constraint handling; return infeasible reasons.",
+          "deliverable": "objective tests and schema.",
+          "acceptance": "No optimization of invalid netlists or unsupported targets; units consistent.",
+          "effort": 6,
+          "dependsOn": [
+            "P1-C3"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P2-C2",
+          "owner": "Codex",
+          "title": "Seeded random and grid baselines",
+          "action": "Build deterministic baseline with budgets, E-series optional, call counting and structured output.",
+          "deliverable": "baseline algorithm and tests.",
+          "acceptance": "Repeat with fixed seed yields identical candidate list and metrics.",
+          "effort": 7,
+          "dependsOn": [
+            "P2-C1"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P2-C3",
+          "owner": "Codex",
+          "title": "SciPy differential evolution",
+          "action": "Run bounded differential evolution and compare on same max SPICE calls; cache duplicate points.",
+          "deliverable": "optimizer interface and comparative report.",
+          "acceptance": "Budget cap respected, results exportable and comparable.",
+          "effort": 8,
+          "dependsOn": [
+            "P2-C2"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P2-H1",
+          "owner": "Human",
+          "title": "Inspect failed optimizations",
+          "action": "Review infeasibility and performance failures against expectations; decide ranges.",
+          "deliverable": "Failure-mode notes and accepted constraints.",
+          "acceptance": "At least 5 varied cases with human review and no fabricated wins.",
+          "effort": 3,
+          "dependsOn": [
+            "P2-C3"
+          ],
+          "status": "todo"
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "number": 3,
+      "title": "Audit baseline fairness",
+      "window": "Weeks 6–7",
+      "outcome": "Versioned cases, repeatable multi-seed comparisons and saved evidence.",
+      "gate": "At least 20 benchmark cases run with logged seeds/configs/results and readable summary.",
+      "dependsOn": [
+        "P2"
+      ],
+      "optional": false,
+      "tasks": [
+        {
+          "id": "P3-C1",
+          "owner": "Codex",
+          "title": "Benchmark schema and cases",
+          "action": "Create 20 curated RC tasks spanning cutoff and feasible bounds; no duplicated disguised cases.",
+          "deliverable": "JSON cases and provenance.",
+          "acceptance": "Every case has target, bounds, accepted error and expected feasibility.",
+          "effort": 7,
+          "dependsOn": [
+            "P2-C1"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P3-C2",
+          "owner": "Codex",
+          "title": "Evaluation harness",
+          "action": "Run fixed-seed trials with equal call budgets, log runtime, failures, environment and configs.",
+          "deliverable": "benchmark runner and result files.",
+          "acceptance": "Re-run yields same numerical results within documented tolerances.",
+          "effort": 9,
+          "dependsOn": [
+            "P3-C1",
+            "P2-C3"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P3-H1",
+          "owner": "Human",
+          "title": "Audit baseline fairness",
+          "action": "Audit 5 cases, acceptance logic, runtime measurement and success definitions.",
+          "deliverable": "Audit notes and correction list.",
+          "acceptance": "Clear definition of simulation success, numerical success and invalid candidate.",
+          "effort": 4,
+          "dependsOn": [
+            "P3-C2"
+          ],
+          "status": "todo"
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "number": 4,
+      "title": "Review tolerance assumptions",
+      "window": "Week 8",
+      "outcome": "Demonstrate robust vs nominal design tradeoffs.",
+      "gate": "Robustness runs reproduce quantiles and performance comparison with declared tolerance model.",
+      "dependsOn": [
+        "P3"
+      ],
+      "optional": false,
+      "tasks": [
+        {
+          "id": "P4-C1",
+          "owner": "Codex",
+          "title": "Monte Carlo model",
+          "action": "Seeded tolerance sampling, explicit distributions and sampling budget; compute quantiles and pass rate.",
+          "deliverable": "robustness module and tests.",
+          "acceptance": "Fixed-seed Monte Carlo repeatability; nominal vs tolerance statistics shown separately.",
+          "effort": 7,
+          "dependsOn": [
+            "P3-C2"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P4-C2",
+          "owner": "Codex",
+          "title": "Robust objective experiment",
+          "action": "Add tolerance-aware penalty and comparison under matched total simulation budgets.",
+          "deliverable": "ablation report and plots.",
+          "acceptance": "Report measured tradeoffs without claiming improvement if unsupported.",
+          "effort": 8,
+          "dependsOn": [
+            "P4-C1"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P4-H1",
+          "owner": "Human",
+          "title": "Review tolerance assumptions",
+          "action": "Choose tolerance ranges, correlation assumptions and interpretation limits.",
+          "deliverable": "Assumptions and research decision log.",
+          "acceptance": "No simulated confidence described as hardware performance guarantee.",
+          "effort": 3,
+          "dependsOn": [
+            "P4-C1"
+          ],
+          "status": "todo"
+        }
+      ]
+    },
+    {
+      "id": "P5",
+      "number": 5,
+      "title": "User acceptance walkthrough",
+      "window": "Weeks 9–10",
+      "outcome": "CLI/API and optional UI make verified results inspectable.",
+      "gate": "Independent reviewer runs one complete example with plots, raw results and traceable configuration.",
+      "dependsOn": [
+        "P4"
+      ],
+      "optional": false,
+      "tasks": [
+        {
+          "id": "P5-C1",
+          "owner": "Codex",
+          "title": "CLI and report export",
+          "action": "CLI accepts structured spec and produces JSON/CSV/PNG and traceable simulation log.",
+          "deliverable": "CLI command, example and tests.",
+          "acceptance": "Reproduce an example from README with no secrets or service account.",
+          "effort": 8,
+          "dependsOn": [
+            "P2-C3",
+            "P4-C1"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P5-C2",
+          "owner": "Codex",
+          "title": "Add minimal FastAPI service",
+          "action": "Validated endpoint with bounded compute, response schemas and safe temp cleanup.",
+          "deliverable": "local HTTP API plus tests.",
+          "acceptance": "Integration test response consistent with CLI, no arbitrary netlist execution.",
+          "effort": 8,
+          "dependsOn": [
+            "P5-C1"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P5-C3",
+          "owner": "Codex",
+          "title": "Engineering dashboard (optional)",
+          "action": "Minimal plot and comparison view after engine passes gates; keep core package usable without UI.",
+          "deliverable": "working prototype with baseline comparison.",
+          "acceptance": "Shows verified vs unverified candidates and failure reasons.",
+          "effort": 10,
+          "dependsOn": [
+            "P5-C2"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P5-H1",
+          "owner": "Human",
+          "title": "User acceptance walkthrough",
+          "action": "Attempt clean install, complete example and review UX / interpretation.",
+          "deliverable": "Recorded walkthrough and issues.",
+          "acceptance": "External reviewer can identify objective, circuit and evidence from output.",
+          "effort": 3,
+          "dependsOn": [
+            "P5-C1"
+          ],
+          "status": "todo"
+        }
+      ]
+    },
+    {
+      "id": "P6",
+      "number": 6,
+      "title": "Approve API trial and spending",
+      "window": "Week 11",
+      "outcome": "Test whether structured LLM suggestions add measurable value.",
+      "gate": "If paid key/provider inaccessible, mark experiment deferred and preserve reproducible non-LLM result; no claims without trials.",
+      "dependsOn": [
+        "P5"
+      ],
+      "optional": false,
+      "tasks": [
+        {
+          "id": "P6-C1",
+          "owner": "Codex",
+          "title": "Provider-neutral proposal interface",
+          "action": "Define structured candidate interface with validation, rate/cost caps, mock tests; optional real provider adapter.",
+          "deliverable": "LLM proposal plugin isolated from core.",
+          "acceptance": "Invalid topology rejected; no required API key for basic design.",
+          "effort": 7,
+          "dependsOn": [
+            "P2-C1"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P6-C2",
+          "owner": "Codex",
+          "title": "Equal-budget agent ablation",
+          "action": "Run available LLM proposals vs baselines under stated budgets, track tokens, costs, failures and seeds.",
+          "deliverable": "experiment results and limitations.",
+          "acceptance": "Comparative evidence provided or explicitly marked unrun due to access.",
+          "effort": 9,
+          "dependsOn": [
+            "P6-C1",
+            "P3-C2"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P6-H1",
+          "owner": "Human",
+          "title": "Approve API trial and spending",
+          "action": "Review pricing/privacy/terms and set maximum expenditure; do not commit secrets.",
+          "deliverable": "approved or declined budget decision.",
+          "acceptance": "No paid traffic without explicit approval.",
+          "effort": 2,
+          "dependsOn": [
+            "P6-C1"
+          ],
+          "status": "todo"
+        }
+      ]
+    },
+    {
+      "id": "P7",
+      "number": 7,
+      "title": "Verify demo and claims",
+      "window": "Week 12",
+      "outcome": "Documented repo, demo, findings and truthful CV-ready evidence.",
+      "gate": "Clean setup, tests, reproducible benchmark, demo and research report.",
+      "dependsOn": [
+        "P6"
+      ],
+      "optional": false,
+      "tasks": [
+        {
+          "id": "P7-C1",
+          "owner": "Codex",
+          "title": "Engineering documentation",
+          "action": "README, architecture diagrams, API docs, installation troubleshooting, reproducibility commands and known limits.",
+          "deliverable": "complete technical documentation.",
+          "acceptance": "Clean-room developer can reproduce at least one supported design.",
+          "effort": 7,
+          "dependsOn": [
+            "P5-C1",
+            "P3-C2"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P7-C2",
+          "owner": "Codex",
+          "title": "Technical research report",
+          "action": "Write method, baselines, results, confidence limits, failure analysis, threats to validity and next steps.",
+          "deliverable": "research report with real plots.",
+          "acceptance": "Every numeric statement derived from stored experiment data; no fabricated results.",
+          "effort": 8,
+          "dependsOn": [
+            "P3-C2",
+            "P4-C2"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P7-H1",
+          "owner": "Human",
+          "title": "Verify demo and claims",
+          "action": "Record 60–90s demo and approve accurate CV wording.",
+          "deliverable": "video/demo and review log.",
+          "acceptance": "Demo shows actual system, not illustrative simulations.",
+          "effort": 4,
+          "dependsOn": [
+            "P7-C1",
+            "P7-C2"
+          ],
+          "status": "todo"
+        }
+      ]
+    },
+    {
+      "id": "P8",
+      "number": 8,
+      "title": "Decide constrained PCB research",
+      "window": "After validated core",
+      "outcome": "Constrained topology extension and KiCad/PCB feasibility research.",
+      "gate": "Explicit feasibility decision with validated model, export test and no industrial claims.",
+      "dependsOn": [
+        "P7"
+      ],
+      "optional": true,
+      "tasks": [
+        {
+          "id": "P8-C1",
+          "owner": "Codex",
+          "title": "Component registry and model compatibility",
+          "action": "Prototype versioned R/C/L records, SPICE model compatibility flags, licensing metadata and pin mapping.",
+          "deliverable": "verified registry schema and 20-model smoke-test report when appropriate.",
+          "acceptance": "Compatibility evidence, not claim all PSpice models work.",
+          "effort": 8,
+          "dependsOn": [
+            "P1-C2"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P8-C2",
+          "owner": "Codex",
+          "title": "KiCad export proof of concept",
+          "action": "Export one permitted schematic/netlist and inspect resulting editable project; no promised PCB auto-layout.",
+          "deliverable": "demo plus constraints report.",
+          "acceptance": "Schematic pins and netlist connectivity reviewed; errors detectable.",
+          "effort": 10,
+          "dependsOn": [
+            "P8-C1"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "P8-H1",
+          "owner": "Human",
+          "title": "Decide constrained PCB research",
+          "action": "Specify board layers, DRC, routing restrictions and when PCB work would be justified.",
+          "deliverable": "go/no-go decision.",
+          "acceptance": "Scope remains two-layer simple boards, not arbitrary optimal PCB.",
+          "effort": 4,
+          "dependsOn": [
+            "P8-C2"
+          ],
+          "status": "todo"
+        }
+      ]
+    }
+  ]
+}

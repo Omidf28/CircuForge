@@ -1,0 +1,1 @@
+"""Validated electrical input contracts."""
