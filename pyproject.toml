@@ -19,6 +19,7 @@ circuforge = "circuforge.cli:main"
 where = ["src"]
 
 [tool.pytest.ini_options]
+addopts = ["--import-mode=importlib"]
 testpaths = ["tests"]
 pythonpath = ["src"]
 markers = ["integration: requires a real ngspice executable"]

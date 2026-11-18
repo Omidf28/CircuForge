@@ -80,3 +80,29 @@ The repository now also exists at `C:/Users/Home/Documents/ChatGPT/Implement Cir
 The search now raises a structured SearchFailure on simulator or cutoff-metric failure. It retains previous measured evaluations, the attempted call count including the failed call, the failed candidate/spec, simulator status/return code and logs. CLI failure.json includes that context; circuit.cir and logs describe the failed attempt. The failed attempt has no fabricated cutoff. Eleven controlled unit tests cover first/later timeout, nonzero exit, parse and launch failures, metric failure, CLI evidence and budget exhaustion. Latest suite: **89 passed**.
 
 This managed Windows environment still denies Python directory creation under Documents, even after escalation. The real CLI's attempt to create runs/active-workspace-check failed with WinError 2; pytest cache creation emitted the same environmental warning. File checkout via Git and edits via the file tool work. Use an absolute output/cache path in the authorized visualization workspace for execution evidence; do not disable Windows protections. This limitation is separate from simulator success. External-tool paths are supplied through environment variables, not hardcoded in application code.
+
+## Fresh installation and eight-case electrical packet
+
+Created a new virtual environment (without system-site-packages) at `C:/Users/Home/.codex/visualizations/2026/11/18/01a1ee7a-3b9d-7eb0-9f38-c053c726b534/Phase1_Verification/.venv`. A source snapshot of the active repository, excluding ignored files and Git metadata, is under the same directory's source/. Installed it using:
+
+```text
+.venv/Scripts/python.exe -m pip install --index-url https://pypi.org/simple "./source[test]"
+```
+
+This built and installed the wheel with fresh NumPy 2.5.5, Pydantic 2.14.3 and pytest 9.2.0 on Python 3.12.7. Verified `python -I` imports circuforge from the virtualenv's site-packages, not the active source tree. The installed console entry point passed preflight. From the verification directory:
+
+```text
+.venv/Scripts/circuforge.exe preflight
+.venv/Scripts/python.exe -I -m circuforge simulate --spec source/examples/lowpass.json --output installed-lowpass
+.venv/Scripts/python.exe -I -m circuforge simulate --spec source/examples/search.json --search --output installed-search
+```
+
+Both installed-package demos exited 0. Low-pass cutoff remained 1591.487745916 Hz; bounded search remained 2300.380616684 Hz in 12 calls. With CIRCUFORGE_NGSPICE set to the previously verified ngspice-47 executable and PYTEST_DISABLE_PLUGIN_AUTOLOAD=1, ran `../.venv/Scripts/python.exe -I -m pytest -q -ra` from source/: **97 passed**. Pytest importlib mode prevents module-name collisions between unit/integration tests.
+
+Added examples/phase1-fixtures.json, scripts/verify_phase1.py and docs/PHASE1_REVIEW.md. The runner validates the complete typed input before output creation or SPICE calls, caps reference cases at 16, rejects unsafe/duplicate IDs and inconsistent tabulated cutoffs, and preserves existing output directories. Six unit tests verify these guards. It records progress after each case, source fingerprint, actual commands and independent response/phase/gain/cutoff comparisons.
+
+Executed `python scripts/verify_phase1.py --output C:/Users/Home/.codex/visualizations/2026/11/18/01a1ee7a-3b9d-7eb0-9f38-c053c726b534/Phase1_Verification/fixtures` from the active project. All eight real cases passed. Summary and per-case raw evidence are under that output. Maximum relative cutoff error: 5.8908193419249244e-5 (0.005891%). Tested source fingerprint: `1d2a8d5f1fa3a0e44dabb03f43e3fb284db026926a57580dd52e64a0be7cb9b0`. The review summary explicitly leaves human review pending.
+
+Search failure records also include preflight version and attempted command. A real AC run followed by an intentionally missing executable verifies that the first genuine measurement survives the next real launch failure. Missing simulator during search preflight records zero AC attempts. No fixture results are substituted for failed simulations.
+
+For the Documents write restriction, the roadmap renderer now supports `--output-dir`. Ran `python planning/render_plan.py --output-dir C:/Users/Home/.codex/visualizations/2026/11/18/01a1ee7a-3b9d-7eb0-9f38-c053c726b534/Phase1_Verification/generated` successfully: 9 phases/31 tasks, dependencies validated. Generated files were synchronized back using the file-edit tool; canonical source JSON remains in the active repository. Human task statuses were preserved.

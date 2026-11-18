@@ -2,6 +2,8 @@
 
 The standalone CircuForge folder is the Git repository. It is separate from the unrelated VideoPlayer project. The initial verified implementation is committed on main. Development after the initial commit uses branches named codex/<task-id>-<description>.
 
+Active checkout: `C:/Users/Home/Documents/ChatGPT/Implement CircuForge`. It was populated from the complete local history; the previous visualization-workspace copy is retained with ignored simulator tools/evidence. Current Phase 1 follow-up branch: `codex/p1-search-failure-evidence`. New local commits on that branch are not covered by the earlier initial-push approval and remain unpushed.
+
 Local setup evidence (2026-11-18): initial commit `20ef58f` is on `main`; follow-up Phase 1 commit `a20044f` is on `codex/p1-pipeline-hardening`. The initial staged scan checked 46 files with no common credential signatures. The hook ran successfully during both commits.
 
 GitHub CLI authentication is confirmed as `Omidf28`. Created and connected [Omidf28/CircuForge](https://github.com/Omidf28/CircuForge); GitHub reports `isPrivate: true`. `origin` uses the HTTPS URL without credentials. A local credential-helper setting invokes GitHub CLI; no token is stored in the repository or remote URL. The remote was verified empty before the initial push.

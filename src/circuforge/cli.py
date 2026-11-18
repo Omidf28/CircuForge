@@ -89,6 +89,10 @@ def main(argv=None) -> int:
                  "stdout": exc.stdout, "stderr": exc.stderr}
         if isinstance(exc, SearchFailure):
             error.update(exc.context())
+        elif getattr(args, "search", False):
+            # Failure during adapter preflight occurs before any AC call.
+            error.update(spec=spec.model_dump(), simulator_calls=0, search_history=[],
+                         search_method="log-bounds bisection")
         if getattr(args, "output", None) and args.output.is_dir():
             if isinstance(exc, SearchFailure):
                 (args.output / "circuit.cir").write_text(netlist(exc.spec, exc.candidate), encoding="ascii")

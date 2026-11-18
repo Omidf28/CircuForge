@@ -2,7 +2,7 @@
 
 Version 2.0.0 · assembled 2026-11-18 · architecture assumptions to verify in current environment
 
-Phase 1 local numerical implementation verified on Windows with ngspice-47. Canonical task statuses carry evidence; human reviews and later phases remain open. See planning/HANDOFF.md.
+Phase 1 verified on Windows with ngspice-47: 97 tests pass in a fresh isolated installation and eight electrical review cases pass. Active code is in Implement CircuForge; human reviews and later phases remain open. See planning/HANDOFF.md and docs/PHASE1_REVIEW.md.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -172,7 +172,7 @@ Status: done · Estimate: 8 active hours
 
 **Depends on:** P0-C2, P1-C1
 
-**Evidence:** Real ngspice integration plus timeout, output-limit, absent binary, launch and nonzero-exit tests; no arbitrary-netlist interface; startup files disabled.
+**Evidence:** Real ngspice integration plus timeout, output-limit, absent binary, launch and nonzero-exit tests; full frequency grid and partial-search failures verified. Fresh isolated installation: 97 tests passed. See docs/DEVELOPMENT.md.
 
 #### P1-C3 · Codex · Extract AC metrics
 
@@ -186,7 +186,7 @@ Status: done · Estimate: 7 active hours
 
 **Depends on:** P1-C2
 
-**Evidence:** Eight real R/C/topology/amplitude fixtures compare complex response and phase to independent formula; cutoff error <0.1%; evidence low/high-pass reports.
+**Evidence:** Complex response and phase checked against analytic references. Additional eight real electrical review cases span four distinct cutoff scales per topology; all passed with max cutoff error 0.005891%. See docs/PHASE1_REVIEW.md and scripts/verify_phase1.py; human review remains pending.
 
 #### P1-H1 · Human · Verify RC low/high-pass fixtures
 

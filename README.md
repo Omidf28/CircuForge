@@ -50,7 +50,7 @@ The starter-authorized first-slice search uses deterministic bisection along log
 
 ## Verified milestone
 
-The initial milestone had **63 passing tests**. The latest Phase 1 follow-up has **89 passing tests**, including real simulator integration and controlled failure-accounting tests. Original saved evidence:
+The initial milestone had **63 passing tests**. The latest Phase 1 follow-up has **97 passing tests** in a newly installed isolated virtual environment, including real simulator integration and controlled failure-accounting tests. Original saved evidence:
 
 | Case | Measured cutoff | Error | Calls |
 |---|---:|---:|---:|
@@ -59,6 +59,14 @@ The initial milestone had **63 passing tests**. The latest Phase 1 follow-up has
 | Search, target 2300 Hz | 2300.380616684 Hz | 0.016549% vs target | 12 of 24 |
 
 See `evidence/`, `docs/DEVELOPMENT.md` and `planning/HANDOFF.md`. Human electrical reviews remain open. No physical hardware performance is established by simulation.
+
+The [Phase 1 review packet](docs/PHASE1_REVIEW.md) contains connectivity diagrams, four distinct R/C reference pairs per topology, acceptance limits and review points. Reproduce all eight real fixtures after installing the package:
+
+```text
+python scripts/verify_phase1.py --output /absolute/path/to/new/evidence-directory
+```
+
+Use an OS-appropriate absolute path. In this managed session, Python directory creation under Documents is blocked; select an output path in the authorized visualization workspace. The script saves raw evidence and a summary with human review explicitly pending. All eight cases passed; maximum measured cutoff error was 0.005891%.
 
 Canonical plans: `planning/context.json`, `planning/phase-tasks.json`. Regenerate HTML/Markdown/JSON/CSV using `python planning/render_plan.py`. Browser overrides remain local and require export for sharing. Source: `src/circuforge`; tests: `tests/unit`, `tests/integration`.
 

@@ -1,0 +1,10 @@
+[
+  {"id":"lowpass-lf","topology":"rc_lowpass","resistance_ohm":10000.0,"capacitance_f":1e-6,"expected_cutoff_hz":15.915494309189535},
+  {"id":"lowpass-mid","topology":"rc_lowpass","resistance_ohm":3300.0,"capacitance_f":1e-7,"expected_cutoff_hz":482.2877063390768},
+  {"id":"lowpass-default","topology":"rc_lowpass","resistance_ohm":1000.0,"capacitance_f":1e-7,"expected_cutoff_hz":1591.5494309189537},
+  {"id":"lowpass-hf","topology":"rc_lowpass","resistance_ohm":1000.0,"capacitance_f":1e-9,"expected_cutoff_hz":159154.94309189534},
+  {"id":"highpass-lf","topology":"rc_highpass","resistance_ohm":10000.0,"capacitance_f":1e-6,"expected_cutoff_hz":15.915494309189535},
+  {"id":"highpass-mid","topology":"rc_highpass","resistance_ohm":3300.0,"capacitance_f":1e-7,"expected_cutoff_hz":482.2877063390768},
+  {"id":"highpass-default","topology":"rc_highpass","resistance_ohm":1000.0,"capacitance_f":1e-7,"expected_cutoff_hz":1591.5494309189537},
+  {"id":"highpass-hf","topology":"rc_highpass","resistance_ohm":1000.0,"capacitance_f":1e-9,"expected_cutoff_hz":159154.94309189534}
+]

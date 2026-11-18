@@ -9,7 +9,7 @@ from circuforge.cli import main
 from circuforge.domain.specs import DesignSpec
 from circuforge.optimization.search import SearchFailure, search
 from circuforge.simulation.metrics import analytic_response
-from circuforge.simulation.ngspice import SimulationError
+from circuforge.simulation.ngspice import Preflight, SimulationError
 
 
 class ControlledSimulator:
@@ -18,6 +18,7 @@ class ControlledSimulator:
         self.fail_at = fail_at
         self.failure_status = failure_status
         self.invalid_metrics = invalid_metrics
+        self.info = Preflight("controlled-test-only", "synthetic failure fixture")
 
     def simulate(self, spec, candidate):
         self.calls += 1
@@ -49,6 +50,8 @@ def test_failure_preserves_attempted_calls_history_and_budget(status, fail_at):
         assert error.history[0]["status"] == "success"
         assert error.history[0]["measured_cutoff_hz"] > 0
     assert error.context()["candidate"] == error.candidate.model_dump()
+    assert error.context()["ngspice_version"] == "synthetic failure fixture"
+    assert error.context()["command"] == ["controlled-test-only", "-n", "-b", "circuit.cir"]
 
 
 def test_search_metric_failure_retains_successful_simulator_return_code():
@@ -86,3 +89,15 @@ def test_budget_prevents_later_failure_attempt():
     result = search(DesignSpec(cutoff_hz=2300., max_evaluations=1), simulator)
     assert result.simulator_calls == simulator.calls == 1
     assert not result.converged
+
+
+def test_cli_search_missing_binary_records_zero_ac_calls(tmp_path, monkeypatch):
+    monkeypatch.setenv("CIRCUFORGE_NGSPICE", str(tmp_path / "missing.exe"))
+    spec = tmp_path / "spec.json"
+    spec.write_text('{"cutoff_hz":2300.0}')
+    output = tmp_path / "missing"
+    assert main(["simulate", "--search", "--spec", str(spec), "--output", str(output)]) == 2
+    record = json.loads((output / "failure.json").read_text())
+    assert record["status"] == "unavailable"
+    assert record["simulator_calls"] == 0
+    assert record["search_history"] == []

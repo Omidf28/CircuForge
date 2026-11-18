@@ -6,25 +6,27 @@ import time
 
 from circuforge.domain.specs import CircuitCandidate, DesignSpec
 from circuforge.simulation.metrics import cutoff_hz
-from circuforge.simulation.ngspice import Ngspice, SimulationError, SimulationResult
+from circuforge.simulation.ngspice import Ngspice, Preflight, SimulationError, SimulationResult
 
 
 class SearchFailure(SimulationError):
     """An aborted measured search, including every attempted simulator call."""
 
     def __init__(self, cause: SimulationError, *, spec: DesignSpec,
-                 candidate: CircuitCandidate, history: list[dict]):
+                 candidate: CircuitCandidate, history: list[dict], info: Preflight):
         super().__init__(cause.status, str(cause), stdout=cause.stdout,
                          stderr=cause.stderr, returncode=cause.returncode)
         self.spec = spec
         self.candidate = candidate
         self.history = tuple(history)
         self.simulator_calls = len(history)
+        self.info = info
 
     def context(self) -> dict:
         return {"spec": self.spec.model_dump(), "candidate": self.candidate.model_dump(),
                 "search_method": "log-bounds bisection", "simulator_calls": self.simulator_calls,
-                "search_history": self.history}
+                "search_history": self.history, "ngspice_version": self.info.version,
+                "command": [self.info.executable, "-n", "-b", "circuit.cir"]}
 
 
 @dataclass(frozen=True)
@@ -81,7 +83,8 @@ def search(spec: DesignSpec, simulator: Ngspice) -> SearchResult:
             history.append({"candidate": candidate.model_dump(), "status": exc.status,
                             "error": str(exc), "elapsed_s": time.monotonic() - started,
                             "returncode": exc.returncode})
-            raise SearchFailure(exc, spec=spec, candidate=candidate, history=history) from exc
+            raise SearchFailure(exc, spec=spec, candidate=candidate, history=history,
+                                info=simulator.info) from exc
         error = abs(measured / spec.cutoff_hz - 1)
         history.append({"candidate": candidate.model_dump(), "measured_cutoff_hz": measured,
                         "status": "success",

@@ -1,9 +1,15 @@
 """Render the planning documents. This does not build or deploy the product."""
 from pathlib import Path
+import argparse
 import csv
 import json
 
 ROOT = Path(__file__).resolve().parent
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--output-dir', type=Path, help='generated project root; defaults to source project root')
+args = parser.parse_args()
+OUTPUT = args.output_dir.resolve() if args.output_dir else ROOT.parent
+PLAN_OUTPUT = OUTPUT / 'planning'
 data = json.loads((ROOT / 'context.json').read_text(encoding='utf-8-sig'))
 data.update(json.loads((ROOT / 'phase-tasks.json').read_text(encoding='utf-8-sig')))
 data['assembledDate'] = data['date']
@@ -28,10 +34,11 @@ for task_id in ids:
     visit(task_id)
 
 plan_json = json.dumps(data, indent=2, ensure_ascii=False)
-(ROOT / 'roadmap.json').write_text(plan_json + '\n', encoding='utf-8')
+PLAN_OUTPUT.mkdir(parents=True, exist_ok=True)
+(PLAN_OUTPUT / 'roadmap.json').write_text(plan_json + '\n', encoding='utf-8')
 template = (ROOT / 'roadmap.template.html').read_text(encoding='utf-8')
 html = template.replace('__PLAN_DATA__', plan_json.replace('<', '\\u003c'))
-(ROOT.parent / 'CircuForge-Roadmap.html').write_text(html, encoding='utf-8')
+(OUTPUT / 'CircuForge-Roadmap.html').write_text(html, encoding='utf-8')
 
 sources = {s['id']: s for s in data['sources']}
 def refs(items):
@@ -91,8 +98,8 @@ lines += ['## Where the plan should live', '', data['planningHome'] + ' ' + refs
           '## Agent handoff prompt', '', '```text', data['handoff'], '```', '',
           '## Sources', '', 'Reference links aid implementation; verify current versions and local environment before making claims. Goals are engineering assumptions, not validated results.', '']
 lines += [f"- [{s['title']}]({s['url']})" for s in data['sources']]
-(ROOT / 'roadmap.md').write_text('\n'.join(line.rstrip() for line in lines) + '\n', encoding='utf-8')
-with (ROOT / 'issues.csv').open('w', encoding='utf-8-sig', newline='') as handle:
+(PLAN_OUTPUT / 'roadmap.md').write_text('\n'.join(line.rstrip() for line in lines) + '\n', encoding='utf-8')
+with (PLAN_OUTPUT / 'issues.csv').open('w', encoding='utf-8-sig', newline='') as handle:
     fields = ['id','phase','owner','title','status','estimate_hours','depends_on','deliverable','acceptance','action','optional','evidence']
     writer = csv.DictWriter(handle, fieldnames=fields)
     writer.writeheader()
