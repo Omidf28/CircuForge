@@ -13,6 +13,8 @@ src/circuforge/
   optimization/base.py   # candidate/objective/fitness and budget
   optimization/baselines.py # seeded random + SciPy later
   evaluation/records.py  # reproducible experiment result schema
+  evaluation/acceptance.py # shared raw physics/evidence audits
+  evaluation/benchmark.py # typed feasible/infeasible fixtures, multi-seed runs, exact replay
   cli.py                 # command-line demo
  tests/{unit,integration}/
  examples/
@@ -42,3 +44,5 @@ Dependencies: Python 3.11+ (planning target), NumPy, SciPy, Pydantic, pytest; Fa
 5. Robustness sampling tests, benchmark regression and optional API/UI integration.
 
 Record exact simulator commands, package/environment versions and reproducible fixtures. No numeric assertions based on LLM text.
+
+Phase 3 adds a versioned bounded manifest and experiment/replay harness; see docs/PHASE3.md. DesignInputs validates supported, well-formed electrical requests before DesignSpec checks achievable target feasibility. This allows intentionally infeasible benchmark constraints without bypassing safety validation. All simulated candidates still require DesignSpec and the existing trusted adapter. The shared audit_run checker verifies every method's raw data, independently of benchmark summary generation. scripts/accept_phase3.py combines full tests, two fresh runs and exact numerical replay; target misses and expected pre-simulation rejections remain separate outcomes.

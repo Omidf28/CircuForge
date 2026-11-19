@@ -2,7 +2,7 @@
   "title": "CircuForge · Wave2Circuit Research Edition",
   "version": "2.0.0",
   "date": "2026-11-19",
-  "purpose": "Owner-authorized automatic technical acceptance is implemented. Phase 2 passed phase2-engineering-v1 with 170 tests and 771 fresh audited real calls; 3 design passes/12 misses are unchanged. P2-H1 superseded by automatic P2-C4; no manual technical review required. Later phases remain unimplemented. See docs/AUTOMATIC_ACCEPTANCE.md.",
+  "purpose": "Local automatic technical acceptance passed through Phase 3: 198 tests, 20 distinct normalized RC tasks, 3 seeds and 3060 audited real calls including exact numerical replay. Per run 18 control design passes, 126 target misses and 36 expected infeasible rejections; no manual review required. Phases 4 onward remain unimplemented. See docs/PHASE3.md.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
   "vision": "Given a validated filter specification, synthesize constrained analog circuit candidates, simulate them using real ngspice runs, optimize component values, quantify tolerance robustness, and report reproducible evidence. AI is an optional, benchmarked proposal mechanism—not the source of numerical truth.",
   "schedule": "Provisional 12-week two-person, part-time plan (roughly 12–15 team hours per person weekly). Phase gates and actual test evidence take precedence over dates. An MVP may take longer depending on simulator setup.",
@@ -220,7 +220,7 @@
     }
   ],
   "planningHome": "Maintain canonical context.json, phase-tasks.json, generated roadmap files and progress evidence in Git. Use task IDs in commits and GitHub Issues if desired.",
-  "handoff": "Read AGENTS.md and planning/HANDOFF.md. Latest owner instruction delegates local technical gates to implemented automatic checks; do not request manual technical signoff. Phase 1 was owner-accepted historically. Phase 2 now passed automatically through P2-C4: 170 tests, 771 fresh audited calls, 3 design passes/12 misses. P2-H1 is deferred/superseded, not falsely human-approved. Next is bounded Phase 3 work with its own tested automatic gate. Preserve dependency order; do not blanket-complete later tasks or infer push/paid/deployment/PCB authorization.",
+  "handoff": "Read AGENTS.md and planning/HANDOFF.md. Owner delegated local technical gates to implemented automatic checks. Phase 1 remains historically owner-accepted; Phase 2 passed P2-C4. Phase 3 P3-C1/C2/C3 passed phase3-reproducibility-v2: 198 tests, 20 normalized-distinct tasks, 3 seeds and 3060 real calls including replay; target misses preserved. Legacy P3-H1 is deferred/superseded, not human-approved. Next bounded roadmap work is P4-C1 tolerance sampling then P4-C2, with its own implemented/tested automatic gate. No Phase 4 implementation, remote push, paid/deployment/PCB authorization is inferred.",
   "sources": [
     {
       "id": "ngspice",

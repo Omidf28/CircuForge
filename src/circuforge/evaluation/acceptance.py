@@ -58,6 +58,80 @@ def _close(a, b) -> bool:
     return a is not None and b is not None and math.isfinite(a) and math.isclose(a, b, rel_tol=1e-10, abs_tol=1e-12)
 
 
+def audit_run(root: Path, case: Case, method: str, seed: int, expected_environment=None) -> BaselineResult:
+    """Reusable raw-evidence audit for one complete bounded optimizer run."""
+    expected_environment = expected_environment or environment()
+    fixed = (case.spec.resistance_ohm.minimum == case.spec.resistance_ohm.maximum and
+             case.spec.capacitance_f.minimum == case.spec.capacitance_f.maximum)
+    expected_calls = 1 if fixed else case.spec.max_evaluations
+    prefix = f"{case.id}/{method}"
+    report = BaselineResult.model_validate(read_json(root, prefix + "/report.json"))
+    require(report.spec == case.spec and report.options.method == method and
+            report.options.seed == seed, f"input/options mismatch: {prefix}")
+    require(report.environment == expected_environment, f"stale/different code or environment: {prefix}")
+    require(report.simulator_calls == expected_calls, f"unspent/exceeded call budget: {prefix}")
+    require(report.proposals <= 20 * case.spec.max_evaluations + 20 and
+            0 <= report.cache_hits <= report.proposals and
+            report.proposals >= report.simulator_calls + report.cache_hits,
+            f"invalid proposal/cache counts: {prefix}")
+    require(report.failures == report.invalid_candidates == 0, f"invalid/failed reference evaluation: {prefix}")
+    require(len(report.history) == expected_calls, f"incomplete call history: {prefix}")
+    seen = set()
+    for index, evaluation in enumerate(report.history, 1):
+        require(evaluation.simulator_call == index and evaluation.artifact == f"call-{index:04d}",
+                f"discontinuous/unsafe call identity: {prefix}")
+        case.spec.validate_candidate(evaluation.candidate)
+        key = (evaluation.candidate.resistance_ohm, evaluation.candidate.capacitance_f)
+        require(key not in seen, f"duplicate candidate charged as new call: {prefix}")
+        seen.add(key)
+        folder = prefix + "/evaluations/" + evaluation.artifact
+        metadata = read_json(root, folder + "/evaluation.json")
+        require(Evaluation.model_validate({k: metadata[k] for k in Evaluation.model_fields}) == evaluation,
+                f"per-call record differs from history: {folder}")
+        require(metadata["spec"] == case.spec.model_dump() and metadata["returncode"] == 0 and
+                metadata["ngspice_version"] == report.ngspice_version and
+                metadata["command"][1:] == ["-n", "-b", "circuit.cir"], f"execution metadata mismatch: {folder}")
+        require("ngspice" in report.ngspice_version.lower(), "missing ngspice provenance")
+        require(evidence_file(root, folder + "/circuit.cir").read_text(encoding="ascii") ==
+                netlist(case.spec, evaluation.candidate), f"untrusted/different netlist: {folder}")
+        evidence_file(root, folder + "/stderr.log")
+        raw = parse_ac(evidence_file(root, folder + "/stdout.log").read_text(encoding="utf-8"),
+                       case.spec.source_amplitude_v, case.spec.sweep.expected_points)
+        with evidence_file(root, folder + "/response.csv").open(encoding="utf-8", newline="") as stream:
+            data = list(csv.DictReader(stream))
+        csv_response = Response([float(r["frequency_hz"]) for r in data],
+                                [complex(float(r["transfer_real"]), float(r["transfer_imag"])) for r in data])
+        require(np.array_equal(csv_response.frequency_hz, raw.frequency_hz) and
+                np.array_equal(csv_response.transfer, raw.transfer), f"CSV/raw output mismatch: {folder}")
+        require(np.allclose([float(r["gain_db"]) for r in data], raw.gain_db, rtol=0., atol=1e-10) and
+                np.allclose([float(r["phase_deg"]) for r in data], raw.phase_deg, rtol=0., atol=1e-10),
+                f"CSV gain/phase mismatch: {folder}")
+        f = raw.frequency_hz
+        sweep = case.spec.sweep
+        grids = (sweep.start_hz * 10 ** (np.arange(sweep.expected_points) / sweep.points_per_decade),
+                 np.geomspace(sweep.start_hz, sweep.stop_hz, sweep.expected_points))
+        require(any(np.allclose(f, g, rtol=1e-6, atol=0.) for g in grids), f"wrong sweep grid: {folder}")
+        r, c = key
+        z = 2j * math.pi * f * r * c
+        reference = (1 if case.spec.filter_type == "rc_lowpass" else z) / (1 + z)
+        require(np.allclose(raw.transfer, reference, rtol=2e-5, atol=1e-8), f"RC complex response mismatch: {folder}")
+        measured = cutoff_hz(raw, case.spec.filter_type)
+        error = abs(measured / case.spec.cutoff_hz - 1)
+        reference_error = abs(measured * (2 * math.pi * r * c) - 1)
+        target_passed = error <= case.spec.relative_error_tolerance
+        require(evaluation.status == "evaluated" and evaluation.constraints_satisfied and
+                evaluation.simulator_exit_ok and evaluation.verified and reference_error <= .001 and
+                evaluation.target_passed == target_passed, f"false acceptance/status: {folder}")
+        require(_close(evaluation.measured_cutoff_hz, measured) and _close(evaluation.relative_error, error) and
+                _close(evaluation.analytic_relative_error, reference_error) and
+                _close(evaluation.objective, abs(math.log(measured / case.spec.cutoff_hz))),
+                f"recorded metrics differ from raw response: {folder}")
+    expected_best = min(report.history, key=lambda e: (not e.target_passed, e.objective))
+    require(report.best == expected_best and report.converged == expected_best.target_passed,
+            f"incorrect best/pass result: {prefix}")
+    return report
+
+
 def audit_phase2(root: Path, cases_path: Path, junit_path: Path) -> dict:
     """Audit raw responses and accounting against versioned case inputs.
 
@@ -89,70 +163,8 @@ def audit_phase2(root: Path, cases_path: Path, junit_path: Path) -> dict:
         expected_calls = 1 if fixed else case.spec.max_evaluations
         for method in METHODS:
             prefix = f"{case.id}/{method}"
-            report = BaselineResult.model_validate(read_json(root, prefix + "/report.json"))
-            require(report.spec == case.spec and report.options.method == method and
-                    report.options.seed == summary["seed"], f"input/options mismatch: {prefix}")
-            require(report.environment == expected_environment, f"stale/different code or environment: {prefix}")
-            require(report.simulator_calls == expected_calls, f"unspent/exceeded call budget: {prefix}")
-            require(report.proposals <= 20 * case.spec.max_evaluations + 20 and
-                    0 <= report.cache_hits <= report.proposals and
-                    report.proposals >= report.simulator_calls + report.cache_hits,
-                    f"invalid proposal/cache counts: {prefix}")
-            require(report.failures == report.invalid_candidates == 0, f"invalid/failed reference evaluation: {prefix}")
-            require(len(report.history) == expected_calls, f"incomplete call history: {prefix}")
-            seen = set()
-            for index, evaluation in enumerate(report.history, 1):
-                require(evaluation.simulator_call == index and evaluation.artifact == f"call-{index:04d}",
-                        f"discontinuous/unsafe call identity: {prefix}")
-                case.spec.validate_candidate(evaluation.candidate)
-                key = (evaluation.candidate.resistance_ohm, evaluation.candidate.capacitance_f)
-                require(key not in seen, f"duplicate candidate charged as new call: {prefix}")
-                seen.add(key)
-                folder = prefix + "/evaluations/" + evaluation.artifact
-                metadata = read_json(root, folder + "/evaluation.json")
-                require(Evaluation.model_validate({k: metadata[k] for k in Evaluation.model_fields}) == evaluation,
-                        f"per-call record differs from history: {folder}")
-                require(metadata["spec"] == case.spec.model_dump() and metadata["returncode"] == 0 and
-                        metadata["ngspice_version"] == report.ngspice_version and
-                        metadata["command"][1:] == ["-n", "-b", "circuit.cir"], f"execution metadata mismatch: {folder}")
-                require("ngspice" in report.ngspice_version.lower(), "missing ngspice provenance")
-                require(evidence_file(root, folder + "/circuit.cir").read_text(encoding="ascii") ==
-                        netlist(case.spec, evaluation.candidate), f"untrusted/different netlist: {folder}")
-                evidence_file(root, folder + "/stderr.log")
-                raw = parse_ac(evidence_file(root, folder + "/stdout.log").read_text(encoding="utf-8"),
-                               case.spec.source_amplitude_v, case.spec.sweep.expected_points)
-                with evidence_file(root, folder + "/response.csv").open(encoding="utf-8", newline="") as stream:
-                    data = list(csv.DictReader(stream))
-                csv_response = Response([float(r["frequency_hz"]) for r in data],
-                                        [complex(float(r["transfer_real"]), float(r["transfer_imag"])) for r in data])
-                require(np.array_equal(csv_response.frequency_hz, raw.frequency_hz) and
-                        np.array_equal(csv_response.transfer, raw.transfer), f"CSV/raw output mismatch: {folder}")
-                require(np.allclose([float(r["gain_db"]) for r in data], raw.gain_db, rtol=0., atol=1e-10) and
-                        np.allclose([float(r["phase_deg"]) for r in data], raw.phase_deg, rtol=0., atol=1e-10),
-                        f"CSV gain/phase mismatch: {folder}")
-                f = raw.frequency_hz
-                sweep = case.spec.sweep
-                grids = (sweep.start_hz * 10 ** (np.arange(sweep.expected_points) / sweep.points_per_decade),
-                         np.geomspace(sweep.start_hz, sweep.stop_hz, sweep.expected_points))
-                require(any(np.allclose(f, g, rtol=1e-6, atol=0.) for g in grids), f"wrong sweep grid: {folder}")
-                r, c = key
-                z = 2j * math.pi * f * r * c
-                reference = (1 if case.spec.filter_type == "rc_lowpass" else z) / (1 + z)
-                require(np.allclose(raw.transfer, reference, rtol=2e-5, atol=1e-8), f"RC complex response mismatch: {folder}")
-                measured = cutoff_hz(raw, case.spec.filter_type)
-                error = abs(measured / case.spec.cutoff_hz - 1)
-                reference_error = abs(measured * (2 * math.pi * r * c) - 1)
-                target_passed = error <= case.spec.relative_error_tolerance
-                require(evaluation.status == "evaluated" and evaluation.constraints_satisfied and
-                        evaluation.simulator_exit_ok and evaluation.verified and reference_error <= .001 and
-                        evaluation.target_passed == target_passed, f"false acceptance/status: {folder}")
-                require(_close(evaluation.measured_cutoff_hz, measured) and _close(evaluation.relative_error, error) and
-                        _close(evaluation.analytic_relative_error, reference_error) and
-                        _close(evaluation.objective, abs(math.log(measured / case.spec.cutoff_hz))),
-                        f"recorded metrics differ from raw response: {folder}")
-            expected_best = min(report.history, key=lambda e: (not e.target_passed, e.objective))
-            require(report.best == expected_best and report.converged == expected_best.target_passed,
-                    f"incorrect best/pass result: {prefix}")
+            report = audit_run(root, case, method, summary["seed"], expected_environment)
+            expected_best = report.best
             row = row_by_id[(case.id, method)]
             require(row["budget"] == case.spec.max_evaluations and row["simulator_calls"] == expected_calls and
                     row["matched_actual_calls"] and row["converged"] == report.converged and row["failures"] == 0 and

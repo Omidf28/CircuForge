@@ -4,15 +4,20 @@ Phase 1 implements typed RC low/high-pass specifications, fixed netlists, real n
 
 Phase 2 adds measured objectives, seeded random/grid and SciPy baselines with identical SPICE-call caps, exact per-run caching and raw per-call evidence. The owner-authorized **automatic acceptance gate passed with 170 tests and 771 freshly audited real calls**. The five-case comparison and its target misses remain documented in [docs/PHASE2.md](docs/PHASE2.md).
 
+Phase 3 adds 20 normalized-distinct nominal benchmark cases and three-seed comparisons. Its automatic gate passed with **198 tests and 3060 audited real calls including exact numerical replay**. Per run, 18 fixed-control designs passed, 126 free-domain results missed the original tolerance and 36 infeasible requests were rejected before simulation. See [docs/PHASE3.md](docs/PHASE3.md). No manual technical review is required.
+
 ## Acceptance without manual review
 
 After installing the project with its test extra and configuring ngspice, run from project root:
 
 ```text
 python scripts/accept_phase2.py --output /new/writable/absolute/path
+python scripts/accept_phase3.py --output /another/new/writable/absolute/path
 ```
 
 The command runs all tests, refuses skipped/failed tests, executes a fresh bounded comparison and recomputes physics/metrics/accounting from every raw response. acceptance.json records passed or blocked with reasons. A pass is automatic technical acceptance; target misses remain failures in the design-success counts. Missing or inconsistent evidence is repaired and rerun rather than waived manually. See [docs/AUTOMATIC_ACCEPTANCE.md](docs/AUTOMATIC_ACCEPTANCE.md). Remote pushes and paid/deployment actions retain their separate authorization requirements.
+
+The Phase 3 command uses the versioned 20-case benchmark, seeds 7/42/2026 and 12 calls per method on free domains. It executes the experiment twice and checks exact candidate/metric replay along with the raw physics evidence. Fixed domains use one call; four expected infeasible tasks are rejected before simulation. See [docs/PHASE3.md](docs/PHASE3.md) for configuration, result interpretation and limits. To produce a single dataset, use `python scripts/run_benchmark.py --output /new/benchmark/path`.
 
 ## Windows setup (Python 3.11+)
 
@@ -102,4 +107,4 @@ No frontend, API, advanced agents, PCB automation, paid service or deployment ha
 
 ## Version control
 
-See [docs/VERSION_CONTROL.md](docs/VERSION_CONTROL.md) for the private GitHub setup, staged credential scan and feature-branch workflow. Generated simulation evidence stays local and is excluded from Git. Push the initial commit only after explicit owner approval.
+See [docs/VERSION_CONTROL.md](docs/VERSION_CONTROL.md) for the private GitHub setup, staged credential scan and feature-branch workflow. Generated simulation evidence stays local and is excluded from Git. The initial main commit was pushed with owner approval; later feature branches remain local until separately approved.

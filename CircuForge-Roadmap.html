@@ -3,7 +3,7 @@
   "title": "CircuForge · Wave2Circuit Research Edition",
   "version": "2.0.0",
   "date": "2026-11-19",
-  "purpose": "Owner-authorized automatic technical acceptance is implemented. Phase 2 passed phase2-engineering-v1 with 170 tests and 771 fresh audited real calls; 3 design passes/12 misses are unchanged. P2-H1 superseded by automatic P2-C4; no manual technical review required. Later phases remain unimplemented. See docs/AUTOMATIC_ACCEPTANCE.md.",
+  "purpose": "Local automatic technical acceptance passed through Phase 3: 198 tests, 20 distinct normalized RC tasks, 3 seeds and 3060 audited real calls including exact numerical replay. Per run 18 control design passes, 126 target misses and 36 expected infeasible rejections; no manual review required. Phases 4 onward remain unimplemented. See docs/PHASE3.md.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
   "vision": "Given a validated filter specification, synthesize constrained analog circuit candidates, simulate them using real ngspice runs, optimize component values, quantify tolerance robustness, and report reproducible evidence. AI is an optional, benchmarked proposal mechanism—not the source of numerical truth.",
   "schedule": "Provisional 12-week two-person, part-time plan (roughly 12–15 team hours per person weekly). Phase gates and actual test evidence take precedence over dates. An MVP may take longer depending on simulator setup.",
@@ -221,7 +221,7 @@
     }
   ],
   "planningHome": "Maintain canonical context.json, phase-tasks.json, generated roadmap files and progress evidence in Git. Use task IDs in commits and GitHub Issues if desired.",
-  "handoff": "Read AGENTS.md and planning/HANDOFF.md. Latest owner instruction delegates local technical gates to implemented automatic checks; do not request manual technical signoff. Phase 1 was owner-accepted historically. Phase 2 now passed automatically through P2-C4: 170 tests, 771 fresh audited calls, 3 design passes/12 misses. P2-H1 is deferred/superseded, not falsely human-approved. Next is bounded Phase 3 work with its own tested automatic gate. Preserve dependency order; do not blanket-complete later tasks or infer push/paid/deployment/PCB authorization.",
+  "handoff": "Read AGENTS.md and planning/HANDOFF.md. Owner delegated local technical gates to implemented automatic checks. Phase 1 remains historically owner-accepted; Phase 2 passed P2-C4. Phase 3 P3-C1/C2/C3 passed phase3-reproducibility-v2: 198 tests, 20 normalized-distinct tasks, 3 seeds and 3060 real calls including replay; target misses preserved. Legacy P3-H1 is deferred/superseded, not human-approved. Next bounded roadmap work is P4-C1 tolerance sampling then P4-C2, with its own implemented/tested automatic gate. No Phase 4 implementation, remote push, paid/deployment/PCB authorization is inferred.",
   "sources": [
     {
       "id": "ngspice",
@@ -482,7 +482,7 @@
     {
       "id": "P3",
       "number": 3,
-      "title": "Audit baseline fairness",
+      "title": "Reproducible benchmark and automatic audit",
       "window": "Weeks 6–7",
       "outcome": "Versioned cases, repeatable multi-seed comparisons and saved evidence.",
       "gate": "At least 20 benchmark cases run with logged seeds/configs/results and readable summary.",
@@ -502,7 +502,8 @@
           "dependsOn": [
             "P2-C1"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Benchmark v2.0 validates 20 distinct normalized RC tasks, 16 feasible including 2 fixed controls and 4 expected infeasible. Original v1 scale duplicates are retained as a rejection regression. Full suite 198 passed; see examples/benchmark-v2.json and docs/PHASE3.md."
         },
         {
           "id": "P3-C2",
@@ -516,7 +517,8 @@
             "P3-C1",
             "P2-C3"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Observed real 20-case x 3-seed x 3-method run and independent replay: 180 trials and 1530 calls per run, 3060 audited calls total. Candidate/metric traces match exactly, latency excluded. All method budgets matched; see docs/PHASE3.md and external Automatic_Acceptance/phase3-v2-2026-11-19."
         },
         {
           "id": "P3-H1",
@@ -529,9 +531,29 @@
           "dependsOn": [
             "P3-C2"
           ],
-          "status": "todo"
+          "status": "deferred",
+          "supersededBy": "P3-C3",
+          "evidence": "Superseded under owner's automatic technical-review delegation by tested P3-C3. No human review is claimed. Physics, fairness, failure definitions, runtimes and all 20 cases are automatically audited."
+        },
+        {
+          "id": "P3-C3",
+          "owner": "Codex",
+          "title": "Automatic benchmark acceptance",
+          "action": "Reject duplicate normalized tasks, run complete tests and two fresh benchmarks, audit raw physics/accounting and exact numerical replay.",
+          "deliverable": "scripts/accept_phase3.py and versioned machine-readable acceptance.json.",
+          "acceptance": "phase3-reproducibility-v2 passes without skips, missing/inconsistent evidence or manual waiver; target misses and expected infeasible rejections remain distinct.",
+          "effort": 5,
+          "dependsOn": [
+            "P3-C1",
+            "P3-C2"
+          ],
+          "status": "done",
+          "evidence": "Observed 2026-11-19: 198 tests without skips, 20 cases/3 seeds, 3060 fresh final-dataset calls audited across two exact numerical replays. Per run 18 control design passes, 126 misses, 36 expected infeasible rejections; zero simulation failures. See docs/PHASE3.md."
         }
-      ]
+      ],
+      "gateStatus": "passed",
+      "acceptanceMode": "automated",
+      "gateEvidence": "phase3-reproducibility-v2 passed with 198 tests, 20 normalized-distinct cases, 3 seeds and 3060 real calls across two audited runs. Equal budgets and exact numerical replay verified; 18 passes/126 misses/36 rejections per run preserved. P3-H1 superseded by P3-C3; no human signoff."
     },
     {
       "id": "P4",

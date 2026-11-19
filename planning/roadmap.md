@@ -2,7 +2,7 @@
 
 Version 2.0.0 · assembled 2026-11-19 · architecture assumptions to verify in current environment
 
-Owner-authorized automatic technical acceptance is implemented. Phase 2 passed phase2-engineering-v1 with 170 tests and 771 fresh audited real calls; 3 design passes/12 misses are unchanged. P2-H1 superseded by automatic P2-C4; no manual technical review required. Later phases remain unimplemented. See docs/AUTOMATIC_ACCEPTANCE.md.
+Local automatic technical acceptance passed through Phase 3: 198 tests, 20 distinct normalized RC tasks, 3 seeds and 3060 audited real calls including exact numerical replay. Per run 18 control design passes, 126 target misses and 36 expected infeasible rejections; no manual review required. Phases 4 onward remain unimplemented. See docs/PHASE3.md.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -68,7 +68,7 @@ Compare target vs simulated response, tolerance sensitivity and search cost; exp
 
 Critical path: P0 → P1 → P2 → P3 → P4 → P5 → P6 → P7. P8 is optional after validated research MVP.
 
-A phase gate is a human review decision based on evidence. A status change alone does not prove the work is complete. Deferred optional work needs a recorded reason; critical correctness, isolation and data-loss failures must be resolved.
+Technical phase gates use tested automatic acceptance under the owner delegation recorded in AGENTS.md. A status change alone does not prove completion. Explicit owner approvals for spending, remote publishing and other restricted operations remain separate. Deferred work needs a recorded reason; critical correctness, isolation and data-loss failures must be resolved.
 
 ### P0: Review reference circuit
 
@@ -294,7 +294,7 @@ Status: done · Estimate: 4 active hours
 
 **Evidence:** Observed automatic acceptance on 2026-11-19: 170 full-suite tests passed without skips; 771 fresh real calls audited; 3 target passes and 12 misses preserved; manual_review_required=false. See docs/AUTOMATIC_ACCEPTANCE.md and external Automatic_Acceptance/phase2-2026-11-19/acceptance.json.
 
-### P3: Audit baseline fairness
+### P3: Reproducible benchmark and automatic audit
 
 **Window:** Weeks 6–7 · Launch path
 
@@ -304,13 +304,13 @@ Status: done · Estimate: 4 active hours
 
 **Exit gate:** At least 20 benchmark cases run with logged seeds/configs/results and readable summary.
 
-**Gate status:** pending
+**Gate status:** passed
 
-**Gate evidence:** Not recorded
+**Gate evidence:** phase3-reproducibility-v2 passed with 198 tests, 20 normalized-distinct cases, 3 seeds and 3060 real calls across two audited runs. Equal budgets and exact numerical replay verified; 18 passes/126 misses/36 rejections per run preserved. P3-H1 superseded by P3-C3; no human signoff.
 
 #### P3-C1 · Codex · Benchmark schema and cases
 
-Status: todo · Estimate: 7 active hours
+Status: done · Estimate: 7 active hours
 
 **Action:** Create 20 curated RC tasks spanning cutoff and feasible bounds; no duplicated disguised cases.
 
@@ -320,11 +320,11 @@ Status: todo · Estimate: 7 active hours
 
 **Depends on:** P2-C1
 
-**Evidence:** Not recorded
+**Evidence:** Benchmark v2.0 validates 20 distinct normalized RC tasks, 16 feasible including 2 fixed controls and 4 expected infeasible. Original v1 scale duplicates are retained as a rejection regression. Full suite 198 passed; see examples/benchmark-v2.json and docs/PHASE3.md.
 
 #### P3-C2 · Codex · Evaluation harness
 
-Status: todo · Estimate: 9 active hours
+Status: done · Estimate: 9 active hours
 
 **Action:** Run fixed-seed trials with equal call budgets, log runtime, failures, environment and configs.
 
@@ -334,11 +334,11 @@ Status: todo · Estimate: 9 active hours
 
 **Depends on:** P3-C1, P2-C3
 
-**Evidence:** Not recorded
+**Evidence:** Observed real 20-case x 3-seed x 3-method run and independent replay: 180 trials and 1530 calls per run, 3060 audited calls total. Candidate/metric traces match exactly, latency excluded. All method budgets matched; see docs/PHASE3.md and external Automatic_Acceptance/phase3-v2-2026-11-19.
 
 #### P3-H1 · Human · Audit baseline fairness
 
-Status: todo · Estimate: 4 active hours
+Status: deferred · Estimate: 4 active hours
 
 **Action:** Audit 5 cases, acceptance logic, runtime measurement and success definitions.
 
@@ -348,7 +348,21 @@ Status: todo · Estimate: 4 active hours
 
 **Depends on:** P3-C2
 
-**Evidence:** Not recorded
+**Evidence:** Superseded under owner's automatic technical-review delegation by tested P3-C3. No human review is claimed. Physics, fairness, failure definitions, runtimes and all 20 cases are automatically audited.
+
+#### P3-C3 · Codex · Automatic benchmark acceptance
+
+Status: done · Estimate: 5 active hours
+
+**Action:** Reject duplicate normalized tasks, run complete tests and two fresh benchmarks, audit raw physics/accounting and exact numerical replay.
+
+**Deliverable:** scripts/accept_phase3.py and versioned machine-readable acceptance.json.
+
+**Acceptance:** phase3-reproducibility-v2 passes without skips, missing/inconsistent evidence or manual waiver; target misses and expected infeasible rejections remain distinct.
+
+**Depends on:** P3-C1, P3-C2
+
+**Evidence:** Observed 2026-11-19: 198 tests without skips, 20 cases/3 seeds, 3060 fresh final-dataset calls audited across two exact numerical replays. Per run 18 control design passes, 126 misses, 36 expected infeasible rejections; zero simulation failures. See docs/PHASE3.md.
 
 ### P4: Review tolerance assumptions
 
@@ -810,7 +824,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md and planning/HANDOFF.md. Latest owner instruction delegates local technical gates to implemented automatic checks; do not request manual technical signoff. Phase 1 was owner-accepted historically. Phase 2 now passed automatically through P2-C4: 170 tests, 771 fresh audited calls, 3 design passes/12 misses. P2-H1 is deferred/superseded, not falsely human-approved. Next is bounded Phase 3 work with its own tested automatic gate. Preserve dependency order; do not blanket-complete later tasks or infer push/paid/deployment/PCB authorization.
+Read AGENTS.md and planning/HANDOFF.md. Owner delegated local technical gates to implemented automatic checks. Phase 1 remains historically owner-accepted; Phase 2 passed P2-C4. Phase 3 P3-C1/C2/C3 passed phase3-reproducibility-v2: 198 tests, 20 normalized-distinct tasks, 3 seeds and 3060 real calls including replay; target misses preserved. Legacy P3-H1 is deferred/superseded, not human-approved. Next bounded roadmap work is P4-C1 tolerance sampling then P4-C2, with its own implemented/tested automatic gate. No Phase 4 implementation, remote push, paid/deployment/PCB authorization is inferred.
 ```
 
 ## Sources

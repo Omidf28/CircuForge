@@ -1,5 +1,7 @@
 # Automatic technical acceptance
 
+Current accepted milestone: Phase 3, policy phase3-reproducibility-v2. Run `python scripts/accept_phase3.py --output /new/writable/path` from the project root. It runs all tests and two fresh executions of examples/benchmark-v2.json, then independently audits raw physics, budgets, outcomes, runtimes, normalized case distinctness and exact numerical replay. Observed final run: **198 tests without skips, 20 cases, three seeds, 3060 audited calls including replay**; each run retains 18 control passes, 126 target misses and 36 expected infeasible rejections. See docs/PHASE3.md for exact evidence, environment, commands and the superseded v1 structural correction. Legacy P3-H1 is explicitly deferred/superseded by P3-C3; no human review is claimed. Earlier Phase 2 evidence below remains historical and unchanged.
+
 Owner policy (2026-11-19): local technical gates use reproducible automated evidence; manual review is not required. This does not assert a human review or hardware certification. Each phase requires its own implemented and tested checks. No blanket acceptance of future work, remote push or paid/deployment action is implied.
 
 ## Phase 2 command

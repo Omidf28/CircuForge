@@ -1,4 +1,24 @@
-# Phase 1 implementation evidence — 2026-11-18
+# Local implementation evidence
+
+## Phase 3 automatic acceptance — 2026-11-19
+
+Implemented typed expected-feasibility benchmarks, normalized duplicate rejection, bounded multi-seed experiments and an independent raw-data/replay checker. The initial v1 numerical run passed but a structural audit found three scale-equivalent pairs; v1 remains superseded evidence. Revised v2 bounds were declared before the new run, with unchanged seeds, budgets and tolerances. See docs/PHASE3.md for complete configuration and outcomes.
+
+Executed from the active checkout (PowerShell):
+
+```powershell
+$env:PYTHONPATH = 'src'
+$env:PYTEST_DISABLE_PLUGIN_AUTOLOAD = '1'
+$artifactRoot = 'C:/Users/Home/.codex/visualizations/2026/11/18/01a1ee7a-3b9d-7eb0-9f38-c053c726b534'
+$env:CIRCUFORGE_NGSPICE = "$artifactRoot/CircuForge/.tools/Spice64/bin/ngspice_con.exe"
+& "$artifactRoot/Phase1_Verification/.venv/Scripts/python.exe" scripts/accept_phase3.py --output "$artifactRoot/Automatic_Acceptance/phase3-v2-2026-11-19" --ngspice $env:CIRCUFORGE_NGSPICE
+```
+
+Observed: exit 0, phase3-reproducibility-v2 passed, **198 full-suite tests without skips**, 20 cases, three seeds, 180 trials/1530 actual calls per run and **3060 calls audited including exact numerical replay**. Per run: 18 fixed-control target passes, 126 free-domain target misses, 36 expected infeasible rejections, zero simulation failures. Complete argument arrays and simulator version are preserved in acceptance.json; tests.xml/tests.log and first/replay raw artifacts remain untouched. The structural v1 rejection is separately saved in Automatic_Acceptance/phase3-v1-structural-audit.json.
+
+Built/installed a local snapshot in the isolated environment. The initial no-build-isolation attempt failed on absent setuptools; normal isolated building from official PyPI succeeded. Python -I outside the checkout validated the v2 manifest and independently re-audited 13 existing call artifacts, matching the source/environment fingerprint and adding zero SPICE calls. package-check.json records this verification. No Phase 4 implementation or feature-branch push.
+
+## Original Phase 1 evidence — 2026-11-18
 
 ## Modules and contracts
 

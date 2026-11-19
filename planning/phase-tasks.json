@@ -232,7 +232,7 @@
     {
       "id": "P3",
       "number": 3,
-      "title": "Audit baseline fairness",
+      "title": "Reproducible benchmark and automatic audit",
       "window": "Weeks 6–7",
       "outcome": "Versioned cases, repeatable multi-seed comparisons and saved evidence.",
       "gate": "At least 20 benchmark cases run with logged seeds/configs/results and readable summary.",
@@ -252,7 +252,8 @@
           "dependsOn": [
             "P2-C1"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Benchmark v2.0 validates 20 distinct normalized RC tasks, 16 feasible including 2 fixed controls and 4 expected infeasible. Original v1 scale duplicates are retained as a rejection regression. Full suite 198 passed; see examples/benchmark-v2.json and docs/PHASE3.md."
         },
         {
           "id": "P3-C2",
@@ -266,7 +267,8 @@
             "P3-C1",
             "P2-C3"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Observed real 20-case x 3-seed x 3-method run and independent replay: 180 trials and 1530 calls per run, 3060 audited calls total. Candidate/metric traces match exactly, latency excluded. All method budgets matched; see docs/PHASE3.md and external Automatic_Acceptance/phase3-v2-2026-11-19."
         },
         {
           "id": "P3-H1",
@@ -279,9 +281,29 @@
           "dependsOn": [
             "P3-C2"
           ],
-          "status": "todo"
+          "status": "deferred",
+          "supersededBy": "P3-C3",
+          "evidence": "Superseded under owner's automatic technical-review delegation by tested P3-C3. No human review is claimed. Physics, fairness, failure definitions, runtimes and all 20 cases are automatically audited."
+        },
+        {
+          "id": "P3-C3",
+          "owner": "Codex",
+          "title": "Automatic benchmark acceptance",
+          "action": "Reject duplicate normalized tasks, run complete tests and two fresh benchmarks, audit raw physics/accounting and exact numerical replay.",
+          "deliverable": "scripts/accept_phase3.py and versioned machine-readable acceptance.json.",
+          "acceptance": "phase3-reproducibility-v2 passes without skips, missing/inconsistent evidence or manual waiver; target misses and expected infeasible rejections remain distinct.",
+          "effort": 5,
+          "dependsOn": [
+            "P3-C1",
+            "P3-C2"
+          ],
+          "status": "done",
+          "evidence": "Observed 2026-11-19: 198 tests without skips, 20 cases/3 seeds, 3060 fresh final-dataset calls audited across two exact numerical replays. Per run 18 control design passes, 126 misses, 36 expected infeasible rejections; zero simulation failures. See docs/PHASE3.md."
         }
-      ]
+      ],
+      "gateStatus": "passed",
+      "acceptanceMode": "automated",
+      "gateEvidence": "phase3-reproducibility-v2 passed with 198 tests, 20 normalized-distinct cases, 3 seeds and 3060 real calls across two audited runs. Equal budgets and exact numerical replay verified; 18 passes/126 misses/36 rejections per run preserved. P3-H1 superseded by P3-C3; no human signoff."
     },
     {
       "id": "P4",

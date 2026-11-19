@@ -61,7 +61,7 @@ for item in data['journey']:
     lines += [f"### {item['step']}. {item['title']}", '', item['body'], '']
 lines += ['## Phase workflow', '',
     'Critical path: P0 → P1 → P2 → P3 → P4 → P5 → P6 → P7. P8 is optional after validated research MVP.', '',
-    'A phase gate is a human review decision based on evidence. A status change alone does not prove the work is complete. Deferred optional work needs a recorded reason; critical correctness, isolation and data-loss failures must be resolved.', '']
+    'Technical phase gates use tested automatic acceptance under the owner delegation recorded in AGENTS.md. A status change alone does not prove completion. Explicit owner approvals for spending, remote publishing and other restricted operations remain separate. Deferred work needs a recorded reason; critical correctness, isolation and data-loss failures must be resolved.', '']
 for phase in data['phases']:
     lines += [f"### {phase['id']}: {phase['title']}", '',
               f"**Window:** {phase['window']} · {'Optional after launch' if phase['optional'] else 'Launch path'}", '',
