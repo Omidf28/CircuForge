@@ -6,6 +6,8 @@ Phase 2 adds measured objectives, seeded random/grid and SciPy baselines with id
 
 Phase 3 adds 20 normalized-distinct nominal benchmark cases and three-seed comparisons. Its automatic gate passed with **198 tests and 3060 audited real calls including exact numerical replay**. Per run, 18 fixed-control designs passed, 126 free-domain results missed the original tolerance and 36 infeasible requests were rejected before simulation. See [docs/PHASE3.md](docs/PHASE3.md). No manual technical review is required.
 
+Phase 4's tolerance-study gate passed with **234 tests and 1536 audited real calls including exact replay**. Nominal and robust methods used matched total simulation budgets and separate holdout samples. No consistent robust improvement was observed; nominal target misses and finite-sample outcomes remain reported in [docs/PHASE4.md](docs/PHASE4.md).
+
 ## Acceptance without manual review
 
 After installing the project with its test extra and configuring ngspice, run from project root:
@@ -13,11 +15,14 @@ After installing the project with its test extra and configuring ngspice, run fr
 ```text
 python scripts/accept_phase2.py --output /new/writable/absolute/path
 python scripts/accept_phase3.py --output /another/new/writable/absolute/path
+python scripts/accept_phase4.py --output /new/tolerance-acceptance/path
 ```
 
 The command runs all tests, refuses skipped/failed tests, executes a fresh bounded comparison and recomputes physics/metrics/accounting from every raw response. acceptance.json records passed or blocked with reasons. A pass is automatic technical acceptance; target misses remain failures in the design-success counts. Missing or inconsistent evidence is repaired and rerun rather than waived manually. See [docs/AUTOMATIC_ACCEPTANCE.md](docs/AUTOMATIC_ACCEPTANCE.md). Remote pushes and paid/deployment actions retain their separate authorization requirements.
 
 The Phase 3 command uses the versioned 20-case benchmark, seeds 7/42/2026 and 12 calls per method on free domains. It executes the experiment twice and checks exact candidate/metric replay along with the raw physics evidence. Fixed domains use one call; four expected infeasible tasks are rejected before simulation. See [docs/PHASE3.md](docs/PHASE3.md) for configuration, result interpretation and limits. To produce a single dataset, use `python scripts/run_benchmark.py --output /new/benchmark/path`.
+
+Phase 4 adds declared independent uniform component tolerances, matched-call nominal/robust random-search comparison and fresh holdout samples. Use `python scripts/compare_robustness.py --output /new/tolerance-study/path` for one dataset and PNG, or the acceptance command for full tests and independent replay. The `test` extra includes the plotting dependency; `report` installs it separately for reporting without pytest. See [docs/PHASE4.md](docs/PHASE4.md) for the frozen experiment and limitations. Nominal target success and empirical tolerance pass rate are separate measurements.
 
 ## Windows setup (Python 3.11+)
 

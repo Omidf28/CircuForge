@@ -1,4 +1,4 @@
-# Phase 3 â€” versioned nominal RC benchmark
+# Phase 3 — versioned nominal RC benchmark
 
 ## Prespecified experiment
 

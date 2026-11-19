@@ -1,5 +1,24 @@
 # Local implementation evidence
 
+## Phase 4 automatic acceptance — 2026-11-19
+
+Implemented typed independent uniform component-error sampling, explicit perturbed simulation envelopes, measured nominal/robust objectives, separate holdout samples, empirical quantiles/pass rates and a raw-data/replay checker. Matplotlib is optional for core use and declared in report/test extras for experiment plots. The shared raw evaluation audit still passes all historical baseline integrations. Prespecified model/configuration and outcomes are in docs/PHASE4.md.
+
+Executed from the active checkout (PowerShell):
+
+```powershell
+$artifactRoot = 'C:/Users/Home/.codex/visualizations/2026/11/18/01a1ee7a-3b9d-7eb0-9f38-c053c726b534'
+$env:PYTHONPATH = 'src'
+$env:PYTEST_DISABLE_PLUGIN_AUTOLOAD = '1'
+$env:CIRCUFORGE_NGSPICE = "$artifactRoot/CircuForge/.tools/Spice64/bin/ngspice_con.exe"
+$env:MPLCONFIGDIR = "$artifactRoot/Automatic_Acceptance/matplotlib-cache"
+& "$artifactRoot/Phase1_Verification/.venv/Scripts/python.exe" scripts/accept_phase4.py --output "$artifactRoot/Automatic_Acceptance/phase4-final-2026-11-19" --ngspice $env:CIRCUFORGE_NGSPICE
+```
+
+Observed exit 0: **234 full-suite tests without skips**, policy phase4-tolerance-v1 passed, two cases/two seeds/two methods, 768 calls/run and **1536 raw calls audited including exact numerical replay**. Every method/trial spent 64 training plus 32 independent holdout calls. All selected nominal designs missed the original 0.1% tolerance. Robust holdout q95 was lower once and higher three times; neither general superiority nor hardware yield is established. Both methods had 3 passes among 128 paired holdout observations. No unexpected simulation/verification failures or cached calls. Exact commands/tool versions/outcomes are in acceptance.json; tests.xml/tests.log and both raw datasets/plots are retained. Earlier 36 focused tests passed before the full run; their fixture calls are separate from the production count.
+
+Built/installed a byte-preserving source snapshot with no dependency upgrades to the numerical stack. Optional Matplotlib 3.11.2 and its declared dependencies were installed in the isolated environment. Python -I outside the checkout validated the installed module and independently re-audited a complete existing 96-call robust trial (zero additional SPICE calls), with matching source fingerprint; package-check.json records the result. The PNG was visually checked. Repaired legacy UTF-8 prose in planning/HANDOFF.md and docs/PHASE3.md without altering numerical evidence. Final EOF whitespace cleanup was followed by a complete fresh acceptance run against the final package fingerprint; the earlier phase4-2026-11-19 run remains separate and unchanged. Counts above refer to the final dataset, not pooled reruns. No Phase 5 implementation or remote push.
+
 ## Phase 3 automatic acceptance — 2026-11-19
 
 Implemented typed expected-feasibility benchmarks, normalized duplicate rejection, bounded multi-seed experiments and an independent raw-data/replay checker. The initial v1 numerical run passed but a structural audit found three scale-equivalent pairs; v1 remains superseded evidence. Revised v2 bounds were declared before the new run, with unchanged seeds, budgets and tolerances. See docs/PHASE3.md for complete configuration and outcomes.

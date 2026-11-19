@@ -1,6 +1,6 @@
-# CircuForge â€” portable handoff
+# CircuForge — portable handoff
 
-Updated 2026-11-19. Phases 1–3 are accepted. The owner replaced manual technical gates with automated checks. Phase 3 P3-C1/C2/C3 passed phase3-reproducibility-v2: 198 tests, 20 normalized-distinct cases, three seeds and 3060 final-dataset real calls including exact numerical replay. Per run: 18 control passes, 126 target misses and 36 expected infeasible rejections; zero simulation failures. P3-H1 is superseded/deferred, not human-reviewed. Phase 4 and feature-branch pushes have not started.
+Updated 2026-11-19. Phases 1 through 4 are accepted. Technical review is automatic under owner delegation. Current gate phase4-tolerance-v1 passed: 234 tests without skips and 1536 raw real calls including exact numerical replay. Each method spent 64 training +32 fresh holdout calls per case/seed. Negative nominal/robust outcomes and finite-sample limits are preserved. P4-H1 is deferred/superseded by P4-C3, not human-reviewed. Phase 5 and feature-branch pushes have not started.
 
 ## Completed tasks
 
@@ -15,24 +15,26 @@ Updated 2026-11-19. Phases 1–3 are accepted. The owner replaced manual technic
 
 - P3-C1/C2/C3: versioned curated manifest, normalized duplicate rejection, multi-seed equal-budget harness and fail-closed automatic replay/physics acceptance. See docs/PHASE3.md. V1's structural redundancy is documented and corrected in v2 without mixing results.
 
+- P4-C1/C2/C3: typed independent uniform tolerances, separate training/holdout streams, matched-call nominal/robust measured objectives, empirical quantiles/pass rates and automatic raw/replay acceptance. See docs/PHASE4.md.
+
 The starter's first-slice measured bisection remains separate from the generic Phase 2 random/grid/SciPy baselines. No frontend/API, advanced agents or PCB work is included.
 
 ## Evidence
 
 Exact commands, environment, corrected failure and implementation limits: docs/DEVELOPMENT.md. Newcomer setup: README.md.
 
-Initial Phase 1 suite: **63 passed**; its final review suite reached **122 passed**. Phase 2 baseline implementation reached **154 passed** and its automatic gate **170 passed** with 771 fresh comparison calls. The current Phase 3 automatic acceptance has **198 passed**, no skips, plus **3060 fresh final-dataset calls** across two exact numerical replays. Commands and Phase 1 evidence are in docs/DEVELOPMENT.md; Phase 2 results are in docs/PHASE2.md and docs/AUTOMATIC_ACCEPTANCE.md.
+Initial Phase 1 suite: **63 passed**; its final review suite reached **122 passed**. Phase 2 baseline implementation reached **154 passed** and its automatic gate **170 passed** with 771 fresh comparison calls. Phase 3 automatic acceptance has **198 passed**, no skips, plus **3060 fresh final-dataset calls** across two exact numerical replays. Current Phase 4 acceptance has **234 passed**, no skips, plus **1536 fresh real calls** across two exact numerical replays. Commands and Phase 1 evidence are in docs/DEVELOPMENT.md; Phase 2 results are in docs/PHASE2.md and docs/AUTOMATIC_ACCEPTANCE.md.
 
 - Low-pass measured 1591.487745916 Hz vs analytic 1591.549430919 Hz: 0.003876% error.
 - High-pass measured 1591.612597494 Hz: 0.003969% error.
 - Search target 2300 Hz reached 2300.380616684 Hz: 0.016549% error, 12 of 24 calls.
-- Acceptance tolerance 0.1%; sweep 100 points/decade, 1 Hzâ€“1 MHz. Genuine JSON/CSV/netlists/logs saved under evidence/.
+- Acceptance tolerance 0.1%; sweep 100 points/decade, 1 Hz–1 MHz. Genuine JSON/CSV/netlists/logs saved under evidence/.
 
 ## Review acceptance and next tasks
 
-P0-H1, P0-H2 and P1-H1 are done based on the owner's explicit response Â«Ø¨Ø§Ø²Ø¨ÛŒÙ†ÛŒ Ú©Ø±Ø¯Ù… Ùˆ Phase 1 Ø±Ø§ ØªØ£ÛŒÛŒØ¯ Ù…ÛŒâ€ŒÚ©Ù†Ù…Â». Accepted defaults: ideal zero-ohm source, infinite load, ideal continuous components and 0.1% target tolerance. Four distinct R/C cases per topology are provided. This is owner acceptance, not a claim of independent second-person or hardware verification.
+P0-H1, P0-H2 and P1-H1 are done based on the owner's explicit response «بازبینی کردم و Phase 1 را تأیید می‌کنم». Accepted defaults: ideal zero-ohm source, infinite load, ideal continuous components and 0.1% target tolerance. Four distinct R/C cases per topology are provided. This is owner acceptance, not a claim of independent second-person or hardware verification.
 
-The latest owner instruction removes manual technical-review requirements. Phase 2's P2-C4 and Phase 3's P3-C3 automatic gates passed; legacy P2-H1/P3-H1 are deferred as superseded. Next bounded tasks are P4-C1 (declared tolerance sampling) then P4-C2 (matched-budget robust objective), with their own implemented/tested automatic acceptance. Do not ask for manual technical signoff or blanket-complete future tasks. No Phase 4 robustness implementation, API, PCB, LLM, deployment or feature-branch push has started.
+The latest owner instruction removes manual technical-review requirements. P2-C4, P3-C3 and P4-C3 automatic gates passed; their old human technical tasks are deferred as superseded. Next bounded tasks are P5-C1 (CLI/report export) then P5-C2 (local FastAPI), with their own implemented/tested automatic acceptance. Do not ask for manual technical signoff or blanket-complete future tasks. No Phase 5 API/UI, PCB, LLM, deployment or feature-branch push has started.
 
 Initial simulator absence and package mirror issue were resolved with official portable ngspice and PyPI. No local simulator blocker remains. Linux is documented but unverified. Active source and Git history are in `C:/Users/Home/Documents/ChatGPT/Implement CircuForge`. Python output creation under Documents remains blocked in this managed session; ignored tools, execution evidence and the isolated test environment remain in the authorized visualization workspace. Source ZIP excludes tools/dependencies/build products and raw simulation data; install from README on other machines.
 
@@ -60,3 +62,7 @@ Canonical sources: planning/context.json, planning/phase-tasks.json. Run python 
 - 2026-11-19: owner instructed that manual review should not be needed. Added scripts/accept_phase2.py and a versioned fail-closed raw-evidence/physics/budget audit, with corrupt-data and failed/skipped-test regressions. Executed complete acceptance: **170 tests passed**, no skips; **771 fresh comparison calls audited**, 3 target passes/12 misses preserved. Marked P2-C4 done and P2 gate passed automatically; P2-H1 deferred as superseded, without inventing human review. Updated AGENTS.md with the delegation. No Phase 3 or push; no old evidence overwritten.
 
 - 2026-11-19: completed local Phase 3 on codex/p3-reproducible-benchmarks. Initial v1 numerical run passed, then a structural check found three scale-equivalent pairs; preserved it as superseded evidence and added normalized-duplicate regression checks. V2 bounds were frozen before rerunning unchanged seeds/budgets/thresholds. Final gate phase3-reproducibility-v2 passed: **198 tests without skips; 20 cases, 3 seeds, 180 trials/1530 calls per run; 3060 audited calls including exact replay**. Per run 18 fixed-control passes, 126 free-domain misses, 36 expected infeasible rejections and zero simulation failures. Built/installed the package and independently checked 13 existing call artifacts using Python -I, without new SPICE calls. P3-C1/C2/C3 done, P3-H1 deferred/superseded automatically; Phase 4 and push remain unstarted. Evidence: external Automatic_Acceptance/phase3-v2-2026-11-19; details/commands in docs/PHASE3.md.
+
+- 2026-11-19: completed local Phase 4 on codex/p4-tolerance-robustness. Prespecified independent uniform R +/-1% and C +/-5%, two RC cases, seeds 7/42 and unchanged 0.1% target tolerance. **234 tests without skips; 768 calls/run and 1536 raw calls audited including exact replay**. Each method used 64 training +32 holdout calls per trial; robust search had fewer nominal proposals because perturbations were charged. Robust q95 improved in one pair and worsened in three; every selected nominal design missed target, and both methods had 3/128 descriptive holdout passes. No general robustness or hardware-yield claim. Plot/report and automatic replacement P4-C3 verified; installed package independently audited one existing 96-call trial with zero new SPICE calls. Corrected legacy UTF-8 prose in the handoff/Phase 3 report. Phase 5 and push remain unstarted. Evidence: external Automatic_Acceptance/phase4-final-2026-11-19; details/commands in docs/PHASE4.md.
+
+- Final verification: removed extra EOF whitespace, reran the entire 234-test/1536-call acceptance against the final source fingerprint and rebuilt/checked the installed package. Final evidence is Automatic_Acceptance/phase4-final-2026-11-19; the earlier run is retained separately without pooling scores. No numerical configuration or outcomes changed.

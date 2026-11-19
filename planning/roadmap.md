@@ -2,7 +2,7 @@
 
 Version 2.0.0 · assembled 2026-11-19 · architecture assumptions to verify in current environment
 
-Local automatic technical acceptance passed through Phase 3: 198 tests, 20 distinct normalized RC tasks, 3 seeds and 3060 audited real calls including exact numerical replay. Per run 18 control design passes, 126 target misses and 36 expected infeasible rejections; no manual review required. Phases 4 onward remain unimplemented. See docs/PHASE3.md.
+Automatic technical acceptance passed through Phase 4: 234 tests, declared independent uniform R/C tolerances, matched nominal/robust budgets and 1536 audited real calls including exact numerical replay. Nominal target misses and finite-sample holdout outcomes are preserved; no general robust improvement or hardware guarantee is claimed. Phase 5 onward remains unimplemented. See docs/PHASE4.md.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -364,7 +364,7 @@ Status: done · Estimate: 5 active hours
 
 **Evidence:** Observed 2026-11-19: 198 tests without skips, 20 cases/3 seeds, 3060 fresh final-dataset calls audited across two exact numerical replays. Per run 18 control design passes, 126 misses, 36 expected infeasible rejections; zero simulation failures. See docs/PHASE3.md.
 
-### P4: Review tolerance assumptions
+### P4: Tolerance experiment and automatic audit
 
 **Window:** Week 8 · Launch path
 
@@ -374,13 +374,13 @@ Status: done · Estimate: 5 active hours
 
 **Exit gate:** Robustness runs reproduce quantiles and performance comparison with declared tolerance model.
 
-**Gate status:** pending
+**Gate status:** passed
 
-**Gate evidence:** Not recorded
+**Gate evidence:** phase4-tolerance-v1 passed: 234 tests, declared independent uniform tolerance model, two cases/two seeds, matched 96 calls/method/trial and 1536 raw calls including exact replay. Quantiles/pass rates and negative tradeoffs preserved. P4-H1 deferred/superseded by P4-C3, not human-approved. See docs/PHASE4.md.
 
 #### P4-C1 · Codex · Monte Carlo model
 
-Status: todo · Estimate: 7 active hours
+Status: done · Estimate: 7 active hours
 
 **Action:** Seeded tolerance sampling, explicit distributions and sampling budget; compute quantiles and pass rate.
 
@@ -390,11 +390,11 @@ Status: todo · Estimate: 7 active hours
 
 **Depends on:** P3-C2
 
-**Evidence:** Not recorded
+**Evidence:** Typed independent uniform R +/-1% / C +/-5% multiplicative model, separate training/holdout RNG streams, explicit simulation envelopes, measured empirical quantiles and pass rates with failed-sample blocking. Full suite: 234 tests without skips; real raw-data statistics reproduce. See docs/PHASE4.md.
 
 #### P4-C2 · Codex · Robust objective experiment
 
-Status: todo · Estimate: 8 active hours
+Status: done · Estimate: 8 active hours
 
 **Action:** Add tolerance-aware penalty and comparison under matched total simulation budgets.
 
@@ -404,11 +404,11 @@ Status: todo · Estimate: 8 active hours
 
 **Depends on:** P4-C1
 
-**Evidence:** Not recorded
+**Evidence:** Prespecified two-case/two-seed nominal-vs-robust random-search comparison: 64 training +32 fresh holdout calls/method/trial. Each run has 8 trials and 768 actual calls; 1536 audited calls including exact replay. Report/PNG retain negative tradeoffs; no robust superiority claimed. See docs/PHASE4.md.
 
 #### P4-H1 · Human · Review tolerance assumptions
 
-Status: todo · Estimate: 3 active hours
+Status: deferred · Estimate: 3 active hours
 
 **Action:** Choose tolerance ranges, correlation assumptions and interpretation limits.
 
@@ -418,7 +418,21 @@ Status: todo · Estimate: 3 active hours
 
 **Depends on:** P4-C1
 
-**Evidence:** Not recorded
+**Evidence:** Superseded by tested automatic P4-C3 under owner delegation. Explicit illustrative distribution, independence/pairing, sample budgets and interpretation limits are recorded in docs/DECISIONS.md and docs/PHASE4.md. No human signoff or hardware guarantee asserted.
+
+#### P4-C3 · Codex · Automatic tolerance-study acceptance
+
+Status: done · Estimate: 4 active hours
+
+**Action:** Run full tests and two fresh declared tolerance experiments; independently audit raw physics, factors, objective/selection, holdout partitions/statistics, equal budgets and exact replay.
+
+**Deliverable:** scripts/accept_phase4.py, robust_acceptance.py, acceptance.json and comparison plots.
+
+**Acceptance:** phase4-tolerance-v1 passes without skipped/failed/inconsistent evidence; no optimizer win or manual waiver required, and failures/limitations remain explicit.
+
+**Depends on:** P4-C1, P4-C2
+
+**Evidence:** Observed on 2026-11-19: 234 tests without skips, 1536 real raw calls audited across two exact numerical replays; 96 actual calls/trial for both methods. All nominal designs missed 0.1%; each method had 3 passes in 128 paired holdout observations, not a hardware-yield estimate. See docs/PHASE4.md and external Automatic_Acceptance/phase4-final-2026-11-19/acceptance.json.
 
 ### P5: User acceptance walkthrough
 
@@ -824,7 +838,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md and planning/HANDOFF.md. Owner delegated local technical gates to implemented automatic checks. Phase 1 remains historically owner-accepted; Phase 2 passed P2-C4. Phase 3 P3-C1/C2/C3 passed phase3-reproducibility-v2: 198 tests, 20 normalized-distinct tasks, 3 seeds and 3060 real calls including replay; target misses preserved. Legacy P3-H1 is deferred/superseded, not human-approved. Next bounded roadmap work is P4-C1 tolerance sampling then P4-C2, with its own implemented/tested automatic gate. No Phase 4 implementation, remote push, paid/deployment/PCB authorization is inferred.
+Read AGENTS.md and planning/HANDOFF.md. Owner delegated technical review to implemented automatic checks. Phase 1 remains historically owner-accepted; Phases 2/3/4 passed their own automatic gates. Current P4-C1/C2/C3: 234 tests, declared tolerance study, matched 96 calls/method/trial and 1536 real calls including exact replay; negative outcomes retained. P4-H1 is deferred/superseded, not human-approved. Next bounded tasks are P5-C1 CLI/report export then P5-C2 local FastAPI, preserving dependencies and implementing their own automatic acceptance. Do not infer remote push, paid service, deployment or PCB authorization.
 ```
 
 ## Sources

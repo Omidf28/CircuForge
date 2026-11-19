@@ -308,7 +308,7 @@
     {
       "id": "P4",
       "number": 4,
-      "title": "Review tolerance assumptions",
+      "title": "Tolerance experiment and automatic audit",
       "window": "Week 8",
       "outcome": "Demonstrate robust vs nominal design tradeoffs.",
       "gate": "Robustness runs reproduce quantiles and performance comparison with declared tolerance model.",
@@ -328,7 +328,8 @@
           "dependsOn": [
             "P3-C2"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Typed independent uniform R +/-1% / C +/-5% multiplicative model, separate training/holdout RNG streams, explicit simulation envelopes, measured empirical quantiles and pass rates with failed-sample blocking. Full suite: 234 tests without skips; real raw-data statistics reproduce. See docs/PHASE4.md."
         },
         {
           "id": "P4-C2",
@@ -341,7 +342,8 @@
           "dependsOn": [
             "P4-C1"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Prespecified two-case/two-seed nominal-vs-robust random-search comparison: 64 training +32 fresh holdout calls/method/trial. Each run has 8 trials and 768 actual calls; 1536 audited calls including exact replay. Report/PNG retain negative tradeoffs; no robust superiority claimed. See docs/PHASE4.md."
         },
         {
           "id": "P4-H1",
@@ -354,9 +356,29 @@
           "dependsOn": [
             "P4-C1"
           ],
-          "status": "todo"
+          "status": "deferred",
+          "supersededBy": "P4-C3",
+          "evidence": "Superseded by tested automatic P4-C3 under owner delegation. Explicit illustrative distribution, independence/pairing, sample budgets and interpretation limits are recorded in docs/DECISIONS.md and docs/PHASE4.md. No human signoff or hardware guarantee asserted."
+        },
+        {
+          "id": "P4-C3",
+          "owner": "Codex",
+          "title": "Automatic tolerance-study acceptance",
+          "action": "Run full tests and two fresh declared tolerance experiments; independently audit raw physics, factors, objective/selection, holdout partitions/statistics, equal budgets and exact replay.",
+          "deliverable": "scripts/accept_phase4.py, robust_acceptance.py, acceptance.json and comparison plots.",
+          "acceptance": "phase4-tolerance-v1 passes without skipped/failed/inconsistent evidence; no optimizer win or manual waiver required, and failures/limitations remain explicit.",
+          "effort": 4,
+          "dependsOn": [
+            "P4-C1",
+            "P4-C2"
+          ],
+          "status": "done",
+          "evidence": "Observed on 2026-11-19: 234 tests without skips, 1536 real raw calls audited across two exact numerical replays; 96 actual calls/trial for both methods. All nominal designs missed 0.1%; each method had 3 passes in 128 paired holdout observations, not a hardware-yield estimate. See docs/PHASE4.md and external Automatic_Acceptance/phase4-final-2026-11-19/acceptance.json."
         }
-      ]
+      ],
+      "gateStatus": "passed",
+      "acceptanceMode": "automated",
+      "gateEvidence": "phase4-tolerance-v1 passed: 234 tests, declared independent uniform tolerance model, two cases/two seeds, matched 96 calls/method/trial and 1536 raw calls including exact replay. Quantiles/pass rates and negative tradeoffs preserved. P4-H1 deferred/superseded by P4-C3, not human-approved. See docs/PHASE4.md."
     },
     {
       "id": "P5",
