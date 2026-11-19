@@ -2,7 +2,7 @@
 
 Version 2.0.0 · assembled 2026-11-19 · architecture assumptions to verify in current environment
 
-Phase 1 accepted by the owner on 2026-11-19 after circuit/result review. Automated evidence: 122 tests passed and eight electrical reference cases passed on Windows/ngspice-47. P0/P1 gates passed; Phase 2 and feature-branch pushes remain unauthorized. See docs/DECISIONS.md and planning/HANDOFF.md.
+Phase 1 accepted by owner on 2026-11-19; subsequent next-step instruction implemented local Phase 2 P2-C1/C2/C3. Full suite: 154 passed. Five single-seed comparisons matched actual budgets with 771 genuine calls; free-domain targets missed 0.1% and fixed case passed. P2-H1 review pending; no Phase 3 or feature-branch push. See docs/PHASE2.md.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -222,11 +222,11 @@ Status: done · Estimate: 3 active hours
 
 **Gate status:** pending
 
-**Gate evidence:** Not recorded
+**Gate evidence:** P2-C1/C2/C3 engineering checks complete: 154 tests passed, five equal-budget single-seed cases/15 reports/771 genuine calls. Free-domain tolerance misses are documented; P2-H1 human review still required. See docs/PHASE2.md.
 
 #### P2-C1 · Codex · Define objective and feasibility
 
-Status: todo · Estimate: 6 active hours
+Status: done · Estimate: 6 active hours
 
 **Action:** Implement target cutoff/response objective and constraint handling; return infeasible reasons.
 
@@ -236,11 +236,11 @@ Status: todo · Estimate: 6 active hours
 
 **Depends on:** P1-C3
 
-**Evidence:** Not recorded
+**Evidence:** Typed objective/evaluation records distinguish constraints, simulator exit, reference verification and target error. Seven focused unit cases passed for bounds/topology rejection, objective, failures, caching and hard call caps; see tests/unit/test_objective.py and docs/PHASE2.md.
 
 #### P2-C2 · Codex · Seeded random and grid baselines
 
-Status: todo · Estimate: 7 active hours
+Status: done · Estimate: 7 active hours
 
 **Action:** Build deterministic baseline with budgets, E-series optional, call counting and structured output.
 
@@ -250,11 +250,11 @@ Status: todo · Estimate: 7 active hours
 
 **Depends on:** P2-C1
 
-**Evidence:** Not recorded
+**Evidence:** Seeded random and deterministic log-grid baselines verified by budget/replay tests and real ngspice integrations. Five-case review: 64 calls per method on four free domains, 1 on the fixed domain. Actual calls matched across all three methods; see docs/PHASE2.md.
 
 #### P2-C3 · Codex · SciPy differential evolution
 
-Status: todo · Estimate: 8 active hours
+Status: done · Estimate: 8 active hours
 
 **Action:** Run bounded differential evolution and compare on same max SPICE calls; cache duplicate points.
 
@@ -264,7 +264,7 @@ Status: todo · Estimate: 8 active hours
 
 **Depends on:** P2-C2
 
-**Evidence:** Not recorded
+**Evidence:** Public SciPy differential_evolution with seeded Generator, no polishing, serial execution, exact cache and hard mid-generation call cap. Full suite: 154 passed. Five-case single-seed comparison exported 15 reports and 771 genuine call artifacts; misses are reported. P2-H1 review remains pending.
 
 #### P2-H1 · Human · Inspect failed optimizations
 
@@ -796,7 +796,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md and planning/HANDOFF.md. Phase 1 is accepted: P0/P1 coding and human review tasks are done, gates passed, with explicit owner approval on 2026-11-19 in docs/DECISIONS.md. Last suite: 122 passed; eight genuine reference cases passed. Phase 2 tasks remain todo and must not start without separate authorization. Feature-branch pushes are also not authorized by the review approval. No LLM/PCB work.
+Read AGENTS.md and planning/HANDOFF.md. Phase 1 owner review and P0/P1 gates passed. Subsequent next-step instruction completed local P2-C1/C2/C3: objective, random/grid/SciPy, caps/cache and raw evidence. Full suite 154 passed. Five-case seed-42 review results are in docs/PHASE2.md and external Phase2_Verification/seed-42. P2-H1 is still todo and its gate pending; do not infer human acceptance or begin Phase 3/LLM/PCB work. No feature-branch push is authorized.
 ```
 
 ## Sources

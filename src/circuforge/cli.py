@@ -1,4 +1,4 @@
-"""Executable Phase 1 demo with traceable JSON/CSV artifacts."""
+"""Local RC simulation and bounded optimizer comparison commands."""
 
 import argparse
 import csv
@@ -30,11 +30,41 @@ def main(argv=None) -> int:
     sim.add_argument("--resistance-ohm", type=float, default=1000.0)
     sim.add_argument("--capacitance-f", type=float, default=100e-9)
     sim.add_argument("--output", type=Path, required=True, help="new artifact directory")
+    for command in ("optimize", "compare"):
+        opt = sub.add_parser(command, help="run bounded baselines with recorded real SPICE evidence")
+        opt.add_argument("--spec", type=Path, default=Path("examples/search.json"))
+        opt.add_argument("--output", type=Path, required=True, help="new artifact directory")
+        opt.add_argument("--seed", type=int, default=42)
+        if command == "optimize":
+            opt.add_argument("--method", choices=["random", "grid", "scipy"], default="scipy")
     args = parser.parse_args(argv)
     try:
         if args.command == "preflight":
             print(json.dumps({"status": "available", **asdict(preflight(args.ngspice))}, indent=2))
             return 0
+        if args.command in {"optimize", "compare"}:
+            from circuforge.optimization.baselines import Options, compare, run_baseline
+
+            spec = DesignSpec.model_validate_json(args.spec.read_text(encoding="utf-8"))
+            Options(method=getattr(args, "method", "random"), seed=args.seed)
+            if args.output.exists():
+                raise FileExistsError(f"output must be a new directory: {args.output}")
+            simulator = Ngspice(args.ngspice)
+            results = (compare(spec, simulator, seed=args.seed, output=args.output)
+                       if args.command == "compare" else
+                       [run_baseline(spec, simulator, args.method, seed=args.seed, output=args.output)])
+            summary = {"budget_per_method": spec.max_evaluations, "seed": args.seed,
+                       "matched_actual_calls": len({r.simulator_calls for r in results}) == 1,
+                       "results": [{"method": r.options.method, "simulator_calls": r.simulator_calls,
+                                    "converged": r.converged, "failures": r.failures,
+                                    "target_relative_error": r.best.relative_error if r.best else None,
+                                    "stop_reason": r.stop_reason,
+                                    "candidate": r.best.candidate.model_dump() if r.best else None}
+                                   for r in results]}
+            print(json.dumps(summary, indent=2, allow_nan=False))
+            if args.command == "compare":
+                return 0 if all(r.best is not None for r in results) else 1
+            return 0 if results[0].converged else 1
         spec = DesignSpec.model_validate_json(args.spec.read_text(encoding="utf-8"))
         candidate = CircuitCandidate(topology=spec.filter_type, resistance_ohm=args.resistance_ohm, capacitance_f=args.capacitance_f)
         if not args.search:

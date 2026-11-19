@@ -2,7 +2,7 @@
   "title": "CircuForge · Wave2Circuit Research Edition",
   "version": "2.0.0",
   "date": "2026-11-19",
-  "purpose": "Phase 1 accepted by the owner on 2026-11-19 after circuit/result review. Automated evidence: 122 tests passed and eight electrical reference cases passed on Windows/ngspice-47. P0/P1 gates passed; Phase 2 and feature-branch pushes remain unauthorized. See docs/DECISIONS.md and planning/HANDOFF.md.",
+  "purpose": "Phase 1 accepted by owner on 2026-11-19; subsequent next-step instruction implemented local Phase 2 P2-C1/C2/C3. Full suite: 154 passed. Five single-seed comparisons matched actual budgets with 771 genuine calls; free-domain targets missed 0.1% and fixed case passed. P2-H1 review pending; no Phase 3 or feature-branch push. See docs/PHASE2.md.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
   "vision": "Given a validated filter specification, synthesize constrained analog circuit candidates, simulate them using real ngspice runs, optimize component values, quantify tolerance robustness, and report reproducible evidence. AI is an optional, benchmarked proposal mechanism—not the source of numerical truth.",
   "schedule": "Provisional 12-week two-person, part-time plan (roughly 12–15 team hours per person weekly). Phase gates and actual test evidence take precedence over dates. An MVP may take longer depending on simulator setup.",
@@ -220,7 +220,7 @@
     }
   ],
   "planningHome": "Maintain canonical context.json, phase-tasks.json, generated roadmap files and progress evidence in Git. Use task IDs in commits and GitHub Issues if desired.",
-  "handoff": "Read AGENTS.md and planning/HANDOFF.md. Phase 1 is accepted: P0/P1 coding and human review tasks are done, gates passed, with explicit owner approval on 2026-11-19 in docs/DECISIONS.md. Last suite: 122 passed; eight genuine reference cases passed. Phase 2 tasks remain todo and must not start without separate authorization. Feature-branch pushes are also not authorized by the review approval. No LLM/PCB work.",
+  "handoff": "Read AGENTS.md and planning/HANDOFF.md. Phase 1 owner review and P0/P1 gates passed. Subsequent next-step instruction completed local P2-C1/C2/C3: objective, random/grid/SciPy, caps/cache and raw evidence. Full suite 154 passed. Five-case seed-42 review results are in docs/PHASE2.md and external Phase2_Verification/seed-42. P2-H1 is still todo and its gate pending; do not infer human acceptance or begin Phase 3/LLM/PCB work. No feature-branch push is authorized.",
   "sources": [
     {
       "id": "ngspice",
@@ -411,7 +411,8 @@
           "dependsOn": [
             "P1-C3"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Typed objective/evaluation records distinguish constraints, simulator exit, reference verification and target error. Seven focused unit cases passed for bounds/topology rejection, objective, failures, caching and hard call caps; see tests/unit/test_objective.py and docs/PHASE2.md."
         },
         {
           "id": "P2-C2",
@@ -424,7 +425,8 @@
           "dependsOn": [
             "P2-C1"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Seeded random and deterministic log-grid baselines verified by budget/replay tests and real ngspice integrations. Five-case review: 64 calls per method on four free domains, 1 on the fixed domain. Actual calls matched across all three methods; see docs/PHASE2.md."
         },
         {
           "id": "P2-C3",
@@ -437,7 +439,8 @@
           "dependsOn": [
             "P2-C2"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Public SciPy differential_evolution with seeded Generator, no polishing, serial execution, exact cache and hard mid-generation call cap. Full suite: 154 passed. Five-case single-seed comparison exported 15 reports and 771 genuine call artifacts; misses are reported. P2-H1 review remains pending."
         },
         {
           "id": "P2-H1",
@@ -452,7 +455,9 @@
           ],
           "status": "todo"
         }
-      ]
+      ],
+      "gateStatus": "pending",
+      "gateEvidence": "P2-C1/C2/C3 engineering checks complete: 154 tests passed, five equal-budget single-seed cases/15 reports/771 genuine calls. Free-domain tolerance misses are documented; P2-H1 human review still required. See docs/PHASE2.md."
     },
     {
       "id": "P3",

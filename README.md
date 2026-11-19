@@ -2,6 +2,8 @@
 
 Phase 1 implements typed RC low/high-pass specifications, fixed netlists, real ngspice AC simulation, complex response/cutoff extraction, and bounded measured R/C search. Local CPU only; no accounts required.
 
+Phase 2 now adds measured objectives, seeded random/grid and SciPy baselines with identical SPICE-call caps, exact per-run caching and raw per-call evidence. Engineering verification: **154 tests passed**. The five-case comparison and its failures are documented in [docs/PHASE2.md](docs/PHASE2.md); human Phase 2 review remains pending.
+
 ## Windows setup (Python 3.11+)
 
 From this extracted project directory:
@@ -46,7 +48,21 @@ Default reference: 1 kohm, 100 nF, ideal zero-ohm voltage source and infinite lo
 
 Half-power cutoff is **-3.0102999566 dB**, relative to known unity passband gain, interpolated in log-frequency/dB. Default sweep: 100 points/decade, 1 Hz–1 MHz. Verified cutoff tolerance: 0.1%. Coarser user-selected grids may fail this check. Batch print rounding is allowed up to 1e-5 dB apparent nonmonotonicity.
 
-The starter-authorized first-slice search uses deterministic bisection along log R/C bounds, with measured ngspice objectives, duplicate detection and a hard call budget. Every candidate metric is recorded; raw waveform/log artifacts describe the selected candidate. If a search aborts, failure.json preserves the attempted call count (including the failed attempt), prior measured results, failed candidate/spec, error status and captured logs; no replacement measurements are invented. Random/grid/SciPy comparative baselines remain Phase 2 work.
+The first-slice --search option uses deterministic bisection along log R/C bounds, with measured ngspice objectives, duplicate detection and a hard call budget. Every candidate metric is recorded; raw waveform/log artifacts describe the selected candidate. If a search aborts, failure.json preserves the attempted call count (including the failed attempt), prior measured results, failed candidate/spec, error status and captured logs; no replacement measurements are invented. Generic Phase 2 baselines are separate optimize/compare commands below.
+
+## Phase 2 optimizer commands
+
+With the installed package and ngspice configured:
+
+```text
+python -m circuforge optimize --spec examples/search.json --method scipy --seed 42 --output /new/writable/path
+python -m circuforge compare --spec examples/search.json --seed 42 --output /new/comparison/path
+python scripts/compare_phase2.py --seed 42 --output /new/five-case-review/path
+```
+
+Use OS-appropriate absolute paths. Each method gets the spec's max_evaluations cap and its own cache; actual counts are reported. Fully fixed domains use one call. optimize exits 1 when no design meets tolerance. compare can complete successfully while all methods miss target tolerance; inspect converged and target_relative_error. Reports retain all misses and raw call artifacts. No analytic fitness fallback is used.
+
+In the recorded seed-42 review, each method used 64 calls on each of four free cases and one call on the fixed case: **771 genuine AC attempts total**. None met 0.1% tolerance on the free cases; all passed the fixed case. This is single-seed baseline evidence, not a statistical performance claim. The Phase 1 domain-specific bisection remains available.
 
 ## Verified milestone
 

@@ -162,7 +162,8 @@
           "dependsOn": [
             "P1-C3"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Typed objective/evaluation records distinguish constraints, simulator exit, reference verification and target error. Seven focused unit cases passed for bounds/topology rejection, objective, failures, caching and hard call caps; see tests/unit/test_objective.py and docs/PHASE2.md."
         },
         {
           "id": "P2-C2",
@@ -175,7 +176,8 @@
           "dependsOn": [
             "P2-C1"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Seeded random and deterministic log-grid baselines verified by budget/replay tests and real ngspice integrations. Five-case review: 64 calls per method on four free domains, 1 on the fixed domain. Actual calls matched across all three methods; see docs/PHASE2.md."
         },
         {
           "id": "P2-C3",
@@ -188,7 +190,8 @@
           "dependsOn": [
             "P2-C2"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Public SciPy differential_evolution with seeded Generator, no polishing, serial execution, exact cache and hard mid-generation call cap. Full suite: 154 passed. Five-case single-seed comparison exported 15 reports and 771 genuine call artifacts; misses are reported. P2-H1 review remains pending."
         },
         {
           "id": "P2-H1",
@@ -203,7 +206,9 @@
           ],
           "status": "todo"
         }
-      ]
+      ],
+      "gateStatus": "pending",
+      "gateEvidence": "P2-C1/C2/C3 engineering checks complete: 154 tests passed, five equal-budget single-seed cases/15 reports/771 genuine calls. Free-domain tolerance misses are documented; P2-H1 human review still required. See docs/PHASE2.md."
     },
     {
       "id": "P3",

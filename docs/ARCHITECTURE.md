@@ -1,6 +1,6 @@
 # Initial architecture and interface contracts
 
-Implementation update (2026-11-18): domain, synthesis, simulation, CLI and a bounded first-slice search now exist and pass real Windows ngspice tests. See docs/DEVELOPMENT.md for the actual contracts/evidence. Evaluation records currently use CLI JSON rather than a separate evaluation package. SciPy baselines and product/API layers remain later-phase work.
+Implementation update (2026-11-19): domain, synthesis, simulation, CLI, first-slice bisection and Phase 2 classical baselines are implemented and tested. optimization/base.py owns constraint/measurement/reference/target evaluation and budgets; optimization/baselines.py owns seeded random/grid/SciPy. evaluation/records.py exports genuine responses and environment fingerprints. See docs/DEVELOPMENT.md and docs/PHASE2.md. Product/API layers remain deferred.
 
 ## Candidate directories (create during implementation)
 

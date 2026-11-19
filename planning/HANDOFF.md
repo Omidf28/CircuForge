@@ -1,6 +1,6 @@
 # CircuForge — portable handoff
 
-Updated 2026-11-19. Phase 1 is accepted: automated numerical checks pass on Windows with real ngspice-47, both reported technical review findings are resolved, and the owner explicitly confirmed the circuit/result review. Phase 2 and feature-branch pushes remain unauthorized.
+Updated 2026-11-19. Phase 1 is accepted. After the owner's subsequent next-step instruction, local Phase 2 P2-C1/C2/C3 implementation and verification are complete. P2-H1 human review is pending; Phase 3 and feature-branch pushes have not started.
 
 ## Completed tasks
 
@@ -10,14 +10,15 @@ Updated 2026-11-19. Phase 1 is accepted: automated numerical checks pass on Wind
 - P1-C2: isolated fixed-template subprocess adapter; startup files and shell disabled; timeout, logs, output guard, failure and real integration tests.
 - P1-C3: complex AC response, magnitude/phase and half-power cutoff verified against analytic responses for four R/C fixtures per topology, with amplitude normalization.
 - P0-H1/P0-H2/P1-H1: owner explicitly confirmed review and acceptance on 2026-11-19; scope and exact response are recorded in docs/DECISIONS.md.
+- P2-C1/C2/C3: measured objective, constrained evaluation, seeded random/grid/SciPy, strict budgets/cache and per-call evidence. Full suite: 154 passed. See docs/PHASE2.md for the five-case equal-budget comparison, including target misses.
 
-The starter's bounded first-slice search was implemented after core tests passed. It uses measured bisection; Phase 2 random/grid/SciPy tasks remain todo.
+The starter's first-slice measured bisection remains separate from the generic Phase 2 random/grid/SciPy baselines. No frontend/API, advanced agents or PCB work is included.
 
 ## Evidence
 
 Exact commands, environment, corrected failure and implementation limits: docs/DEVELOPMENT.md. Newcomer setup: README.md.
 
-Initial suite: python -m pytest -q -ra, with PYTHONPATH=.test-deps;src, PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 and CIRCUFORGE_NGSPICE pointing to .tools/Spice64/bin/ngspice_con.exe: **63 passed** including 11 real integration cases. Latest follow-up: **122 passed** using the isolated test environment, including both review regressions. The prior fresh-install and eight-case electrical verification remain documented in docs/DEVELOPMENT.md and docs/PHASE1_REVIEW.md.
+Initial Phase 1 suite: **63 passed**; its final review suite reached **122 passed**. The current Phase 2 full suite is **154 passed**, no skips, using the isolated test environment and genuine ngspice-47. Commands and Phase 1 evidence are in docs/DEVELOPMENT.md; Phase 2 results, versions and failed targets are in docs/PHASE2.md.
 
 - Low-pass measured 1591.487745916 Hz vs analytic 1591.549430919 Hz: 0.003876% error.
 - High-pass measured 1591.612597494 Hz: 0.003969% error.
@@ -28,7 +29,7 @@ Initial suite: python -m pytest -q -ra, with PYTHONPATH=.test-deps;src, PYTEST_D
 
 P0-H1, P0-H2 and P1-H1 are done based on the owner's explicit response «بازبینی کردم و Phase 1 را تأیید می‌کنم». Accepted defaults: ideal zero-ohm source, infinite load, ideal continuous components and 0.1% target tolerance. Four distinct R/C cases per topology are provided. This is owner acceptance, not a claim of independent second-person or hardware verification.
 
-The next roadmap tasks are P2-C1 objective/constraint contract, P2-C2 seeded random/grid and P2-C3 SciPy differential evolution with equal budgets. The review approval expressly excludes starting Phase 2 or pushing code, so these tasks remain todo until separately authorized. No frontend, API, PCB, LLM, robustness benchmark or deployment has started.
+The owner subsequently requested the next step after Phase 1 acceptance; that continuation was used for bounded local Phase 2 implementation. P2-H1 must now review at least five cases/failures and accepted ranges. Five real cases with 15 method reports are ready. Phase 2's human gate remains pending; no Phase 3, API, PCB, LLM, robustness benchmark, deployment or feature-branch push has started.
 
 Initial simulator absence and package mirror issue were resolved with official portable ngspice and PyPI. No local simulator blocker remains. Linux is documented but unverified. Active source and Git history are in `C:/Users/Home/Documents/ChatGPT/Implement CircuForge`. Python output creation under Documents remains blocked in this managed session; ignored tools, execution evidence and the isolated test environment remain in the authorized visualization workspace. Source ZIP excludes tools/dependencies/build products and raw simulation data; install from README on other machines.
 
@@ -51,3 +52,4 @@ Canonical sources: planning/context.json, planning/phase-tasks.json. Run python 
 - 2026-11-18: reproduced and corrected tolerance-blind target feasibility. Fixed and varying component bounds now accept a target when achievable and accepted cutoff intervals intersect, including touching boundaries. Eleven unit cases and four genuine low/high-pass direct/search CLI cases added; **122 passed**, no skips. Rounded fixed-component example provided. Human reviews remain open and Phase 2/push remain unstarted.
 - 2026-11-19: reconciled the Phase 1 technical review and acceptance evidence. The minimum-sample finding is resolved by `f9cb8c4`, and tolerance-aware feasibility by `8fa2d1b`. Last executed suite remains 122 passed; it was not rerun for this documentation-only review. Corrected the current source/output locations in this handoff. P0-H1/P0-H2/P1-H1 still require actual human review; Phase 2 remains deferred under the owner's review-only instruction.
 - 2026-11-19: owner explicitly stated that the Phase 1 circuit/result review was completed and approved. Recorded the exact response in docs/DECISIONS.md; marked P0-H1/P0-H2/P1-H1 done with evidence and P0/P1 gates passed. No runtime change or new test run. Phase 2 and feature-branch pushes remain outside this approval.
+- 2026-11-19: subsequent owner instruction next continued the roadmap into local Phase 2 on codex/p2-baselines. Completed objective/budget/cache evaluation, random/grid/SciPy and optimize/compare CLI. Full suite: **154 passed**, no skips. Five real seed-42 comparisons matched actual method budgets (64 on four free domains, 1 on fixed), 771 total AC calls. All measurements verified but free-case designs missed 0.1%; fixed case passed. Raw outputs: visualization workspace Phase2_Verification/seed-42. P2-H1 pending, Phase 3 untouched, no push.

@@ -39,4 +39,8 @@ Reviewer: project owner, through the explicit review response in this chat. The 
 
 The question linked the Phase 1 circuit/result review and stated the ideal zero-ohm source, infinite load, ideal continuous R/C values and 0.1% target error policy, with eight genuine reference cases passing. Record this as owner acceptance of the documented Phase 1 model, connectivity and reference results for P0-H1, P0-H2 and P1-H1. Automated acceptance evidence remains the previously executed 122 passing tests and eight reference cases; no additional test execution is implied by this decision.
 
-This records the owner's declared review. It does not assert a separate teammate/second-reviewer signoff, hardware verification or Linux testing. The approval explicitly excludes starting Phase 2 and pushing feature-branch commits. Those actions remain unperformed and require separate authorization.
+This records the owner's declared review. It does not assert a separate teammate/second-reviewer signoff, hardware verification or Linux testing. That review approval explicitly excluded starting Phase 2 and pushing feature-branch commits; those actions were not authorized by the review decision itself. The subsequent continuation is recorded separately below.
+
+## Subsequent continuation — 2026-11-19
+
+After Phase 1 acceptance was recorded, the owner requested next. Continued only the next local roadmap phase: P2-C1/C2/C3 numerical objective and classical baselines. This later continuation is separate from the earlier review approval. P2-H1 is still human-owned; no human Phase 2 acceptance, Phase 3, paid/API/deployment or feature-branch push is inferred.
