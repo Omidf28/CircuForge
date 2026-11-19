@@ -6,6 +6,8 @@ Review finding resolved (2026-11-18): sweeps that produce fewer than two frequen
 
 Second review finding resolved: feasibility now includes the declared target tolerance. With R=1000 ohm and C=1e-7 F fixed, the rounded target 1591.5494 Hz is accepted at 0.1% tolerance. It is still rejected at 1e-10 relative tolerance. Achievable and accepted cutoff intervals may overlap at a boundary. Unit tests cover both sides and fixed/varying bounds; four genuine CLI cases cover direct simulation/search for both topologies. Latest full suite: 122 passed. Human approval remains pending.
 
+Technical review reconciliation (2026-11-19): both reported findings are resolved in commits f9cb8c4 and 8fa2d1b. The last executed full suite has 122 passes, with no skips. This documentation review did not rerun or add tests. The remaining P0-H1/P0-H2/P1-H1 work is human acceptance of the assumptions/connectivity/reference cases below; automated review has not signed those tasks off.
+
 ## Connectivity and reference
 
 Both sources are ideal voltage sources connected from `in` to ground `0`. Output is measured from `out` to `0`, with infinite load.

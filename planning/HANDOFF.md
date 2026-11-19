@@ -1,6 +1,6 @@
 # CircuForge — portable handoff
 
-Updated 2026-11-18. Phase 1 automated numerical acceptance passes on Windows with real ngspice-47. Formal human gate review remains pending.
+Updated 2026-11-19. Phase 1 automated numerical acceptance passes on Windows with real ngspice-47. Both reported technical review findings are resolved; formal human gate review remains pending.
 
 ## Completed tasks
 
@@ -29,7 +29,7 @@ P0-H1, P0-H2, P1-H1 remain todo. No human agreement/signoff is fabricated. Defau
 
 After electrical review, proceed to P2-C1 objective/constraint contract, P2-C2 seeded random/grid, P2-C3 SciPy differential evolution with equal budgets. No frontend, API, PCB, LLM, robustness benchmark or deployment has started.
 
-Initial simulator absence and package mirror issue were resolved with official portable ngspice and PyPI. No local simulator blocker remains. Linux is documented but unverified. Documents writes failed with WinError 2; implementation is in the authorized visualization workspace; existing VideoPlayer source is untouched. Source ZIP excludes tools/dependencies/build products; install from README on other machines.
+Initial simulator absence and package mirror issue were resolved with official portable ngspice and PyPI. No local simulator blocker remains. Linux is documented but unverified. Active source and Git history are in `C:/Users/Home/Documents/ChatGPT/Implement CircuForge`. Python output creation under Documents remains blocked in this managed session; ignored tools, execution evidence and the isolated test environment remain in the authorized visualization workspace. Source ZIP excludes tools/dependencies/build products and raw simulation data; install from README on other machines.
 
 ## Plan maintenance
 
@@ -48,3 +48,4 @@ Canonical sources: planning/context.json, planning/phase-tasks.json. Run python 
 - 2026-11-18: added version/command and zero-preflight-call failure evidence plus a genuine first-run/next-launch-failure regression. Built/installed the package in a fresh virtualenv with NumPy 2.5.5/Pydantic 2.14.3; installed CLI demos passed and full suite reached **97 passed**. Prepared and executed eight real electrical fixtures across four distinct cutoff scales per topology; all passed, maximum cutoff error 0.005891%. Human review packet is docs/PHASE1_REVIEW.md; raw evidence is in the visualization workspace's Phase1_Verification/fixtures. Human task statuses remain todo. No Phase 2 work, feature-branch push or remote overwrite.
 - 2026-11-18: user selected Phase 1 review only. Reproduced a one-sample sweep validation gap with genuine ngspice, then on continuation fixed it by requiring at least two samples. Eight unit regressions and two genuine two-sample circuit integrations added; **107 passed**, no skips. The reported review finding is resolved. Human review tasks remain open, Phase 2 is not started and no feature branch is pushed.
 - 2026-11-18: reproduced and corrected tolerance-blind target feasibility. Fixed and varying component bounds now accept a target when achievable and accepted cutoff intervals intersect, including touching boundaries. Eleven unit cases and four genuine low/high-pass direct/search CLI cases added; **122 passed**, no skips. Rounded fixed-component example provided. Human reviews remain open and Phase 2/push remain unstarted.
+- 2026-11-19: reconciled the Phase 1 technical review and acceptance evidence. The minimum-sample finding is resolved by `f9cb8c4`, and tolerance-aware feasibility by `8fa2d1b`. Last executed suite remains 122 passed; it was not rerun for this documentation-only review. Corrected the current source/output locations in this handoff. P0-H1/P0-H2/P1-H1 still require actual human review; Phase 2 remains deferred under the owner's review-only instruction.
