@@ -19,6 +19,8 @@ assert len(ids) == len(tasks), 'Duplicate task ID'
 assert all(dep in ids for task in tasks for dep in task['dependsOn']), 'Unknown task dependency'
 assert all(task['status'] in {'todo', 'doing', 'blocked', 'review', 'done', 'deferred'} for task in tasks), 'Invalid task status'
 assert all(task.get('evidence') for task in tasks if task['status'] == 'done'), 'Completed tasks require evidence'
+assert all(p.get('gateStatus', 'pending') in {'pending', 'blocked', 'passed'} for p in data['phases']), 'Invalid phase gate status'
+assert all(p.get('gateEvidence') for p in data['phases'] if p.get('gateStatus') == 'passed'), 'Passed gates require evidence'
 seen, visiting = set(), set()
 by_id = {task['id']: task for task in tasks}
 def visit(task_id):
@@ -65,7 +67,9 @@ for phase in data['phases']:
               f"**Window:** {phase['window']} · {'Optional after launch' if phase['optional'] else 'Launch path'}", '',
               '**Outcome:** ' + phase['outcome'], '',
               '**Phase dependencies:** ' + (', '.join(phase['dependsOn']) or 'None'), '',
-              '**Exit gate:** ' + phase['gate'], '']
+              '**Exit gate:** ' + phase['gate'], '',
+              '**Gate status:** ' + phase.get('gateStatus', 'pending'), '',
+              '**Gate evidence:** ' + phase.get('gateEvidence', 'Not recorded'), '']
     for task in phase['tasks']:
         lines += [f"#### {task['id']} · {task['owner']} · {task['title']}", '',
                   f"Status: {task['status']} · Estimate: {task['effort']} active hours" + (' · Optional' if task.get('optional') else ''), '',

@@ -24,7 +24,7 @@
 - Budget approval and model selection before first LLM experiments.
 - Research benchmark case definitions, reviewer and experimental error thresholds.
 
-## Implemented defaults — 2026-11-18 (human review pending)
+## Implemented defaults — 2026-11-18 (owner accepted 2026-11-19)
 
 - Verified Windows 11, Python 3.12.7 and ngspice-47 console. Linux remains unverified.
 - Ideal zero-ohm source, infinite load, explicitly normalized AC amplitude.
@@ -32,3 +32,11 @@
 - Sweep: 1 Hz–1 MHz, 100 points/decade; half-power cutoff interpolation in log-frequency/dB; 0.1% acceptance.
 - Max 1000 evaluations, 30 seconds/call, 20,000 sweep points, 8 MiB combined output. Default 32 evaluations and 10 seconds/call. These local guardrails do not impose a kernel memory quota.
 - First-slice search: deterministic log-bounds bisection driven by measured ngspice cutoff. Phase 2 random/grid/SciPy comparisons remain deferred.
+
+## Owner review acceptance — 2026-11-19
+
+Reviewer: project owner, through the explicit review response in this chat. The owner answered: «بازبینی کردم و Phase 1 را تأیید می‌کنم».
+
+The question linked the Phase 1 circuit/result review and stated the ideal zero-ohm source, infinite load, ideal continuous R/C values and 0.1% target error policy, with eight genuine reference cases passing. Record this as owner acceptance of the documented Phase 1 model, connectivity and reference results for P0-H1, P0-H2 and P1-H1. Automated acceptance evidence remains the previously executed 122 passing tests and eight reference cases; no additional test execution is implied by this decision.
+
+This records the owner's declared review. It does not assert a separate teammate/second-reviewer signoff, hardware verification or Linux testing. The approval explicitly excludes starting Phase 2 and pushing feature-branch commits. Those actions remain unperformed and require separate authorization.

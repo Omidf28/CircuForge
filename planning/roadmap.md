@@ -1,8 +1,8 @@
 # CircuForge · Wave2Circuit Research Edition
 
-Version 2.0.0 · assembled 2026-11-18 · architecture assumptions to verify in current environment
+Version 2.0.0 · assembled 2026-11-19 · architecture assumptions to verify in current environment
 
-Phase 1 verified on Windows with ngspice-47: 122 tests pass in the isolated test environment, including resolved minimum-sample and target-tolerance review findings. Fresh installation and eight electrical reference cases were also verified. Human reviews and later phases remain open. See planning/HANDOFF.md and docs/PHASE1_REVIEW.md.
+Phase 1 accepted by the owner on 2026-11-19 after circuit/result review. Automated evidence: 122 tests passed and eight electrical reference cases passed on Windows/ngspice-47. P0/P1 gates passed; Phase 2 and feature-branch pushes remain unauthorized. See docs/DECISIONS.md and planning/HANDOFF.md.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -80,9 +80,13 @@ A phase gate is a human review decision based on evidence. A status change alone
 
 **Exit gate:** ngspice executable detected; one low-pass test netlist generates a valid AC output, or failure logged with installation instructions.
 
+**Gate status:** passed
+
+**Gate evidence:** Owner explicitly confirmed Phase 1 circuit/result review on 2026-11-19; automated evidence: 122 passing tests and eight genuine reference cases. See docs/DECISIONS.md. This is not Phase 2 or push authorization.
+
 #### P0-H1 · Human · Agree boundaries
 
-Status: todo · Estimate: 2 active hours
+Status: done · Estimate: 2 active hours
 
 **Action:** Choose supported platform, source amplitude/load assumptions, component ranges and compute budget; review design safety.
 
@@ -92,7 +96,7 @@ Status: todo · Estimate: 2 active hours
 
 **Depends on:** None
 
-**Evidence:** Not recorded
+**Evidence:** Project owner explicitly stated on 2026-11-19: بازبینی کردم و Phase 1 را تأیید می‌کنم. Owner acceptance covers the documented ideal-source/load, continuous RC assumptions and circuit/reference results. See docs/DECISIONS.md. No separate peer/hardware signoff asserted.
 
 #### P0-C1 · Codex · Scaffold tested Python project
 
@@ -124,7 +128,7 @@ Status: done · Estimate: 4 active hours
 
 #### P0-H2 · Human · Review reference circuit
 
-Status: todo · Estimate: 2 active hours
+Status: done · Estimate: 2 active hours
 
 **Action:** Review RC low-pass schematic, correct ground, source and load assumptions with teammate.
 
@@ -134,7 +138,7 @@ Status: todo · Estimate: 2 active hours
 
 **Depends on:** P0-C2
 
-**Evidence:** Not recorded
+**Evidence:** Project owner explicitly stated on 2026-11-19: بازبینی کردم و Phase 1 را تأیید می‌کنم. Owner acceptance covers the documented ideal-source/load, continuous RC assumptions and circuit/reference results. See docs/DECISIONS.md. No separate peer/hardware signoff asserted.
 
 ### P1: Verify RC low/high-pass fixtures
 
@@ -145,6 +149,10 @@ Status: todo · Estimate: 2 active hours
 **Phase dependencies:** P0
 
 **Exit gate:** RC cutoff and amplitude/phase checks pass analytical fixtures; invalid specs rejected.
+
+**Gate status:** passed
+
+**Gate evidence:** Owner explicitly confirmed Phase 1 circuit/result review on 2026-11-19; automated evidence: 122 passing tests and eight genuine reference cases. See docs/DECISIONS.md. This is not Phase 2 or push authorization.
 
 #### P1-C1 · Codex · Define typed circuit specifications
 
@@ -186,11 +194,11 @@ Status: done · Estimate: 7 active hours
 
 **Depends on:** P1-C2
 
-**Evidence:** Complex response and phase checked against analytic references. Additional eight real electrical review cases span four distinct cutoff scales per topology; all passed with max cutoff error 0.005891%. See docs/PHASE1_REVIEW.md and scripts/verify_phase1.py; human review remains pending.
+**Evidence:** Complex response and phase checked against analytic references. Additional eight real electrical review cases span four distinct cutoff scales per topology; all passed with max cutoff error 0.005891%. See docs/PHASE1_REVIEW.md and scripts/verify_phase1.py; owner review accepted on 2026-11-19 (docs/DECISIONS.md).
 
 #### P1-H1 · Human · Verify RC low/high-pass fixtures
 
-Status: todo · Estimate: 3 active hours
+Status: done · Estimate: 3 active hours
 
 **Action:** Cross-check both topologies, source/load simplifications and expected phase behavior.
 
@@ -200,7 +208,7 @@ Status: todo · Estimate: 3 active hours
 
 **Depends on:** P1-C3
 
-**Evidence:** Not recorded
+**Evidence:** Project owner explicitly stated on 2026-11-19: بازبینی کردم و Phase 1 را تأیید می‌کنم. Owner acceptance covers the documented ideal-source/load, continuous RC assumptions and circuit/reference results. See docs/DECISIONS.md. No separate peer/hardware signoff asserted.
 
 ### P2: Inspect failed optimizations
 
@@ -211,6 +219,10 @@ Status: todo · Estimate: 3 active hours
 **Phase dependencies:** P1
 
 **Exit gate:** Two optimizer baselines run on valid test cases with equal simulation budgets.
+
+**Gate status:** pending
+
+**Gate evidence:** Not recorded
 
 #### P2-C1 · Codex · Define objective and feasibility
 
@@ -278,6 +290,10 @@ Status: todo · Estimate: 3 active hours
 
 **Exit gate:** At least 20 benchmark cases run with logged seeds/configs/results and readable summary.
 
+**Gate status:** pending
+
+**Gate evidence:** Not recorded
+
 #### P3-C1 · Codex · Benchmark schema and cases
 
 Status: todo · Estimate: 7 active hours
@@ -330,6 +346,10 @@ Status: todo · Estimate: 4 active hours
 
 **Exit gate:** Robustness runs reproduce quantiles and performance comparison with declared tolerance model.
 
+**Gate status:** pending
+
+**Gate evidence:** Not recorded
+
 #### P4-C1 · Codex · Monte Carlo model
 
 Status: todo · Estimate: 7 active hours
@@ -381,6 +401,10 @@ Status: todo · Estimate: 3 active hours
 **Phase dependencies:** P4
 
 **Exit gate:** Independent reviewer runs one complete example with plots, raw results and traceable configuration.
+
+**Gate status:** pending
+
+**Gate evidence:** Not recorded
 
 #### P5-C1 · Codex · CLI and report export
 
@@ -448,6 +472,10 @@ Status: todo · Estimate: 3 active hours
 
 **Exit gate:** If paid key/provider inaccessible, mark experiment deferred and preserve reproducible non-LLM result; no claims without trials.
 
+**Gate status:** pending
+
+**Gate evidence:** Not recorded
+
 #### P6-C1 · Codex · Provider-neutral proposal interface
 
 Status: todo · Estimate: 7 active hours
@@ -500,6 +528,10 @@ Status: todo · Estimate: 2 active hours
 
 **Exit gate:** Clean setup, tests, reproducible benchmark, demo and research report.
 
+**Gate status:** pending
+
+**Gate evidence:** Not recorded
+
 #### P7-C1 · Codex · Engineering documentation
 
 Status: todo · Estimate: 7 active hours
@@ -551,6 +583,10 @@ Status: todo · Estimate: 4 active hours
 **Phase dependencies:** P7
 
 **Exit gate:** Explicit feasibility decision with validated model, export test and no industrial claims.
+
+**Gate status:** pending
+
+**Gate evidence:** Not recorded
 
 #### P8-C1 · Codex · Component registry and model compatibility
 
@@ -760,7 +796,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md and planning/HANDOFF.md. P0-C1/C2 and P1-C1/C2/C3 have verified evidence. Reproduce tests and complete human P0-H1/H2 and P1-H1 reviews before Phase 2 baseline comparisons. First-slice bounded measured bisection is implemented; random/grid/SciPy remain Phase 2. Do not start PCB or LLM work.
+Read AGENTS.md and planning/HANDOFF.md. Phase 1 is accepted: P0/P1 coding and human review tasks are done, gates passed, with explicit owner approval on 2026-11-19 in docs/DECISIONS.md. Last suite: 122 passed; eight genuine reference cases passed. Phase 2 tasks remain todo and must not start without separate authorization. Feature-branch pushes are also not authorized by the review approval. No LLM/PCB work.
 ```
 
 ## Sources

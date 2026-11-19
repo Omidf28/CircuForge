@@ -19,7 +19,8 @@
           "acceptance": "No unsupported circuits or implicit idealizations in requirements.",
           "effort": 2,
           "dependsOn": [],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Project owner explicitly stated on 2026-11-19: بازبینی کردم و Phase 1 را تأیید می‌کنم. Owner acceptance covers the documented ideal-source/load, continuous RC assumptions and circuit/reference results. See docs/DECISIONS.md. No separate peer/hardware signoff asserted."
         },
         {
           "id": "P0-C1",
@@ -58,9 +59,12 @@
           "dependsOn": [
             "P0-C2"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Project owner explicitly stated on 2026-11-19: بازبینی کردم و Phase 1 را تأیید می‌کنم. Owner acceptance covers the documented ideal-source/load, continuous RC assumptions and circuit/reference results. See docs/DECISIONS.md. No separate peer/hardware signoff asserted."
         }
-      ]
+      ],
+      "gateStatus": "passed",
+      "gateEvidence": "Owner explicitly confirmed Phase 1 circuit/result review on 2026-11-19; automated evidence: 122 passing tests and eight genuine reference cases. See docs/DECISIONS.md. This is not Phase 2 or push authorization."
     },
     {
       "id": "P1",
@@ -115,7 +119,7 @@
             "P1-C2"
           ],
           "status": "done",
-          "evidence": "Complex response and phase checked against analytic references. Additional eight real electrical review cases span four distinct cutoff scales per topology; all passed with max cutoff error 0.005891%. See docs/PHASE1_REVIEW.md and scripts/verify_phase1.py; human review remains pending."
+          "evidence": "Complex response and phase checked against analytic references. Additional eight real electrical review cases span four distinct cutoff scales per topology; all passed with max cutoff error 0.005891%. See docs/PHASE1_REVIEW.md and scripts/verify_phase1.py; owner review accepted on 2026-11-19 (docs/DECISIONS.md)."
         },
         {
           "id": "P1-H1",
@@ -128,9 +132,12 @@
           "dependsOn": [
             "P1-C3"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Project owner explicitly stated on 2026-11-19: بازبینی کردم و Phase 1 را تأیید می‌کنم. Owner acceptance covers the documented ideal-source/load, continuous RC assumptions and circuit/reference results. See docs/DECISIONS.md. No separate peer/hardware signoff asserted."
         }
-      ]
+      ],
+      "gateStatus": "passed",
+      "gateEvidence": "Owner explicitly confirmed Phase 1 circuit/result review on 2026-11-19; automated evidence: 122 passing tests and eight genuine reference cases. See docs/DECISIONS.md. This is not Phase 2 or push authorization."
     },
     {
       "id": "P2",

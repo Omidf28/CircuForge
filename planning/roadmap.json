@@ -1,8 +1,8 @@
 {
   "title": "CircuForge · Wave2Circuit Research Edition",
   "version": "2.0.0",
-  "date": "2026-11-18",
-  "purpose": "Phase 1 verified on Windows with ngspice-47: 122 tests pass in the isolated test environment, including resolved minimum-sample and target-tolerance review findings. Fresh installation and eight electrical reference cases were also verified. Human reviews and later phases remain open. See planning/HANDOFF.md and docs/PHASE1_REVIEW.md.",
+  "date": "2026-11-19",
+  "purpose": "Phase 1 accepted by the owner on 2026-11-19 after circuit/result review. Automated evidence: 122 tests passed and eight electrical reference cases passed on Windows/ngspice-47. P0/P1 gates passed; Phase 2 and feature-branch pushes remain unauthorized. See docs/DECISIONS.md and planning/HANDOFF.md.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
   "vision": "Given a validated filter specification, synthesize constrained analog circuit candidates, simulate them using real ngspice runs, optimize component values, quantify tolerance robustness, and report reproducible evidence. AI is an optional, benchmarked proposal mechanism—not the source of numerical truth.",
   "schedule": "Provisional 12-week two-person, part-time plan (roughly 12–15 team hours per person weekly). Phase gates and actual test evidence take precedence over dates. An MVP may take longer depending on simulator setup.",
@@ -220,7 +220,7 @@
     }
   ],
   "planningHome": "Maintain canonical context.json, phase-tasks.json, generated roadmap files and progress evidence in Git. Use task IDs in commits and GitHub Issues if desired.",
-  "handoff": "Read AGENTS.md and planning/HANDOFF.md. P0-C1/C2 and P1-C1/C2/C3 have verified evidence. Reproduce tests and complete human P0-H1/H2 and P1-H1 reviews before Phase 2 baseline comparisons. First-slice bounded measured bisection is implemented; random/grid/SciPy remain Phase 2. Do not start PCB or LLM work.",
+  "handoff": "Read AGENTS.md and planning/HANDOFF.md. Phase 1 is accepted: P0/P1 coding and human review tasks are done, gates passed, with explicit owner approval on 2026-11-19 in docs/DECISIONS.md. Last suite: 122 passed; eight genuine reference cases passed. Phase 2 tasks remain todo and must not start without separate authorization. Feature-branch pushes are also not authorized by the review approval. No LLM/PCB work.",
   "sources": [
     {
       "id": "ngspice",
@@ -268,7 +268,8 @@
           "acceptance": "No unsupported circuits or implicit idealizations in requirements.",
           "effort": 2,
           "dependsOn": [],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Project owner explicitly stated on 2026-11-19: بازبینی کردم و Phase 1 را تأیید می‌کنم. Owner acceptance covers the documented ideal-source/load, continuous RC assumptions and circuit/reference results. See docs/DECISIONS.md. No separate peer/hardware signoff asserted."
         },
         {
           "id": "P0-C1",
@@ -307,9 +308,12 @@
           "dependsOn": [
             "P0-C2"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Project owner explicitly stated on 2026-11-19: بازبینی کردم و Phase 1 را تأیید می‌کنم. Owner acceptance covers the documented ideal-source/load, continuous RC assumptions and circuit/reference results. See docs/DECISIONS.md. No separate peer/hardware signoff asserted."
         }
-      ]
+      ],
+      "gateStatus": "passed",
+      "gateEvidence": "Owner explicitly confirmed Phase 1 circuit/result review on 2026-11-19; automated evidence: 122 passing tests and eight genuine reference cases. See docs/DECISIONS.md. This is not Phase 2 or push authorization."
     },
     {
       "id": "P1",
@@ -364,7 +368,7 @@
             "P1-C2"
           ],
           "status": "done",
-          "evidence": "Complex response and phase checked against analytic references. Additional eight real electrical review cases span four distinct cutoff scales per topology; all passed with max cutoff error 0.005891%. See docs/PHASE1_REVIEW.md and scripts/verify_phase1.py; human review remains pending."
+          "evidence": "Complex response and phase checked against analytic references. Additional eight real electrical review cases span four distinct cutoff scales per topology; all passed with max cutoff error 0.005891%. See docs/PHASE1_REVIEW.md and scripts/verify_phase1.py; owner review accepted on 2026-11-19 (docs/DECISIONS.md)."
         },
         {
           "id": "P1-H1",
@@ -377,9 +381,12 @@
           "dependsOn": [
             "P1-C3"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Project owner explicitly stated on 2026-11-19: بازبینی کردم و Phase 1 را تأیید می‌کنم. Owner acceptance covers the documented ideal-source/load, continuous RC assumptions and circuit/reference results. See docs/DECISIONS.md. No separate peer/hardware signoff asserted."
         }
-      ]
+      ],
+      "gateStatus": "passed",
+      "gateEvidence": "Owner explicitly confirmed Phase 1 circuit/result review on 2026-11-19; automated evidence: 122 passing tests and eight genuine reference cases. See docs/DECISIONS.md. This is not Phase 2 or push authorization."
     },
     {
       "id": "P2",
@@ -785,5 +792,5 @@
       ]
     }
   ],
-  "assembledDate": "2026-11-18"
+  "assembledDate": "2026-11-19"
 }

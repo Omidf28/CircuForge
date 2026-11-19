@@ -1,6 +1,6 @@
 # CircuForge — portable handoff
 
-Updated 2026-11-19. Phase 1 automated numerical acceptance passes on Windows with real ngspice-47. Both reported technical review findings are resolved; formal human gate review remains pending.
+Updated 2026-11-19. Phase 1 is accepted: automated numerical checks pass on Windows with real ngspice-47, both reported technical review findings are resolved, and the owner explicitly confirmed the circuit/result review. Phase 2 and feature-branch pushes remain unauthorized.
 
 ## Completed tasks
 
@@ -9,6 +9,7 @@ Updated 2026-11-19. Phase 1 automated numerical acceptance passes on Windows wit
 - P1-C1: typed SI specs for RC low/high-pass, explicit source/load, bounds/feasibility/resource limits, continuous value policy and rejection tests.
 - P1-C2: isolated fixed-template subprocess adapter; startup files and shell disabled; timeout, logs, output guard, failure and real integration tests.
 - P1-C3: complex AC response, magnitude/phase and half-power cutoff verified against analytic responses for four R/C fixtures per topology, with amplitude normalization.
+- P0-H1/P0-H2/P1-H1: owner explicitly confirmed review and acceptance on 2026-11-19; scope and exact response are recorded in docs/DECISIONS.md.
 
 The starter's bounded first-slice search was implemented after core tests passed. It uses measured bisection; Phase 2 random/grid/SciPy tasks remain todo.
 
@@ -23,11 +24,11 @@ Initial suite: python -m pytest -q -ra, with PYTHONPATH=.test-deps;src, PYTEST_D
 - Search target 2300 Hz reached 2300.380616684 Hz: 0.016549% error, 12 of 24 calls.
 - Acceptance tolerance 0.1%; sweep 100 points/decade, 1 Hz–1 MHz. Genuine JSON/CSV/netlists/logs saved under evidence/.
 
-## Open reviews and next tasks
+## Review acceptance and next tasks
 
-P0-H1, P0-H2, P1-H1 remain todo. No human agreement/signoff is fabricated. Defaults: ideal zero-ohm source, infinite load, ideal continuous components. Four distinct R/C cases per topology are provided in tests.
+P0-H1, P0-H2 and P1-H1 are done based on the owner's explicit response «بازبینی کردم و Phase 1 را تأیید می‌کنم». Accepted defaults: ideal zero-ohm source, infinite load, ideal continuous components and 0.1% target tolerance. Four distinct R/C cases per topology are provided. This is owner acceptance, not a claim of independent second-person or hardware verification.
 
-After electrical review, proceed to P2-C1 objective/constraint contract, P2-C2 seeded random/grid, P2-C3 SciPy differential evolution with equal budgets. No frontend, API, PCB, LLM, robustness benchmark or deployment has started.
+The next roadmap tasks are P2-C1 objective/constraint contract, P2-C2 seeded random/grid and P2-C3 SciPy differential evolution with equal budgets. The review approval expressly excludes starting Phase 2 or pushing code, so these tasks remain todo until separately authorized. No frontend, API, PCB, LLM, robustness benchmark or deployment has started.
 
 Initial simulator absence and package mirror issue were resolved with official portable ngspice and PyPI. No local simulator blocker remains. Linux is documented but unverified. Active source and Git history are in `C:/Users/Home/Documents/ChatGPT/Implement CircuForge`. Python output creation under Documents remains blocked in this managed session; ignored tools, execution evidence and the isolated test environment remain in the authorized visualization workspace. Source ZIP excludes tools/dependencies/build products and raw simulation data; install from README on other machines.
 
@@ -49,3 +50,4 @@ Canonical sources: planning/context.json, planning/phase-tasks.json. Run python 
 - 2026-11-18: user selected Phase 1 review only. Reproduced a one-sample sweep validation gap with genuine ngspice, then on continuation fixed it by requiring at least two samples. Eight unit regressions and two genuine two-sample circuit integrations added; **107 passed**, no skips. The reported review finding is resolved. Human review tasks remain open, Phase 2 is not started and no feature branch is pushed.
 - 2026-11-18: reproduced and corrected tolerance-blind target feasibility. Fixed and varying component bounds now accept a target when achievable and accepted cutoff intervals intersect, including touching boundaries. Eleven unit cases and four genuine low/high-pass direct/search CLI cases added; **122 passed**, no skips. Rounded fixed-component example provided. Human reviews remain open and Phase 2/push remain unstarted.
 - 2026-11-19: reconciled the Phase 1 technical review and acceptance evidence. The minimum-sample finding is resolved by `f9cb8c4`, and tolerance-aware feasibility by `8fa2d1b`. Last executed suite remains 122 passed; it was not rerun for this documentation-only review. Corrected the current source/output locations in this handoff. P0-H1/P0-H2/P1-H1 still require actual human review; Phase 2 remains deferred under the owner's review-only instruction.
+- 2026-11-19: owner explicitly stated that the Phase 1 circuit/result review was completed and approved. Recorded the exact response in docs/DECISIONS.md; marked P0-H1/P0-H2/P1-H1 done with evidence and P0/P1 gates passed. No runtime change or new test run. Phase 2 and feature-branch pushes remain outside this approval.

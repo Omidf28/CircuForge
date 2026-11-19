@@ -1,6 +1,6 @@
 # Phase 1 electrical review packet
 
-Automated fixture results support P0-H1, P0-H2 and P1-H1 review. They do not record human approval. Each reviewer should record their name/date and comments in docs/DECISIONS.md before changing human task statuses.
+Owner review accepted on 2026-11-19: the project owner explicitly answered «بازبینی کردم و Phase 1 را تأیید می‌کنم». The decision and scope are recorded in docs/DECISIONS.md. P0-H1, P0-H2 and P1-H1 are now done on that explicit owner evidence. This approval does not authorize Phase 2 or a push. Historical pending-review statements below describe earlier milestones.
 
 Review finding resolved (2026-11-18): sweeps that produce fewer than two frequency samples are now rejected during schema validation, before simulator preflight or output allocation. The reported 100–100.000001 Hz example is covered by regression tests. A real two-sample sweep remains supported for both topologies. Latest full suite: 107 passed; human approval remains pending.
 
