@@ -105,7 +105,8 @@ def main(argv=None) -> int:
             print(f"{fixture.id}: {'PASS' if record['passed'] else 'FAIL'}")
             # Preserve progress if a later case is interrupted.
             summary = {"purpose": "Phase 1 electrical fixtures; not an optimizer benchmark",
-                       "human_review_status": "pending", "source_sha256": source_fingerprint(),
+                       "acceptance_mode": "automated_reference_checks", "manual_review_required": False,
+                       "source_sha256": source_fingerprint(),
                        "passed": all(r["passed"] for r in records) and len(records) == len(prepared),
                        "completed_cases": len(records), "planned_cases": len(prepared), "cases": records}
             (args.output / "summary.json").write_text(json.dumps(summary, indent=2, allow_nan=False) + "\n", encoding="utf-8")

@@ -2,6 +2,8 @@
 
 The owner accepted Phase 1 on 2026-11-19 and subsequently requested the next step. Phase 2 local numerical implementation follows P2-C1/C2/C3. Human P2-H1 review is separate; no feature-branch push, deployment or later-phase work is implied.
 
+Current acceptance update: the owner subsequently replaced manual technical review with automated gates. Phase 2 has now passed phase2-engineering-v1 via P2-C4: 170 tests without skips and 771 freshly audited real calls. Legacy P2-H1 is superseded, not recorded as a completed human review. See docs/AUTOMATIC_ACCEPTANCE.md. Earlier pending-review statements below are historical.
+
 ## P2-C1 objective contract
 
 optimization/base.py rejects out-of-bounds/topology-mismatched typed candidates before simulator calls. It separates constraints, simulator exit status, successful cutoff measurement, analytic verification and target pass/fail. Objective: abs(log(measured_cutoff/target)); the independently reported acceptance error is abs(measured_cutoff/target-1). The analytic RC formula only checks measured correctness; it does not supply fitness measurements.

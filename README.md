@@ -2,7 +2,17 @@
 
 Phase 1 implements typed RC low/high-pass specifications, fixed netlists, real ngspice AC simulation, complex response/cutoff extraction, and bounded measured R/C search. Local CPU only; no accounts required.
 
-Phase 2 now adds measured objectives, seeded random/grid and SciPy baselines with identical SPICE-call caps, exact per-run caching and raw per-call evidence. Engineering verification: **154 tests passed**. The five-case comparison and its failures are documented in [docs/PHASE2.md](docs/PHASE2.md); human Phase 2 review remains pending.
+Phase 2 adds measured objectives, seeded random/grid and SciPy baselines with identical SPICE-call caps, exact per-run caching and raw per-call evidence. The owner-authorized **automatic acceptance gate passed with 170 tests and 771 freshly audited real calls**. The five-case comparison and its target misses remain documented in [docs/PHASE2.md](docs/PHASE2.md).
+
+## Acceptance without manual review
+
+After installing the project with its test extra and configuring ngspice, run from project root:
+
+```text
+python scripts/accept_phase2.py --output /new/writable/absolute/path
+```
+
+The command runs all tests, refuses skipped/failed tests, executes a fresh bounded comparison and recomputes physics/metrics/accounting from every raw response. acceptance.json records passed or blocked with reasons. A pass is automatic technical acceptance; target misses remain failures in the design-success counts. Missing or inconsistent evidence is repaired and rerun rather than waived manually. See [docs/AUTOMATIC_ACCEPTANCE.md](docs/AUTOMATIC_ACCEPTANCE.md). Remote pushes and paid/deployment actions retain their separate authorization requirements.
 
 ## Windows setup (Python 3.11+)
 
@@ -82,7 +92,7 @@ The [Phase 1 review packet](docs/PHASE1_REVIEW.md) contains connectivity diagram
 python scripts/verify_phase1.py --output /absolute/path/to/new/evidence-directory
 ```
 
-Use an OS-appropriate absolute path. In this managed session, Python directory creation under Documents is blocked; select an output path in the authorized visualization workspace. The script saves raw evidence and a summary with human review explicitly pending. All eight cases passed; maximum measured cutoff error was 0.005891%.
+Use an OS-appropriate absolute path. In this managed session, Python directory creation under Documents is blocked; select an output path in the authorized visualization workspace. The script saves raw evidence and an automated reference-check result. All eight cases passed; maximum measured cutoff error was 0.005891%.
 
 Target feasibility includes the selected relative-error tolerance. A target is rejected when the achievable RC cutoff interval and target*(1±tolerance) are disjoint. This permits rounded targets for fixed components without changing component bounds or claiming exact matching. `examples/fixed-target.json` demonstrates 1 kohm/100 nF with target 1591.5494 Hz and 0.1% tolerance; use it with the simulate command, optionally with --search. Simulation still determines the measured pass/fail result.
 

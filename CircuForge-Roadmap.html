@@ -3,7 +3,7 @@
   "title": "CircuForge · Wave2Circuit Research Edition",
   "version": "2.0.0",
   "date": "2026-11-19",
-  "purpose": "Phase 1 accepted by owner on 2026-11-19; subsequent next-step instruction implemented local Phase 2 P2-C1/C2/C3. Full suite: 154 passed. Five single-seed comparisons matched actual budgets with 771 genuine calls; free-domain targets missed 0.1% and fixed case passed. P2-H1 review pending; no Phase 3 or feature-branch push. See docs/PHASE2.md.",
+  "purpose": "Owner-authorized automatic technical acceptance is implemented. Phase 2 passed phase2-engineering-v1 with 170 tests and 771 fresh audited real calls; 3 design passes/12 misses are unchanged. P2-H1 superseded by automatic P2-C4; no manual technical review required. Later phases remain unimplemented. See docs/AUTOMATIC_ACCEPTANCE.md.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
   "vision": "Given a validated filter specification, synthesize constrained analog circuit candidates, simulate them using real ngspice runs, optimize component values, quantify tolerance robustness, and report reproducible evidence. AI is an optional, benchmarked proposal mechanism—not the source of numerical truth.",
   "schedule": "Provisional 12-week two-person, part-time plan (roughly 12–15 team hours per person weekly). Phase gates and actual test evidence take precedence over dates. An MVP may take longer depending on simulator setup.",
@@ -221,7 +221,7 @@
     }
   ],
   "planningHome": "Maintain canonical context.json, phase-tasks.json, generated roadmap files and progress evidence in Git. Use task IDs in commits and GitHub Issues if desired.",
-  "handoff": "Read AGENTS.md and planning/HANDOFF.md. Phase 1 owner review and P0/P1 gates passed. Subsequent next-step instruction completed local P2-C1/C2/C3: objective, random/grid/SciPy, caps/cache and raw evidence. Full suite 154 passed. Five-case seed-42 review results are in docs/PHASE2.md and external Phase2_Verification/seed-42. P2-H1 is still todo and its gate pending; do not infer human acceptance or begin Phase 3/LLM/PCB work. No feature-branch push is authorized.",
+  "handoff": "Read AGENTS.md and planning/HANDOFF.md. Latest owner instruction delegates local technical gates to implemented automatic checks; do not request manual technical signoff. Phase 1 was owner-accepted historically. Phase 2 now passed automatically through P2-C4: 170 tests, 771 fresh audited calls, 3 design passes/12 misses. P2-H1 is deferred/superseded, not falsely human-approved. Next is bounded Phase 3 work with its own tested automatic gate. Preserve dependency order; do not blanket-complete later tasks or infer push/paid/deployment/PCB authorization.",
   "sources": [
     {
       "id": "ngspice",
@@ -454,11 +454,30 @@
           "dependsOn": [
             "P2-C3"
           ],
-          "status": "todo"
+          "status": "deferred",
+          "supersededBy": "P2-C4",
+          "evidence": "Owner explicitly requested removal of manual technical review on 2026-11-19. Replaced by tested automatic P2-C4; no human review is claimed. See docs/DECISIONS.md and docs/AUTOMATIC_ACCEPTANCE.md."
+        },
+        {
+          "id": "P2-C4",
+          "owner": "Codex",
+          "title": "Automatic technical acceptance",
+          "action": "Run full tests without skips, fresh bounded comparisons and raw-response/physics/metric/budget audit; block on missing or inconsistent evidence.",
+          "deliverable": "scripts/accept_phase2.py, evaluation/acceptance.py and machine-readable acceptance.json.",
+          "acceptance": "A complete fresh run passes phase2-engineering-v1 without manual review while preserving measured target misses; corrupted/skipped/failed evidence blocks it.",
+          "effort": 4,
+          "dependsOn": [
+            "P2-C1",
+            "P2-C2",
+            "P2-C3"
+          ],
+          "status": "done",
+          "evidence": "Observed automatic acceptance on 2026-11-19: 170 full-suite tests passed without skips; 771 fresh real calls audited; 3 target passes and 12 misses preserved; manual_review_required=false. See docs/AUTOMATIC_ACCEPTANCE.md and external Automatic_Acceptance/phase2-2026-11-19/acceptance.json."
         }
       ],
-      "gateStatus": "pending",
-      "gateEvidence": "P2-C1/C2/C3 engineering checks complete: 154 tests passed, five equal-budget single-seed cases/15 reports/771 genuine calls. Free-domain tolerance misses are documented; P2-H1 human review still required. See docs/PHASE2.md."
+      "gateStatus": "passed",
+      "gateEvidence": "Owner delegated technical acceptance to automatic checks. phase2-engineering-v1 passed: 170 tests without skips, 5 cases and 771 fresh raw calls audited, 3 design passes/12 misses retained. P2-H1 is superseded by P2-C4, not a human signoff. See docs/AUTOMATIC_ACCEPTANCE.md.",
+      "acceptanceMode": "automated"
     },
     {
       "id": "P3",

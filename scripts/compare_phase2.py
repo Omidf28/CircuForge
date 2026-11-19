@@ -6,18 +6,13 @@ import json
 from pathlib import Path
 import sys
 
-from pydantic import Field, TypeAdapter
+from pydantic import TypeAdapter
 
-from circuforge.domain.specs import DesignSpec, Model
+from circuforge.domain.cases import Case
 from circuforge.optimization.baselines import Options, compare
 from circuforge.simulation.ngspice import Ngspice, SimulationError
 
 ROOT = Path(__file__).resolve().parents[1]
-
-
-class Case(Model):
-    id: str = Field(pattern=r"^[a-z0-9][a-z0-9_-]{0,59}$")
-    spec: DesignSpec
 
 
 def main(argv=None) -> int:
@@ -61,7 +56,8 @@ def main(argv=None) -> int:
                        "actual_calls": sum(r["simulator_calls"] for r in rows),
                        "cases_sha256": hashlib.sha256(content).hexdigest(),
                        "completed_cases": len(rows) // 3, "planned_cases": len(cases),
-                       "human_review_status": "pending", "results": rows}
+                       "acceptance_status": "requires_automated_gate", "manual_review_required": False,
+                       "results": rows}
             (args.output / "summary.json").write_text(json.dumps(summary, indent=2, allow_nan=False) + "\n", encoding="utf-8")
             with (args.output / "summary.csv").open("w", newline="", encoding="utf-8") as stream:
                 writer = csv.DictWriter(stream, fieldnames=list(rows[0]))

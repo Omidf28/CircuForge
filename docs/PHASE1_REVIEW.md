@@ -40,7 +40,7 @@ From project root after installation, with ngspice configured:
 python scripts/verify_phase1.py --output /absolute/path/to/new/evidence-directory
 ```
 
-On Windows supply a Windows absolute output path. In this managed session, Python writes to Documents are blocked; use the authorized visualization workspace for output. The script accepts at most 16 trusted typed reference cases, validates all inputs before simulator execution, and saves each case's spec, raw netlist/logs, complex CSV and CLI report. summary.json records each check, command, source fingerprint and pending human review. It is updated after each case. No simulator fallback is used.
+On Windows supply a Windows absolute output path. In this managed session, Python writes to Documents are blocked; use the authorized visualization workspace for output. The script accepts at most 16 trusted typed reference cases, validates all inputs before simulator execution, and saves each case's spec, raw netlist/logs, complex CSV and CLI report. summary.json records each check, command, source fingerprint and automated reference-check result. It is updated after each case. No simulator fallback is used. Older summaries retain their historical review labels; current technical acceptance follows the owner's automatic-gate policy.
 
 ## Human review points
 

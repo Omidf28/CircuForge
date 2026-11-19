@@ -26,3 +26,13 @@ Canonical inputs: `planning/context.json`, `planning/phase-tasks.json`; run `pyt
 ## Definition of done for first slice
 
 A newcomer can install dependencies, verify ngspice availability, execute an RC low-pass design via CLI, inspect AC frequency response, observe measured cutoff close to `1/(2πRC)` within documented grid/interpolation tolerance, reproduce a unit/integration test and distinguish missing ngspice from simulation success. Stop and report evidence before complex expansion.
+
+## Owner update — automatic technical acceptance (2026-11-19)
+
+The owner's latest instruction is: «یه جوری کار کن نیازی به بازبینی دستی نداشته باشه next». Replace local numerical/engineering manual-review gates with reproducible automated acceptance, and continue within roadmap dependencies without requesting manual technical signoff.
+
+- Accept a technical gate only after its implemented checker passes with actual test/simulator evidence; missing, inconsistent, skipped or failed evidence blocks it. Fix issues within the authorized local scope and rerun.
+- Keep engineering validity separate from design success. A correctly executed baseline comparison can be accepted while target misses remain reported failures; never change tolerance, budgets or measurements to create a pass.
+- Record acceptance mode as automatic. Supersede historical human-review tasks explicitly when their tested automatic replacement exists; do not claim that the owner performed a review they did not perform. Do not blanket-complete later phases.
+- Phase 1's earlier explicit owner approval remains historical. For Phase 2 use scripts/accept_phase2.py and its versioned policy/evidence before marking the replacement task/gate accepted.
+- Paid APIs, credentials, purchases, destructive actions, deployment and remote pushes retain their existing authorization requirements. This delegation covers technical review, not those operations. PCB/advanced agents remain deferred.

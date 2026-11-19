@@ -1,5 +1,7 @@
 # Phase 2 technical review — 2026-11-19
 
+Current policy/result: the owner replaced manual technical review with automatic acceptance. P2-C4 passed phase2-engineering-v1 with 170 tests and 771 fresh audited calls; P2-H1 is deferred/superseded, not human-approved. The earlier analysis below remains evidence. See docs/AUTOMATIC_ACCEPTANCE.md.
+
 Reviewed source revision fa0d5a4, the objective/cache/budget paths, baseline implementations, the comparison runner and the stored five-case reports. No additional blocking defect was identified in the paths reviewed. Runtime code is unchanged in this review; the last full executed suite remains 154 passed, no skips.
 
 ## Accounting and acceptance
@@ -47,8 +49,8 @@ for case in json.loads(Path("examples/phase2-review-cases.json").read_text()):
 
 The executed version also saved each call's generated netlist, logs, response.csv, evaluation metadata, source commit and environment. No measurements were substituted from the analytic formula.
 
-## P2-H1 owner decision remains open
+## Historical P2-H1 decision scope (superseded)
 
-Review the five cases and misses in docs/PHASE2.md together with these reachability checks. Decide whether the declared ranges, 64-call pilot budget, 0.1% tolerance and the recorded negative results are accepted as the current baselines, or whether additional Phase 2 work is requested. Set any future experiment budget before running it and preserve the existing results. One seed cannot establish success probabilities.
+This packet originally requested manual review of the five cases, misses, declared ranges, 64-call pilot budget and 0.1% tolerance. The owner's later automatic-acceptance instruction supersedes that manual gate. The tested P2-C4 policy verifies the evidence and preserves the negative outcomes automatically. Any future experiment budget is set before execution and existing results are preserved. One seed cannot establish success probabilities.
 
-This technical review does not mark P2-H1 done, authorize Phase 3 or authorize a push. Those require the owner's separate decision. Phase 1's earlier acceptance remains unchanged.
+No human P2-H1 review is claimed. The old task is superseded by the automatic gate; future local technical gates also require their own implemented checks rather than manual signoff. This does not authorize a push or bypass deployment/paid-operation permissions. Phase 1's earlier acceptance remains unchanged.

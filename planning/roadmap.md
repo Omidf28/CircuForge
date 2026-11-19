@@ -2,7 +2,7 @@
 
 Version 2.0.0 · assembled 2026-11-19 · architecture assumptions to verify in current environment
 
-Phase 1 accepted by owner on 2026-11-19; subsequent next-step instruction implemented local Phase 2 P2-C1/C2/C3. Full suite: 154 passed. Five single-seed comparisons matched actual budgets with 771 genuine calls; free-domain targets missed 0.1% and fixed case passed. P2-H1 review pending; no Phase 3 or feature-branch push. See docs/PHASE2.md.
+Owner-authorized automatic technical acceptance is implemented. Phase 2 passed phase2-engineering-v1 with 170 tests and 771 fresh audited real calls; 3 design passes/12 misses are unchanged. P2-H1 superseded by automatic P2-C4; no manual technical review required. Later phases remain unimplemented. See docs/AUTOMATIC_ACCEPTANCE.md.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -220,9 +220,9 @@ Status: done · Estimate: 3 active hours
 
 **Exit gate:** Two optimizer baselines run on valid test cases with equal simulation budgets.
 
-**Gate status:** pending
+**Gate status:** passed
 
-**Gate evidence:** P2-C1/C2/C3 engineering checks complete: 154 tests passed, five equal-budget single-seed cases/15 reports/771 genuine calls. Free-domain tolerance misses are documented; P2-H1 human review still required. See docs/PHASE2.md.
+**Gate evidence:** Owner delegated technical acceptance to automatic checks. phase2-engineering-v1 passed: 170 tests without skips, 5 cases and 771 fresh raw calls audited, 3 design passes/12 misses retained. P2-H1 is superseded by P2-C4, not a human signoff. See docs/AUTOMATIC_ACCEPTANCE.md.
 
 #### P2-C1 · Codex · Define objective and feasibility
 
@@ -268,7 +268,7 @@ Status: done · Estimate: 8 active hours
 
 #### P2-H1 · Human · Inspect failed optimizations
 
-Status: todo · Estimate: 3 active hours
+Status: deferred · Estimate: 3 active hours
 
 **Action:** Review infeasibility and performance failures against expectations; decide ranges.
 
@@ -278,7 +278,21 @@ Status: todo · Estimate: 3 active hours
 
 **Depends on:** P2-C3
 
-**Evidence:** Not recorded
+**Evidence:** Owner explicitly requested removal of manual technical review on 2026-11-19. Replaced by tested automatic P2-C4; no human review is claimed. See docs/DECISIONS.md and docs/AUTOMATIC_ACCEPTANCE.md.
+
+#### P2-C4 · Codex · Automatic technical acceptance
+
+Status: done · Estimate: 4 active hours
+
+**Action:** Run full tests without skips, fresh bounded comparisons and raw-response/physics/metric/budget audit; block on missing or inconsistent evidence.
+
+**Deliverable:** scripts/accept_phase2.py, evaluation/acceptance.py and machine-readable acceptance.json.
+
+**Acceptance:** A complete fresh run passes phase2-engineering-v1 without manual review while preserving measured target misses; corrupted/skipped/failed evidence blocks it.
+
+**Depends on:** P2-C1, P2-C2, P2-C3
+
+**Evidence:** Observed automatic acceptance on 2026-11-19: 170 full-suite tests passed without skips; 771 fresh real calls audited; 3 target passes and 12 misses preserved; manual_review_required=false. See docs/AUTOMATIC_ACCEPTANCE.md and external Automatic_Acceptance/phase2-2026-11-19/acceptance.json.
 
 ### P3: Audit baseline fairness
 
@@ -796,7 +810,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md and planning/HANDOFF.md. Phase 1 owner review and P0/P1 gates passed. Subsequent next-step instruction completed local P2-C1/C2/C3: objective, random/grid/SciPy, caps/cache and raw evidence. Full suite 154 passed. Five-case seed-42 review results are in docs/PHASE2.md and external Phase2_Verification/seed-42. P2-H1 is still todo and its gate pending; do not infer human acceptance or begin Phase 3/LLM/PCB work. No feature-branch push is authorized.
+Read AGENTS.md and planning/HANDOFF.md. Latest owner instruction delegates local technical gates to implemented automatic checks; do not request manual technical signoff. Phase 1 was owner-accepted historically. Phase 2 now passed automatically through P2-C4: 170 tests, 771 fresh audited calls, 3 design passes/12 misses. P2-H1 is deferred/superseded, not falsely human-approved. Next is bounded Phase 3 work with its own tested automatic gate. Preserve dependency order; do not blanket-complete later tasks or infer push/paid/deployment/PCB authorization.
 ```
 
 ## Sources

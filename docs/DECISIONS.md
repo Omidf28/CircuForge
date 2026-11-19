@@ -44,3 +44,11 @@ This records the owner's declared review. It does not assert a separate teammate
 ## Subsequent continuation — 2026-11-19
 
 After Phase 1 acceptance was recorded, the owner requested next. Continued only the next local roadmap phase: P2-C1/C2/C3 numerical objective and classical baselines. This later continuation is separate from the earlier review approval. P2-H1 is still human-owned; no human Phase 2 acceptance, Phase 3, paid/API/deployment or feature-branch push is inferred.
+
+## Owner delegation to automatic technical gates — 2026-11-19
+
+The owner later instructed: «یه جوری کار کن نیازی به بازبینی دستی نداشته باشه next». This supersedes the requirement for manual technical review before local numerical phase progression. The owner did not claim to have reviewed Phase 2; record automatic acceptance only when its evidence checker passes. Legacy P2-H1 is replaced by P2-C4, not labeled as a completed human review.
+
+Phase 2 automatic policy is phase2-engineering-v1: full tests without failures/errors/skips, five distinct typed cases, bounded fresh real ngspice comparisons, matched actual budgets, complete per-call evidence and raw/CSV/analytic/metric/status consistency. Baseline target misses remain misses. The policy accepts engineering execution/reproducibility rather than requiring every generic optimizer to hit the target at 64 calls. The original case ranges, seed, budgets and 0.1% tolerance remain unchanged.
+
+The delegation applies to technical acceptance. It does not authorize remote pushes, paid/API traffic, credentials, deployment, purchases or destructive actions. Further phase gates may be automated when their actual checkers exist and pass; no later task is automatically marked complete by this decision.

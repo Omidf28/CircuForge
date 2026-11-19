@@ -204,11 +204,30 @@
           "dependsOn": [
             "P2-C3"
           ],
-          "status": "todo"
+          "status": "deferred",
+          "supersededBy": "P2-C4",
+          "evidence": "Owner explicitly requested removal of manual technical review on 2026-11-19. Replaced by tested automatic P2-C4; no human review is claimed. See docs/DECISIONS.md and docs/AUTOMATIC_ACCEPTANCE.md."
+        },
+        {
+          "id": "P2-C4",
+          "owner": "Codex",
+          "title": "Automatic technical acceptance",
+          "action": "Run full tests without skips, fresh bounded comparisons and raw-response/physics/metric/budget audit; block on missing or inconsistent evidence.",
+          "deliverable": "scripts/accept_phase2.py, evaluation/acceptance.py and machine-readable acceptance.json.",
+          "acceptance": "A complete fresh run passes phase2-engineering-v1 without manual review while preserving measured target misses; corrupted/skipped/failed evidence blocks it.",
+          "effort": 4,
+          "dependsOn": [
+            "P2-C1",
+            "P2-C2",
+            "P2-C3"
+          ],
+          "status": "done",
+          "evidence": "Observed automatic acceptance on 2026-11-19: 170 full-suite tests passed without skips; 771 fresh real calls audited; 3 target passes and 12 misses preserved; manual_review_required=false. See docs/AUTOMATIC_ACCEPTANCE.md and external Automatic_Acceptance/phase2-2026-11-19/acceptance.json."
         }
       ],
-      "gateStatus": "pending",
-      "gateEvidence": "P2-C1/C2/C3 engineering checks complete: 154 tests passed, five equal-budget single-seed cases/15 reports/771 genuine calls. Free-domain tolerance misses are documented; P2-H1 human review still required. See docs/PHASE2.md."
+      "gateStatus": "passed",
+      "gateEvidence": "Owner delegated technical acceptance to automatic checks. phase2-engineering-v1 passed: 170 tests without skips, 5 cases and 771 fresh raw calls audited, 3 design passes/12 misses retained. P2-H1 is superseded by P2-C4, not a human signoff. See docs/AUTOMATIC_ACCEPTANCE.md.",
+      "acceptanceMode": "automated"
     },
     {
       "id": "P3",
