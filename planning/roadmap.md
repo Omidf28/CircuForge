@@ -2,7 +2,7 @@
 
 Version 2.0.0 · assembled 2026-11-19 · architecture assumptions to verify in current environment
 
-Automatic technical acceptance passed through Phase 4: 234 tests, declared independent uniform R/C tolerances, matched nominal/robust budgets and 1536 audited real calls including exact numerical replay. Nominal target misses and finite-sample holdout outcomes are preserved; no general robust improvement or hardware guarantee is claimed. Phase 5 onward remains unimplemented. See docs/PHASE4.md.
+Automatic acceptance passed through Phase 5: 279 tests and a fresh installed wheel running isolated CLI and real loopback HTTP. 27 actual walkthrough calls: 18 raw CLI/ZIP calls audited plus 9 JSON traces matched. Shared typed JSON/CSV/PNG/ZIP exports preserve target misses and provenance. Optional dashboard remains deferred; no provider/paid traffic, deployment or feature-branch push. See docs/PHASE5.md.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -434,7 +434,7 @@ Status: done · Estimate: 4 active hours
 
 **Evidence:** Observed on 2026-11-19: 234 tests without skips, 1536 real raw calls audited across two exact numerical replays; 96 actual calls/trial for both methods. All nominal designs missed 0.1%; each method had 3 passes in 128 paired holdout observations, not a hardware-yield estimate. See docs/PHASE4.md and external Automatic_Acceptance/phase4-final-2026-11-19/acceptance.json.
 
-### P5: User acceptance walkthrough
+### P5: Local CLI/API and automatic install walkthrough
 
 **Window:** Weeks 9–10 · Launch path
 
@@ -442,15 +442,15 @@ Status: done · Estimate: 4 active hours
 
 **Phase dependencies:** P4
 
-**Exit gate:** Independent reviewer runs one complete example with plots, raw results and traceable configuration.
+**Exit gate:** Automatic clean-install walkthrough reproduces complete CLI and real loopback API examples with plots, raw results, traceable configuration and consistent statuses.
 
-**Gate status:** pending
+**Gate status:** passed
 
-**Gate evidence:** Not recorded
+**Gate evidence:** phase5-local-interface-v1 passed: 279 tests, fresh isolated wheel install and real installed CLI/HTTP walkthrough. 27 actual calls, 18 archived/raw-audited plus 9 JSON traces matched; target miss preserved and server/temp cleanup verified. P5-H1 superseded by P5-C4; optional P5-C3 deferred per START_CODEX.md. No human review/deployment/push approval asserted.
 
 #### P5-C1 · Codex · CLI and report export
 
-Status: todo · Estimate: 8 active hours
+Status: done · Estimate: 8 active hours
 
 **Action:** CLI accepts structured spec and produces JSON/CSV/PNG and traceable simulation log.
 
@@ -460,11 +460,11 @@ Status: todo · Estimate: 8 active hours
 
 **Depends on:** P2-C3, P4-C1
 
-**Evidence:** Not recorded
+**Evidence:** Shared bounded DesignRequest/DesignResult, new design CLI and JSON/CSV/PNG/checksummed ZIP with full raw history. Three installed examples reproduce direct simulation, grid control and a preserved target miss. Full suite 279 tests without skips. See docs/PHASE5.md.
 
 #### P5-C2 · Codex · Add minimal FastAPI service
 
-Status: todo · Estimate: 8 active hours
+Status: done · Estimate: 8 active hours
 
 **Action:** Validated endpoint with bounded compute, response schemas and safe temp cleanup.
 
@@ -474,11 +474,11 @@ Status: todo · Estimate: 8 active hours
 
 **Depends on:** P5-C1
 
-**Evidence:** Not recorded
+**Evidence:** Loopback-only FastAPI JSON/ZIP endpoints use the same engine, validate requests before compute, cap body/calls/timeout/sweep/concurrency, reject injected netlists/paths and clean temporary data. Real installed HTTP matches CLI; error/guard/concurrency/cleanup tests passed. See docs/PHASE5.md.
 
 #### P5-C3 · Codex · Engineering dashboard (optional)
 
-Status: todo · Estimate: 10 active hours
+Status: deferred · Estimate: 10 active hours · Optional
 
 **Action:** Minimal plot and comparison view after engine passes gates; keep core package usable without UI.
 
@@ -488,11 +488,11 @@ Status: todo · Estimate: 10 active hours
 
 **Depends on:** P5-C2
 
-**Evidence:** Not recorded
+**Evidence:** Explicitly optional dashboard deferred: START_CODEX.md excludes a frontend; CLI/API and PNG exports meet the inspectable scientific-result gate without unnecessary UI. No dashboard completion is claimed.
 
 #### P5-H1 · Human · User acceptance walkthrough
 
-Status: todo · Estimate: 3 active hours
+Status: deferred · Estimate: 3 active hours
 
 **Action:** Attempt clean install, complete example and review UX / interpretation.
 
@@ -502,7 +502,21 @@ Status: todo · Estimate: 3 active hours
 
 **Depends on:** P5-C1
 
-**Evidence:** Not recorded
+**Evidence:** Owner's automatic technical-review delegation replaces the install/result walkthrough with tested P5-C4. Fresh installed Python -I, real loopback HTTP and independent export checks passed. No independent human or subjective UX review is claimed.
+
+#### P5-C4 · Codex · Automatic installed CLI/API acceptance
+
+Status: done · Estimate: 5 active hours
+
+**Action:** Run all tests, build a source-byte-preserving wheel, install it in a fresh isolated environment and compare real CLI/JSON/ZIP outcomes with raw physics/integrity and cleanup checks.
+
+**Deliverable:** scripts/accept_phase5.py, scripts/walkthrough_phase5.py and machine-readable acceptance evidence.
+
+**Acceptance:** phase5-local-interface-v1 passes without skips, source-import leakage, hidden target misses, unsafe exports, leaked server/temp state or manual waiver.
+
+**Depends on:** P5-C1, P5-C2
+
+**Evidence:** Observed 2026-11-19: 279 tests without skips; fresh wheel/venv and Python -I walkthrough passed through real loopback HTTP. 27 actual calls: 18 full raw CLI/ZIP calls independently audited and 9 JSON calls matched numerically. Two passing reference examples and one target miss per interface preserved; server stopped and temp storage empty. See docs/PHASE5.md and external Automatic_Acceptance/phase5-2026-11-19/acceptance.json.
 
 ### P6: Approve API trial and spending
 
@@ -838,7 +852,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md and planning/HANDOFF.md. Owner delegated technical review to implemented automatic checks. Phase 1 remains historically owner-accepted; Phases 2/3/4 passed their own automatic gates. Current P4-C1/C2/C3: 234 tests, declared tolerance study, matched 96 calls/method/trial and 1536 real calls including exact replay; negative outcomes retained. P4-H1 is deferred/superseded, not human-approved. Next bounded tasks are P5-C1 CLI/report export then P5-C2 local FastAPI, preserving dependencies and implementing their own automatic acceptance. Do not infer remote push, paid service, deployment or PCB authorization.
+Read AGENTS.md and planning/HANDOFF.md. Phases 1-5 are accepted within their documented scopes; Phase 1 was historically owner-reviewed, later technical gates are tested automatic replacements. Current P5-C1/C2/C4 passed 279 tests and a fresh installed Python -I CLI/real HTTP walkthrough. P5-C3 optional UI and P5-H1 human walkthrough are deferred with explicit reasons/supersession. No independent human UX claim. Phase 6 remains unimplemented: advanced agents/provider traffic are still deferred, paid/provider approval P6-H1 cannot be automatically waived. Preserve roadmap dependencies and existing no-push/no-deployment/no-secrets constraints.
 ```
 
 ## Sources

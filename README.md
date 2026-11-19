@@ -8,6 +8,8 @@ Phase 3 adds 20 normalized-distinct nominal benchmark cases and three-seed compa
 
 Phase 4's tolerance-study gate passed with **234 tests and 1536 audited real calls including exact replay**. Nominal and robust methods used matched total simulation budgets and separate holdout samples. No consistent robust improvement was observed; nominal target misses and finite-sample outcomes remain reported in [docs/PHASE4.md](docs/PHASE4.md).
 
+Phase 5 adds a shared typed `design` command and a bounded loopback FastAPI service. Its automatic gate passed with **279 tests and a fresh isolated package install**, followed by **27 real CLI/HTTP calls** (18 raw CLI/ZIP calls audited and nine JSON traces matched). The same request exports JSON/CSV/PNG, raw call history and a checksum-linked ZIP. See [docs/PHASE5.md](docs/PHASE5.md) for setup, HTTP examples, statuses and limits. The optional dashboard remains deferred.
+
 ## Acceptance without manual review
 
 After installing the project with its test extra and configuring ngspice, run from project root:
@@ -16,6 +18,7 @@ After installing the project with its test extra and configuring ngspice, run fr
 python scripts/accept_phase2.py --output /new/writable/absolute/path
 python scripts/accept_phase3.py --output /another/new/writable/absolute/path
 python scripts/accept_phase4.py --output /new/tolerance-acceptance/path
+python scripts/accept_phase5.py --output /new/installed-cli-api-acceptance/path
 ```
 
 The command runs all tests, refuses skipped/failed tests, executes a fresh bounded comparison and recomputes physics/metrics/accounting from every raw response. acceptance.json records passed or blocked with reasons. A pass is automatic technical acceptance; target misses remain failures in the design-success counts. Missing or inconsistent evidence is repaired and rerun rather than waived manually. See [docs/AUTOMATIC_ACCEPTANCE.md](docs/AUTOMATIC_ACCEPTANCE.md). Remote pushes and paid/deployment actions retain their separate authorization requirements.
@@ -23,6 +26,15 @@ The command runs all tests, refuses skipped/failed tests, executes a fresh bound
 The Phase 3 command uses the versioned 20-case benchmark, seeds 7/42/2026 and 12 calls per method on free domains. It executes the experiment twice and checks exact candidate/metric replay along with the raw physics evidence. Fixed domains use one call; four expected infeasible tasks are rejected before simulation. See [docs/PHASE3.md](docs/PHASE3.md) for configuration, result interpretation and limits. To produce a single dataset, use `python scripts/run_benchmark.py --output /new/benchmark/path`.
 
 Phase 4 adds declared independent uniform component tolerances, matched-call nominal/robust random-search comparison and fresh holdout samples. Use `python scripts/compare_robustness.py --output /new/tolerance-study/path` for one dataset and PNG, or the acceptance command for full tests and independent replay. The `test` extra includes the plotting dependency; `report` installs it separately for reporting without pytest. See [docs/PHASE4.md](docs/PHASE4.md) for the frozen experiment and limitations. Nominal target success and empirical tolerance pass rate are separate measurements.
+
+For the new shared interface after installation:
+
+```text
+python -m circuforge design --request examples/design-lowpass.json --output runs/design
+python -m circuforge.api --port 8765
+```
+
+Install `.[api,test]` for API development/acceptance; `.[api]` provides the service and `.[report]` provides CLI plots without the API/test tools. The service binds only 127.0.0.1, accepts JSON at `/v1/designs` and downloads complete evidence at `/v1/designs/export`. It rejects request-supplied netlists/paths, browser origins, excessive compute and concurrent designs; temporary data is removed after each response. A completed target miss remains `status=target_missed`, HTTP 200 and CLI exit 1. Use examples/design-target-miss.json to reproduce it. This is a local research service, with no deployment or account needed.
 
 ## Windows setup (Python 3.11+)
 
@@ -108,7 +120,7 @@ Target feasibility includes the selected relative-error tolerance. A target is r
 
 Canonical plans: `planning/context.json`, `planning/phase-tasks.json`. Regenerate HTML/Markdown/JSON/CSV using `python planning/render_plan.py`. Browser overrides remain local and require export for sharing. Source: `src/circuforge`; tests: `tests/unit`, `tests/integration`.
 
-No frontend, API, advanced agents, PCB automation, paid service or deployment has been started.
+The local API is available. Frontend, advanced agents, PCB automation, paid/provider traffic and external deployment remain deferred.
 
 ## Version control
 

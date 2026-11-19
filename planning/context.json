@@ -2,7 +2,7 @@
   "title": "CircuForge · Wave2Circuit Research Edition",
   "version": "2.0.0",
   "date": "2026-11-19",
-  "purpose": "Automatic technical acceptance passed through Phase 4: 234 tests, declared independent uniform R/C tolerances, matched nominal/robust budgets and 1536 audited real calls including exact numerical replay. Nominal target misses and finite-sample holdout outcomes are preserved; no general robust improvement or hardware guarantee is claimed. Phase 5 onward remains unimplemented. See docs/PHASE4.md.",
+  "purpose": "Automatic acceptance passed through Phase 5: 279 tests and a fresh installed wheel running isolated CLI and real loopback HTTP. 27 actual walkthrough calls: 18 raw CLI/ZIP calls audited plus 9 JSON traces matched. Shared typed JSON/CSV/PNG/ZIP exports preserve target misses and provenance. Optional dashboard remains deferred; no provider/paid traffic, deployment or feature-branch push. See docs/PHASE5.md.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
   "vision": "Given a validated filter specification, synthesize constrained analog circuit candidates, simulate them using real ngspice runs, optimize component values, quantify tolerance robustness, and report reproducible evidence. AI is an optional, benchmarked proposal mechanism—not the source of numerical truth.",
   "schedule": "Provisional 12-week two-person, part-time plan (roughly 12–15 team hours per person weekly). Phase gates and actual test evidence take precedence over dates. An MVP may take longer depending on simulator setup.",
@@ -220,7 +220,7 @@
     }
   ],
   "planningHome": "Maintain canonical context.json, phase-tasks.json, generated roadmap files and progress evidence in Git. Use task IDs in commits and GitHub Issues if desired.",
-  "handoff": "Read AGENTS.md and planning/HANDOFF.md. Owner delegated technical review to implemented automatic checks. Phase 1 remains historically owner-accepted; Phases 2/3/4 passed their own automatic gates. Current P4-C1/C2/C3: 234 tests, declared tolerance study, matched 96 calls/method/trial and 1536 real calls including exact replay; negative outcomes retained. P4-H1 is deferred/superseded, not human-approved. Next bounded tasks are P5-C1 CLI/report export then P5-C2 local FastAPI, preserving dependencies and implementing their own automatic acceptance. Do not infer remote push, paid service, deployment or PCB authorization.",
+  "handoff": "Read AGENTS.md and planning/HANDOFF.md. Phases 1-5 are accepted within their documented scopes; Phase 1 was historically owner-reviewed, later technical gates are tested automatic replacements. Current P5-C1/C2/C4 passed 279 tests and a fresh installed Python -I CLI/real HTTP walkthrough. P5-C3 optional UI and P5-H1 human walkthrough are deferred with explicit reasons/supersession. No independent human UX claim. Phase 6 remains unimplemented: advanced agents/provider traffic are still deferred, paid/provider approval P6-H1 cannot be automatically waived. Preserve roadmap dependencies and existing no-push/no-deployment/no-secrets constraints.",
   "sources": [
     {
       "id": "ngspice",

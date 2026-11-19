@@ -24,6 +24,9 @@ def main(argv=None) -> int:
     parser.add_argument("--ngspice", help="trusted local executable path (also CIRCUFORGE_NGSPICE)")
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("preflight", help="check actual simulator availability and version")
+    design = sub.add_parser("design", help="shared typed design with JSON/CSV/PNG, raw history and ZIP export")
+    design.add_argument("--request", type=Path, required=True, help="bounded structured design request JSON")
+    design.add_argument("--output", type=Path, required=True, help="new artifact directory")
     sim = sub.add_parser("simulate", help="run an ideal unloaded RC sweep")
     sim.add_argument("--search", action="store_true", help="bounded deterministic R/C search for the spec target")
     sim.add_argument("--spec", type=Path, default=Path("examples/lowpass.json"))
@@ -42,6 +45,15 @@ def main(argv=None) -> int:
         if args.command == "preflight":
             print(json.dumps({"status": "available", **asdict(preflight(args.ngspice))}, indent=2))
             return 0
+        if args.command == "design":
+            from circuforge.application import load_request, run_design
+
+            request = load_request(args.request)
+            if args.output.exists():
+                raise FileExistsError(f"output must be a new directory: {args.output}")
+            result = run_design(request, Ngspice(args.ngspice), args.output)
+            print(result.model_dump_json(indent=2))
+            return 0 if result.status == "passed" else 1 if result.status == "target_missed" else 2
         if args.command in {"optimize", "compare"}:
             from circuforge.optimization.baselines import Options, compare, run_baseline
 
@@ -131,6 +143,6 @@ def main(argv=None) -> int:
             (args.output / "failure.json").write_text(json.dumps(error, indent=2) + "\n", encoding="utf-8")
         print(json.dumps(error, indent=2), file=sys.stderr)
         return 2
-    except (ValueError, OSError) as exc:
+    except (ValueError, OSError, ImportError) as exc:
         print(json.dumps({"status": "invalid_input_or_artifact", "error": str(exc)}), file=sys.stderr)
         return 2

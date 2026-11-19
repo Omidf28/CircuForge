@@ -383,10 +383,10 @@
     {
       "id": "P5",
       "number": 5,
-      "title": "User acceptance walkthrough",
+      "title": "Local CLI/API and automatic install walkthrough",
       "window": "Weeks 9–10",
       "outcome": "CLI/API and optional UI make verified results inspectable.",
-      "gate": "Independent reviewer runs one complete example with plots, raw results and traceable configuration.",
+      "gate": "Automatic clean-install walkthrough reproduces complete CLI and real loopback API examples with plots, raw results, traceable configuration and consistent statuses.",
       "dependsOn": [
         "P4"
       ],
@@ -404,7 +404,8 @@
             "P2-C3",
             "P4-C1"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Shared bounded DesignRequest/DesignResult, new design CLI and JSON/CSV/PNG/checksummed ZIP with full raw history. Three installed examples reproduce direct simulation, grid control and a preserved target miss. Full suite 279 tests without skips. See docs/PHASE5.md."
         },
         {
           "id": "P5-C2",
@@ -417,7 +418,8 @@
           "dependsOn": [
             "P5-C1"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "Loopback-only FastAPI JSON/ZIP endpoints use the same engine, validate requests before compute, cap body/calls/timeout/sweep/concurrency, reject injected netlists/paths and clean temporary data. Real installed HTTP matches CLI; error/guard/concurrency/cleanup tests passed. See docs/PHASE5.md."
         },
         {
           "id": "P5-C3",
@@ -430,7 +432,9 @@
           "dependsOn": [
             "P5-C2"
           ],
-          "status": "todo"
+          "status": "deferred",
+          "optional": true,
+          "evidence": "Explicitly optional dashboard deferred: START_CODEX.md excludes a frontend; CLI/API and PNG exports meet the inspectable scientific-result gate without unnecessary UI. No dashboard completion is claimed."
         },
         {
           "id": "P5-H1",
@@ -443,9 +447,29 @@
           "dependsOn": [
             "P5-C1"
           ],
-          "status": "todo"
+          "status": "deferred",
+          "supersededBy": "P5-C4",
+          "evidence": "Owner's automatic technical-review delegation replaces the install/result walkthrough with tested P5-C4. Fresh installed Python -I, real loopback HTTP and independent export checks passed. No independent human or subjective UX review is claimed."
+        },
+        {
+          "id": "P5-C4",
+          "owner": "Codex",
+          "title": "Automatic installed CLI/API acceptance",
+          "action": "Run all tests, build a source-byte-preserving wheel, install it in a fresh isolated environment and compare real CLI/JSON/ZIP outcomes with raw physics/integrity and cleanup checks.",
+          "deliverable": "scripts/accept_phase5.py, scripts/walkthrough_phase5.py and machine-readable acceptance evidence.",
+          "acceptance": "phase5-local-interface-v1 passes without skips, source-import leakage, hidden target misses, unsafe exports, leaked server/temp state or manual waiver.",
+          "effort": 5,
+          "dependsOn": [
+            "P5-C1",
+            "P5-C2"
+          ],
+          "status": "done",
+          "evidence": "Observed 2026-11-19: 279 tests without skips; fresh wheel/venv and Python -I walkthrough passed through real loopback HTTP. 27 actual calls: 18 full raw CLI/ZIP calls independently audited and 9 JSON calls matched numerically. Two passing reference examples and one target miss per interface preserved; server stopped and temp storage empty. See docs/PHASE5.md and external Automatic_Acceptance/phase5-2026-11-19/acceptance.json."
         }
-      ]
+      ],
+      "gateStatus": "passed",
+      "acceptanceMode": "automated",
+      "gateEvidence": "phase5-local-interface-v1 passed: 279 tests, fresh isolated wheel install and real installed CLI/HTTP walkthrough. 27 actual calls, 18 archived/raw-audited plus 9 JSON traces matched; target miss preserved and server/temp cleanup verified. P5-H1 superseded by P5-C4; optional P5-C3 deferred per START_CODEX.md. No human review/deployment/push approval asserted."
     },
     {
       "id": "P6",

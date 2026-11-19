@@ -1,11 +1,14 @@
 # Initial architecture and interface contracts
 
-Implementation update (2026-11-19): domain, synthesis, simulation, CLI, first-slice bisection and Phase 2 classical baselines are implemented and tested. optimization/base.py owns constraint/measurement/reference/target evaluation and budgets; optimization/baselines.py owns seeded random/grid/SciPy. evaluation/records.py exports genuine responses and environment fingerprints. See docs/DEVELOPMENT.md and docs/PHASE2.md. Product/API layers remain deferred.
+Implementation update (2026-11-19): domain, synthesis, simulation, CLI, bisection, classical baselines and tolerance experiments are implemented and tested. Phase 5 adds shared typed application contracts, JSON/CSV/PNG/ZIP export and a bounded local FastAPI service. optimization/base.py owns constraint/measurement/reference/target evaluation and budgets; optimization/baselines.py owns seeded random/grid/SciPy. evaluation/records.py exports genuine responses and environment fingerprints. See docs/PHASE2.md through docs/PHASE5.md. The optional frontend remains deferred.
 
 ## Candidate directories (create during implementation)
 
 ```text
 src/circuforge/
+  contracts.py           # bounded shared CLI/API request/result/waveform schemas
+  application.py         # measured design and traceable export use case
+  api.py                 # loopback-only FastAPI, bounded requests/work and temp cleanup
   domain/specs.py         # Pydantic specs, units, validity
   domain/tolerance.py     # typed independent multiplicative errors and RNG streams
   synthesis/rc.py        # trusted topology templates -> netlist
@@ -20,6 +23,7 @@ src/circuforge/
   evaluation/statistics.py # empirical quantiles/pass rates; failures block statistics
   evaluation/robust_acceptance.py # sampling, raw-physics, objective, holdout and replay audit
   evaluation/robust_plot.py # optional Matplotlib scientific artifact
+  evaluation/design_acceptance.py # raw exports, ZIP integrity, interface/install audit
   cli.py                 # command-line demo
  tests/{unit,integration}/
  examples/
@@ -52,4 +56,6 @@ Record exact simulator commands, package/environment versions and reproducible f
 
 Phase 3 adds a versioned bounded manifest and experiment/replay harness; see docs/PHASE3.md. DesignInputs validates supported, well-formed electrical requests before DesignSpec checks achievable target feasibility. This allows intentionally infeasible benchmark constraints without bypassing safety validation. All simulated candidates still require DesignSpec and the existing trusted adapter. The shared audit_run checker verifies every method's raw data, independently of benchmark summary generation. scripts/accept_phase3.py combines full tests, two fresh runs and exact numerical replay; target misses and expected pre-simulation rejections remain separate outcomes.
 
-Phase 4 reuses Evaluator for every nominal and perturbed measurement. Original nominal bounds remain the optimizer contract; a typed expanded simulation spec represents permitted tolerance realizations and preserves topology, target/error policy, source/load and simulator guardrails. Independent RNG streams separate proposals, shared training factors and fresh holdout factors. The measured nominal objective and tolerance penalty use actual SPICE cutoff errors. Raw audit_evaluation is shared by the historical baseline and new tolerance checkers; Phase 4 additionally reconstructs all perturbations, call partitions, selection and holdout statistics. Full tests and source fingerprints tie acceptance to the executed code. See docs/PHASE4.md; API/UI remain deferred.
+Phase 4 reuses Evaluator for every nominal and perturbed measurement. Original nominal bounds remain the optimizer contract; a typed expanded simulation spec represents permitted tolerance realizations and preserves topology, target/error policy, source/load and simulator guardrails. Independent RNG streams separate proposals, shared training factors and fresh holdout factors. The measured nominal objective and tolerance penalty use actual SPICE cutoff errors. Raw audit_evaluation is shared by the historical baseline and new tolerance checkers; Phase 4 additionally reconstructs all perturbations, call partitions, selection and holdout statistics. Full tests and source fingerprints tie acceptance to the executed code. See docs/PHASE4.md.
+
+Phase 5 keeps CLI and HTTP as adapters around application.run_design. Requests cannot supply netlists, executable names or artifact paths; the CLI's output path and API's trusted startup settings are separate from the electrical request. The service validates before simulator construction, rejects overlapping heavy jobs with a process-local semaphore, and materializes JSON/ZIP inside a private TemporaryDirectory before cleanup. ASGI guards cap body bytes/deadline and restrict local callers/hosts/origins. Numerical states distinguish pass, target miss and simulation failure. The acceptance command builds a wheel, installs it in a fresh environment and exercises isolated CLI plus real loopback HTTP, preserving raw data and package provenance. See docs/PHASE5.md.

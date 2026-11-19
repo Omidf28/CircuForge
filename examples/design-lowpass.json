@@ -1,0 +1,10 @@
+{
+  "spec": {
+    "filter_type": "rc_lowpass", "cutoff_hz": 1591.5494,
+    "resistance_ohm": {"minimum": 100.0, "maximum": 10000.0},
+    "capacitance_f": {"minimum": 1e-8, "maximum": 1e-6},
+    "max_evaluations": 4, "timeout_s": 2.0
+  },
+  "method": "simulate",
+  "candidate": {"topology": "rc_lowpass", "resistance_ohm": 1000.0, "capacitance_f": 1e-7}
+}

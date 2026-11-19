@@ -1,5 +1,24 @@
 # Local implementation evidence
 
+## Phase 5 automatic installed CLI/API acceptance — 2026-11-19
+
+Implemented shared bounded DesignRequest/DesignResult/Waveform contracts, a measured application use case, design CLI and local FastAPI JSON/ZIP endpoints with raw evidence, plots, checksum manifests, body/compute/concurrency limits and temporary cleanup. Optional API/test dependencies were installed from official PyPI. Existing commands and numerical experiments remain unchanged. The optional frontend is deferred per START_CODEX.md.
+
+Executed from the active checkout (PowerShell) with local socket permission:
+
+```powershell
+$artifactRoot = 'C:/Users/Home/.codex/visualizations/2026/11/18/01a1ee7a-3b9d-7eb0-9f38-c053c726b534'
+$env:PYTHONPATH = 'src'
+$env:PYTEST_DISABLE_PLUGIN_AUTOLOAD = '1'
+$env:CIRCUFORGE_NGSPICE = "$artifactRoot/CircuForge/.tools/Spice64/bin/ngspice_con.exe"
+$env:MPLCONFIGDIR = "$artifactRoot/Automatic_Acceptance/matplotlib-cache"
+& "$artifactRoot/Phase1_Verification/.venv/Scripts/python.exe" scripts/accept_phase5.py --output "$artifactRoot/Automatic_Acceptance/phase5-2026-11-19" --ngspice $env:CIRCUFORGE_NGSPICE
+```
+
+Observed exit 0, **279 tests without skips**, fresh source-byte-preserving wheel and independent virtual environment installation under output/installed. The gate removed PYTHONPATH for build/install/walkthrough and invoked the installed package using Python -I. Real loopback Uvicorn/HTTP and CLI agreed across three examples: **27 actual calls**, **18 full raw CLI/ZIP calls independently audited**, **nine JSON calls matched by numerical traces**. Two passing reference/smoke examples and one deliberate four-call target miss per interface were retained. Server shutdown and empty temporary storage were verified. The PNG was visually inspected. Exact build/install/test/walkthrough arguments, constraints, versions, wheel/source hashes and outputs are preserved in acceptance.json and adjacent logs/artifacts; details are in docs/PHASE5.md.
+
+Focused runs before the final command: 25 initial boundary tests, seven initial real-export checks, then 43 extended tests. The sandbox initially stalled Windows asyncio in its internal socketpair before dispatching a request; a faulthandler traceback identified the environment restriction. Those test processes were stopped and the same tests passed with local loopback tool permission. No fabricated pass, altered electrical threshold or manual technical waiver. No deployment, provider/LLM traffic, advanced agent, PCB work or feature-branch push.
+
 ## Phase 4 automatic acceptance — 2026-11-19
 
 Implemented typed independent uniform component-error sampling, explicit perturbed simulation envelopes, measured nominal/robust objectives, separate holdout samples, empirical quantiles/pass rates and a raw-data/replay checker. Matplotlib is optional for core use and declared in report/test extras for experiment plots. The shared raw evaluation audit still passes all historical baseline integrations. Prespecified model/configuration and outcomes are in docs/PHASE4.md.

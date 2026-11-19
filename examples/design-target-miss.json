@@ -1,0 +1,9 @@
+{
+  "spec": {
+    "filter_type": "rc_highpass", "cutoff_hz": 2300.0,
+    "resistance_ohm": {"minimum": 100.0, "maximum": 1000.0},
+    "capacitance_f": {"minimum": 1e-7, "maximum": 1e-6},
+    "max_evaluations": 4, "timeout_s": 2.0
+  },
+  "method": "grid", "seed": 42
+}
