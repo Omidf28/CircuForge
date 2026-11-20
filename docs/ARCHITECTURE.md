@@ -7,6 +7,7 @@ Implementation update (2026-11-19): domain, synthesis, simulation, CLI, bisectio
 ```text
 src/circuforge/
   contracts.py           # bounded shared CLI/API request/result/waveform schemas
+  proposals.py           # isolated offline provider contract, validation and quota ledger
   application.py         # measured design and traceable export use case
   api.py                 # loopback-only FastAPI, bounded requests/work and temp cleanup
   domain/specs.py         # Pydantic specs, units, validity

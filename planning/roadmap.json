@@ -1,8 +1,8 @@
 {
   "title": "CircuForge · Wave2Circuit Research Edition",
   "version": "2.0.0",
-  "date": "2026-11-19",
-  "purpose": "Automatic acceptance passed through Phase 5: 279 tests and a fresh installed wheel running isolated CLI and real loopback HTTP. 27 actual walkthrough calls: 18 raw CLI/ZIP calls audited plus 9 JSON traces matched. Shared typed JSON/CSV/PNG/ZIP exports preserve target misses and provenance. Optional dashboard remains deferred; no provider/paid traffic, deployment or feature-branch push. See docs/PHASE5.md.",
+  "date": "2026-11-20",
+  "purpose": "Phases 1-5 remain accepted in their documented scopes. P6-C1 offline proposal contract passed its automatic task gate: 319 tests without skips and 4 fresh audited real SPICE calls from fixed local fixtures. Request/token/cost/rate limits and strict candidate validation are implemented without a network adapter. P6-C2 is unrun pending P6-H1 authorization; the Phase 6 gate is not passed. No real model/provider traffic, spending, deployment or feature-branch push. See docs/PHASE6.md.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
   "vision": "Given a validated filter specification, synthesize constrained analog circuit candidates, simulate them using real ngspice runs, optimize component values, quantify tolerance robustness, and report reproducible evidence. AI is an optional, benchmarked proposal mechanism—not the source of numerical truth.",
   "schedule": "Provisional 12-week two-person, part-time plan (roughly 12–15 team hours per person weekly). Phase gates and actual test evidence take precedence over dates. An MVP may take longer depending on simulator setup.",
@@ -220,7 +220,7 @@
     }
   ],
   "planningHome": "Maintain canonical context.json, phase-tasks.json, generated roadmap files and progress evidence in Git. Use task IDs in commits and GitHub Issues if desired.",
-  "handoff": "Read AGENTS.md and planning/HANDOFF.md. Phases 1-5 are accepted within their documented scopes; Phase 1 was historically owner-reviewed, later technical gates are tested automatic replacements. Current P5-C1/C2/C4 passed 279 tests and a fresh installed Python -I CLI/real HTTP walkthrough. P5-C3 optional UI and P5-H1 human walkthrough are deferred with explicit reasons/supersession. No independent human UX claim. Phase 6 remains unimplemented: advanced agents/provider traffic are still deferred, paid/provider approval P6-H1 cannot be automatically waived. Preserve roadmap dependencies and existing no-push/no-deployment/no-secrets constraints.",
+  "handoff": "Read AGENTS.md and planning/HANDOFF.md. Phases 1-5 remain accepted with historical evidence; current full suite is 319 passing tests. P6-C1 alone is implemented and automatically accepted: isolated offline provider contract, strict candidate JSON, token/cost reservations, failure/overrun accounting and 4 raw-audited real SPICE calls. P6-C2 is explicitly blocked on the separate P6-H1 provider/privacy/budget decision; advanced agents, real provider traffic, PCB, push and deployment remain deferred. The full Phase 6 gate has not passed. Source and Git remain on C after cancellation of project migration; ancillary execution artifacts retain their existing C-path junction to D.",
   "sources": [
     {
       "id": "ngspice",
@@ -743,7 +743,8 @@
           "dependsOn": [
             "P2-C1"
           ],
-          "status": "todo"
+          "status": "done",
+          "evidence": "P6-C1 only accepted automatically 2026-11-20 under p6-c1-offline-contract-v1: 319 tests without skips and 4 fresh raw-audited ngspice calls; 8 offline fixture requests, 2 invalid topologies rejected, 2 cached duplicates, 2 reference passes and 2 deliberate misses preserved. Strict candidate JSON, request/token/cost reservations, rate/concurrency guards and failure/overrun accounting tested. No network adapter, SDK, credentials, real model traffic or efficacy claim. See docs/PHASE6.md and external Automatic_Acceptance/p6-c1-2026-11-20/acceptance.json."
         },
         {
           "id": "P6-C2",
@@ -755,9 +756,11 @@
           "effort": 9,
           "dependsOn": [
             "P6-C1",
-            "P3-C2"
+            "P3-C2",
+            "P6-H1"
           ],
-          "status": "todo"
+          "status": "blocked",
+          "evidence": "Unrun: no real provider or spending/privacy decision approved under P6-H1. Offline smoke controls are not an LLM comparison. Added explicit P6-H1 dependency to preserve the existing authorization rule; no model efficacy or paid experiment is claimed."
         },
         {
           "id": "P6-H1",
@@ -770,9 +773,12 @@
           "dependsOn": [
             "P6-C1"
           ],
-          "status": "todo"
+          "status": "todo",
+          "evidence": "Requires a separate owner provider/privacy/budget decision; automatic technical acceptance of P6-C1 does not approve provider traffic or spending."
         }
-      ]
+      ],
+      "gateStatus": "pending",
+      "gateEvidence": "Only offline P6-C1 passed. P6-H1 is unapproved and P6-C2 remains unrun; no full Phase 6 gate acceptance or permission waiver."
     },
     {
       "id": "P7",
@@ -884,5 +890,5 @@
       ]
     }
   ],
-  "assembledDate": "2026-11-19"
+  "assembledDate": "2026-11-20"
 }

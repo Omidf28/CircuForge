@@ -72,3 +72,19 @@ The owner delegated technical review to automatic checks. P4-H1 can be supersede
 The next continuation implements P5-C1 then P5-C2 against the accepted scientific core. Both use one typed application contract and measured engine; the legacy commands and experiment results remain unchanged. HTTP is loopback-only with one active design, strict JSON/body/compute limits, trusted templates and per-request temporary cleanup. No public hosting, authentication system or persistent artifact store is introduced. Request bodies cannot select executables or filesystem paths. HTTP 200 for a completed target miss is an explicit transport/result distinction, with a target_missed status and CLI exit 1; simulation failures remain failed results.
 
 Optional P5-C3 is deferred, as START_CODEX.md excludes a frontend and CLI/API plus exported plots satisfy the phase's inspectable-result goal. P5-H1's technical clean-install/reproducibility checks are replaced by automatic P5-C4 only after the implemented checker passes. The fresh installed wheel must run under Python -I outside source import paths; actual HTTP, CLI and downloaded raw artifacts must agree. Record the 27 actual walkthrough calls separately from the 18 archived/raw-audited CLI/ZIP calls and nine JSON calls matched by numerical traces. No independent human usability review or hardware/deployment signoff is invented. Paid API/provider permissions and the deferred advanced-agent/PCB scope remain unchanged.
+
+## Offline proposal continuation — 2026-11-20
+
+After canceling project migration, the owner requested continuation of CircuForge
+on C. Implemented only the next eligible task P6-C1: an isolated offline proposal
+contract with fixture providers, strict candidate validation and bounded usage
+accounting. Automatic task policy p6-c1-offline-contract-v1 passed 319 tests
+without skips and four raw-audited genuine SPICE calls. This is not an LLM or
+equal-budget provider experiment; no model-token or actual billing measurement
+is claimed. Invalid proposals, duplicate measurements and deliberate misses
+remain visible. Model efficacy and the full Phase 6 gate are unaccepted.
+
+P6-C2 now explicitly depends on P6-H1, matching the preexisting rule requiring a
+separate owner provider/privacy/budget decision before actual experiments. No
+provider, price, credential or nonzero spending cap was selected. Advanced
+agents, frontend, PCB, deployment and feature-branch pushes remain deferred.

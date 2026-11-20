@@ -1,5 +1,45 @@
 # Local implementation evidence
 
+## P6-C1 offline contract acceptance — 2026-11-20
+
+Continued the next eligible local task on `codex/p6-offline-proposal-contract`.
+Implemented strict explicit candidate JSON, a provider-neutral synchronous
+interface, bounded request/token/cost/rate accounting, conservative unknown usage
+and fail-closed usage-overrun handling. No provider SDK/network adapter, API key,
+agent loop or comparison experiment was added. All source/Git changes remain at
+`C:/Users/Home/Documents/ChatGPT/Implement CircuForge`.
+
+Actual command from that checkout, with local socket permission for the existing
+API tests:
+
+```powershell
+$artifactRoot = 'C:/Users/Home/.codex/visualizations/2026/11/18/01a1ee7a-3b9d-7eb0-9f38-c053c726b534'
+$env:PYTHONPATH = 'src'
+$env:PYTEST_DISABLE_PLUGIN_AUTOLOAD = '1'
+$env:CIRCUFORGE_NGSPICE = "$artifactRoot/CircuForge/.tools/Spice64/bin/ngspice_con.exe"
+& "$artifactRoot/Phase1_Verification/.venv/Scripts/python.exe" scripts/accept_proposals.py --output "$artifactRoot/Automatic_Acceptance/p6-c1-2026-11-20" --ngspice $env:CIRCUFORGE_NGSPICE
+```
+
+Observed exit 0: **319 passed in 131.88 seconds**, no skips/warnings in the final
+test log, then **four raw-audited real calls**. Both topology fixtures preserved
+a reference pass and a deliberate miss, rejected invalid topology before SPICE
+and reused one duplicate measurement. Eight fixture proposals cost zero in the
+declared offline ledger; 40 synthetic fixture tokens are not actual LLM usage.
+See docs/PHASE6.md and acceptance.json for exact commands/source fingerprint.
+An earlier focused run passed 37 tests but emitted a sandbox cache-rename
+warning; the final complete command disables the optional pytest cache provider.
+The 40 new tests cover malformed/injected/ambiguous candidates, unknown usage,
+exact/exhausted quotas, interruptions, overruns, rate and reentrancy, plus missing
+simulator and preserved existing evidence. P6-C2 remains unrun awaiting P6-H1;
+no efficacy, paid billing, deployment or full Phase 6 acceptance is claimed.
+
+Regenerated canonical planning outputs with `python planning/render_plan.py
+--output-dir <artifactRoot>/Automatic_Acceptance/p6-c1-plan-2026-11-20` and
+synchronized the generated text back to the source tree through the file-edit
+tool, preserving checkout newline handling because of the existing Documents
+write restriction. Nine phases and 35
+tasks passed dependency validation; P6-C2 now explicitly depends on P6-H1.
+
 ## Phase 5 automatic installed CLI/API acceptance — 2026-11-19
 
 Implemented shared bounded DesignRequest/DesignResult/Waveform contracts, a measured application use case, design CLI and local FastAPI JSON/ZIP endpoints with raw evidence, plots, checksum manifests, body/compute/concurrency limits and temporary cleanup. Optional API/test dependencies were installed from official PyPI. Existing commands and numerical experiments remain unchanged. The optional frontend is deferred per START_CODEX.md.

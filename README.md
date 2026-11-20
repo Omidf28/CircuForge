@@ -10,6 +10,12 @@ Phase 4's tolerance-study gate passed with **234 tests and 1536 audited real cal
 
 Phase 5 adds a shared typed `design` command and a bounded loopback FastAPI service. Its automatic gate passed with **279 tests and a fresh isolated package install**, followed by **27 real CLI/HTTP calls** (18 raw CLI/ZIP calls audited and nine JSON traces matched). The same request exports JSON/CSV/PNG, raw call history and a checksum-linked ZIP. See [docs/PHASE5.md](docs/PHASE5.md) for setup, HTTP examples, statuses and limits. The optional dashboard remains deferred.
 
+P6-C1 adds the offline proposal contract and conservative usage accounting. Its
+task acceptance passed with **319 tests without skips and four freshly audited
+real ngspice calls** from fixed local fixtures. Real LLM comparisons remain unrun
+pending P6-H1 authorization; the full Phase 6 gate is still pending. See
+[docs/PHASE6.md](docs/PHASE6.md).
+
 ## Acceptance without manual review
 
 After installing the project with its test extra and configuring ngspice, run from project root:
@@ -120,7 +126,12 @@ Target feasibility includes the selected relative-error tolerance. A target is r
 
 Canonical plans: `planning/context.json`, `planning/phase-tasks.json`. Regenerate HTML/Markdown/JSON/CSV using `python planning/render_plan.py`. Browser overrides remain local and require export for sharing. Source: `src/circuforge`; tests: `tests/unit`, `tests/integration`.
 
-The local API is available. Frontend, advanced agents, PCB automation, paid/provider traffic and external deployment remain deferred.
+The local API is available. P6-C1 adds an isolated offline proposal contract with
+strict candidate validation and request/token/cost accounting; reproduce its task
+checks with `python scripts/accept_proposals.py --output /new/writable/path`.
+See [docs/PHASE6.md](docs/PHASE6.md). Real model comparisons remain unrun pending
+P6-H1. Frontend, advanced agents, PCB automation, paid/provider traffic and
+external deployment remain deferred.
 
 ## Version control
 
