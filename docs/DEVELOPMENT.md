@@ -1,5 +1,55 @@
 # Local implementation evidence
 
+## Approved local Llama 3 trial — 2026-11-20
+
+P6-H1's explicit local-only approval followed the read-only inventory/proposal in
+commit a4808d4. On codex/p6-local-ollama-trial, implemented the optional fixed
+loopback adapter, persistent shared experiment budget, bounded controller and
+read-only audit. Standard design CLI/API and numerical algorithms remain intact.
+The first model output violated the declared C bounds. The initial controller's
+stop-on-invalid-pilot condition was corrected: preserve the negative observation
+and continue the same window, without changing prompts/specs/tolerance or
+resetting counters. Five conservative seconds were added during original-start
+reconstruction; both source epochs and the failed initial result remain archived.
+
+Commands actually run from the C source checkout (with trusted ngspice and the
+same artifactRoot/interpreter variables as the following P6-C1 section):
+
+```powershell
+$run = "$artifactRoot/Automatic_Acceptance/local-llama3-trial-2026-11-20"
+& "$artifactRoot/Phase1_Verification/.venv/Scripts/python.exe" scripts/run_local_trial.py --policy examples/local-proposal-trial-v1.json --output $run --ngspice $env:CIRCUFORGE_NGSPICE
+& "$artifactRoot/Phase1_Verification/.venv/Scripts/python.exe" scripts/run_local_trial.py --policy examples/local-proposal-trial-v1.json --output $run --ngspice $env:CIRCUFORGE_NGSPICE --continue-rejected-pilot
+& "$artifactRoot/Phase1_Verification/.venv/Scripts/python.exe" scripts/audit_local_trial.py --input $run
+```
+
+The initial run exited 1 after one invalid proposal/no SPICE. The explicit
+continuation exited 1 when the original client window ended: **7 requests,
+16128 reserved tokens, 764 known reported tokens plus one unknown-usage timeout,
+15 real SPICE attempts**, zero provider cost. Final read-only audit exits 1 with
+integrity passed/comparison blocked_incomplete. Runtime had audited 13 calls;
+the independent read-only pass audited all 15. No extra simulation was used to
+manufacture an audit pass. Actual counts were 4/4/4/2 for the one entered
+low-pass/seed7 comparison, plus one high-pass pilot call; all targets missed.
+Other comparison trials/replay were unrun. See docs/PHASE6_LOCAL_RESULTS.md.
+
+The final verification command was `python -m pytest -q -ra -p no:cacheprovider
+tests/unit --junitxml <artifactRoot>/Automatic_Acceptance/local-trial-unit-release-2026-11-20.xml`,
+with PYTHONPATH=src, PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 and existing MPLCONFIGDIR.
+Actual stdout was captured alongside that XML via Tee-Object: **289 passed in
+9.90 seconds**. It made no real model or ngspice calls. Earlier focused 58/59/22
+runs were controlled mock-HTTP/unit checks, not additional live model usage.
+The prior full suite remains historical 319 passed for P6-C1; no fresh full-suite
+or Phase 6 acceptance is claimed. Afterward only GET /api/ps was queried; no models
+were loaded. Closed-allowance CLI tests reject before simulator/output creation.
+No actual inference was repeated after the deadline.
+
+Exact execution source snapshot/fingerprint, both code epochs, approved policy,
+raw requests/responses, ledger, physical traces, result.json/audit.json and final
+model status are preserved under $run. The current source allowance is closed;
+these historical commands are not permission to rerun it. Source/Git remain on C;
+ancillary execution artifacts still use the preexisting C-path junction to D.
+No paid/cloud call, download, push, deployment or advanced tool agent was added.
+
 ## P6-C1 offline contract acceptance — 2026-11-20
 
 Continued the next eligible local task on `codex/p6-offline-proposal-contract`.

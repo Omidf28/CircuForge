@@ -88,3 +88,22 @@ P6-C2 now explicitly depends on P6-H1, matching the preexisting rule requiring a
 separate owner provider/privacy/budget decision before actual experiments. No
 provider, price, credential or nonzero spending cap was selected. Advanced
 agents, frontend, PCB, deployment and feature-branch pushes remain deferred.
+
+## Explicit local-model decision and observed partial trial — 2026-11-20
+
+For P6-H1 the owner answered «تأیید آزمایش فقط محلی با همین سقف‌ها» after being
+shown the installed llama3 proposal: zero provider expenditure, <=32 requests,
+10 minutes, <=80 SPICE attempts and two CPU threads, without downloads or sending
+personal files outside the machine. The detailed proposal reserves at most 73728
+tokens and disables GPU layers/cloud/proxies/redirects. This is actual limited
+owner permission, not a delegated technical-review waiver or paid-provider consent.
+
+The resulting one-window trial ended with seven model requests and 15 real
+SPICE attempts. An invalid pilot was retained across one documented orchestration
+correction/continuation; the original counters and deadline were not restarted.
+Inputs, prompts, thresholds and seeds were unchanged; source epochs are recorded.
+Final raw/usage integrity passed, but zero matched-call comparisons completed and
+no target pass or efficacy conclusion is claimed. The spent allowance is closed
+in the source configuration; another run requires a renewed resource decision.
+P6-H1 is done for its actual decision; P6-C2 and the Phase 6 gate remain blocked.
+See docs/PHASE6_LOCAL_RESULTS.md for exact outcomes and verification limits.

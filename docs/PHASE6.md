@@ -1,10 +1,12 @@
 # Phase 6: offline proposal contract (P6-C1)
 
-Only the provider-neutral interface is implemented. It contains no provider SDK,
-network transport, credentials, agent loop or paid traffic. P6-C2's comparative
-model experiment is unrun and needs the separate P6-H1 provider/budget decision.
-The phase gate is not passed by this task's acceptance. The existing design CLI,
-API, baselines, physics thresholds and SPICE budgets remain unchanged.
+The first accepted slice was the provider-neutral offline interface. Subsequently
+the owner approved a bounded zero-spend local Ollama trial under P6-H1. Its opt-in
+adapter/runner now exist, with no provider SDK, credentials, cloud transport or
+agent loop. The trial stopped at its original deadline: seven model requests,
+15 raw-audited SPICE calls and no complete equal-budget comparison. P6-C2 and the
+Phase 6 gate remain blocked. See [local results](PHASE6_LOCAL_RESULTS.md). Existing
+basic design CLI/API, baselines and physics thresholds remain unchanged.
 
 ## Contract and boundaries
 
@@ -13,8 +15,10 @@ API, baselines, physics thresholds and SPICE budgets remain unchanged.
 Python adapter and supplies a validated design spec, seed, token reservation,
 declared prices and session limits. This is an extension interface, not an OS or
 network sandbox: arbitrary Python adapters must be trusted. A real adapter needs
-its own transport deadlines, actual tokenization, provider permissions and price
-policy before use; this task does not provide or authorize one.
+its own transport deadlines, usage policy, provider permissions and price policy
+before use. The separately approved local adapter now enforces fixed loopback,
+digest checks, bounded response bytes, requested CPU settings and total client
+deadlines. It uses Ollama-reported token counts, not independent tokenization.
 
 Each reply contains candidate JSON and adapter-supplied token usage. The JSON
 must explicitly include topology, resistance in ohms and capacitance in farads.
@@ -103,8 +107,8 @@ It retains tests.xml/tests.log, acceptance.json and both raw per-topology traces
 Package source fingerprint:
 `8f6a80088cc9520fe00488023acb0f0acea264936b8f4a5fb25bfdc7ffc97550`.
 
-Only P6-C1 is marked done. P6-H1 remains an explicit permission decision and is
-now a dependency of blocked/unrun P6-C2. The Phase 6 gate remains pending. Project
+P6-C1 and the explicit local-only P6-H1 decision are done. P6-C2 is blocked after
+the partial deadline-limited trial; its comparison gate did not pass. Project
 source/Git stay on C; project migration was canceled. Ancillary artifacts retain
 the preexisting C-path junction to D; they were not deleted or relocated during
 this coding task.

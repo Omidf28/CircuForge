@@ -511,7 +511,7 @@
             "P6-H1"
           ],
           "status": "blocked",
-          "evidence": "Unrun: no real provider or spending/privacy decision approved under P6-H1. Offline smoke controls are not an LLM comparison. Added explicit P6-H1 dependency to preserve the existing authorization rule; no model efficacy or paid experiment is claimed."
+          "evidence": "Observed 2026-11-20: approved local trial ended at its retained 600-second client deadline after 7 model requests and 15 real SPICE attempts. All 15 raw calls plus proposal/usage accounting passed read-only integrity audit, but zero equal-budget comparisons completed: low-pass/seed7 random/grid/SciPy used 4 calls each, local model 2; other trials/replay unrun. Three invalid proposals, three accepted proposals, one unknown-usage timeout; no target passes or efficacy claim. P6-C2/full Phase 6 acceptance remains blocked; allowance closed. See docs/PHASE6_LOCAL_RESULTS.md and external local-llama3-trial-2026-11-20/audit.json."
         },
         {
           "id": "P6-H1",
@@ -524,12 +524,13 @@
           "dependsOn": [
             "P6-C1"
           ],
-          "status": "todo",
-          "evidence": "Requires a separate owner provider/privacy/budget decision; automatic technical acceptance of P6-C1 does not approve provider traffic or spending."
+          "status": "done",
+          "evidence": "Explicit owner response 2026-11-20: تأیید آزمایش فقط محلی با همین سقف‌ها. Approved only installed local llama3, zero provider expenditure, <=32 requests, <=73728 reserved tokens, 10 minutes, 80 SPICE attempts and two CPU threads. The single execution window has ended and is closed in source configuration. No cloud/spending/download/personal-file transmission/push/deployment permission; further execution needs a renewed resource decision. See docs/PHASE6_LOCAL_TRIAL.md and docs/PHASE6_LOCAL_RESULTS.md."
         }
       ],
-      "gateStatus": "pending",
-      "gateEvidence": "Only offline P6-C1 passed. P6-H1 is unapproved and P6-C2 remains unrun; no full Phase 6 gate acceptance or permission waiver."
+      "gateStatus": "blocked",
+      "acceptanceMode": "automated",
+      "gateEvidence": "Independent local-trial audit: evidence integrity passed for 7 model requests/15 real SPICE attempts, comparison acceptance blocked_incomplete with zero complete matched-call trials. P6-C1 passed and P6-H1 recorded explicit local-only owner approval; expired resource window was not reset. No full Phase 6 or model efficacy acceptance."
     },
     {
       "id": "P7",

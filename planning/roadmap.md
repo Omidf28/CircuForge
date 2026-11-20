@@ -2,7 +2,7 @@
 
 Version 2.0.0 · assembled 2026-11-20 · architecture assumptions to verify in current environment
 
-Phases 1-5 remain accepted in their documented scopes. P6-C1 offline proposal contract passed its automatic task gate: 319 tests without skips and 4 fresh audited real SPICE calls from fixed local fixtures. Request/token/cost/rate limits and strict candidate validation are implemented without a network adapter. P6-C2 is unrun pending P6-H1 authorization; the Phase 6 gate is not passed. No real model/provider traffic, spending, deployment or feature-branch push. See docs/PHASE6.md.
+Phases 1-5 and offline P6-C1 remain accepted in their documented scopes. Owner-approved zero-spend local Llama 3 trial made 7 model requests and 15 raw-audited real SPICE attempts before its retained 600-second client deadline. Evidence integrity passed, but zero matched-call trials completed; P6-C2/Phase 6 remain blocked and no model efficacy is established. The local allowance is closed; no paid/cloud traffic, download, deployment or feature-branch push. See docs/PHASE6_LOCAL_RESULTS.md.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -528,9 +528,9 @@ Status: done · Estimate: 5 active hours
 
 **Exit gate:** If paid key/provider inaccessible, mark experiment deferred and preserve reproducible non-LLM result; no claims without trials.
 
-**Gate status:** pending
+**Gate status:** blocked
 
-**Gate evidence:** Only offline P6-C1 passed. P6-H1 is unapproved and P6-C2 remains unrun; no full Phase 6 gate acceptance or permission waiver.
+**Gate evidence:** Independent local-trial audit: evidence integrity passed for 7 model requests/15 real SPICE attempts, comparison acceptance blocked_incomplete with zero complete matched-call trials. P6-C1 passed and P6-H1 recorded explicit local-only owner approval; expired resource window was not reset. No full Phase 6 or model efficacy acceptance.
 
 #### P6-C1 · Codex · Provider-neutral proposal interface
 
@@ -558,11 +558,11 @@ Status: blocked · Estimate: 9 active hours
 
 **Depends on:** P6-C1, P3-C2, P6-H1
 
-**Evidence:** Unrun: no real provider or spending/privacy decision approved under P6-H1. Offline smoke controls are not an LLM comparison. Added explicit P6-H1 dependency to preserve the existing authorization rule; no model efficacy or paid experiment is claimed.
+**Evidence:** Observed 2026-11-20: approved local trial ended at its retained 600-second client deadline after 7 model requests and 15 real SPICE attempts. All 15 raw calls plus proposal/usage accounting passed read-only integrity audit, but zero equal-budget comparisons completed: low-pass/seed7 random/grid/SciPy used 4 calls each, local model 2; other trials/replay unrun. Three invalid proposals, three accepted proposals, one unknown-usage timeout; no target passes or efficacy claim. P6-C2/full Phase 6 acceptance remains blocked; allowance closed. See docs/PHASE6_LOCAL_RESULTS.md and external local-llama3-trial-2026-11-20/audit.json.
 
 #### P6-H1 · Human · Approve API trial and spending
 
-Status: todo · Estimate: 2 active hours
+Status: done · Estimate: 2 active hours
 
 **Action:** Review pricing/privacy/terms and set maximum expenditure; do not commit secrets.
 
@@ -572,7 +572,7 @@ Status: todo · Estimate: 2 active hours
 
 **Depends on:** P6-C1
 
-**Evidence:** Requires a separate owner provider/privacy/budget decision; automatic technical acceptance of P6-C1 does not approve provider traffic or spending.
+**Evidence:** Explicit owner response 2026-11-20: تأیید آزمایش فقط محلی با همین سقف‌ها. Approved only installed local llama3, zero provider expenditure, <=32 requests, <=73728 reserved tokens, 10 minutes, 80 SPICE attempts and two CPU threads. The single execution window has ended and is closed in source configuration. No cloud/spending/download/personal-file transmission/push/deployment permission; further execution needs a renewed resource decision. See docs/PHASE6_LOCAL_TRIAL.md and docs/PHASE6_LOCAL_RESULTS.md.
 
 ### P7: Verify demo and claims
 
@@ -852,7 +852,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md and planning/HANDOFF.md. Phases 1-5 remain accepted with historical evidence; current full suite is 319 passing tests. P6-C1 alone is implemented and automatically accepted: isolated offline provider contract, strict candidate JSON, token/cost reservations, failure/overrun accounting and 4 raw-audited real SPICE calls. P6-C2 is explicitly blocked on the separate P6-H1 provider/privacy/budget decision; advanced agents, real provider traffic, PCB, push and deployment remain deferred. The full Phase 6 gate has not passed. Source and Git remain on C after cancellation of project migration; ancillary execution artifacts retain their existing C-path junction to D.
+Read AGENTS.md and planning/HANDOFF.md. P6-H1 was explicitly approved for one bounded installed local-model experiment only. The adapter/runner/auditor are implemented; actual trial retained 7 model requests, 15 real raw-audited SPICE calls, 764 known reported tokens and one unknown-usage timeout. Global reservations retained; original deadline not reset across one documented controller correction. Zero complete matched-call comparisons; P6-C2/Phase 6 remain blocked and allowance closed. New tests are unit-only; historical full-suite result remains 319 for P6-C1. No paid/cloud traffic, download, advanced tool agent, PCB, deployment or push. Source/Git stay on C; ancillary artifacts retain their existing C-path junction to D.
 ```
 
 ## Sources

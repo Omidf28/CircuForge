@@ -1,8 +1,11 @@
 {
   "policy": "p6-local-ollama-trial-v1",
-  "status": "pending_owner_approval",
+  "status": "approved_local_only",
   "authorization_task": "P6-H1",
-  "inference_approved": false,
+  "inference_approved": true,
+  "execution_closed": true,
+  "execution_closed_reason": "The original 600-second allowance ended; seven model requests and fifteen SPICE attempts were recorded. A fresh run needs a renewed owner decision.",
+  "owner_response": "تأیید آزمایش فقط محلی با همین سقف‌ها",
   "provider": {
     "kind": "local_ollama",
     "base_url": "http://127.0.0.1:11434",

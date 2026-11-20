@@ -1,6 +1,6 @@
 # CircuForge — portable handoff
 
-Updated 2026-11-20. Phases 1 through 5 remain accepted in their documented scopes. P6-C1 alone is now automatically accepted: isolated offline proposal contract, 319 full-suite tests without skips and four fresh raw-audited ngspice calls. There were eight synthetic fixture requests, two topology rejections, two duplicate cache hits, two reference passes and two deliberate misses. No actual LLM/provider traffic or efficacy claim. P6-C2 is unrun pending the separate P6-H1 provider/privacy/budget decision; the Phase 6 gate is not passed. Source/Git stay on C after cancellation of project migration. Feature-branch pushes remain unauthorized.
+Updated 2026-11-20. Phases 1-5 and offline P6-C1 remain accepted within their documented scopes. Owner explicitly approved P6-H1 for a pinned zero-spend local Llama 3 trial. Its adapter/runner/auditor are implemented: seven actual model requests and 15 real SPICE attempts before the conservatively retained 600-second client deadline. Final raw/accounting integrity passed; zero complete matched-call trials and no target passes or model efficacy conclusion. P6-C2 and the full Phase 6 gate remain blocked. The allowance is closed, not reset. Source/Git remain on C; no remote push is authorized. See docs/PHASE6_LOCAL_RESULTS.md.
 
 ## Completed tasks
 
@@ -19,7 +19,9 @@ Updated 2026-11-20. Phases 1 through 5 remain accepted in their documented scope
 
 - P5-C1/C2/C4: shared typed design request/result, measured CLI/API engine, JSON/CSV/PNG/checksummed ZIP, bounded loopback-only HTTP and automatic fresh-install walkthrough. See docs/PHASE5.md. Optional P5-C3 is deferred per START_CODEX.md.
 
-- P6-C1: offline provider-neutral proposal interface, explicit JSON candidate validation, bounded request/token/cost/rate/concurrency accounting, conservative unknown-usage handling and fail-closed task acceptance. See docs/PHASE6.md. P6-C2 remains unrun, not a completed ablation.
+- P6-C1: offline provider-neutral proposal interface, explicit JSON candidate validation, bounded request/token/cost/rate/concurrency accounting, conservative unknown-usage handling and fail-closed task acceptance. See docs/PHASE6.md. The later local P6-C2 trial has partial data, not a completed ablation.
+
+- P6-H1: actual owner decision «تأیید آزمایش فقط محلی با همین سقف‌ها». Only existing pinned local llama3, zero provider cost, <=32 requests, <=73728 reserved tokens, <=600 seconds, two CPU threads/no GPU and <=80 SPICE attempts. The single time window has ended. This is not permission for paid/cloud calls, a new trial, downloads, push or deployment.
 
 The starter's first-slice measured bisection remains separate from the generic Phase 2 random/grid/SciPy baselines. A local FastAPI service is included; frontend, advanced agents and PCB work remain deferred.
 
@@ -28,6 +30,13 @@ The starter's first-slice measured bisection remains separate from the generic P
 Exact commands, environment, corrected failure and implementation limits: docs/DEVELOPMENT.md. Newcomer setup: README.md.
 
 Current P6-C1 evidence: external Automatic_Acceptance/p6-c1-2026-11-20/acceptance.json, tests.xml/tests.log and both topology reports/raw evaluations. Policy p6-c1-offline-contract-v1 passed **319 tests in 131.88 seconds**, no skips, plus **4 fresh independently audited SPICE calls**. See docs/PHASE6.md. Synthetic usage reports are not actual model-token or billing measurements.
+
+Latest adapter verification: **289 unit tests passed in 9.90 seconds**, with no
+real model or ngspice calls in that unit run. Actual local-trial integrity passed
+over **7 generation attempts/15 raw-audited SPICE calls**, while comparison
+acceptance is blocked_incomplete. This is not a fresh full-suite result replacing
+the historical 319-test P6-C1 acceptance. Unit XML/log and trial raw evidence are
+under external Automatic_Acceptance; see docs/PHASE6_LOCAL_RESULTS.md.
 
 Initial Phase 1 suite: **63 passed**; its final review suite reached **122 passed**. Phase 2 baseline implementation reached **154 passed** and its automatic gate **170 passed** with 771 fresh comparison calls. Phase 3 automatic acceptance has **198 passed**, no skips, plus **3060 fresh final-dataset calls** across two exact numerical replays. Phase 4 acceptance has **234 passed**, no skips, plus **1536 fresh real calls** across two exact numerical replays. Current Phase 5 acceptance has **279 passed**, no skips, with a fresh installed CLI/HTTP walkthrough: **27 actual calls**, **18 raw calls audited**, **9 JSON traces matched**. Commands and Phase 1 evidence are in docs/DEVELOPMENT.md; Phase 2 results are in docs/PHASE2.md and docs/AUTOMATIC_ACCEPTANCE.md.
 
@@ -38,19 +47,20 @@ Initial Phase 1 suite: **63 passed**; its final review suite reached **122 passe
 
 ## Review acceptance and next tasks
 
-P6-H1 preparation (2026-11-20): read-only local Ollama inventory found an installed
-completion model `llama3:latest` (8B/Q4_0, digest pinned in
-examples/local-proposal-trial-v1.json). docs/PHASE6_LOCAL_TRIAL.md proposes a
-zero-expenditure CPU-only local experiment: <=32 model requests, <=73728 reserved
-tokens, <=600 seconds and <=80 SPICE attempts including pilots/replay. No actual
-model inference, download or provider adapter execution occurred. This is an
-approval proposal only; P6-H1 is not approved and P6-C2 remains blocked. No new
-tests were needed for this documentation/configuration preparation; the latest
-executed full suite remains 319 passed, not a new run.
+P6-H1 was explicitly approved after the read-only inventory/proposal. The ensuing
+local trial is documented in docs/PHASE6_LOCAL_RESULTS.md: 7 requests, 16128
+reserved tokens, 764 known reported tokens plus one unknown-usage timeout, and
+15 independently raw-audited SPICE attempts. The initial semantic rejection was
+retained across one documented controller correction, without extending the
+original deadline or resetting counters. Only low-pass/seed7 entered comparison:
+random/grid/SciPy had four calls each, the model two; other comparisons/replay
+are unrun. Integrity passes; comparison acceptance is blocked_incomplete. The
+source policy is closed to prevent an accidental fresh run. A renewed resource
+decision is needed for another trial; no manual technical review is required.
 
 P0-H1, P0-H2 and P1-H1 are done based on the owner's explicit response «بازبینی کردم و Phase 1 را تأیید می‌کنم». Accepted defaults: ideal zero-ohm source, infinite load, ideal continuous components and 0.1% target tolerance. Four distinct R/C cases per topology are provided. This is owner acceptance, not a claim of independent second-person or hardware verification.
 
-The latest owner instruction removes manual technical-review requirements. P2-C4, P3-C3, P4-C3 and P5-C4 automatic gates passed; legacy human technical tasks are deferred as superseded. Optional P5-C3 dashboard is deferred per START_CODEX.md. P6-C1's offline contract gate also passed, but advanced agents/provider traffic stay deferred and any paid/provider experiment still requires explicit P6-H1 authorization, not an automatic technical waiver. P6-C2 now explicitly depends on P6-H1 and is blocked/unrun. Do not blanket-complete later tasks or infer push/deployment/spending approval. No real LLM/provider call, frontend, PCB, external deployment or feature-branch push has started.
+The latest owner instruction removes manual technical-review requirements. P2-C4, P3-C3, P4-C3 and P5-C4 automatic gates passed; legacy human technical tasks are deferred as superseded. Optional P5-C3 dashboard is deferred per START_CODEX.md. P6-C1 passed; P6-H1 subsequently authorized only the bounded local-model trial. P6-C2 now has partial actual data but remains blocked because no matched-call comparison completed before the resource deadline. Do not infer paid/cloud traffic, a new time window, advanced tool agents, PCB, push or deployment approval. No frontend, PCB, external deployment or feature-branch push has started.
 
 Initial simulator absence and package mirror issue were resolved with official portable ngspice and PyPI. No local simulator blocker remains. Linux is documented but unverified. Active source and Git history are in `C:/Users/Home/Documents/ChatGPT/Implement CircuForge`. Python output creation under Documents remains blocked in this managed session; ignored tools, execution evidence and the isolated test environment remain in the authorized visualization workspace. Source ZIP excludes tools/dependencies/build products and raw simulation data; install from README on other machines.
 
@@ -86,3 +96,5 @@ Canonical sources: planning/context.json, planning/phase-tasks.json. Run python 
 - 2026-11-19: completed local P5-C1/C2/C4 on codex/p5-local-cli-api. Shared typed design CLI/API exports measured JSON/CSV/PNG and checksum-linked ZIP, preserves target misses/failures, enforces local/body/compute/concurrency guards and removes API temporary artifacts. **279 tests without skips**; built a source-byte-preserving wheel and installed it into a fresh isolated environment with pinned tested top-level dependencies. Python -I CLI and actual loopback HTTP agree: **27 calls total, 18 raw CLI/ZIP calls audited, nine JSON traces matched**, two passing reference examples/one preserved target miss per interface. Server stopped and scratch directory empty. P5-H1 superseded automatically; optional P5-C3 deferred as no frontend is authorized/needed for this gate. Sandbox Windows asyncio socketpair initially blocked; traceback identified the environment limit and local-socket tool permission resolved it. Evidence: external Automatic_Acceptance/phase5-2026-11-19; full commands/install paths/outcomes in docs/PHASE5.md. Phase 6, spending, deployment and push remain unstarted.
 
 - 2026-11-20: resumed source development on C after project migration was canceled. On codex/p6-offline-proposal-contract, completed only P6-C1: typed offline provider contract, explicit bounded JSON candidates and conservative request/token/cost/rate/concurrency accounting. Automatic p6-c1-offline-contract-v1 passed **319 tests in 131.88 seconds without skips** plus **four freshly raw-audited real SPICE calls**. Eight fixed offline requests retained two topology rejections, two duplicate cache hits, two reference passes and two deliberate misses. No actual LLM/provider calls, paid traffic or model efficacy claim. P6-C2 is blocked/unrun with explicit P6-H1 permission dependency, and the Phase 6 gate remains pending. Evidence: external Automatic_Acceptance/p6-c1-2026-11-20; see docs/PHASE6.md. Source/Git stay on C; ancillary artifacts retain their existing C-path junction to D. No migration cleanup, deployment or remote push was performed in this coding task.
+
+- 2026-11-20: prepared zero-spend local proposal in a4808d4, then owner explicitly approved the existing pinned llama3 trial with 32-request/73728-reserved-token/600-second/80-SPICE ceilings and two CPU threads. On codex/p6-local-ollama-trial implemented optional HTTPX loopback adapter, persistent global counters, bounded controller and independent auditor. First out-of-bounds pilot was retained across one explicit controller continuation without resetting counters/deadline; five conservative seconds were added to elapsed accounting. The original window ended after **7 model requests/15 actual SPICE attempts**, with one unknown-usage timeout. **289 unit tests passed in 9.90 seconds**; independent final audit passed all 15 raw responses and the usage/proposal ledger. Zero target passes and zero complete matched-call trials; P6-C2 and Phase 6 remain blocked, no efficacy conclusion. Recorded source epochs/final execution snapshot, closed the spent allowance and confirmed no loaded Ollama models afterward. No paid/cloud traffic, download, advanced tool agent, migration cleanup, push or deployment. Evidence: external Automatic_Acceptance/local-llama3-trial-2026-11-20; details in docs/PHASE6_LOCAL_RESULTS.md.

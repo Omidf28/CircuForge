@@ -1,15 +1,18 @@
 # P6-H1: proposed local-only trial
 
-Status: **pending owner approval**. No actual model inference has run. P6-C2
-remains blocked; this document is a concrete permission proposal, not a completed
-experiment or new acceptance policy. The adapter/runner must still be implemented
-and tested after the owner's decision. The source project remains on C.
+Status: **owner approved this local scope on 2026-11-20**. Exact response:
+«تأیید آزمایش فقط محلی با همین سقف‌ها». P6-H1 records that explicit decision, not an
+automatic waiver. Adapter/runner validation and actual experiment evidence are
+separate from permission; no efficacy result is implied. The source remains on C.
+The allowance subsequently ended and is closed. See
+[observed partial results](PHASE6_LOCAL_RESULTS.md): seven model requests,
+15 SPICE attempts, zero completed equal-budget comparisons and zero provider cost.
 
 ## Observed inventory — 2026-11-20
 
 Read only `GET http://127.0.0.1:11434/api/tags`, `GET /api/version` and
-`POST /api/show` for installed model metadata. No `/api/generate` or `/api/chat`
-request was made. Ollama reports version 0.40.16 and three installed models:
+`POST /api/show` for installed model metadata. During that inventory step, no
+`/api/generate` or `/api/chat` request was made. Ollama reported version 0.40.16 and three installed models:
 `nomic-embed-text:latest`, `aya-expanse:8b-q4_K_S` and `llama3:latest`.
 
 Proposed model: already-installed `llama3:latest`, 8B/Q4_0, 4661224676 bytes on
@@ -67,6 +70,13 @@ assumed before observation.
   remains separately unauthorized. Recording a link is not an owner's acceptance
   of terms or an automatic permission waiver.
 
-`P6-H1` stays open until the owner approves or declines this exact local scope.
-Approval would authorize adapter implementation and this bounded trial, not
+`P6-H1` is done for this exact local scope only. Approval authorizes adapter
+implementation and this bounded trial, not
 external providers, paid tokens, model downloads, pushes or deployment.
+
+The installed optional HTTP client is declared by `.[local-model]`. The trial
+runner is `scripts/run_local_trial.py`; it requires recorded approval and a new
+output directory, and now refuses the closed source allowance. It is not called
+by ordinary `design`/HTTP requests. `scripts/audit_local_trial.py` can audit the
+existing dataset without running a model or simulator. A new run would require a
+renewed resource decision and a separately identified execution envelope.

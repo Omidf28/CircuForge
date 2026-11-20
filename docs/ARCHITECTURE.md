@@ -8,6 +8,7 @@ Implementation update (2026-11-19): domain, synthesis, simulation, CLI, bisectio
 src/circuforge/
   contracts.py           # bounded shared CLI/API request/result/waveform schemas
   proposals.py           # isolated offline provider contract, validation and quota ledger
+  local_provider.py      # optional pinned loopback Ollama client, durable global limits
   application.py         # measured design and traceable export use case
   api.py                 # loopback-only FastAPI, bounded requests/work and temp cleanup
   domain/specs.py         # Pydantic specs, units, validity
@@ -25,6 +26,7 @@ src/circuforge/
   evaluation/robust_acceptance.py # sampling, raw-physics, objective, holdout and replay audit
   evaluation/robust_plot.py # optional Matplotlib scientific artifact
   evaluation/design_acceptance.py # raw exports, ZIP integrity, interface/install audit
+  evaluation/local_trial.py # scoped local-only proposal experiment and closed-allowance guard
   cli.py                 # command-line demo
  tests/{unit,integration}/
  examples/
@@ -60,3 +62,16 @@ Phase 3 adds a versioned bounded manifest and experiment/replay harness; see doc
 Phase 4 reuses Evaluator for every nominal and perturbed measurement. Original nominal bounds remain the optimizer contract; a typed expanded simulation spec represents permitted tolerance realizations and preserves topology, target/error policy, source/load and simulator guardrails. Independent RNG streams separate proposals, shared training factors and fresh holdout factors. The measured nominal objective and tolerance penalty use actual SPICE cutoff errors. Raw audit_evaluation is shared by the historical baseline and new tolerance checkers; Phase 4 additionally reconstructs all perturbations, call partitions, selection and holdout statistics. Full tests and source fingerprints tie acceptance to the executed code. See docs/PHASE4.md.
 
 Phase 5 keeps CLI and HTTP as adapters around application.run_design. Requests cannot supply netlists, executable names or artifact paths; the CLI's output path and API's trusted startup settings are separate from the electrical request. The service validates before simulator construction, rejects overlapping heavy jobs with a process-local semaphore, and materializes JSON/ZIP inside a private TemporaryDirectory before cleanup. ASGI guards cap body bytes/deadline and restrict local callers/hosts/origins. Numerical states distinguish pass, target miss and simulation failure. The acceptance command builds a wheel, installs it in a fresh environment and exercises isolated CLI plus real loopback HTTP, preserving raw data and package provenance. See docs/PHASE5.md.
+
+The later local-only proposal experiment is an explicit opt-in script, not a
+design CLI/API option. It uses the existing ProposalSession and Evaluator with
+separate global model-token/time and SPICE counters. The adapter fixes loopback,
+model digest, no proxy/redirect, bounded JSON and client deadlines; per-request
+CPU settings and keep-alive zero are recorded. Optional HTTPX is declared by
+the local-model extra. Basic design has no dependency on model access.
+The read-only audit replays saved candidate/usage validation and independently
+checks every physical trace, selection and actual method count. The first local
+trial retained integrity but failed comparison completion at the original
+deadline; its source epochs and one non-resetting continuation are explicit.
+The source policy is closed to prevent accidental fresh execution. See
+docs/PHASE6_LOCAL_RESULTS.md; no model efficacy or full Phase 6 pass is inferred.

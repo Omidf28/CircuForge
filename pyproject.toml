@@ -13,6 +13,7 @@ dependencies = ["numpy>=1.24,<3", "pydantic>=2,<3", "scipy>=1.15,<2"]
 test = ["pytest>=8,<10", "matplotlib>=3.8,<4", "fastapi>=0.115,<1", "uvicorn>=0.30,<1", "httpx>=0.27,<1"]
 report = ["matplotlib>=3.8,<4"]
 api = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1", "matplotlib>=3.8,<4"]
+local-model = ["httpx>=0.27,<1"]
 
 [project.scripts]
 circuforge = "circuforge.cli:main"

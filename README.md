@@ -12,8 +12,11 @@ Phase 5 adds a shared typed `design` command and a bounded loopback FastAPI serv
 
 P6-C1 adds the offline proposal contract and conservative usage accounting. Its
 task acceptance passed with **319 tests without skips and four freshly audited
-real ngspice calls** from fixed local fixtures. Real LLM comparisons remain unrun
-pending P6-H1 authorization; the full Phase 6 gate is still pending. See
+real ngspice calls** from fixed local fixtures. A later owner-approved local
+Llama 3 trial retained seven model requests and 15 independently audited real
+SPICE calls, but reached its deadline before an equal-budget comparison completed.
+Current adapter checks have **289 passing unit tests**; P6-C2 and the Phase 6 gate
+remain blocked, with no model-efficacy conclusion. See
 [docs/PHASE6.md](docs/PHASE6.md).
 
 ## Acceptance without manual review
@@ -129,8 +132,10 @@ Canonical plans: `planning/context.json`, `planning/phase-tasks.json`. Regenerat
 The local API is available. P6-C1 adds an isolated offline proposal contract with
 strict candidate validation and request/token/cost accounting; reproduce its task
 checks with `python scripts/accept_proposals.py --output /new/writable/path`.
-See [docs/PHASE6.md](docs/PHASE6.md). Real model comparisons remain unrun pending
-P6-H1. Frontend, advanced agents, PCB automation, paid/provider traffic and
+See [docs/PHASE6.md](docs/PHASE6.md) and
+[the partial local-model results](docs/PHASE6_LOCAL_RESULTS.md). The approved local
+allowance is closed; a new trial needs a renewed resource decision. Frontend,
+advanced agents, PCB automation, paid/remote-provider traffic and
 external deployment remain deferred.
 
 ## Version control
