@@ -38,6 +38,16 @@ Initial Phase 1 suite: **63 passed**; its final review suite reached **122 passe
 
 ## Review acceptance and next tasks
 
+P6-H1 preparation (2026-11-20): read-only local Ollama inventory found an installed
+completion model `llama3:latest` (8B/Q4_0, digest pinned in
+examples/local-proposal-trial-v1.json). docs/PHASE6_LOCAL_TRIAL.md proposes a
+zero-expenditure CPU-only local experiment: <=32 model requests, <=73728 reserved
+tokens, <=600 seconds and <=80 SPICE attempts including pilots/replay. No actual
+model inference, download or provider adapter execution occurred. This is an
+approval proposal only; P6-H1 is not approved and P6-C2 remains blocked. No new
+tests were needed for this documentation/configuration preparation; the latest
+executed full suite remains 319 passed, not a new run.
+
 P0-H1, P0-H2 and P1-H1 are done based on the owner's explicit response «بازبینی کردم و Phase 1 را تأیید می‌کنم». Accepted defaults: ideal zero-ohm source, infinite load, ideal continuous components and 0.1% target tolerance. Four distinct R/C cases per topology are provided. This is owner acceptance, not a claim of independent second-person or hardware verification.
 
 The latest owner instruction removes manual technical-review requirements. P2-C4, P3-C3, P4-C3 and P5-C4 automatic gates passed; legacy human technical tasks are deferred as superseded. Optional P5-C3 dashboard is deferred per START_CODEX.md. P6-C1's offline contract gate also passed, but advanced agents/provider traffic stay deferred and any paid/provider experiment still requires explicit P6-H1 authorization, not an automatic technical waiver. P6-C2 now explicitly depends on P6-H1 and is blocked/unrun. Do not blanket-complete later tasks or infer push/deployment/spending approval. No real LLM/provider call, frontend, PCB, external deployment or feature-branch push has started.
