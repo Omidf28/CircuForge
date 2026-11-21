@@ -2,7 +2,36 @@
 
 Updated 2026-11-21. Phases 1-5 and offline P6-C1 remain accepted within their documented scopes. One explicitly renewed zero-spend local Llama 3 run completed four matched-call comparisons: 25 actual generation attempts and 65 independently raw-audited SPICE attempts before its 600-second deadline. All target checks missed; final model replay stage is incomplete, so P6-C2 and Phase 6 remain blocked. Latest unit checks: 293 passed. Both resource windows are closed, not reset or pooled. See docs/PHASE6_LOCAL_RENEWAL.md; the November 20 partial dataset stays historical. Source/Git remain on C. The owner separately requested public GitHub visibility; verified public, only initial main online, no feature push.
 
-## Completed tasks
+## Development collaboration — 2026-11-21
+
+Owner requested automatic Codex/Freebuff development and explicitly approved
+bounded selected task/document/code excerpts going to Freebuff cloud (no secrets,
+personal files, environment files, Git history or raw experiment data). See the
+new top-level AGENTS.md update and docs/AGENT_COLLABORATION.md. Codex alone writes
+source and accepts checks; Freebuff is an advisory reviewer/drafter, driven through
+its installed interactive terminal without owner copy/paste. No paid SDK,
+background daemon, remote push, deployment or new circuit experiment is enabled.
+
+Implemented scripts/agent_workflow.py and planning/agent-workflow.json: explicit
+stable ledger path, source/prompt hashes, prerequisite and consent checks,
+pre-dispatch persistent reservations, strict turn/time caps, serialized actions,
+untrusted advisory receipts, stop accounting and independent handoff audit.
+Final unit suite: **338 passed in 13.26s**, including 45 coordination regressions,
+no skips; unit-checked.xml/unit-checked.log in the fixed ledger parent.
+Two real Freebuff advisories were received, controls improved and README issues
+corrected after rejecting unsupported advice. Original cycle used 2/3 turns and
+is closed. Its final audit **blocked** because DOC-R1 was recorded 63 seconds
+after the original 600-second deadline. Do not reset or silently rerun it.
+P5-C5 remains blocked; P7-C1 is doing (documentation increment, not clean-install
+acceptance). P6 and final P7 scientific gates retain their existing statuses.
+
+Ledger: C:/Users/Home/AppData/Local/Temp/CircuForge-Collaboration/0daa4e7d054c811a/2026-11-21-docs-01.
+The response captures are explicitly labeled terminal excerpts with TUI redraws,
+not verbatim reconstructed model messages. A fresh one-request verification
+resource decision was requested separately; do not infer its approval from time
+passing. Use the exact same ledger location when inspecting the original cycle.
+
+## Historical completed milestones
 
 - P0-C1: installable Python package, pytest, executable discovery/preflight, missing-binary behavior.
 - P0-C2: real fixed-template low-pass sweep, exit 0, 601 AC samples; evidence/lowpass-2026-11-18/.

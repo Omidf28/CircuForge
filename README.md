@@ -26,6 +26,14 @@ from historical full-suite acceptance. See
 
 After installing the project with its test extra and configuring ngspice, run from project root:
 
+Use the same virtual-environment interpreter that installed the dependencies:
+on Windows replace `python` below with `.\.venv\Scripts\python`, and on Linux
+with `.venv/bin/python`. For an uninstalled source checkout, set `PYTHONPATH=src`
+instead of assuming the source package is importable. In managed Windows
+sessions, Phase 5's real loopback walkthrough also needs local-socket permission;
+an environment denial blocks verification. Use a new writable output directory
+for every acceptance run. See [Phase 5 setup and limits](docs/PHASE5.md).
+
 ```text
 python scripts/accept_phase2.py --output /new/writable/absolute/path
 python scripts/accept_phase3.py --output /another/new/writable/absolute/path
@@ -45,6 +53,11 @@ For the new shared interface after installation:
 python -m circuforge design --request examples/design-lowpass.json --output runs/design
 python -m circuforge.api --port 8765
 ```
+
+`runs/design` must not already exist. Choose a new output directory on each run;
+an absolute writable path is useful when the working directory is restricted.
+Relative paths are supported. The `test` extra already includes FastAPI and
+plotting; `api` and `report` let non-test installations select those features.
 
 Install `.[api,test]` for API development/acceptance; `.[api]` provides the service and `.[report]` provides CLI plots without the API/test tools. The service binds only 127.0.0.1, accepts JSON at `/v1/designs` and downloads complete evidence at `/v1/designs/export`. It rejects request-supplied netlists/paths, browser origins, excessive compute and concurrent designs; temporary data is removed after each response. A completed target miss remains `status=target_missed`, HTTP 200 and CLI exit 1. Use examples/design-target-miss.json to reproduce it. This is a local research service, with no deployment or account needed.
 
@@ -82,7 +95,11 @@ python3 -m venv .venv
 .venv/bin/python -m circuforge simulate --spec examples/search.json --search --output runs/search
 ```
 
-Use your distribution's package manager. Windows 11 / Python 3.12.7 / ngspice-47 were actually verified. Global `--ngspice PATH` before the subcommand overrides CIRCUFORGE_NGSPICE; otherwise PATH is searched. Missing binary means exit 2 and explicit integration-test skips, never simulated success. A discovered executable that fails preflight/simulation fails integration tests.
+Use your distribution's package manager. Linux remains documented but unverified.
+
+## Executed platform and simulator selection
+
+Windows 11 / Python 3.12.7 / ngspice-47 were actually verified. Global `--ngspice PATH` before the subcommand overrides CIRCUFORGE_NGSPICE; otherwise PATH is searched. Missing binary means exit 2 and explicit integration-test skips, never simulated success. A discovered executable that fails preflight/simulation fails integration tests.
 
 ## Results and assumptions
 
@@ -108,7 +125,7 @@ Use OS-appropriate absolute paths. Each method gets the spec's max_evaluations c
 
 In the recorded seed-42 review, each method used 64 calls on each of four free cases and one call on the fixed case: **771 genuine AC attempts total**. None met 0.1% tolerance on the free cases; all passed the fixed case. This is single-seed baseline evidence, not a statistical performance claim. The Phase 1 domain-specific bisection remains available.
 
-## Verified milestone
+## Historical Phase 1 milestone
 
 The initial milestone had **63 passing tests**. The latest Phase 1 follow-up has **122 passing tests** in the isolated test environment, including real simulator integration, controlled failure accounting, minimum sample counts and tolerance-aware target feasibility. Fresh package installation was also verified at an earlier milestone. Original saved evidence:
 
@@ -135,12 +152,24 @@ Canonical plans: `planning/context.json`, `planning/phase-tasks.json`. Regenerat
 The local API is available. P6-C1 adds an isolated offline proposal contract with
 strict candidate validation and request/token/cost accounting; reproduce its task
 checks with `python scripts/accept_proposals.py --output /new/writable/path`.
-See [docs/PHASE6.md](docs/PHASE6.md) and
-[the partial local-model results](docs/PHASE6_LOCAL_RESULTS.md). The approved local
-allowance is closed; a new trial needs a renewed resource decision. Frontend,
-advanced agents, PCB automation, paid/remote-provider traffic and
-external deployment remain deferred.
+See [docs/PHASE6.md](docs/PHASE6.md), the separate
+[November 20 partial dataset](docs/PHASE6_LOCAL_RESULTS.md), and the
+[November 21 renewed comparison](docs/PHASE6_LOCAL_RENEWAL.md). Both resource
+windows are now closed; the datasets are retained separately, and the renewal's
+incomplete replay still blocks P6-C2/Phase 6 acceptance. A new scientific trial
+needs a renewed resource decision. Frontend, circuit-design tool agents, PCB
+automation, paid providers and external deployment remain deferred.
+
+## Codex and Freebuff development assistance
+
+The owner separately authorized bounded free-model development assistance.
+Codex sends selected packets to Freebuff, checks its advisory output, applies
+justified edits, runs automatic tests and reconciles the roadmap without owner
+copy/paste. The versioned queue is [planning/agent-workflow.json](planning/agent-workflow.json);
+roles, data scope, persistent caps and current execution evidence are in
+[docs/AGENT_COLLABORATION.md](docs/AGENT_COLLABORATION.md). It runs during an active
+Codex session; no permanent background service or paid SDK is configured.
 
 ## Version control
 
-See [docs/VERSION_CONTROL.md](docs/VERSION_CONTROL.md) for the private GitHub setup, staged credential scan and feature-branch workflow. Generated simulation evidence stays local and is excluded from Git. The initial main commit was pushed with owner approval; later feature branches remain local until separately approved.
+See [docs/VERSION_CONTROL.md](docs/VERSION_CONTROL.md) for the GitHub setup, owner-requested public visibility, staged credential scan and feature-branch workflow. Generated simulation evidence stays local and is excluded from Git. The initial main commit was pushed with owner approval; later feature branches remain local until separately approved.

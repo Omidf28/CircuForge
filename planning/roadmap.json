@@ -1,6 +1,6 @@
 {
   "title": "CircuForge · Wave2Circuit Research Edition",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "date": "2026-11-21",
   "purpose": "Phases 1-5 and offline P6-C1 remain accepted in their documented scopes. Explicitly renewed zero-spend local Llama 3 trial completed four matched-call comparisons with 25 model requests and 65 raw-audited SPICE attempts. All target checks missed. Integrity/comparison data passed; final model replay incomplete, so P6-C2/Phase 6 remain blocked. Latest unit checks: 293 passed, separate from historical full-suite acceptance. Both local windows closed and datasets kept separate. GitHub visibility is now public by owner request; only initial main is online, no feature push. See docs/PHASE6_LOCAL_RENEWAL.md.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
@@ -201,7 +201,22 @@
       "target": "All claims backed by versioned fixtures, baseline comparisons, experimental settings and raw CSV/JSON results."
     }
   ],
+  "agentWorkflow": {
+    "policy": "planning/agent-workflow.json",
+    "guide": "docs/AGENT_COLLABORATION.md",
+    "coordinator": "Codex",
+    "advisor": "Freebuff",
+    "mode": "Codex-driven interactive terminal; finite queue during an active session",
+    "acceptance": "Automatic tests/checkers; advisory receipt is not engineering acceptance",
+    "limits": "One authorized cycle: 3 turns, 600 seconds, zero provider spend, no automatic retries",
+    "consent": "Owner explicitly approved selected task text, documentation and necessary code excerpts to Freebuff cloud on 2026-11-21; secrets, personal files, environment files, Git history and raw experiments excluded",
+    "continuation": "Continue eligible job dependencies without owner copy/paste; stop on caps, missing evidence, auth/quota/network or restricted actions. No daemon or automatic new cycle. Final P7 gate still depends on P6."
+  },
   "workflow": [
+    {
+      "title": "Codex and Freebuff collaboration",
+      "body": "Codex alone writes the repository, coordinates dependencies and verifies automatic acceptance. Freebuff reviews allowlisted packets via the installed interactive terminal. scripts/agent_workflow.py persists source hashes, consent, pre-dispatch reservations and advisory receipts in an explicit stable ledger directory. Follow planning/agent-workflow.json and docs/AGENT_COLLABORATION.md; continue bounded eligible jobs during an active Codex session without owner copy/paste. No permanent unattended or paid-provider path is configured."
+    },
     {
       "title": "Two-person division",
       "body": "Partner A: AI/optimization/backend/evaluation. Partner B: circuit models, ngspice integration, physical fixtures and component compatibility. Both review tests, design constraints and research claims."
@@ -642,6 +657,22 @@
       "optional": false,
       "tasks": [
         {
+          "id": "P5-C5",
+          "owner": "Codex",
+          "advisor": "Freebuff",
+          "title": "Bounded Codex and Freebuff development handoff",
+          "action": "Codex drives the existing interactive free-model terminal with selected packets; persist limits and source hashes, receive advisory output, independently check edits and continue eligible jobs automatically within one authorized cycle.",
+          "deliverable": "planning/agent-workflow.json, scripts/agent_workflow.py, regression tests and docs/AGENT_COLLABORATION.md with real turn evidence.",
+          "acceptance": "Fail-closed tests cover prerequisites, consent, changed packets, concurrent/duplicate dispatch, persistent caps and untrusted replies; actual Freebuff receipt recorded separately from engineering acceptance. No paid SDK, daemon or full P7/Phase 6 acceptance claim.",
+          "effort": 3,
+          "dependsOn": [
+            "P5-C4"
+          ],
+          "status": "blocked",
+          "acceptanceMode": "automated",
+          "evidence": "Observed 2026-11-21: 338 unit tests passed in 13.26s without skips, including 45 coordination regressions; two actual reserved Freebuff advisories captured and independently reviewed. Final automatic handoff audit correctly blocked: DOC-R1 receipt recorded at 13:29:51 UTC after the original 13:28:48 UTC deadline. Old limits/evidence retained, no fresh cycle silently started. Controls/docs corrections exist but timed end-to-end acceptance is not claimed. See docs/AGENT_COLLABORATION.md. P5-C4 historical scientific gate unchanged."
+        },
+        {
           "id": "P5-C1",
           "owner": "Codex",
           "title": "CLI and report export",
@@ -796,6 +827,8 @@
         {
           "id": "P7-C1",
           "owner": "Codex",
+          "advisor": "Freebuff",
+          "collaboration": "Freebuff audits/drafts selected documentation packets; Codex verifies commands, applies changes and runs clean-setup acceptance. Task dependencies permit documentation preparation while final P7 gate remains dependent on P6.",
           "title": "Engineering documentation",
           "action": "README, architecture diagrams, API docs, installation troubleshooting, reproducibility commands and known limits.",
           "deliverable": "complete technical documentation.",
@@ -805,11 +838,14 @@
             "P5-C1",
             "P3-C2"
           ],
-          "status": "todo"
+          "status": "doing",
+          "evidence": "2026-11-21 documentation increment: actual Freebuff DOC-R1 advisory reviewed by Codex; clarified interpreter/output/platform/evidence guidance and development-agent workflow. Existing test extra already contains FastAPI, so that suggestion was rejected. No fresh clean installation or full P7 documentation acceptance claimed; see docs/AGENT_COLLABORATION.md."
         },
         {
           "id": "P7-C2",
           "owner": "Codex",
+          "advisor": "Freebuff",
+          "collaboration": "Freebuff may draft from explicitly approved evidence summaries; Codex checks every numeric claim against stored records and preserves failures. No raw experiment uploads or scientific-gate delegation.",
           "title": "Technical research report",
           "action": "Write method, baselines, results, confidence limits, failure analysis, threats to validity and next steps.",
           "deliverable": "research report with real plots.",

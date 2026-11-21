@@ -393,6 +393,20 @@
       "optional": false,
       "tasks": [
         {
+          "id": "P5-C5",
+          "owner": "Codex",
+          "advisor": "Freebuff",
+          "title": "Bounded Codex and Freebuff development handoff",
+          "action": "Codex drives the existing interactive free-model terminal with selected packets; persist limits and source hashes, receive advisory output, independently check edits and continue eligible jobs automatically within one authorized cycle.",
+          "deliverable": "planning/agent-workflow.json, scripts/agent_workflow.py, regression tests and docs/AGENT_COLLABORATION.md with real turn evidence.",
+          "acceptance": "Fail-closed tests cover prerequisites, consent, changed packets, concurrent/duplicate dispatch, persistent caps and untrusted replies; actual Freebuff receipt recorded separately from engineering acceptance. No paid SDK, daemon or full P7/Phase 6 acceptance claim.",
+          "effort": 3,
+          "dependsOn": ["P5-C4"],
+          "status": "blocked",
+          "acceptanceMode": "automated",
+          "evidence": "Observed 2026-11-21: 338 unit tests passed in 13.26s without skips, including 45 coordination regressions; two actual reserved Freebuff advisories captured and independently reviewed. Final automatic handoff audit correctly blocked: DOC-R1 receipt recorded at 13:29:51 UTC after the original 13:28:48 UTC deadline. Old limits/evidence retained, no fresh cycle silently started. Controls/docs corrections exist but timed end-to-end acceptance is not claimed. See docs/AGENT_COLLABORATION.md. P5-C4 historical scientific gate unchanged."
+        },
+        {
           "id": "P5-C1",
           "owner": "Codex",
           "title": "CLI and report export",
@@ -547,6 +561,8 @@
         {
           "id": "P7-C1",
           "owner": "Codex",
+          "advisor": "Freebuff",
+          "collaboration": "Freebuff audits/drafts selected documentation packets; Codex verifies commands, applies changes and runs clean-setup acceptance. Task dependencies permit documentation preparation while final P7 gate remains dependent on P6.",
           "title": "Engineering documentation",
           "action": "README, architecture diagrams, API docs, installation troubleshooting, reproducibility commands and known limits.",
           "deliverable": "complete technical documentation.",
@@ -556,11 +572,14 @@
             "P5-C1",
             "P3-C2"
           ],
-          "status": "todo"
+          "status": "doing",
+          "evidence": "2026-11-21 documentation increment: actual Freebuff DOC-R1 advisory reviewed by Codex; clarified interpreter/output/platform/evidence guidance and development-agent workflow. Existing test extra already contains FastAPI, so that suggestion was rejected. No fresh clean installation or full P7 documentation acceptance claimed; see docs/AGENT_COLLABORATION.md."
         },
         {
           "id": "P7-C2",
           "owner": "Codex",
+          "advisor": "Freebuff",
+          "collaboration": "Freebuff may draft from explicitly approved evidence summaries; Codex checks every numeric claim against stored records and preserves failures. No raw experiment uploads or scientific-gate delegation.",
           "title": "Technical research report",
           "action": "Write method, baselines, results, confidence limits, failure analysis, threats to validity and next steps.",
           "deliverable": "research report with real plots.",

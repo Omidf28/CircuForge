@@ -1,0 +1,53 @@
+{
+  "policy": "codex-freebuff-collaboration-v1",
+  "cycle": "2026-11-21-docs-01",
+  "coordinator": "Codex",
+  "repository_writer": "Codex",
+  "advisor": "Freebuff",
+  "transport": "interactive-terminal",
+  "consent": {
+    "status": "approved",
+    "destination": "Freebuff cloud",
+    "date": "2026-11-21",
+    "owner_response": "بله، ارسال محدود به Freebuff را اجازه می‌دهم",
+    "scope": "Explicit task text, selected documentation and necessary code excerpts only; no credentials, personal files, .env, Git history or raw experiment data. Free models only."
+  },
+  "limits": {
+    "max_turns": 3,
+    "max_seconds": 600,
+    "max_packet_bytes": 48000,
+    "max_reply_bytes": 24000,
+    "max_provider_spend": 0,
+    "automatic_retries": 0
+  },
+  "jobs": [
+    {
+      "id": "COOP-R1",
+      "task_id": "P5-C5",
+      "depends_on": ["P5-C4"],
+      "files": ["docs/AGENT_COLLABORATION.md", "scripts/agent_workflow.py", "planning/agent-workflow.json"],
+      "goal": "Review the collaboration controls for concrete dependency, stale-input, accounting, unsafe-output or false-acceptance defects. Return at most five findings with file/section references, or explicitly state none found. Do not suggest paid SDKs or claim unattended background support."
+    },
+    {
+      "id": "DOC-R1",
+      "task_id": "P7-C1",
+      "depends_on": ["P5-C1", "P3-C2"],
+      "files": ["README.md", "docs/PHASE5.md"],
+      "goal": "Review newcomer installation and CLI/API reproducibility. Return at most five concrete documentation defects with references and suggested corrected wording. Separate verified capabilities from historical test results, Linux unverified status, target misses and blocked model-comparison conclusions. Do not assert you ran anything."
+    },
+    {
+      "id": "DOC-R2",
+      "task_id": "P7-C1",
+      "depends_on": ["P5-C1", "P3-C2"],
+      "files": ["docs/AGENT_COLLABORATION.md", "README.md"],
+      "goal": "Review the final newcomer and agent handoff instructions. Identify material remaining contradictions only, especially permanent-background claims, unsupported Freebuff interfaces and model output treated as test evidence. Return concise findings; no invented execution results."
+    }
+  ],
+  "stop_conditions": [
+    "turn or time cap reached",
+    "authentication, quota, network, paid-model or data-use consent problem",
+    "missing prerequisite or changed input snapshot",
+    "invalid/missing reply or external action outside scope"
+  ],
+  "continuation": "While an authorized Codex session is active, prepare eligible jobs, reserve before sending, drive the visible interactive CLI, record the reply, verify findings, apply only justified changes and run relevant checks. Stop at this cycle's limits. No daemon, scheduler, automatic cycle reset, paid SDK or model-driven shell/patch execution. New cycles need an explicit resource decision."
+}

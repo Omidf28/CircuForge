@@ -1,6 +1,6 @@
 {
   "title": "CircuForge · Wave2Circuit Research Edition",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "date": "2026-11-21",
   "purpose": "Phases 1-5 and offline P6-C1 remain accepted in their documented scopes. Explicitly renewed zero-spend local Llama 3 trial completed four matched-call comparisons with 25 model requests and 65 raw-audited SPICE attempts. All target checks missed. Integrity/comparison data passed; final model replay incomplete, so P6-C2/Phase 6 remain blocked. Latest unit checks: 293 passed, separate from historical full-suite acceptance. Both local windows closed and datasets kept separate. GitHub visibility is now public by owner request; only initial main is online, no feature push. See docs/PHASE6_LOCAL_RENEWAL.md.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
@@ -201,7 +201,22 @@
       "target": "All claims backed by versioned fixtures, baseline comparisons, experimental settings and raw CSV/JSON results."
     }
   ],
+  "agentWorkflow": {
+    "policy": "planning/agent-workflow.json",
+    "guide": "docs/AGENT_COLLABORATION.md",
+    "coordinator": "Codex",
+    "advisor": "Freebuff",
+    "mode": "Codex-driven interactive terminal; finite queue during an active session",
+    "acceptance": "Automatic tests/checkers; advisory receipt is not engineering acceptance",
+    "limits": "One authorized cycle: 3 turns, 600 seconds, zero provider spend, no automatic retries",
+    "consent": "Owner explicitly approved selected task text, documentation and necessary code excerpts to Freebuff cloud on 2026-11-21; secrets, personal files, environment files, Git history and raw experiments excluded",
+    "continuation": "Continue eligible job dependencies without owner copy/paste; stop on caps, missing evidence, auth/quota/network or restricted actions. No daemon or automatic new cycle. Final P7 gate still depends on P6."
+  },
   "workflow": [
+    {
+      "title": "Codex and Freebuff collaboration",
+      "body": "Codex alone writes the repository, coordinates dependencies and verifies automatic acceptance. Freebuff reviews allowlisted packets via the installed interactive terminal. scripts/agent_workflow.py persists source hashes, consent, pre-dispatch reservations and advisory receipts in an explicit stable ledger directory. Follow planning/agent-workflow.json and docs/AGENT_COLLABORATION.md; continue bounded eligible jobs during an active Codex session without owner copy/paste. No permanent unattended or paid-provider path is configured."
+    },
     {
       "title": "Two-person division",
       "body": "Partner A: AI/optimization/backend/evaluation. Partner B: circuit models, ngspice integration, physical fixtures and component compatibility. Both review tests, design constraints and research claims."

@@ -1,6 +1,6 @@
 # CircuForge · Wave2Circuit Research Edition
 
-Version 2.0.0 · assembled 2026-11-21 · architecture assumptions to verify in current environment
+Version 2.1.0 · assembled 2026-11-21 · architecture assumptions to verify in current environment
 
 Phases 1-5 and offline P6-C1 remain accepted in their documented scopes. Explicitly renewed zero-spend local Llama 3 trial completed four matched-call comparisons with 25 model requests and 65 raw-audited SPICE attempts. All target checks missed. Integrity/comparison data passed; final model replay incomplete, so P6-C2/Phase 6 remain blocked. Latest unit checks: 293 passed, separate from historical full-suite acceptance. Both local windows closed and datasets kept separate. GitHub visibility is now public by owner request; only initial main is online, no feature push. See docs/PHASE6_LOCAL_RENEWAL.md.
 
@@ -448,6 +448,24 @@ Status: done · Estimate: 4 active hours
 
 **Gate evidence:** phase5-local-interface-v1 passed: 279 tests, fresh isolated wheel install and real installed CLI/HTTP walkthrough. 27 actual calls, 18 archived/raw-audited plus 9 JSON traces matched; target miss preserved and server/temp cleanup verified. P5-H1 superseded by P5-C4; optional P5-C3 deferred per START_CODEX.md. No human review/deployment/push approval asserted.
 
+#### P5-C5 · Codex · Bounded Codex and Freebuff development handoff
+
+Status: blocked · Estimate: 3 active hours
+
+**Action:** Codex drives the existing interactive free-model terminal with selected packets; persist limits and source hashes, receive advisory output, independently check edits and continue eligible jobs automatically within one authorized cycle.
+
+**Deliverable:** planning/agent-workflow.json, scripts/agent_workflow.py, regression tests and docs/AGENT_COLLABORATION.md with real turn evidence.
+
+**Acceptance:** Fail-closed tests cover prerequisites, consent, changed packets, concurrent/duplicate dispatch, persistent caps and untrusted replies; actual Freebuff receipt recorded separately from engineering acceptance. No paid SDK, daemon or full P7/Phase 6 acceptance claim.
+
+**Depends on:** P5-C4
+
+**Evidence:** Observed 2026-11-21: 338 unit tests passed in 13.26s without skips, including 45 coordination regressions; two actual reserved Freebuff advisories captured and independently reviewed. Final automatic handoff audit correctly blocked: DOC-R1 receipt recorded at 13:29:51 UTC after the original 13:28:48 UTC deadline. Old limits/evidence retained, no fresh cycle silently started. Controls/docs corrections exist but timed end-to-end acceptance is not claimed. See docs/AGENT_COLLABORATION.md. P5-C4 historical scientific gate unchanged.
+
+**Advisor:** Freebuff · Codex retains writing and automatic acceptance.
+
+
+
 #### P5-C1 · Codex · CLI and report export
 
 Status: done · Estimate: 8 active hours
@@ -590,7 +608,7 @@ Status: done · Estimate: 2 active hours
 
 #### P7-C1 · Codex · Engineering documentation
 
-Status: todo · Estimate: 7 active hours
+Status: doing · Estimate: 7 active hours
 
 **Action:** README, architecture diagrams, API docs, installation troubleshooting, reproducibility commands and known limits.
 
@@ -600,7 +618,11 @@ Status: todo · Estimate: 7 active hours
 
 **Depends on:** P5-C1, P3-C2
 
-**Evidence:** Not recorded
+**Evidence:** 2026-11-21 documentation increment: actual Freebuff DOC-R1 advisory reviewed by Codex; clarified interpreter/output/platform/evidence guidance and development-agent workflow. Existing test extra already contains FastAPI, so that suggestion was rejected. No fresh clean installation or full P7 documentation acceptance claimed; see docs/AGENT_COLLABORATION.md.
+
+**Advisor:** Freebuff · Codex retains writing and automatic acceptance.
+
+Freebuff audits/drafts selected documentation packets; Codex verifies commands, applies changes and runs clean-setup acceptance. Task dependencies permit documentation preparation while final P7 gate remains dependent on P6.
 
 #### P7-C2 · Codex · Technical research report
 
@@ -615,6 +637,10 @@ Status: todo · Estimate: 8 active hours
 **Depends on:** P3-C2, P4-C2
 
 **Evidence:** Not recorded
+
+**Advisor:** Freebuff · Codex retains writing and automatic acceptance.
+
+Freebuff may draft from explicitly approved evidence summaries; Codex checks every numeric claim against stored records and preserves failures. No raw experiment uploads or scientific-gate delegation.
 
 #### P7-H1 · Human · Verify demo and claims
 
@@ -685,6 +711,22 @@ Status: todo · Estimate: 4 active hours
 **Depends on:** P8-C2
 
 **Evidence:** Not recorded
+
+## Codex and Freebuff collaboration
+
+**Policy:** planning/agent-workflow.json
+
+**Guide:** docs/AGENT_COLLABORATION.md
+
+**Mode:** Codex-driven interactive terminal; finite queue during an active session
+
+**Limits:** One authorized cycle: 3 turns, 600 seconds, zero provider spend, no automatic retries
+
+**Acceptance:** Automatic tests/checkers; advisory receipt is not engineering acceptance
+
+**Data consent:** Owner explicitly approved selected task text, documentation and necessary code excerpts to Freebuff cloud on 2026-11-21; secrets, personal files, environment files, Git history and raw experiments excluded
+
+Continue eligible job dependencies without owner copy/paste; stop on caps, missing evidence, auth/quota/network or restricted actions. No daemon or automatic new cycle. Final P7 gate still depends on P6.
 
 ## Proposed architecture
 
@@ -824,6 +866,10 @@ Another student can run the CLI/demo from README on a clean system, inspect plot
 All claims backed by versioned fixtures, baseline comparisons, experimental settings and raw CSV/JSON results.
 
 ## Human / Codex working agreement
+
+### Codex and Freebuff collaboration
+
+Codex alone writes the repository, coordinates dependencies and verifies automatic acceptance. Freebuff reviews allowlisted packets via the installed interactive terminal. scripts/agent_workflow.py persists source hashes, consent, pre-dispatch reservations and advisory receipts in an explicit stable ledger directory. Follow planning/agent-workflow.json and docs/AGENT_COLLABORATION.md; continue bounded eligible jobs during an active Codex session without owner copy/paste. No permanent unattended or paid-provider path is configured.
 
 ### Two-person division
 

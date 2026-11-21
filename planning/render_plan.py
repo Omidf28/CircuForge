@@ -78,6 +78,19 @@ for phase in data['phases']:
                   '**Acceptance:** ' + task['acceptance'], '',
                   '**Depends on:** ' + (', '.join(task['dependsOn']) or 'None'), '',
                   '**Evidence:** ' + task.get('evidence', 'Not recorded'), '']
+        if task.get('advisor'):
+            lines += ['**Advisor:** ' + task['advisor'] + ' · Codex retains writing and automatic acceptance.', '',
+                      task.get('collaboration', ''), '']
+if data.get('agentWorkflow'):
+    collaboration = data['agentWorkflow']
+    lines += ['## Codex and Freebuff collaboration', '',
+              '**Policy:** ' + collaboration['policy'], '',
+              '**Guide:** ' + collaboration['guide'], '',
+              '**Mode:** ' + collaboration['mode'], '',
+              '**Limits:** ' + collaboration['limits'], '',
+              '**Acceptance:** ' + collaboration['acceptance'], '',
+              '**Data consent:** ' + collaboration['consent'], '',
+              collaboration['continuation'], '']
 for heading, key in [('Proposed architecture', 'architecture'), ('Intelligence and fine-tuning decisions', 'intelligence'), ('Distinctive techniques', 'techniques')]:
     lines += ['## ' + heading, '']
     for item in data[key]:
