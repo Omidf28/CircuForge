@@ -1,5 +1,21 @@
 # Decisions and open questions — 2026-11-18
 
+## Dated update — 2026-11-21
+
+The owner answered `next` to the explicit request for one fresh local-model
+execution with the same 32-request/73728-reserved-token/600-second/80-SPICE caps,
+zero provider expenditure and two CPU threads. The original allowance stayed
+closed. The renewal is now closed too: four matched-call comparisons completed,
+but final model replay did not finish. Preserve the failed target checks and
+blocked gate; no tolerance/budget relaxation or manual technical signoff. See
+[PHASE6_LOCAL_RENEWAL.md](PHASE6_LOCAL_RENEWAL.md). Further model execution
+requires a fresh bounded resource decision.
+
+The owner separately instructed «repo رو پابلیک کن». Changed the existing GitHub
+repository to public and verified the readback. This action did not push local
+feature branches; only initial main was online. See
+[VERSION_CONTROL.md](VERSION_CONTROL.md).
+
 ## Confirmed by project owner
 
 - Main project: CircuForge / Wave2Circuit Research Edition (product + research).

@@ -13,11 +13,14 @@ Phase 5 adds a shared typed `design` command and a bounded loopback FastAPI serv
 P6-C1 adds the offline proposal contract and conservative usage accounting. Its
 task acceptance passed with **319 tests without skips and four freshly audited
 real ngspice calls** from fixed local fixtures. A later owner-approved local
-Llama 3 trial retained seven model requests and 15 independently audited real
-SPICE calls, but reached its deadline before an equal-budget comparison completed.
-Current adapter checks have **289 passing unit tests**; P6-C2 and the Phase 6 gate
-remain blocked, with no model-efficacy conclusion. See
-[docs/PHASE6.md](docs/PHASE6.md).
+Llama 3 trial was renewed once on November 21 with unchanged limits. The renewal
+completed **four matched-call comparisons and 65 independently audited SPICE
+attempts**, using 25 model requests. All methods missed the 0.1% target. Its
+deadline left the final model replay stage incomplete; P6-C2 and Phase 6 remain
+blocked. Current adapter/audit checks have **293 passing unit tests**, separate
+from historical full-suite acceptance. See
+[renewed local results](docs/PHASE6_LOCAL_RENEWAL.md) and
+[docs/PHASE6.md](docs/PHASE6.md). The November 20 dataset is retained separately.
 
 ## Acceptance without manual review
 

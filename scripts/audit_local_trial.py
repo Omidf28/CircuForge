@@ -11,6 +11,13 @@ from circuforge.optimization.base import Evaluation
 from circuforge.proposals import ProposalLimits, ProposalSession, ProviderReply, TokenReservation, TokenUsage
 
 
+def completed_replays(records) -> int:
+    """Known returned observations count; transport/unknown-usage failures do not."""
+    return sum(len(record.get("proposal_ledger", [])) == 1 and
+               record["proposal_ledger"][0]["status"] in {"accepted", "invalid_candidate"}
+               for record in records)
+
+
 def audit(root: Path) -> dict:
     result = json.loads((root / "result.json").read_text(encoding="utf-8"))
     budget = json.loads((root / "budget.json").read_text(encoding="utf-8"))
@@ -137,12 +144,21 @@ def audit(root: Path) -> dict:
     for index, record in enumerate(result["replay"]):
         replay_ledger(record, DesignSpec.model_validate(cases[index]["spec"]), 7, 1)
         covered += check_history(record, root / "replay" / cases[index]["id"])
+        candidate = record["proposal_ledger"][0]["candidate"]
+        original = result["pilot"][index]["proposal_ledger"][0]["candidate"]
+        require(record["exact_candidate_replay"] == (candidate is not None and candidate == original),
+                "incorrect exact-candidate replay claim")
     require(covered == audited and offset == len(replies), "unaccounted raw calls or model requests")
-    complete = result["status"] == "completed" and len(result["trials"]) == eligible == 4 and len(result["replay"]) == 2
+    comparisons_complete = len(result["trials"]) == eligible == 4
+    replays_complete = len(result["replay"]) == completed_replays(result["replay"]) == 2
+    complete = result["status"] == "completed" and comparisons_complete and replays_complete
     return dict(integrity_status="passed", phase6_comparison_status="passed" if complete else "blocked_incomplete",
                 model_requests=budget["model_requests"], reserved_tokens=budget["reserved_tokens"],
                 reported_tokens_known=known_tokens, requests_with_unknown_usage=unknown_usage,
                 audited_real_spice_calls=audited, completed_equal_budget_trials=eligible,
+                comparison_data_status="complete" if comparisons_complete else "incomplete",
+                attempted_replay_checks=len(result["replay"]),
+                completed_replay_checks=completed_replays(result["replay"]),
                 runtime_audited_spice_calls=result["audited_spice_calls"],
                 elapsed_s=budget["elapsed_s"], cost_microusd=0,
                 model_efficacy_established=False, note="Integrity does not turn an incomplete comparison into acceptance.")

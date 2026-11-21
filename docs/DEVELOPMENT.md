@@ -1,5 +1,22 @@
 # Local implementation evidence
 
+## Renewed local trial and public visibility — 2026-11-21
+
+One explicitly renewed local-only run completed four matched-call comparisons
+under unchanged caps: 25 model attempts, 65 independently raw-audited SPICE
+attempts, no target passes. Final model replay timed out before the second check;
+integrity/comparison data passed but the full Phase 6 gate remains blocked.
+Latest offline verification: **293 unit tests passed in 12.78 seconds**. No new
+full-suite acceptance is claimed. Exact commands, source fingerprint, known vs
+reserved token usage, negative outcomes and external artifacts are recorded in
+[PHASE6_LOCAL_RENEWAL.md](PHASE6_LOCAL_RENEWAL.md). Both spent packets refuse
+execution; no new model/SPICE calls occurred during reporting.
+
+The owner separately requested public GitHub visibility. Verified public after
+scanning initial remote history with the common-credential checker; only initial
+main remains online. No feature branch was pushed. See
+[VERSION_CONTROL.md](VERSION_CONTROL.md).
+
 ## Approved local Llama 3 trial — 2026-11-20
 
 P6-H1's explicit local-only approval followed the read-only inventory/proposal in

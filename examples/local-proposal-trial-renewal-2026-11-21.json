@@ -1,0 +1,105 @@
+{
+  "policy": "p6-local-ollama-trial-v1",
+  "status": "approved_local_only",
+  "authorization_task": "P6-H1",
+  "inference_approved": true,
+  "execution_closed": true,
+  "execution_closed_reason": "The renewed 600-second window ended after 25 model requests and 65 SPICE attempts. Four matched-call comparisons completed; the replay stage remains incomplete. No automatic fresh run is authorized.",
+  "owner_response": "تأیید آزمایش فقط محلی با همین سقف‌ها",
+  "provider": {
+    "kind": "local_ollama",
+    "base_url": "http://127.0.0.1:11434",
+    "observed_version": "0.40.16",
+    "model": "llama3:latest",
+    "digest": "365c0bd3c000a25d28ddbf732fe1c6add414de7275464c4e4d1c3b5fcb5d8ad1",
+    "model_size_bytes": 4661224676,
+    "required_capability": "completion",
+    "allow_downloads": false,
+    "allow_remote_endpoints": false,
+    "allow_cloud_models": false,
+    "allow_redirects": false,
+    "allow_environment_proxy": false
+  },
+  "limits": {
+    "max_provider_cost_microusd": 0,
+    "max_model_requests": 32,
+    "reserved_input_tokens_per_request": 2048,
+    "max_output_tokens_per_request": 256,
+    "max_total_reserved_tokens": 73728,
+    "request_deadline_s": 60,
+    "experiment_deadline_s": 600,
+    "minimum_request_interval_s": 1,
+    "max_parallel_requests": 1,
+    "cpu_threads": 2,
+    "gpu_layers": 0,
+    "context_tokens": 2048,
+    "max_total_spice_attempts": 80,
+    "spice_timeout_s": 5
+  },
+  "experiment": {
+    "pilot_requests": 2,
+    "replay_requests": 2,
+    "seeds": [
+      7,
+      42
+    ],
+    "methods": [
+      "random",
+      "grid",
+      "scipy",
+      "local_ollama"
+    ],
+    "spice_budget_per_method_per_trial": 4,
+    "max_model_proposals_per_trial": 7,
+    "comparison_shortfall_policy": "Report actual calls and incomplete comparison; never silently fill model proposals with another method.",
+    "early_target_stop": false,
+    "cases": [
+      {
+        "id": "local-lowpass",
+        "spec": {
+          "filter_type": "rc_lowpass",
+          "cutoff_hz": 2300.0,
+          "resistance_ohm": {
+            "minimum": 100.0,
+            "maximum": 10000.0
+          },
+          "capacitance_f": {
+            "minimum": 1e-08,
+            "maximum": 1e-06
+          },
+          "relative_error_tolerance": 0.001,
+          "max_evaluations": 4,
+          "timeout_s": 5.0
+        }
+      },
+      {
+        "id": "local-highpass",
+        "spec": {
+          "filter_type": "rc_highpass",
+          "cutoff_hz": 2300.0,
+          "resistance_ohm": {
+            "minimum": 100.0,
+            "maximum": 10000.0
+          },
+          "capacitance_f": {
+            "minimum": 1e-08,
+            "maximum": 1e-06
+          },
+          "relative_error_tolerance": 0.001,
+          "max_evaluations": 4,
+          "timeout_s": 5.0
+        }
+      }
+    ]
+  },
+  "data_policy": "Only generated numeric RC specifications are sent to the pinned local model. No source files, credentials, user documents, filesystem paths or remote services.",
+  "results": null,
+  "authorization_renewal": {
+    "date": "2026-11-21",
+    "owner_response": "next",
+    "reply_to": "Fresh local-only execution with unchanged 32-request, 600-second, 80-SPICE, zero-provider-cost and two-CPU-thread ceilings?",
+    "original_allowance_remains_closed": true,
+    "one_run_only": true,
+    "source_commit": "9a6d431"
+  }
+}

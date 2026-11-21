@@ -251,3 +251,22 @@ def test_fast_pilot_continuation_does_not_waive_global_request_rate(tmp_path):
     with pytest.raises(LocalTrialLimit, match="interval"):
         resumed.reserve_model()
     assert resumed.requests == 1
+
+
+def test_renewed_scope_preserves_closed_allowances_and_numeric_policy(tmp_path):
+    root = Path(__file__).resolve().parents[2]
+    original = json.loads((root / "examples/local-proposal-trial-v1.json").read_text(encoding="utf-8"))
+    path = root / "examples/local-proposal-trial-renewal-2026-11-21.json"
+    renewed = json.loads(path.read_text(encoding="utf-8"))
+    assert original["execution_closed"] is True and renewed["execution_closed"] is True
+    with pytest.raises(ValueError, match="closed"):
+        load_trial(path)
+    assert renewed["authorization_renewal"]["owner_response"] == "next"
+    assert renewed["authorization_renewal"]["one_run_only"] is True
+    for key in ("provider", "limits", "experiment", "data_policy"):
+        assert renewed[key] == original[key]
+    assert renewed["results"] is None
+    fixture = {**renewed, "execution_closed": False}  # Parse-only fixture; never invokes a provider.
+    fixture_path = tmp_path / "renewal-fixture.json"
+    fixture_path.write_text(json.dumps(fixture), encoding="utf-8")
+    assert load_trial(fixture_path)["limits"] == original["limits"]

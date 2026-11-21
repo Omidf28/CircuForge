@@ -8,6 +8,13 @@ The allowance subsequently ended and is closed. See
 [observed partial results](PHASE6_LOCAL_RESULTS.md): seven model requests,
 15 SPICE attempts, zero completed equal-budget comparisons and zero provider cost.
 
+On November 21 the owner answered `next` to a request for one fresh execution
+under the same caps. Its separate renewal packet is now closed too. It produced
+four complete matched-call comparisons, 25 model requests and 65 SPICE attempts;
+the final replay stage did not complete before its deadline. See
+[renewal evidence](PHASE6_LOCAL_RENEWAL.md). These are separate datasets and
+neither closed packet authorizes another run.
+
 ## Observed inventory — 2026-11-20
 
 Read only `GET http://127.0.0.1:11434/api/tags`, `GET /api/version` and

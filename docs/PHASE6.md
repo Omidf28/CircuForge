@@ -3,9 +3,12 @@
 The first accepted slice was the provider-neutral offline interface. Subsequently
 the owner approved a bounded zero-spend local Ollama trial under P6-H1. Its opt-in
 adapter/runner now exist, with no provider SDK, credentials, cloud transport or
-agent loop. The trial stopped at its original deadline: seven model requests,
-15 raw-audited SPICE calls and no complete equal-budget comparison. P6-C2 and the
-Phase 6 gate remain blocked. See [local results](PHASE6_LOCAL_RESULTS.md). Existing
+agent loop. The November 20 partial trial is preserved in
+[historical local results](PHASE6_LOCAL_RESULTS.md). An explicitly renewed
+November 21 trial completed four matched-call comparisons, 25 model requests and
+65 raw-audited SPICE attempts before its unchanged deadline. No method met the
+target; final model replay checks remain incomplete. P6-C2 and the Phase 6 gate
+remain blocked. See [renewed results](PHASE6_LOCAL_RENEWAL.md). Existing
 basic design CLI/API, baselines and physics thresholds remain unchanged.
 
 ## Contract and boundaries

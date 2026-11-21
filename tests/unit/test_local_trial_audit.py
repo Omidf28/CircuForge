@@ -55,6 +55,16 @@ def test_rejected_saved_response_can_have_valid_integrity_without_phase_acceptan
     assert result["reported_tokens_known"] == 5 and result["audited_real_spice_calls"] == 0
 
 
+@pytest.mark.parametrize("statuses,count", [
+    (["accepted", "invalid_candidate"], 2),
+    (["accepted", "provider_error"], 1),
+    (["provider_error", "invalid_response"], 0),
+])
+def test_failed_replay_attempts_are_not_completed_observations(statuses, count):
+    records = [{"proposal_ledger": [{"status": status}]} for status in statuses]
+    assert command().completed_replays(records) == count
+
+
 @pytest.mark.parametrize("mutation", ["usage", "candidate", "cpu", "quota", "deadline", "call_claim"])
 def test_inconsistent_model_or_budget_evidence_is_rejected(tmp_path, mutation):
     files = evidence(tmp_path)

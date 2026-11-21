@@ -1,8 +1,8 @@
 {
   "title": "CircuForge · Wave2Circuit Research Edition",
   "version": "2.0.0",
-  "date": "2026-11-20",
-  "purpose": "Phases 1-5 and offline P6-C1 remain accepted in their documented scopes. Owner-approved zero-spend local Llama 3 trial made 7 model requests and 15 raw-audited real SPICE attempts before its retained 600-second client deadline. Evidence integrity passed, but zero matched-call trials completed; P6-C2/Phase 6 remain blocked and no model efficacy is established. The local allowance is closed; no paid/cloud traffic, download, deployment or feature-branch push. See docs/PHASE6_LOCAL_RESULTS.md.",
+  "date": "2026-11-21",
+  "purpose": "Phases 1-5 and offline P6-C1 remain accepted in their documented scopes. Explicitly renewed zero-spend local Llama 3 trial completed four matched-call comparisons with 25 model requests and 65 raw-audited SPICE attempts. All target checks missed. Integrity/comparison data passed; final model replay incomplete, so P6-C2/Phase 6 remain blocked. Latest unit checks: 293 passed, separate from historical full-suite acceptance. Both local windows closed and datasets kept separate. GitHub visibility is now public by owner request; only initial main is online, no feature push. See docs/PHASE6_LOCAL_RENEWAL.md.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
   "vision": "Given a validated filter specification, synthesize constrained analog circuit candidates, simulate them using real ngspice runs, optimize component values, quantify tolerance robustness, and report reproducible evidence. AI is an optional, benchmarked proposal mechanism—not the source of numerical truth.",
   "schedule": "Provisional 12-week two-person, part-time plan (roughly 12–15 team hours per person weekly). Phase gates and actual test evidence take precedence over dates. An MVP may take longer depending on simulator setup.",
@@ -220,7 +220,7 @@
     }
   ],
   "planningHome": "Maintain canonical context.json, phase-tasks.json, generated roadmap files and progress evidence in Git. Use task IDs in commits and GitHub Issues if desired.",
-  "handoff": "Read AGENTS.md and planning/HANDOFF.md. P6-H1 was explicitly approved for one bounded installed local-model experiment only. The adapter/runner/auditor are implemented; actual trial retained 7 model requests, 15 real raw-audited SPICE calls, 764 known reported tokens and one unknown-usage timeout. Global reservations retained; original deadline not reset across one documented controller correction. Zero complete matched-call comparisons; P6-C2/Phase 6 remain blocked and allowance closed. New tests are unit-only; historical full-suite result remains 319 for P6-C1. No paid/cloud traffic, download, advanced tool agent, PCB, deployment or push. Source/Git stay on C; ancillary artifacts retain their existing C-path junction to D.",
+  "handoff": "Read AGENTS.md and planning/HANDOFF.md. November 21 next renewed one bounded local run with unchanged caps: 25 generation attempts/65 raw-audited SPICE attempts, four matched-call comparisons, 3079 known reported tokens plus one unknown-usage timeout, 57600 reserved tokens retained. Final model replay incomplete; P6-C2/Phase 6 blocked despite complete comparison data. Both windows closed; old dataset separate. Latest 293 tests are unit-only; historical full-suite result remains 319 for P6-C1. No paid/cloud model traffic, download, PCB, deployment or feature push from this experiment. Owner separately made GitHub public, only initial main online. Source/Git stay on C; ancillary artifacts retain their existing C-path junction to D.",
   "sources": [
     {
       "id": "ngspice",
@@ -760,7 +760,7 @@
             "P6-H1"
           ],
           "status": "blocked",
-          "evidence": "Observed 2026-11-20: approved local trial ended at its retained 600-second client deadline after 7 model requests and 15 real SPICE attempts. All 15 raw calls plus proposal/usage accounting passed read-only integrity audit, but zero equal-budget comparisons completed: low-pass/seed7 random/grid/SciPy used 4 calls each, local model 2; other trials/replay unrun. Three invalid proposals, three accepted proposals, one unknown-usage timeout; no target passes or efficacy claim. P6-C2/full Phase 6 acceptance remains blocked; allowance closed. See docs/PHASE6_LOCAL_RESULTS.md and external local-llama3-trial-2026-11-20/audit.json."
+          "evidence": "Observed renewal 2026-11-21: four complete matched-call comparisons at 4 actual SPICE attempts per method, 25 model requests/65 raw-audited SPICE attempts total. Integrity and comparison-data audits passed; all target checks missed. Seventeen accepted proposals, seven invalid candidates, one unknown-usage timeout; 57600 reserved tokens/3079 known reported tokens. Final replay: one timeout, second unrun, zero completed observations. P6-C2/full gate remain blocked on replay completeness, not comparison counts; 293 unit tests passed without model/simulator calls. Both allowances closed. November 20 data retained separately. See docs/PHASE6_LOCAL_RENEWAL.md and external local-llama3-renewal-2026-11-21/audit.json."
         },
         {
           "id": "P6-H1",
@@ -774,12 +774,12 @@
             "P6-C1"
           ],
           "status": "done",
-          "evidence": "Explicit owner response 2026-11-20: تأیید آزمایش فقط محلی با همین سقف‌ها. Approved only installed local llama3, zero provider expenditure, <=32 requests, <=73728 reserved tokens, 10 minutes, 80 SPICE attempts and two CPU threads. The single execution window has ended and is closed in source configuration. No cloud/spending/download/personal-file transmission/push/deployment permission; further execution needs a renewed resource decision. See docs/PHASE6_LOCAL_TRIAL.md and docs/PHASE6_LOCAL_RESULTS.md."
+          "evidence": "Explicit owner response 2026-11-20: تأیید آزمایش فقط محلی با همین سقف‌ها. On November 21 owner answered next to the explicit request for one fresh execution under unchanged caps. Installed local llama3 only, zero provider expenditure, <=32 requests, <=73728 reserved tokens, 600 seconds, 80 SPICE attempts and two CPU threads per window. Both execution windows have ended and their source packets are closed. No paid/cloud/download/personal-file transmission/push/deployment permission from this decision; more model execution needs a fresh bounded resource decision. See docs/PHASE6_LOCAL_TRIAL.md and docs/PHASE6_LOCAL_RENEWAL.md."
         }
       ],
       "gateStatus": "blocked",
       "acceptanceMode": "automated",
-      "gateEvidence": "Independent local-trial audit: evidence integrity passed for 7 model requests/15 real SPICE attempts, comparison acceptance blocked_incomplete with zero complete matched-call trials. P6-C1 passed and P6-H1 recorded explicit local-only owner approval; expired resource window was not reset. No full Phase 6 or model efficacy acceptance."
+      "gateEvidence": "November 21 renewal integrity passed for 25 model requests/65 real SPICE attempts; all four matched-call comparisons complete, no target passes. Final model replay stage incomplete (one timeout, second unrun), so overall acceptance remains blocked_incomplete. P6-C1 historical full-suite acceptance remains distinct from latest 293 unit tests. P6-H1 records explicit local-only resource decisions; both windows closed, datasets not pooled. No full Phase 6 or model efficacy acceptance."
     },
     {
       "id": "P7",
@@ -891,5 +891,5 @@
       ]
     }
   ],
-  "assembledDate": "2026-11-20"
+  "assembledDate": "2026-11-21"
 }
