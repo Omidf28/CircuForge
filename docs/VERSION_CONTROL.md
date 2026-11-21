@@ -1,5 +1,25 @@
 # Version control
 
+## Current visibility — 2026-11-21
+
+The owner explicitly requested «repo رو پابلیک کن». Changed
+Omidf28/CircuForge from private to public with GitHub CLI and independently read
+back `private=false`, `visibility=public`. At that point only remote main existed,
+at `20ef58fe266cee5837ed27f24ce6b60d60951c78`; its one reachable commit and 46 blobs
+were checked with the project's common-credential scanner, with zero findings.
+GitHub reported zero Actions runs. This is a common-signature check, not a claim
+to detect every conceivable secret.
+
+Direct CLI API access initially timed out. The command succeeded using the
+already-enabled Windows loopback proxy only for that shell process; no system
+proxy/security settings changed. No new commit/branch was pushed and no remote
+history was overwritten. The following private-repository setup notes are
+historical; future visibility changes still require an explicit owner request.
+
+Public repository: https://github.com/Omidf28/CircuForge. Later local phases are
+not published by changing visibility alone; feature pushes retain their separate
+authorization requirements.
+
 The standalone CircuForge folder is the Git repository. It is separate from the unrelated VideoPlayer project. The initial verified implementation is committed on main. Development after the initial commit uses branches named codex/<task-id>-<description>.
 
 Active checkout: `C:/Users/Home/Documents/ChatGPT/Implement CircuForge`. It was populated from the complete local history; the previous visualization-workspace copy is retained with ignored simulator tools/evidence. Current Phase 1 follow-up branch: `codex/p1-search-failure-evidence`. New local commits on that branch are not covered by the earlier initial-push approval and remain unpushed.
