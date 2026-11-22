@@ -525,7 +525,7 @@
             "P6-H1"
           ],
           "status": "blocked",
-          "evidence": "Observed renewal 2026-11-21: four complete matched-call comparisons at 4 actual SPICE attempts per method, 25 model requests/65 raw-audited SPICE attempts total. Integrity and comparison-data audits passed; all target checks missed. Seventeen accepted proposals, seven invalid candidates, one unknown-usage timeout; 57600 reserved tokens/3079 known reported tokens. Final replay: one timeout, second unrun, zero completed observations. P6-C2/full gate remain blocked on replay completeness, not comparison counts; 293 unit tests passed without model/simulator calls. Both allowances closed. November 20 data retained separately. See docs/PHASE6_LOCAL_RENEWAL.md and external local-llama3-renewal-2026-11-21/audit.json."
+          "evidence": "Observed renewal 2026-11-21: four matched-call comparisons at 4 actual SPICE attempts/method, 25 model requests/65 raw-audited SPICE attempts; all target checks missed. Seventeen accepted/seven invalid proposals/one unknown-usage timeout; 57600 reserved tokens/3079 known tokens. Final replay timed out, second unrun; original gate blocked. Both original allowances closed, November 20 data separate. On November 22 prepared a separate <=2-request/120-second/2-SPICE local replay envelope, runner and independent composite auditor, currently pending owner resource approval and unexecuted. 364 unit tests plus final 28 targeted replay/report tests passed without model/simulator use. See docs/P6_REPLAY_SUPPLEMENT.md and docs/PHASE6_LOCAL_RENEWAL.md. No actual supplemental result or gate acceptance claimed."
         },
         {
           "id": "P6-H1",

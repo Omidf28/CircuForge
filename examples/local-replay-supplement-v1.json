@@ -1,0 +1,24 @@
+{
+  "policy": "p6-local-replay-supplement-v1",
+  "status": "pending_owner_approval",
+  "inference_approved": false,
+  "owner_response": null,
+  "execution_closed": false,
+  "purpose": "Two explicitly new replay observations of the November 21 pilot requests. Preserve the expired primary window and its timeout; do not rerun or rescore comparisons.",
+  "limits": {
+    "max_model_requests": 2,
+    "max_total_reserved_tokens": 4608,
+    "max_seconds": 120,
+    "max_spice_attempts": 2,
+    "max_provider_cost_microusd": 0,
+    "cpu_threads": 2,
+    "gpu_layers": 0,
+    "automatic_retries": 0
+  },
+  "source_sha256": {
+    "result.json": "6c1a054083b6d8fe4cc30b980ce2c29cf27de80a5d45e7616b9b60c18e660c91",
+    "budget.json": "f946e4551fa66885439c9f6da9b4ec69aaaaa8e96b8d130291cd28280ba99e30",
+    "approved-policy.json": "48e0c55b91246cc06842269b208bc537d43be9f3a27eb012d6e7bc7e1dce1757"
+  },
+  "data_scope": "Only the original generated numeric RC prompts to the existing pinned loopback llama3 model; no cloud, download, files, credentials, new comparison cases or remote push."
+}

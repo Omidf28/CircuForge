@@ -1,5 +1,24 @@
 # Local implementation evidence
 
+## Replay-supplement preparation — 2026-11-22
+
+Prepared a pending, separately bounded two-request local replay policy, guarded
+runner and independent read-only composite auditor. No inference or simulator
+execution occurred in this preparation. **364 unit tests passed in 19.33s**;
+after tightening saved-envelope/unknown-usage handling and clipping simulator
+timeouts to the remaining total window, the **28 targeted replay/report tests
+passed in 2.14s**. The initially restricted mock-HTTP attempt
+stalled during Windows asyncio setup; only identified test processes were
+stopped, then mocked tests passed with local-socket permission. The scientific
+resource question remains pending; original counters/deadlines are untouched.
+See docs/P6_REPLAY_SUPPLEMENT.md and external
+Automatic_Acceptance/p6-replay-preparation-unit-2026-11-22.xml.
+
+Also normalized the generated SVG's trailing whitespace. Direct regeneration
+from the saved numeric summary matched the versioned chart, and whitespace and
+credential checks passed. This changes formatting only; no numerical claim or
+raw evidence was altered.
+
 ## Documentation, report and fresh installation — 2026-11-22
 
 P7-C1/C2 work follows its explicit P5/P3/P4 task prerequisites while the final

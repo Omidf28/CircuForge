@@ -1,5 +1,30 @@
 # CircuForge — portable handoff
 
+## Prepared replay supplement — awaiting resource decision
+
+Owner requested continued project work on 2026-11-22. Prepared
+examples/local-replay-supplement-v1.json with inference_approved=false and no owner
+response: only two original pilot replays, <=2 requests/4608 reserved tokens/
+120 seconds/2 SPICE attempts, zero spend, pinned existing local llama3, CPU2/GPU0.
+scripts/replay_local_trial.py has a smaller persistent budget and refuses pending
+permission before any simulator/model access. scripts/audit_local_replay.py checks
+saved replies/raw new traces and the immutable original source linkage; the runner
+cannot accept its own scientific gate. Existing windows/timeout/counters and
+comparison scoring are preserved. No live supplement has run.
+
+Preparation: **364 unit tests passed in 19.33s**; after final unknown-usage and
+envelope/deadline checks, **28 targeted replay/report tests passed in 2.14s**. A restricted
+mock-HTTP unit attempt stalled in Windows asyncio setup; only its identified
+test processes were stopped and it was rerun with local-socket permission.
+No installed model or ngspice was used by those tests. The resource question is
+pending; do not infer approval from continued unrelated work or elapsed time.
+See docs/P6_REPLAY_SUPPLEMENT.md. P6/full P7 remain blocked.
+
+Report-format follow-up: normalized Matplotlib SVG trailing whitespace, checked
+clean diffs and directly regenerated the chart from its saved summary. It matched
+the versioned SVG exactly without model/simulator calls. Source/input data and
+scientific results were unchanged.
+
 ## Current engineering/report milestone — 2026-11-22
 
 On codex/p7-research-evidence, completed P7-C1 documentation and P7-C2 reporting
