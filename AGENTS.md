@@ -1,5 +1,24 @@
 # CircuForge — Codex workspace instructions
 
+## Owner-selected simple local desktop interface (2026-11-22)
+
+After being offered the next scope, the owner explicitly selected
+«رابط گرافیکی محلی ساده (پیشنهاد من)». Implement a local desktop form for RC
+specification, background ngspice execution and measured circuit/response/error
+display using the existing validated engine. This supersedes the earlier UI
+exclusion only for this bounded desktop scope. Retain the core without GUI
+dependencies, safe typed templates, one-job limits and automatic technical
+verification. Full optimizer-comparison dashboard, PCB, advanced agents, model
+cycles, remote pushes and deployment remain outside this selection.
+
+P5-C6/v0.3.0 passed phase5-simple-desktop-v1: 516 tests without skips, 111
+unchanged Python hashes, 37 matching source/wheel/installed package files, four
+actual GUI calls plus 27 installed CLI/HTTP calls (22 raw audited, nine JSON
+matched). Native window states were agent-inspected; no owner UX review claimed.
+See docs/DESKTOP.md. Only final-acceptance-v3 is accepted; invalid earlier
+metadata/capture drafts are retained and superseded. Old acceptance/bundles stay
+historical. Report this delivered local scope before further expansion.
+
 ## Remaining caller-path repairs accepted (2026-11-22)
 
 P7-C7 fixes typed caller paths in Phase 2/3/4/5/7 acceptance and the installed

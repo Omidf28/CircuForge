@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "circuforge"
-version = "0.2.0"
+version = "0.3.0"
 description = "Local, physics-backed RC filter simulation"
 requires-python = ">=3.11"
 dependencies = ["numpy>=1.24,<3", "pydantic>=2,<3", "scipy>=1.15,<2"]
@@ -12,12 +12,14 @@ dependencies = ["numpy>=1.24,<3", "pydantic>=2,<3", "scipy>=1.15,<2"]
 [project.optional-dependencies]
 test = ["pytest>=8,<10", "matplotlib>=3.8,<4", "fastapi>=0.115,<1", "uvicorn>=0.30,<1", "httpx>=0.27,<1"]
 report = ["matplotlib>=3.8,<4"]
+gui = ["matplotlib>=3.8,<4"]
 api = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1", "matplotlib>=3.8,<4"]
 local-model = ["httpx>=0.27,<1"]
 
 [project.scripts]
 circuforge = "circuforge.cli:main"
 circuforge-api = "circuforge.api:main"
+circuforge-desktop = "circuforge.desktop.app:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

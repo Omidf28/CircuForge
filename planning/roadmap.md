@@ -2,7 +2,7 @@
 
 Version 2.1.0 · assembled 2026-11-22 · architecture assumptions to verify in current environment
 
-Bounded local numerical follow-up P7-C4/v0.2.0 accepted automatically 2026-11-22 under physics-onecall-v1: 472 tests without skips, 100 unchanged Python source/script/test hashes, 384 raw-audited comparison calls including exact replay. Per run analytic_rc passed 42 free-domain and six fixed-control trials; each classical method passed six fixed controls and missed 42 free-domain targets under equal one-call budgets. Known ideal-RC physics and deterministic-repeat limitations explicit. Fresh isolated CLI/real loopback JSON/ZIP passed with three additional calls and matching installed source. Historical v0.1 MVP/438-test demo evidence and all original datasets/bundles unchanged. Owner-requested v0.1 GitHub synchronization merged PR #1; v0.2 remains local on codex/physics-guided-rc. All model/Freebuff cycles closed; P8/PCB/advanced work unstarted. Stop at this bounded result; no deployment or new publication.
+Owner-selected simple local desktop P5-C6/v0.3.0 accepted automatically 2026-11-22 under phase5-simple-desktop-v1/final-acceptance-v3: 516 current tests without skips, 111 Python hashes, 37 matching installed package files and 31 real GUI/CLI/HTTP calls (22 raw audited, nine JSON matched). Form, single background one-call RC simulation, measured circuit/response/error and saved evidence implemented. Native states agent-inspected; target misses and failed checker drafts preserved, no owner UX review claimed. Prior v0.1 research MVP, v0.2 numerical results/maintenance and release bundles remain source-bound history. Only v0.1 was published via PR #1; current codex/local-desktop-ui stays local. All model/Freebuff cycles closed; broader comparison dashboard, P8/PCB/advanced work and deployment unstarted. Stop/report this delivered bounded scope.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -448,6 +448,20 @@ Status: done · Estimate: 4 active hours
 
 **Gate evidence:** phase5-local-interface-v1 passed: 279 tests, fresh isolated wheel install and real installed CLI/HTTP walkthrough. 27 actual calls, 18 archived/raw-audited plus 9 JSON traces matched; target miss preserved and server/temp cleanup verified. P5-H1 superseded by P5-C4; optional P5-C3 deferred per START_CODEX.md. No human review/deployment/push approval asserted.
 
+#### P5-C6 · Codex · Owner-selected simple local desktop interface
+
+Status: done · Estimate: 6 active hours
+
+**Action:** Add a typed RC desktop form, background one-call simulation, circuit and measured response/error display, and access to saved evidence using the existing engine.
+
+**Deliverable:** Optional Python/Tk desktop, unit and real integration tests, actual window evidence, fresh installed package and read-only automatic acceptance checker.
+
+**Acceptance:** Full tests without skips; current installed package matches source; actual GUI low/high-pass passes and a measured target miss audited from raw exports; invalid input rejected before simulation; background work is single-job and core remains usable without Tk. Preserve historical evidence and no owner-review/model/deployment claim.
+
+**Depends on:** P5-C2, P7-C7
+
+**Evidence:** Accepted 2026-11-22 under phase5-simple-desktop-v1/final-acceptance-v3: owner-selected optional v0.3.0 Tk desktop, one background one-call design, existing raw exports. Current full suite 516 passed in 126.36s without skips/errors/failures; all 111 Python hashes match. Fresh installed runtime retained its 509-test/27-real-call CLI/HTTP evidence after checker-only repairs; 37 package files match source/wheel/installation. Three source GUI button runs plus one installed -I GUI run independently raw-audited: low/high-pass analytic passes, retained 30.7976% manual target miss, invalid input creates no run. Combined 31 actual calls: 22 raw audited, nine JSON matched. Actual busy/stale/error/window captures inspected by agent, native image integrity/hashes checked, no owner UX review claimed. Failed format draft and invalid v2 wheel-hash metadata preserved/superseded; final gate/interface/actual wheel hashes independently match. docs/DESKTOP.md; external desktop-ui-2026-11-22/final-acceptance-v3. No model call, remote push or deployment; full comparison dashboard P5-C3 stays deferred.
+
 #### P5-C5 · Codex · Bounded Codex and Freebuff development handoff
 
 Status: done · Estimate: 3 active hours
@@ -506,7 +520,7 @@ Status: deferred · Estimate: 10 active hours · Optional
 
 **Depends on:** P5-C2
 
-**Evidence:** Explicitly optional dashboard deferred: START_CODEX.md excludes a frontend; CLI/API and PNG exports meet the inspectable scientific-result gate without unnecessary UI. No dashboard completion is claimed.
+**Evidence:** Historical frontend exclusion was superseded only for the owner's 2026-11-22 selection of a simple local desktop under P5-C6. This broader baseline-comparison dashboard remains deferred; no optimizer-comparison UI completion is claimed.
 
 #### P5-H1 · Human · User acceptance walkthrough
 
@@ -968,7 +982,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md, planning/HANDOFF.md and docs/ANALYTIC_RC.md. P7-C4/v0.2.0 analytic_rc is implemented and accepted under physics-onecall-v1: 472 tests, zero skips/errors/failures, 100 source hashes, 384 raw-audited calls including exact numerical replay under cap 500. Same original v2 domains/tolerance; separately frozen one-call experiment. Per run analytic 42/42 free-domain plus 6/6 fixed passes; classical methods 0/42 free-domain and 6/6 fixed. Curated ideal continuous RC/known-physics advantage; no general optimizer/hardware claim. Fresh installed CLI/loopback JSON/ZIP: three calls, same source fingerprint, 33 package files matched, cleanup passed. Evidence under external Automatic_Acceptance/physics-onecall-2026-11-22. Feature branch codex/physics-guided-rc stays local. Historical v0.1 MVP, raw datasets and py312 bundle unchanged; owner-requested prior source publication merged PR #1 into main at 6a2783e017a6cbb21c66a405a332c9d2b8f8a8e0. No force-push, new model/Freebuff cycle, deployment, PCB or advanced work. Stop/report bounded result before expansion. Source/Git stay on C; ancillary junction unchanged.
+Read AGENTS.md, planning/HANDOFF.md and docs/DESKTOP.md. Owner selected the simple local GUI; P5-C6/v0.3.0 is complete on codex/local-desktop-ui. Optional Tk/Matplotlib desktop calls existing typed engine with one background job/call and persistent raw exports. Final phase5-simple-desktop-v1: 516 tests without skips, 111 current Python hashes, 37 byte-matching source/wheel/installed package files; four actual GUI calls plus 27 installed CLI/HTTP calls, 22 raw audited and nine JSON matched. Analytical low/high-pass passes and manual 30.7976% target miss retained; invalid input starts no job, native states agent-inspected without owner UX claim. Evidence: external desktop-ui-2026-11-22/final-acceptance-v3. Earlier screenshot-format block and v2 incorrect wheel-hash metadata retained/superseded; final wheel/interface/archive hashes independently match. Historical numerical/model evidence and v0.1/v0.2 bundles untouched; only earlier v0.1 source published through PR #1. New branch stays local, no push/model/Freebuff cycle/deployment/PCB/advanced scope. Stop/report completed local feature. Source/Git remain on C; existing artifact junction unchanged.
 ```
 
 ## Sources

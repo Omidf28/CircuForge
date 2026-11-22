@@ -2,6 +2,13 @@
 
 ## Current continuation (2026-11-22)
 
+Owner explicitly chose a simple local graphical interface. P5-C6/v0.3.0 passed
+phase5-simple-desktop-v1 on codex/local-desktop-ui: 516 tests, fresh matching
+installation and 31 actual GUI/CLI/HTTP calls. Read HANDOFF and docs/DESKTOP.md;
+only external final-acceptance-v3 is accepted, with earlier failed drafts retained.
+This overrides earlier frontend exclusion only for that bounded desktop. Full
+optimizer dashboard, model cycles, PCB and publication remain deferred/separate.
+
 Latest maintenance P7-C7 extends caller-path repair across remaining acceptance
 and installed-walkthrough scripts. Actual outside-checkout verification passed
 480 tests, fresh installation and 54 CLI/HTTP calls with raw/JSON/cleanup checks.

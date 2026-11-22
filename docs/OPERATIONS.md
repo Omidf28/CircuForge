@@ -41,8 +41,8 @@ that negative result is preserved rather than converted to a passing design.
 .\.venv\Scripts\python -m circuforge.api --port 8765
 ```
 
-The server binds to `127.0.0.1`. Open `http://127.0.0.1:8765/docs` for the generated
-request/response schema or GET `/openapi.json` for machine-readable OpenAPI.
+The server binds to `127.0.0.1`. GET `/openapi.json` for its generated
+machine-readable request/response schema. Interactive docs routes are disabled.
 POST `/v1/designs` accepts the same typed request as the CLI; POST
 `/v1/designs/export` returns the complete ZIP. Example from a separate shell:
 

@@ -1,5 +1,13 @@
 # CircuForge — Wave2Circuit Research Edition
 
+Owner-selected **v0.3.0 local desktop** is implemented and accepted: RC form,
+one background ngspice run, circuit diagram, measured gain/phase and explicit
+pass/target-miss/error results. **516 tests without skips**, a verified fresh
+installation and **31 real GUI/CLI/HTTP calls** passed the final checks, preserving
+target misses. Install `.[gui]` and run `python -m circuforge.desktop`; see
+[desktop setup and operation](docs/DESKTOP.md). Earlier v0.2 records below remain
+bound to their original source snapshots. The new branch is local.
+
 Post-MVP v0.2.0 adds `analytic_rc`, a one-measurement proposal using the known
 ideal RC equation. Its numerical acceptance passed with **475 tests without skips
 and 384 raw-audited calls including exact replay**. It passed all 48 feasible

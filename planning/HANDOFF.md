@@ -1,5 +1,56 @@
 # CircuForge — portable handoff
 
+## Accepted owner-selected desktop — 2026-11-22
+
+After completing the bounded MVP/maintenance, asked for a concrete next scope.
+Owner selected «رابط گرافیکی محلی ساده (پیشنهاد من)». P5-C6 implements only that
+local desktop on codex/local-desktop-ui, version 0.3.0: Tk form, explicit ohm/nF/
+percent conversion, existing safe DesignRequest engine, background single-job
+one-call simulation, circuit diagram, measured gain/phase, target/error/status
+and unique persistent JSON/CSV/PNG/ZIP outputs. Core/API never require Tk;
+API version metadata now follows the package version. Full comparison dashboard
+P5-C3, providers, PCB and publication remain outside this selection.
+
+P5-C6 passed phase5-simple-desktop-v1. **516 tests in 126.36s** (JUnit suite
+126.335s), zero failures/errors/skips; all **111 current Python hashes** match.
+All **37 package files** match source/wheel/fresh installation. Windows Computer
+Use drove three actual source GUI runs: low/high-pass analytic passes and manual
+high-pass target miss (1 kΩ/100 nF vs 2300 Hz measured 1591.654910 Hz, 30.7976%
+target error). Busy/progress, stale-result labeling, invalid-input rejection and
+normal close were observed; no owner UX review is claimed.
+
+Fresh isolated installation passed 509 tests (156.02s) and the existing real
+27-call CLI/HTTP walkthrough. The installed desktop was launched with Python -I
+and its actual button produced one measured low-pass pass. Four GUI calls total
+(three source, one installed) are separate from unit fixtures and the 27 API/CLI
+calls. **31 total operational calls: 22 raw audited, nine JSON matched**; test
+fixtures are separate. Final evidence root is external
+Automatic_Acceptance/desktop-ui-2026-11-22, accepted record
+**final-acceptance-v3/acceptance.json**. Current full-suite/hash map is under
+current-checker-tests-v3; installation/509-test evidence remains under fresh-install.
+
+Initial read-only desktop gate correctly blocked a capture-format mismatch:
+Windows screenshot bytes are JPEG, while initial .png names/checker assumed
+PNG. Original bytes/drafts and first-check-blocked.json are preserved. Native
+byte-identical .jpg copies are under screenshots/. Checker now validates native
+JPEG/PNG, dimensions, integrity and matching suffix. A second draft incorrectly
+labeled a screenshot digest as the wheel hash due to a reused variable. Original
+final-acceptance-v2 is superseded-invalid-provenance; v2-provenance-defect.json
+documents it. Separate package-proof handling and ten gate tests now cover these
+cases; do not use either draft as acceptance.
+Only scripts/accept_desktop.py and its unit test changed after fresh installation;
+all 37 runtime modules and installed source remain unchanged. Current 516-test
+evidence and source map were used for the final audit alongside the still-matching
+runtime installation. Recorded/fresh-install/actual wheel hashes independently
+match: 41f32d78ae95f2a5b0b1e961f565a1237ec6f2dbae94de6061344874313de8a2.
+Package source fingerprint:
+7c983eed84135d5b4a64212dda568cfe4d5c84d7607013cee1280e11646588ae.
+
+P5-C6 is done. Reproduction and exact checker arguments are in docs/DESKTOP.md.
+The installed desktop remains available for local use; earlier v0.1/v0.2 records
+and bundles stay historical. No model, remote push, deployment or broader
+dashboard/PCB scope is implied. Report this completed owner-selected feature.
+
 ## Accepted remaining caller-path repairs — 2026-11-22
 
 Owner's latest `next` continues bounded script maintenance as P7-C7. Phase

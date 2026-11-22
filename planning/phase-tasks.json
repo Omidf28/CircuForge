@@ -393,6 +393,19 @@
       "optional": false,
       "tasks": [
         {
+          "id": "P5-C6",
+          "owner": "Codex",
+          "title": "Owner-selected simple local desktop interface",
+          "action": "Add a typed RC desktop form, background one-call simulation, circuit and measured response/error display, and access to saved evidence using the existing engine.",
+          "deliverable": "Optional Python/Tk desktop, unit and real integration tests, actual window evidence, fresh installed package and read-only automatic acceptance checker.",
+          "acceptance": "Full tests without skips; current installed package matches source; actual GUI low/high-pass passes and a measured target miss audited from raw exports; invalid input rejected before simulation; background work is single-job and core remains usable without Tk. Preserve historical evidence and no owner-review/model/deployment claim.",
+          "effort": 6,
+          "dependsOn": ["P5-C2", "P7-C7"],
+          "status": "done",
+          "acceptanceMode": "automated",
+          "evidence": "Accepted 2026-11-22 under phase5-simple-desktop-v1/final-acceptance-v3: owner-selected optional v0.3.0 Tk desktop, one background one-call design, existing raw exports. Current full suite 516 passed in 126.36s without skips/errors/failures; all 111 Python hashes match. Fresh installed runtime retained its 509-test/27-real-call CLI/HTTP evidence after checker-only repairs; 37 package files match source/wheel/installation. Three source GUI button runs plus one installed -I GUI run independently raw-audited: low/high-pass analytic passes, retained 30.7976% manual target miss, invalid input creates no run. Combined 31 actual calls: 22 raw audited, nine JSON matched. Actual busy/stale/error/window captures inspected by agent, native image integrity/hashes checked, no owner UX review claimed. Failed format draft and invalid v2 wheel-hash metadata preserved/superseded; final gate/interface/actual wheel hashes independently match. docs/DESKTOP.md; external desktop-ui-2026-11-22/final-acceptance-v3. No model call, remote push or deployment; full comparison dashboard P5-C3 stays deferred."
+        },
+        {
           "id": "P5-C5",
           "owner": "Codex",
           "advisor": "Freebuff",
@@ -448,7 +461,7 @@
           ],
           "status": "deferred",
           "optional": true,
-          "evidence": "Explicitly optional dashboard deferred: START_CODEX.md excludes a frontend; CLI/API and PNG exports meet the inspectable scientific-result gate without unnecessary UI. No dashboard completion is claimed."
+          "evidence": "Historical frontend exclusion was superseded only for the owner's 2026-11-22 selection of a simple local desktop under P5-C6. This broader baseline-comparison dashboard remains deferred; no optimizer-comparison UI completion is claimed."
         },
         {
           "id": "P5-H1",
