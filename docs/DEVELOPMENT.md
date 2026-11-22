@@ -1,5 +1,20 @@
 # Local implementation evidence
 
+## Final local research-MVP acceptance — 2026-11-22
+
+Implemented scripts/capture_demo.py, scripts/audit_demo.py and
+scripts/accept_phase7.py. Actual isolated installed CLI generated nine bounded
+SPICE calls across three versioned examples, with two passes/one intentional miss.
+Full stdout/argument/raw export evidence was captured. The labeled annotated
+75-second GIF and draft wording are regenerated from checked results; independent
+raw audits and frame/transcript/GIF hashes passed. Ten synthetic corruption/claim
+guards passed, then final **438-test suite passed in 158.31s without skips**.
+The composite local gate verified scientific/install/report evidence and unchanged
+93-file source/test hashes. No new model requests or duplicated demo calls were
+made by that gate. P7-C3 supersedes the technical P7-H1 check, without claiming
+human CV approval. Exact commands/evidence and interpretation: docs/PHASE7.md.
+Optional PCB/advanced work, remote push and deployment remain outside this result.
+
 ## Local replay supplement accepted — 2026-11-22
 
 Owner `next` approved the prepared two-request/120-second/two-SPICE local-only

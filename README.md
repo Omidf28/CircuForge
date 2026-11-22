@@ -2,12 +2,16 @@
 
 Phase 1 implements typed RC low/high-pass specifications, fixed netlists, real ngspice AC simulation, complex response/cutoff extraction, and bounded measured R/C search. Local CPU only; no accounts required.
 
-Latest local verification (2026-11-22): **408 tests passed without skips**, then a
-fresh isolated install reproduced the CLI and real loopback HTTP with **27 actual
-simulator calls** (18 raw CLI/ZIP calls audited and nine JSON traces matched).
+The local research MVP gate passed automatically on 2026-11-22: **438 tests
+without skips**, accepted scientific evidence and a **75-second captured CLI
+replay with nine independently raw-audited demo calls**. See
+[docs/PHASE7.md](docs/PHASE7.md) for the demo and exact acceptance commands.
+The earlier fresh isolated install reproduced CLI/real loopback HTTP with
+**27 actual simulator calls** (18 raw CLI/ZIP audited and nine JSON traces matched).
 See [operation/troubleshooting](docs/OPERATIONS.md) and the
 [checked research report](docs/RESEARCH_REPORT.md). P7 documentation/report tasks
-are complete within that scope; the final P7 release still needs its demo/claims gate.
+and demo tasks are complete within the validated local scope. Research target
+misses remain reported failures; optional PCB/advanced work is not started.
 
 Phase 2 adds measured objectives, seeded random/grid and SciPy baselines with identical SPICE-call caps, exact per-run caching and raw per-call evidence. The owner-authorized **automatic acceptance gate passed with 170 tests and 771 freshly audited real calls**. The five-case comparison and its target misses remain documented in [docs/PHASE2.md](docs/PHASE2.md).
 

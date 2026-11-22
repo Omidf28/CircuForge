@@ -1,5 +1,17 @@
 # CircuForge — Codex workspace instructions
 
+## Local research MVP milestone (2026-11-22)
+
+P7-C3 and phase7-local-research-mvp-v1 passed with 438 tests without skips,
+accepted scientific/install/report evidence and a checked 75-second annotated
+replay of actual installed CLI output (nine raw-audited demo calls). Legacy P7-H1
+technical demo/claim verification is superseded automatically; no human review,
+owner CV approval or external publication is claimed. See docs/PHASE7.md.
+Stop at this validated local research scope and report evidence before complex
+expansion. P8/PCB, advanced agents, paid providers, deployment and remote pushes
+are not authorized by this milestone; all consumed model/Freebuff cycles remain
+closed. Preserve negative results and historical evidence.
+
 ## Owner update — local replay supplement consumed (2026-11-22)
 
 Owner answered `next` to the explicit prepared two-request/120-second/two-SPICE/

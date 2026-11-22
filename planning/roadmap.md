@@ -2,7 +2,7 @@
 
 Version 2.1.0 · assembled 2026-11-22 · architecture assumptions to verify in current environment
 
-P6 composite engineering gate accepted after owner-approved two-request local supplement: two returned replay observations/one exact valid candidate/one SPICE attempt in 62.656s, 256 known tokens/4608 reservations/zero cost. Original four comparisons, deadline failure and target misses remain unchanged; no efficacy claim. P7-C1/C2 documentation/report tasks complete; fresh install evidence remains 408 tests plus 27 CLI/HTTP calls (18 raw audited/nine JSON matched). P7-C3 demo/claims work remains; final P7 gate not yet accepted. All model/development cycles closed. GitHub public, initial main only, no feature push.
+Local research MVP accepted automatically 2026-11-22 under phase7-local-research-mvp-v1: 438 fresh tests without skips, unchanged 93-file source/test hashes, accepted scientific/install/report evidence and a 75-second labeled captured-CLI replay with nine independently raw-audited demo calls. Two example passes/one intentional miss retained. P6 composite accepted with separate two-request/one-SPICE replay supplement; all original deadline failures and negative results preserved, no efficacy claim. P7-H1 technical check superseded by P7-C3 without owner CV approval/publication claims. All model/Freebuff cycles closed. Optional P8/PCB/advanced work unstarted. GitHub public, initial main only, no feature push/deployment.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -602,13 +602,13 @@ Status: done · Estimate: 2 active hours
 
 **Exit gate:** Clean setup, tests, reproducible benchmark, demo and research report.
 
-**Gate status:** blocked
+**Gate status:** passed
 
-**Gate evidence:** P6 composite gate and P7-C1/C2 accepted with preserved negative results. Final P7 gate awaits implemented/tested P7-C3 demo/claims acceptance; P7-H1 is not yet superseded. No remote release, push or deployment approval.
+**Gate evidence:** phase7-local-research-mvp-v1 passed 2026-11-22: 438 fresh tests without skips, unchanged 93-file source/test hash map, accepted scientific composite/report/source hashes and matching fresh installed package. Independent audit verified nine real demo calls and five-frame/75-second labeled captured-output replay; misses retained. P7-H1 engineering portion superseded by P7-C3 without human/CV/publication approval claims. Local research MVP only; no remote push/deployment or optional PCB/advanced-agent authorization.
 
 #### P7-C3 · Codex · Automatic captured CLI demo and evidence-backed claims
 
-Status: doing · Estimate: 4 active hours
+Status: done · Estimate: 4 active hours
 
 **Action:** Run the installed CLI on supported examples, audit raw physical results, render a labeled 60-90 second replay of captured output and verify artifact/claim provenance with fresh tests.
 
@@ -618,7 +618,7 @@ Status: doing · Estimate: 4 active hours
 
 **Depends on:** P7-C1, P7-C2
 
-**Evidence:** Prepared next eligible automatic technical replacement after P6 composite acceptance. Implementation/demo verification not yet complete; P7-H1 is not superseded or accepted yet.
+**Evidence:** Accepted automatically 2026-11-22 under phase7-local-research-mvp-v1: 438 tests in 158.31s without skips; scientific/report/install evidence checked; all 93 hashed source/test files unchanged. Actual isolated installed CLI capture: nine independently raw-audited calls, two example passes/one preserved miss, complete JSON stdout/arguments/raw exports. Five-frame/75-second looping annotated replay and draft wording checked against source/pixel/artifact hashes; no live-screen, owner CV approval or remote-publication claim. docs/PHASE7.md; external phase7-local-mvp-2026-11-22/acceptance.json and p7-captured-demo-2026-11-22/demo.gif. No new model requests.
 
 #### P7-C1 · Codex · Engineering documentation
 
@@ -658,7 +658,7 @@ Freebuff may draft from explicitly approved evidence summaries; Codex checks eve
 
 #### P7-H1 · Human · Verify demo and claims
 
-Status: todo · Estimate: 4 active hours
+Status: deferred · Estimate: 4 active hours
 
 **Action:** Record 60–90s demo and approve accurate CV wording.
 
@@ -668,7 +668,7 @@ Status: todo · Estimate: 4 active hours
 
 **Depends on:** P7-C1, P7-C2
 
-**Evidence:** Not recorded
+**Evidence:** Owner's automatic technical-review delegation replaces the engineering demo/claim check with tested P7-C3. Actual recorded installed CLI outputs and measured charts form a labeled 75-second annotated replay, independently raw-audited; draft wording is evidence-backed. No completed human review, owner CV approval or external publication is claimed. Personal CV use remains the owner's choice. See docs/PHASE7.md.
 
 ### P8: Decide constrained PCB research
 
@@ -740,7 +740,7 @@ Status: todo · Estimate: 4 active hours
 
 **Data consent:** Owner explicitly approved selected task text, documentation and necessary code excerpts to Freebuff cloud on 2026-11-21; secrets, personal files, environment files, Git history and raw experiments excluded
 
-P5-C5 accepted after real one-turn verification. Codex drives bounded terminal handoffs without owner copy/paste during an active session. Existing cycles are closed; no daemon or automatic new cycle. Later P7-C1/C2 documentation/report tasks completed with fresh install evidence; final P7 gate still depends on P6 and the unfinished demo.
+P5-C5 accepted after real one-turn verification. Codex drives bounded terminal handoffs during an active authorized session; existing cycles are closed, no daemon or automatic reset. P6/P7 local engineering gates subsequently passed; stop at the validated local research MVP and report evidence before optional expansion. No new model/provider cycle, remote push or deployment permission.
 
 ## Proposed architecture
 
@@ -912,7 +912,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md and planning/HANDOFF.md. P6-C2/composite gate accepted: original four matched comparisons/25 requests/65 raw-audited SPICE attempts preserved with timeout, misses and unknown usage; separate owner-approved supplement completed two observations/one exact valid candidate/one new SPICE attempt in 62.656s, 256 known tokens/4608 reservations/zero unknown usage. Supplement closed; no more inference. Original standalone gate remains blocked, scores not pooled. Research report includes separate supplement; 29 targeted lifecycle/report tests passed. P7-C1/C2 already accepted with fresh 408-test/27-call installed interface evidence. Next P7-C3 demo/claims gate, no invented human CV approval. P5-C5 accepted; Freebuff cycles closed. No paid traffic/PCB/deployment/feature push. Source/Git stay on C; ancillary artifact junction unchanged.
+Read AGENTS.md and planning/HANDOFF.md. Local MVP accepted: phase7-local-research-mvp-v1 passed 438 tests in 158.31s without skips, immutable 93-file source/test hashes and accepted scientific/install/report evidence. Actual installed CLI demo: nine raw-audited calls, two example passes/one target miss, labeled 75-second looping captured-output GIF and evidence-backed draft wording; no human CV approval/publication. P6 original four comparisons/25 requests/65 calls keep timeout/misses/unknown usage; separate approved supplement completed two observations/one exact valid candidate/one call in 62.656s, 256 known tokens/4608 reservations. All allowances closed, no new inference. P7-H1 technical check superseded by P7-C3; optional P8/PCB/advanced work unstarted. GitHub public with initial main only; no feature push/deployment. Source/Git stay on C, ancillary junction unchanged. See docs/PHASE7.md for evidence and reproduction.
 ```
 
 ## Sources

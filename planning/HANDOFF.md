@@ -1,5 +1,30 @@
 # CircuForge — portable handoff
 
+## Local research MVP accepted — 2026-11-22
+
+On codex/p7-captured-demo, P7-C3 and phase7-local-research-mvp-v1 passed:
+**438 tests in 158.31s without skips**, accepted scientific/report/install evidence
+and unchanged hashes for all 93 checked source/test files. Captured three actual
+installed Python -I CLI examples: **nine real independently raw-audited SPICE
+calls**, two example passes and one preserved target miss. Five annotated frames
+form a **75-second looping GIF**, explicitly captured-output replay rather than
+a live screen recording. Exact source/stdout/frame/GIF/claim checks passed.
+
+Legacy P7-H1's engineering demo/claim verification is deferred as superseded by
+tested automatic P7-C3. No completed human review or owner CV approval is claimed;
+draft portfolio wording is unsubmitted and personal use remains the owner's choice.
+The local MVP gate is accepted; P8/PCB/advanced agents remain unstarted, and no new
+model/development-agent allowance, remote push or deployment is authorized.
+
+Evidence: external Automatic_Acceptance/phase7-local-mvp-2026-11-22/{acceptance.json,
+tests.xml,tests.log}; demo/transcripts/raw frames/draft claims are in
+p7-captured-demo-2026-11-22. See docs/PHASE7.md for exact commands. The final gate
+re-audited the nine demo calls rather than generating them again; full-suite
+fixture calls are separate. Package fingerprint remains 0e320d6e4188c9b3a52b23a3da4f278d9103043b3c07e58f1159f305724a7796.
+No code/tests changed during acceptance. Source/Git stay on C; artifact junction
+is unchanged. GitHub visibility is public but only initial main is online; later
+feature branches stay local pending separate owner push approval.
+
 ## Current scientific gate — 2026-11-22
 
 Owner answered `next` to the explicit prepared two-request/120-second/two-SPICE

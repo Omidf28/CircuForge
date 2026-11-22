@@ -1,5 +1,15 @@
 # Version control
 
+## Current local milestone — 2026-11-22
+
+The validated local research MVP is complete on feature branches through
+`codex/p7-captured-demo`; evidence and automatic acceptance are documented in
+docs/PHASE7.md. These changes are committed locally. No later feature branch has
+been pushed, and no remote history has been overwritten. Public visibility alone
+did not publish this development history; only the initial main commit was online
+at the last authorized remote operation. A new push retains its separate owner
+approval requirement.
+
 ## Current visibility — 2026-11-21
 
 The owner explicitly requested «repo رو پابلیک کن». Changed

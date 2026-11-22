@@ -4,7 +4,9 @@ The executable exporter is `scripts/report_research.py`. It reconciles the final
 nominal benchmark, component-tolerance study and November 21 local-model trial.
 It generates `report.md`, `summary.json` and measured PNG/SVG tolerance plots.
 The exported tables retain misses, infeasible rejections and incomplete replay.
-This is P7-C2 reporting work; the final P7 release still depends on P6.
+This is P7-C2 reporting work; the local MVP release is checked separately by
+[PHASE7.md](PHASE7.md). The report snapshot preceded final P7 acceptance, so its
+`phase7_release_accepted=false` is historical rather than a current release verdict.
 
 ## Export from existing evidence
 

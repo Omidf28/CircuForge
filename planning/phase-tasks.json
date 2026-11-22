@@ -568,9 +568,9 @@
           "acceptance": "Fresh tests without skips, installed-package provenance, actual bounded raw-audited simulator calls, preserved intentional miss, checked 60-90s animation and evidence-backed draft claims. No fake live-screen recording or invented owner CV approval.",
           "effort": 4,
           "dependsOn": ["P7-C1", "P7-C2"],
-          "status": "doing",
+          "status": "done",
           "acceptanceMode": "automated",
-          "evidence": "Prepared next eligible automatic technical replacement after P6 composite acceptance. Implementation/demo verification not yet complete; P7-H1 is not superseded or accepted yet."
+          "evidence": "Accepted automatically 2026-11-22 under phase7-local-research-mvp-v1: 438 tests in 158.31s without skips; scientific/report/install evidence checked; all 93 hashed source/test files unchanged. Actual isolated installed CLI capture: nine independently raw-audited calls, two example passes/one preserved miss, complete JSON stdout/arguments/raw exports. Five-frame/75-second looping annotated replay and draft wording checked against source/pixel/artifact hashes; no live-screen, owner CV approval or remote-publication claim. docs/PHASE7.md; external phase7-local-mvp-2026-11-22/acceptance.json and p7-captured-demo-2026-11-22/demo.gif. No new model requests."
         },
         {
           "id": "P7-C1",
@@ -620,12 +620,14 @@
             "P7-C1",
             "P7-C2"
           ],
-          "status": "todo"
+          "status": "deferred",
+          "supersededBy": "P7-C3",
+          "evidence": "Owner's automatic technical-review delegation replaces the engineering demo/claim check with tested P7-C3. Actual recorded installed CLI outputs and measured charts form a labeled 75-second annotated replay, independently raw-audited; draft wording is evidence-backed. No completed human review, owner CV approval or external publication is claimed. Personal CV use remains the owner's choice. See docs/PHASE7.md."
         }
       ],
-      "gateStatus": "blocked",
+      "gateStatus": "passed",
       "acceptanceMode": "automated",
-      "gateEvidence": "P6 composite gate and P7-C1/C2 accepted with preserved negative results. Final P7 gate awaits implemented/tested P7-C3 demo/claims acceptance; P7-H1 is not yet superseded. No remote release, push or deployment approval."
+      "gateEvidence": "phase7-local-research-mvp-v1 passed 2026-11-22: 438 fresh tests without skips, unchanged 93-file source/test hash map, accepted scientific composite/report/source hashes and matching fresh installed package. Independent audit verified nine real demo calls and five-frame/75-second labeled captured-output replay; misses retained. P7-H1 engineering portion superseded by P7-C3 without human/CV/publication approval claims. Local research MVP only; no remote push/deployment or optional PCB/advanced-agent authorization."
     },
     {
       "id": "P8",

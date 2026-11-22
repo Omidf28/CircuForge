@@ -73,8 +73,9 @@ JSON agreement and cleanup. It uses real simulator calls and needs ordinary
 dependency installation access; it makes no LLM request. Use a new output path.
 An `acceptance.json` with `status=blocked` is a blocker, not a successful install.
 
-This check covers supported local interfaces, not the unfinished Phase 6 replay
-or final P7 release. Historical counts remain dated evidence. Freebuff development
+This check covers supported local interfaces; the separately accepted scientific
+replay and final local MVP gate are documented in [PHASE7.md](PHASE7.md).
+Historical counts remain dated evidence. Freebuff development
 collaboration has separate persisted allowances in
 [AGENT_COLLABORATION.md](AGENT_COLLABORATION.md); ordinary CLI/API use never starts it.
 

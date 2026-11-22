@@ -2,6 +2,12 @@
 
 Implementation update (2026-11-19): domain, synthesis, simulation, CLI, bisection, classical baselines and tolerance experiments are implemented and tested. Phase 5 adds shared typed application contracts, JSON/CSV/PNG/ZIP export and a bounded local FastAPI service. optimization/base.py owns constraint/measurement/reference/target evaluation and budgets; optimization/baselines.py owns seeded random/grid/SciPy. evaluation/records.py exports genuine responses and environment fingerprints. See docs/PHASE2.md through docs/PHASE5.md. The optional frontend remains deferred.
 
+Current milestone (2026-11-22): the separate local replay composite and final
+research-MVP gate passed. `scripts/capture_demo.py`, `scripts/audit_demo.py` and
+`scripts/accept_phase7.py` capture installed CLI evidence, verify annotated replay
+artifacts and check the final local gate. They do not add a product frontend,
+provider dependency or public deployment; see [PHASE7.md](PHASE7.md).
+
 ## Implemented flow
 
 ```mermaid
