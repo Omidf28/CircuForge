@@ -203,6 +203,8 @@ def plot(data: dict, output: Path) -> None:
     figure.supxlabel("Paired empirical observations; fewer candidate opportunities for robust search; no confidence claim", fontsize=8)
     figure.savefig(output / "tolerance-comparison.png", dpi=160)
     figure.savefig(output / "tolerance-comparison.svg", metadata={"Date": None})
+    svg = output / "tolerance-comparison.svg"
+    svg.write_text("\n".join(line.rstrip() for line in svg.read_text(encoding="utf-8").splitlines()) + "\n", encoding="utf-8")
     plt.close(figure)
 
 
