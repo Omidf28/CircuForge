@@ -1,9 +1,15 @@
 """Render the planning documents. This does not build or deploy the product."""
 from pathlib import Path
+import argparse
 import csv
 import json
 
 ROOT = Path(__file__).resolve().parent
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--output-dir', type=Path, help='generated project root; defaults to source project root')
+args = parser.parse_args()
+OUTPUT = args.output_dir.resolve() if args.output_dir else ROOT.parent
+PLAN_OUTPUT = OUTPUT / 'planning'
 data = json.loads((ROOT / 'context.json').read_text(encoding='utf-8-sig'))
 data.update(json.loads((ROOT / 'phase-tasks.json').read_text(encoding='utf-8-sig')))
 data['assembledDate'] = data['date']
@@ -13,6 +19,8 @@ assert len(ids) == len(tasks), 'Duplicate task ID'
 assert all(dep in ids for task in tasks for dep in task['dependsOn']), 'Unknown task dependency'
 assert all(task['status'] in {'todo', 'doing', 'blocked', 'review', 'done', 'deferred'} for task in tasks), 'Invalid task status'
 assert all(task.get('evidence') for task in tasks if task['status'] == 'done'), 'Completed tasks require evidence'
+assert all(p.get('gateStatus', 'pending') in {'pending', 'blocked', 'passed'} for p in data['phases']), 'Invalid phase gate status'
+assert all(p.get('gateEvidence') for p in data['phases'] if p.get('gateStatus') == 'passed'), 'Passed gates require evidence'
 seen, visiting = set(), set()
 by_id = {task['id']: task for task in tasks}
 def visit(task_id):
@@ -28,10 +36,11 @@ for task_id in ids:
     visit(task_id)
 
 plan_json = json.dumps(data, indent=2, ensure_ascii=False)
-(ROOT / 'roadmap.json').write_text(plan_json + '\n', encoding='utf-8')
+PLAN_OUTPUT.mkdir(parents=True, exist_ok=True)
+(PLAN_OUTPUT / 'roadmap.json').write_text(plan_json + '\n', encoding='utf-8')
 template = (ROOT / 'roadmap.template.html').read_text(encoding='utf-8')
 html = template.replace('__PLAN_DATA__', plan_json.replace('<', '\\u003c'))
-(ROOT.parent / 'CircuForge-Roadmap.html').write_text(html, encoding='utf-8')
+(OUTPUT / 'CircuForge-Roadmap.html').write_text(html, encoding='utf-8')
 
 sources = {s['id']: s for s in data['sources']}
 def refs(items):
@@ -52,13 +61,15 @@ for item in data['journey']:
     lines += [f"### {item['step']}. {item['title']}", '', item['body'], '']
 lines += ['## Phase workflow', '',
     'Critical path: P0 → P1 → P2 → P3 → P4 → P5 → P6 → P7. P8 is optional after validated research MVP.', '',
-    'A phase gate is a human review decision based on evidence. A status change alone does not prove the work is complete. Deferred optional work needs a recorded reason; critical correctness, isolation and data-loss failures must be resolved.', '']
+    'Technical phase gates use tested automatic acceptance under the owner delegation recorded in AGENTS.md. A status change alone does not prove completion. Explicit owner approvals for spending, remote publishing and other restricted operations remain separate. Deferred work needs a recorded reason; critical correctness, isolation and data-loss failures must be resolved.', '']
 for phase in data['phases']:
     lines += [f"### {phase['id']}: {phase['title']}", '',
               f"**Window:** {phase['window']} · {'Optional after launch' if phase['optional'] else 'Launch path'}", '',
               '**Outcome:** ' + phase['outcome'], '',
               '**Phase dependencies:** ' + (', '.join(phase['dependsOn']) or 'None'), '',
-              '**Exit gate:** ' + phase['gate'], '']
+              '**Exit gate:** ' + phase['gate'], '',
+              '**Gate status:** ' + phase.get('gateStatus', 'pending'), '',
+              '**Gate evidence:** ' + phase.get('gateEvidence', 'Not recorded'), '']
     for task in phase['tasks']:
         lines += [f"#### {task['id']} · {task['owner']} · {task['title']}", '',
                   f"Status: {task['status']} · Estimate: {task['effort']} active hours" + (' · Optional' if task.get('optional') else ''), '',
@@ -67,6 +78,19 @@ for phase in data['phases']:
                   '**Acceptance:** ' + task['acceptance'], '',
                   '**Depends on:** ' + (', '.join(task['dependsOn']) or 'None'), '',
                   '**Evidence:** ' + task.get('evidence', 'Not recorded'), '']
+        if task.get('advisor'):
+            lines += ['**Advisor:** ' + task['advisor'] + ' · Codex retains writing and automatic acceptance.', '',
+                      task.get('collaboration', ''), '']
+if data.get('agentWorkflow'):
+    collaboration = data['agentWorkflow']
+    lines += ['## Codex and Freebuff collaboration', '',
+              '**Policy:** ' + collaboration['policy'], '',
+              '**Guide:** ' + collaboration['guide'], '',
+              '**Mode:** ' + collaboration['mode'], '',
+              '**Limits:** ' + collaboration['limits'], '',
+              '**Acceptance:** ' + collaboration['acceptance'], '',
+              '**Data consent:** ' + collaboration['consent'], '',
+              collaboration['continuation'], '']
 for heading, key in [('Proposed architecture', 'architecture'), ('Intelligence and fine-tuning decisions', 'intelligence'), ('Distinctive techniques', 'techniques')]:
     lines += ['## ' + heading, '']
     for item in data[key]:
@@ -91,8 +115,8 @@ lines += ['## Where the plan should live', '', data['planningHome'] + ' ' + refs
           '## Agent handoff prompt', '', '```text', data['handoff'], '```', '',
           '## Sources', '', 'Reference links aid implementation; verify current versions and local environment before making claims. Goals are engineering assumptions, not validated results.', '']
 lines += [f"- [{s['title']}]({s['url']})" for s in data['sources']]
-(ROOT / 'roadmap.md').write_text('\n'.join(line.rstrip() for line in lines) + '\n', encoding='utf-8')
-with (ROOT / 'issues.csv').open('w', encoding='utf-8-sig', newline='') as handle:
+(PLAN_OUTPUT / 'roadmap.md').write_text('\n'.join(line.rstrip() for line in lines) + '\n', encoding='utf-8')
+with (PLAN_OUTPUT / 'issues.csv').open('w', encoding='utf-8-sig', newline='') as handle:
     fields = ['id','phase','owner','title','status','estimate_hours','depends_on','deliverable','acceptance','action','optional','evidence']
     writer = csv.DictWriter(handle, fieldnames=fields)
     writer.writeheader()

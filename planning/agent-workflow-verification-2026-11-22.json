@@ -1,0 +1,43 @@
+{
+  "policy": "codex-freebuff-collaboration-v1",
+  "cycle": "2026-11-22-verify-01",
+  "coordinator": "Codex",
+  "repository_writer": "Codex",
+  "advisor": "Freebuff",
+  "transport": "interactive-terminal",
+  "consent": {
+    "status": "approved",
+    "destination": "Freebuff cloud",
+    "date": "2026-11-22",
+    "owner_response": "next",
+    "scope": "Explicit approval of the preceding request for one new free Freebuff turn and at most 600 seconds. Selected task/document/code transmission remains within the owner's 2026-11-21 consent; no secrets, personal files, environment files, Git history or raw experiment data."
+  },
+  "resource_decision": {
+    "previous_cycle": "2026-11-21-docs-01",
+    "previous_result": "blocked_late_receipt; preserve all original counters and evidence",
+    "authorization": "Owner answered next to the explicit one-request/10-minute verification request on 2026-11-22. This is a separate allowance, not a reset."
+  },
+  "limits": {
+    "max_turns": 1,
+    "max_seconds": 600,
+    "max_packet_bytes": 6000,
+    "max_reply_bytes": 6000,
+    "max_provider_spend": 0,
+    "automatic_retries": 0
+  },
+  "jobs": [
+    {
+      "id": "COOP-V1",
+      "task_id": "P5-C5",
+      "depends_on": ["P5-C4"],
+      "files": ["docs/AGENT_HANDOFF_BRIEF.md"],
+      "goal": "Review this handoff card for one material omission. Start your answer with REVIEW_RESULT: followed by PASS if no material omission is found, or ISSUE if one is found. Give at most one concrete sentence to add and its reason, in at most 100 words total. Do not claim that any code, test or simulation ran. No tools or file access. Finish with the required completion marker."
+    }
+  ],
+  "stop_conditions": [
+    "one reserved turn consumed or 600 seconds reached",
+    "authentication, quota, network, paid-model or data-use consent problem",
+    "missing prerequisite, changed packet, incomplete or late reply"
+  ],
+  "continuation": "Prepare and reserve one packet, submit through the installed interactive Freebuff CLI, capture and record immediately upon completed reply, stop and run the existing audit against actual tests XML. No automatic retry, second turn, renewed scientific experiment, daemon, push or deployment."
+}

@@ -1,0 +1,7 @@
+[
+  {"id":"lowpass-1k","spec":{"cutoff_hz":1000.0,"max_evaluations":64,"resistance_ohm":{"minimum":100.0,"maximum":10000.0},"capacitance_f":{"minimum":1e-8,"maximum":1e-6}}},
+  {"id":"highpass-2300","spec":{"filter_type":"rc_highpass","cutoff_hz":2300.0,"max_evaluations":64,"resistance_ohm":{"minimum":100.0,"maximum":10000.0},"capacitance_f":{"minimum":1e-8,"maximum":1e-6}}},
+  {"id":"lowpass-50","spec":{"cutoff_hz":50.0,"max_evaluations":64,"resistance_ohm":{"minimum":1000.0,"maximum":100000.0},"capacitance_f":{"minimum":1e-7,"maximum":1e-5},"sweep":{"start_hz":0.01,"stop_hz":100000.0}}},
+  {"id":"highpass-150k","spec":{"filter_type":"rc_highpass","cutoff_hz":150000.0,"max_evaluations":64,"resistance_ohm":{"minimum":10.0,"maximum":1000.0},"capacitance_f":{"minimum":1e-9,"maximum":1e-7},"sweep":{"start_hz":1.0,"stop_hz":100000000.0}}},
+  {"id":"fixed-rounded-target","spec":{"cutoff_hz":1591.5494,"max_evaluations":64,"resistance_ohm":{"minimum":1000.0,"maximum":1000.0},"capacitance_f":{"minimum":1e-7,"maximum":1e-7}}}
+]

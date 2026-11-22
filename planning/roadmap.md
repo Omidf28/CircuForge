@@ -1,8 +1,8 @@
 # CircuForge · Wave2Circuit Research Edition
 
-Version 2.0.0 · assembled 2026-11-18 · architecture assumptions to verify in current environment
+Version 2.1.0 · assembled 2026-11-22 · architecture assumptions to verify in current environment
 
-Phase 1 local numerical implementation verified on Windows with ngspice-47. Canonical task statuses carry evidence; human reviews and later phases remain open. See planning/HANDOFF.md.
+Local research MVP accepted automatically 2026-11-22 under phase7-local-research-mvp-v1: 438 tests without skips, unchanged 93-file source/test hashes, accepted scientific/install/report evidence and 75-second captured-CLI replay with nine raw-audited demo calls. Two example passes/one intentional miss retained. P6 composite accepted without erasing original failures or claiming efficacy. P7-H1 technical check superseded by P7-C3 without owner CV approval. Owner separately requested GitHub synchronization: current MVP branch published through PR #1 to main, normal history-preserving integration. All model/Freebuff cycles closed; P8/PCB/advanced work unstarted. No deployment or release-bundle upload.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -68,7 +68,7 @@ Compare target vs simulated response, tolerance sensitivity and search cost; exp
 
 Critical path: P0 → P1 → P2 → P3 → P4 → P5 → P6 → P7. P8 is optional after validated research MVP.
 
-A phase gate is a human review decision based on evidence. A status change alone does not prove the work is complete. Deferred optional work needs a recorded reason; critical correctness, isolation and data-loss failures must be resolved.
+Technical phase gates use tested automatic acceptance under the owner delegation recorded in AGENTS.md. A status change alone does not prove completion. Explicit owner approvals for spending, remote publishing and other restricted operations remain separate. Deferred work needs a recorded reason; critical correctness, isolation and data-loss failures must be resolved.
 
 ### P0: Review reference circuit
 
@@ -80,9 +80,13 @@ A phase gate is a human review decision based on evidence. A status change alone
 
 **Exit gate:** ngspice executable detected; one low-pass test netlist generates a valid AC output, or failure logged with installation instructions.
 
+**Gate status:** passed
+
+**Gate evidence:** Owner explicitly confirmed Phase 1 circuit/result review on 2026-11-19; automated evidence: 122 passing tests and eight genuine reference cases. See docs/DECISIONS.md. This is not Phase 2 or push authorization.
+
 #### P0-H1 · Human · Agree boundaries
 
-Status: todo · Estimate: 2 active hours
+Status: done · Estimate: 2 active hours
 
 **Action:** Choose supported platform, source amplitude/load assumptions, component ranges and compute budget; review design safety.
 
@@ -92,7 +96,7 @@ Status: todo · Estimate: 2 active hours
 
 **Depends on:** None
 
-**Evidence:** Not recorded
+**Evidence:** Project owner explicitly stated on 2026-11-19: بازبینی کردم و Phase 1 را تأیید می‌کنم. Owner acceptance covers the documented ideal-source/load, continuous RC assumptions and circuit/reference results. See docs/DECISIONS.md. No separate peer/hardware signoff asserted.
 
 #### P0-C1 · Codex · Scaffold tested Python project
 
@@ -124,7 +128,7 @@ Status: done · Estimate: 4 active hours
 
 #### P0-H2 · Human · Review reference circuit
 
-Status: todo · Estimate: 2 active hours
+Status: done · Estimate: 2 active hours
 
 **Action:** Review RC low-pass schematic, correct ground, source and load assumptions with teammate.
 
@@ -134,7 +138,7 @@ Status: todo · Estimate: 2 active hours
 
 **Depends on:** P0-C2
 
-**Evidence:** Not recorded
+**Evidence:** Project owner explicitly stated on 2026-11-19: بازبینی کردم و Phase 1 را تأیید می‌کنم. Owner acceptance covers the documented ideal-source/load, continuous RC assumptions and circuit/reference results. See docs/DECISIONS.md. No separate peer/hardware signoff asserted.
 
 ### P1: Verify RC low/high-pass fixtures
 
@@ -145,6 +149,10 @@ Status: todo · Estimate: 2 active hours
 **Phase dependencies:** P0
 
 **Exit gate:** RC cutoff and amplitude/phase checks pass analytical fixtures; invalid specs rejected.
+
+**Gate status:** passed
+
+**Gate evidence:** Owner explicitly confirmed Phase 1 circuit/result review on 2026-11-19; automated evidence: 122 passing tests and eight genuine reference cases. See docs/DECISIONS.md. This is not Phase 2 or push authorization.
 
 #### P1-C1 · Codex · Define typed circuit specifications
 
@@ -158,7 +166,7 @@ Status: done · Estimate: 6 active hours
 
 **Depends on:** P0-C1
 
-**Evidence:** Pydantic SI schemas, low/high-pass types, continuous-value policy, explicit ideal source/load, bounds/infeasibility/injection tests; examples/*.json.
+**Evidence:** Pydantic SI schemas, low/high-pass types, continuous-value policy, explicit ideal source/load and bounds/infeasibility/injection tests. Review fixes enforce at least two sweep samples and tolerance-aware target feasibility; 122 tests pass, including four genuine fixed-target CLI cases.
 
 #### P1-C2 · Codex · Implement ngspice adapter
 
@@ -172,7 +180,7 @@ Status: done · Estimate: 8 active hours
 
 **Depends on:** P0-C2, P1-C1
 
-**Evidence:** Real ngspice integration plus timeout, output-limit, absent binary, launch and nonzero-exit tests; no arbitrary-netlist interface; startup files disabled.
+**Evidence:** Real ngspice integration plus timeout, output-limit, absent binary, launch and nonzero-exit tests; full frequency grid and partial-search failures verified. Isolated test environment: 122 tests passed, including genuine two-sample sweeps and fixed-target low/high-pass CLI cases. See docs/DEVELOPMENT.md.
 
 #### P1-C3 · Codex · Extract AC metrics
 
@@ -186,11 +194,11 @@ Status: done · Estimate: 7 active hours
 
 **Depends on:** P1-C2
 
-**Evidence:** Eight real R/C/topology/amplitude fixtures compare complex response and phase to independent formula; cutoff error <0.1%; evidence low/high-pass reports.
+**Evidence:** Complex response and phase checked against analytic references. Additional eight real electrical review cases span four distinct cutoff scales per topology; all passed with max cutoff error 0.005891%. See docs/PHASE1_REVIEW.md and scripts/verify_phase1.py; owner review accepted on 2026-11-19 (docs/DECISIONS.md).
 
 #### P1-H1 · Human · Verify RC low/high-pass fixtures
 
-Status: todo · Estimate: 3 active hours
+Status: done · Estimate: 3 active hours
 
 **Action:** Cross-check both topologies, source/load simplifications and expected phase behavior.
 
@@ -200,7 +208,7 @@ Status: todo · Estimate: 3 active hours
 
 **Depends on:** P1-C3
 
-**Evidence:** Not recorded
+**Evidence:** Project owner explicitly stated on 2026-11-19: بازبینی کردم و Phase 1 را تأیید می‌کنم. Owner acceptance covers the documented ideal-source/load, continuous RC assumptions and circuit/reference results. See docs/DECISIONS.md. No separate peer/hardware signoff asserted.
 
 ### P2: Inspect failed optimizations
 
@@ -212,9 +220,13 @@ Status: todo · Estimate: 3 active hours
 
 **Exit gate:** Two optimizer baselines run on valid test cases with equal simulation budgets.
 
+**Gate status:** passed
+
+**Gate evidence:** Owner delegated technical acceptance to automatic checks. phase2-engineering-v1 passed: 170 tests without skips, 5 cases and 771 fresh raw calls audited, 3 design passes/12 misses retained. P2-H1 is superseded by P2-C4, not a human signoff. See docs/AUTOMATIC_ACCEPTANCE.md.
+
 #### P2-C1 · Codex · Define objective and feasibility
 
-Status: todo · Estimate: 6 active hours
+Status: done · Estimate: 6 active hours
 
 **Action:** Implement target cutoff/response objective and constraint handling; return infeasible reasons.
 
@@ -224,11 +236,11 @@ Status: todo · Estimate: 6 active hours
 
 **Depends on:** P1-C3
 
-**Evidence:** Not recorded
+**Evidence:** Typed objective/evaluation records distinguish constraints, simulator exit, reference verification and target error. Seven focused unit cases passed for bounds/topology rejection, objective, failures, caching and hard call caps; see tests/unit/test_objective.py and docs/PHASE2.md.
 
 #### P2-C2 · Codex · Seeded random and grid baselines
 
-Status: todo · Estimate: 7 active hours
+Status: done · Estimate: 7 active hours
 
 **Action:** Build deterministic baseline with budgets, E-series optional, call counting and structured output.
 
@@ -238,11 +250,11 @@ Status: todo · Estimate: 7 active hours
 
 **Depends on:** P2-C1
 
-**Evidence:** Not recorded
+**Evidence:** Seeded random and deterministic log-grid baselines verified by budget/replay tests and real ngspice integrations. Five-case review: 64 calls per method on four free domains, 1 on the fixed domain. Actual calls matched across all three methods; see docs/PHASE2.md.
 
 #### P2-C3 · Codex · SciPy differential evolution
 
-Status: todo · Estimate: 8 active hours
+Status: done · Estimate: 8 active hours
 
 **Action:** Run bounded differential evolution and compare on same max SPICE calls; cache duplicate points.
 
@@ -252,11 +264,11 @@ Status: todo · Estimate: 8 active hours
 
 **Depends on:** P2-C2
 
-**Evidence:** Not recorded
+**Evidence:** Public SciPy differential_evolution with seeded Generator, no polishing, serial execution, exact cache and hard mid-generation call cap. Full suite: 154 passed. Five-case single-seed comparison exported 15 reports and 771 genuine call artifacts; misses are reported. P2-H1 review remains pending.
 
 #### P2-H1 · Human · Inspect failed optimizations
 
-Status: todo · Estimate: 3 active hours
+Status: deferred · Estimate: 3 active hours
 
 **Action:** Review infeasibility and performance failures against expectations; decide ranges.
 
@@ -266,9 +278,23 @@ Status: todo · Estimate: 3 active hours
 
 **Depends on:** P2-C3
 
-**Evidence:** Not recorded
+**Evidence:** Owner explicitly requested removal of manual technical review on 2026-11-19. Replaced by tested automatic P2-C4; no human review is claimed. See docs/DECISIONS.md and docs/AUTOMATIC_ACCEPTANCE.md.
 
-### P3: Audit baseline fairness
+#### P2-C4 · Codex · Automatic technical acceptance
+
+Status: done · Estimate: 4 active hours
+
+**Action:** Run full tests without skips, fresh bounded comparisons and raw-response/physics/metric/budget audit; block on missing or inconsistent evidence.
+
+**Deliverable:** scripts/accept_phase2.py, evaluation/acceptance.py and machine-readable acceptance.json.
+
+**Acceptance:** A complete fresh run passes phase2-engineering-v1 without manual review while preserving measured target misses; corrupted/skipped/failed evidence blocks it.
+
+**Depends on:** P2-C1, P2-C2, P2-C3
+
+**Evidence:** Observed automatic acceptance on 2026-11-19: 170 full-suite tests passed without skips; 771 fresh real calls audited; 3 target passes and 12 misses preserved; manual_review_required=false. See docs/AUTOMATIC_ACCEPTANCE.md and external Automatic_Acceptance/phase2-2026-11-19/acceptance.json.
+
+### P3: Reproducible benchmark and automatic audit
 
 **Window:** Weeks 6–7 · Launch path
 
@@ -278,9 +304,13 @@ Status: todo · Estimate: 3 active hours
 
 **Exit gate:** At least 20 benchmark cases run with logged seeds/configs/results and readable summary.
 
+**Gate status:** passed
+
+**Gate evidence:** phase3-reproducibility-v2 passed with 198 tests, 20 normalized-distinct cases, 3 seeds and 3060 real calls across two audited runs. Equal budgets and exact numerical replay verified; 18 passes/126 misses/36 rejections per run preserved. P3-H1 superseded by P3-C3; no human signoff.
+
 #### P3-C1 · Codex · Benchmark schema and cases
 
-Status: todo · Estimate: 7 active hours
+Status: done · Estimate: 7 active hours
 
 **Action:** Create 20 curated RC tasks spanning cutoff and feasible bounds; no duplicated disguised cases.
 
@@ -290,11 +320,11 @@ Status: todo · Estimate: 7 active hours
 
 **Depends on:** P2-C1
 
-**Evidence:** Not recorded
+**Evidence:** Benchmark v2.0 validates 20 distinct normalized RC tasks, 16 feasible including 2 fixed controls and 4 expected infeasible. Original v1 scale duplicates are retained as a rejection regression. Full suite 198 passed; see examples/benchmark-v2.json and docs/PHASE3.md.
 
 #### P3-C2 · Codex · Evaluation harness
 
-Status: todo · Estimate: 9 active hours
+Status: done · Estimate: 9 active hours
 
 **Action:** Run fixed-seed trials with equal call budgets, log runtime, failures, environment and configs.
 
@@ -304,11 +334,11 @@ Status: todo · Estimate: 9 active hours
 
 **Depends on:** P3-C1, P2-C3
 
-**Evidence:** Not recorded
+**Evidence:** Observed real 20-case x 3-seed x 3-method run and independent replay: 180 trials and 1530 calls per run, 3060 audited calls total. Candidate/metric traces match exactly, latency excluded. All method budgets matched; see docs/PHASE3.md and external Automatic_Acceptance/phase3-v2-2026-11-19.
 
 #### P3-H1 · Human · Audit baseline fairness
 
-Status: todo · Estimate: 4 active hours
+Status: deferred · Estimate: 4 active hours
 
 **Action:** Audit 5 cases, acceptance logic, runtime measurement and success definitions.
 
@@ -318,9 +348,23 @@ Status: todo · Estimate: 4 active hours
 
 **Depends on:** P3-C2
 
-**Evidence:** Not recorded
+**Evidence:** Superseded under owner's automatic technical-review delegation by tested P3-C3. No human review is claimed. Physics, fairness, failure definitions, runtimes and all 20 cases are automatically audited.
 
-### P4: Review tolerance assumptions
+#### P3-C3 · Codex · Automatic benchmark acceptance
+
+Status: done · Estimate: 5 active hours
+
+**Action:** Reject duplicate normalized tasks, run complete tests and two fresh benchmarks, audit raw physics/accounting and exact numerical replay.
+
+**Deliverable:** scripts/accept_phase3.py and versioned machine-readable acceptance.json.
+
+**Acceptance:** phase3-reproducibility-v2 passes without skips, missing/inconsistent evidence or manual waiver; target misses and expected infeasible rejections remain distinct.
+
+**Depends on:** P3-C1, P3-C2
+
+**Evidence:** Observed 2026-11-19: 198 tests without skips, 20 cases/3 seeds, 3060 fresh final-dataset calls audited across two exact numerical replays. Per run 18 control design passes, 126 misses, 36 expected infeasible rejections; zero simulation failures. See docs/PHASE3.md.
+
+### P4: Tolerance experiment and automatic audit
 
 **Window:** Week 8 · Launch path
 
@@ -330,9 +374,13 @@ Status: todo · Estimate: 4 active hours
 
 **Exit gate:** Robustness runs reproduce quantiles and performance comparison with declared tolerance model.
 
+**Gate status:** passed
+
+**Gate evidence:** phase4-tolerance-v1 passed: 234 tests, declared independent uniform tolerance model, two cases/two seeds, matched 96 calls/method/trial and 1536 raw calls including exact replay. Quantiles/pass rates and negative tradeoffs preserved. P4-H1 deferred/superseded by P4-C3, not human-approved. See docs/PHASE4.md.
+
 #### P4-C1 · Codex · Monte Carlo model
 
-Status: todo · Estimate: 7 active hours
+Status: done · Estimate: 7 active hours
 
 **Action:** Seeded tolerance sampling, explicit distributions and sampling budget; compute quantiles and pass rate.
 
@@ -342,11 +390,11 @@ Status: todo · Estimate: 7 active hours
 
 **Depends on:** P3-C2
 
-**Evidence:** Not recorded
+**Evidence:** Typed independent uniform R +/-1% / C +/-5% multiplicative model, separate training/holdout RNG streams, explicit simulation envelopes, measured empirical quantiles and pass rates with failed-sample blocking. Full suite: 234 tests without skips; real raw-data statistics reproduce. See docs/PHASE4.md.
 
 #### P4-C2 · Codex · Robust objective experiment
 
-Status: todo · Estimate: 8 active hours
+Status: done · Estimate: 8 active hours
 
 **Action:** Add tolerance-aware penalty and comparison under matched total simulation budgets.
 
@@ -356,11 +404,11 @@ Status: todo · Estimate: 8 active hours
 
 **Depends on:** P4-C1
 
-**Evidence:** Not recorded
+**Evidence:** Prespecified two-case/two-seed nominal-vs-robust random-search comparison: 64 training +32 fresh holdout calls/method/trial. Each run has 8 trials and 768 actual calls; 1536 audited calls including exact replay. Report/PNG retain negative tradeoffs; no robust superiority claimed. See docs/PHASE4.md.
 
 #### P4-H1 · Human · Review tolerance assumptions
 
-Status: todo · Estimate: 3 active hours
+Status: deferred · Estimate: 3 active hours
 
 **Action:** Choose tolerance ranges, correlation assumptions and interpretation limits.
 
@@ -370,9 +418,23 @@ Status: todo · Estimate: 3 active hours
 
 **Depends on:** P4-C1
 
-**Evidence:** Not recorded
+**Evidence:** Superseded by tested automatic P4-C3 under owner delegation. Explicit illustrative distribution, independence/pairing, sample budgets and interpretation limits are recorded in docs/DECISIONS.md and docs/PHASE4.md. No human signoff or hardware guarantee asserted.
 
-### P5: User acceptance walkthrough
+#### P4-C3 · Codex · Automatic tolerance-study acceptance
+
+Status: done · Estimate: 4 active hours
+
+**Action:** Run full tests and two fresh declared tolerance experiments; independently audit raw physics, factors, objective/selection, holdout partitions/statistics, equal budgets and exact replay.
+
+**Deliverable:** scripts/accept_phase4.py, robust_acceptance.py, acceptance.json and comparison plots.
+
+**Acceptance:** phase4-tolerance-v1 passes without skipped/failed/inconsistent evidence; no optimizer win or manual waiver required, and failures/limitations remain explicit.
+
+**Depends on:** P4-C1, P4-C2
+
+**Evidence:** Observed on 2026-11-19: 234 tests without skips, 1536 real raw calls audited across two exact numerical replays; 96 actual calls/trial for both methods. All nominal designs missed 0.1%; each method had 3 passes in 128 paired holdout observations, not a hardware-yield estimate. See docs/PHASE4.md and external Automatic_Acceptance/phase4-final-2026-11-19/acceptance.json.
+
+### P5: Local CLI/API and automatic install walkthrough
 
 **Window:** Weeks 9–10 · Launch path
 
@@ -380,11 +442,33 @@ Status: todo · Estimate: 3 active hours
 
 **Phase dependencies:** P4
 
-**Exit gate:** Independent reviewer runs one complete example with plots, raw results and traceable configuration.
+**Exit gate:** Automatic clean-install walkthrough reproduces complete CLI and real loopback API examples with plots, raw results, traceable configuration and consistent statuses.
+
+**Gate status:** passed
+
+**Gate evidence:** phase5-local-interface-v1 passed: 279 tests, fresh isolated wheel install and real installed CLI/HTTP walkthrough. 27 actual calls, 18 archived/raw-audited plus 9 JSON traces matched; target miss preserved and server/temp cleanup verified. P5-H1 superseded by P5-C4; optional P5-C3 deferred per START_CODEX.md. No human review/deployment/push approval asserted.
+
+#### P5-C5 · Codex · Bounded Codex and Freebuff development handoff
+
+Status: done · Estimate: 3 active hours
+
+**Action:** Codex drives the existing interactive free-model terminal with selected packets; persist limits and source hashes, receive advisory output, independently check edits and continue eligible jobs automatically within one authorized cycle.
+
+**Deliverable:** planning/agent-workflow.json, scripts/agent_workflow.py, regression tests and docs/AGENT_COLLABORATION.md with real turn evidence.
+
+**Acceptance:** Fail-closed tests cover prerequisites, consent, changed packets, concurrent/duplicate dispatch, persistent caps and untrusted replies; actual Freebuff receipt recorded separately from engineering acceptance. No paid SDK, daemon or full P7/Phase 6 acceptance claim.
+
+**Depends on:** P5-C4
+
+**Evidence:** Accepted automatically 2026-11-22 after explicit owner next authorized a separate one-turn/600-second verification cycle. 338 actual unit tests passed in 17.59s without skips, including 45 coordination guards; one real Freebuff response recorded 57.46s after reservation with matching prompt/source/reply hashes and no legacy/unbound receipt. Existing audit passed, cycle closed at 1/1 turns; useful trust-boundary wording was independently checked and adopted. The November 21 late-receipt cycle remains blocked with original counters/evidence. See docs/AGENT_COLLABORATION.md and 2026-11-22-verify-01/acceptance.json. No scientific, clean-install or full P7 gate acceptance implied.
+
+**Advisor:** Freebuff · Codex retains writing and automatic acceptance.
+
+
 
 #### P5-C1 · Codex · CLI and report export
 
-Status: todo · Estimate: 8 active hours
+Status: done · Estimate: 8 active hours
 
 **Action:** CLI accepts structured spec and produces JSON/CSV/PNG and traceable simulation log.
 
@@ -394,11 +478,11 @@ Status: todo · Estimate: 8 active hours
 
 **Depends on:** P2-C3, P4-C1
 
-**Evidence:** Not recorded
+**Evidence:** Shared bounded DesignRequest/DesignResult, new design CLI and JSON/CSV/PNG/checksummed ZIP with full raw history. Three installed examples reproduce direct simulation, grid control and a preserved target miss. Full suite 279 tests without skips. See docs/PHASE5.md.
 
 #### P5-C2 · Codex · Add minimal FastAPI service
 
-Status: todo · Estimate: 8 active hours
+Status: done · Estimate: 8 active hours
 
 **Action:** Validated endpoint with bounded compute, response schemas and safe temp cleanup.
 
@@ -408,11 +492,11 @@ Status: todo · Estimate: 8 active hours
 
 **Depends on:** P5-C1
 
-**Evidence:** Not recorded
+**Evidence:** Loopback-only FastAPI JSON/ZIP endpoints use the same engine, validate requests before compute, cap body/calls/timeout/sweep/concurrency, reject injected netlists/paths and clean temporary data. Real installed HTTP matches CLI; error/guard/concurrency/cleanup tests passed. See docs/PHASE5.md.
 
 #### P5-C3 · Codex · Engineering dashboard (optional)
 
-Status: todo · Estimate: 10 active hours
+Status: deferred · Estimate: 10 active hours · Optional
 
 **Action:** Minimal plot and comparison view after engine passes gates; keep core package usable without UI.
 
@@ -422,11 +506,11 @@ Status: todo · Estimate: 10 active hours
 
 **Depends on:** P5-C2
 
-**Evidence:** Not recorded
+**Evidence:** Explicitly optional dashboard deferred: START_CODEX.md excludes a frontend; CLI/API and PNG exports meet the inspectable scientific-result gate without unnecessary UI. No dashboard completion is claimed.
 
 #### P5-H1 · Human · User acceptance walkthrough
 
-Status: todo · Estimate: 3 active hours
+Status: deferred · Estimate: 3 active hours
 
 **Action:** Attempt clean install, complete example and review UX / interpretation.
 
@@ -436,7 +520,21 @@ Status: todo · Estimate: 3 active hours
 
 **Depends on:** P5-C1
 
-**Evidence:** Not recorded
+**Evidence:** Owner's automatic technical-review delegation replaces the install/result walkthrough with tested P5-C4. Fresh installed Python -I, real loopback HTTP and independent export checks passed. No independent human or subjective UX review is claimed.
+
+#### P5-C4 · Codex · Automatic installed CLI/API acceptance
+
+Status: done · Estimate: 5 active hours
+
+**Action:** Run all tests, build a source-byte-preserving wheel, install it in a fresh isolated environment and compare real CLI/JSON/ZIP outcomes with raw physics/integrity and cleanup checks.
+
+**Deliverable:** scripts/accept_phase5.py, scripts/walkthrough_phase5.py and machine-readable acceptance evidence.
+
+**Acceptance:** phase5-local-interface-v1 passes without skips, source-import leakage, hidden target misses, unsafe exports, leaked server/temp state or manual waiver.
+
+**Depends on:** P5-C1, P5-C2
+
+**Evidence:** Observed 2026-11-19: 279 tests without skips; fresh wheel/venv and Python -I walkthrough passed through real loopback HTTP. 27 actual calls: 18 full raw CLI/ZIP calls independently audited and 9 JSON calls matched numerically. Two passing reference examples and one target miss per interface preserved; server stopped and temp storage empty. See docs/PHASE5.md and external Automatic_Acceptance/phase5-2026-11-19/acceptance.json.
 
 ### P6: Approve API trial and spending
 
@@ -448,9 +546,13 @@ Status: todo · Estimate: 3 active hours
 
 **Exit gate:** If paid key/provider inaccessible, mark experiment deferred and preserve reproducible non-LLM result; no claims without trials.
 
+**Gate status:** passed
+
+**Gate evidence:** phase6-local-supplemental-replay-v1 passed 2026-11-22: original four matched-call comparisons raw-audited plus two separately authorized returned replay observations/one exact valid candidate/one new raw-audited SPICE attempt. Primary 25-request/65-call deadline failure and misses retained; supplement two requests/one call/62.656s/256 known tokens/4608 reservations/no unknown usage. No scores pooled or tolerances changed; no efficacy claim. All allowances closed; original standalone policy remains blocked, composite engineering gate accepted.
+
 #### P6-C1 · Codex · Provider-neutral proposal interface
 
-Status: todo · Estimate: 7 active hours
+Status: done · Estimate: 7 active hours
 
 **Action:** Define structured candidate interface with validation, rate/cost caps, mock tests; optional real provider adapter.
 
@@ -460,11 +562,11 @@ Status: todo · Estimate: 7 active hours
 
 **Depends on:** P2-C1
 
-**Evidence:** Not recorded
+**Evidence:** P6-C1 only accepted automatically 2026-11-20 under p6-c1-offline-contract-v1: 319 tests without skips and 4 fresh raw-audited ngspice calls; 8 offline fixture requests, 2 invalid topologies rejected, 2 cached duplicates, 2 reference passes and 2 deliberate misses preserved. Strict candidate JSON, request/token/cost reservations, rate/concurrency guards and failure/overrun accounting tested. No network adapter, SDK, credentials, real model traffic or efficacy claim. See docs/PHASE6.md and external Automatic_Acceptance/p6-c1-2026-11-20/acceptance.json.
 
 #### P6-C2 · Codex · Equal-budget agent ablation
 
-Status: todo · Estimate: 9 active hours
+Status: done · Estimate: 9 active hours
 
 **Action:** Run available LLM proposals vs baselines under stated budgets, track tokens, costs, failures and seeds.
 
@@ -472,13 +574,13 @@ Status: todo · Estimate: 9 active hours
 
 **Acceptance:** Comparative evidence provided or explicitly marked unrun due to access.
 
-**Depends on:** P6-C1, P3-C2
+**Depends on:** P6-C1, P3-C2, P6-H1
 
-**Evidence:** Not recorded
+**Evidence:** Accepted 2026-11-22 under independent phase6-local-supplemental-replay-v1. Original four matched comparisons/25 requests/65 raw-audited SPICE attempts and all misses remain unchanged, including deadline failure and unknown usage. Owner next separately authorized <=2 requests/120 seconds/2 SPICE: completed two replay observations, one valid exact-candidate replay/one raw-audited SPICE attempt in 62.656s; 4608 reserved/256 known tokens, no unknown usage, zero cost. Original policy stays blocked; composite gate passed without rescoring or model-efficacy claims. Supplement now closed. 29 final targeted guard/report tests passed in 2.95s. See docs/P6_REPLAY_SUPPLEMENT.md and external local-replay-supplement-2026-11-22/acceptance.json.
 
 #### P6-H1 · Human · Approve API trial and spending
 
-Status: todo · Estimate: 2 active hours
+Status: done · Estimate: 2 active hours
 
 **Action:** Review pricing/privacy/terms and set maximum expenditure; do not commit secrets.
 
@@ -488,7 +590,7 @@ Status: todo · Estimate: 2 active hours
 
 **Depends on:** P6-C1
 
-**Evidence:** Not recorded
+**Evidence:** Explicit owner response November 20: تأیید آزمایش فقط محلی با همین سقف‌ها; November 21 next renewed the unchanged local-only window. On November 22 next explicitly approved the prepared two-request/120-second/two-SPICE/4608-reserved-token supplement, CPU2/GPU0/zero spend, existing pinned model only. All three scientific allowances are now consumed/closed. No paid/cloud/download/personal-file transmission/push/deployment permission from these decisions; further model execution requires a fresh bounded resource decision. See docs/P6_REPLAY_SUPPLEMENT.md and historical trial/renewal documents.
 
 ### P7: Verify demo and claims
 
@@ -500,9 +602,27 @@ Status: todo · Estimate: 2 active hours
 
 **Exit gate:** Clean setup, tests, reproducible benchmark, demo and research report.
 
+**Gate status:** passed
+
+**Gate evidence:** phase7-local-research-mvp-v1 passed 2026-11-22: 438 fresh tests without skips, unchanged 93-file source/test hash map, accepted scientific composite/report/source hashes and matching fresh installed package. Independent audit verified nine real demo calls and five-frame/75-second labeled captured-output replay; misses retained. P7-H1 engineering portion superseded by P7-C3 without human/CV/publication approval claims. Local research MVP only; no remote push/deployment or optional PCB/advanced-agent authorization.
+
+#### P7-C3 · Codex · Automatic captured CLI demo and evidence-backed claims
+
+Status: done · Estimate: 4 active hours
+
+**Action:** Run the installed CLI on supported examples, audit raw physical results, render a labeled 60-90 second replay of captured output and verify artifact/claim provenance with fresh tests.
+
+**Deliverable:** Executable demo/exporter and independent acceptance checker; real transcripts, animated demo, evidence hashes and draft accurate wording.
+
+**Acceptance:** Fresh tests without skips, installed-package provenance, actual bounded raw-audited simulator calls, preserved intentional miss, checked 60-90s animation and evidence-backed draft claims. No fake live-screen recording or invented owner CV approval.
+
+**Depends on:** P7-C1, P7-C2
+
+**Evidence:** Accepted automatically 2026-11-22 under phase7-local-research-mvp-v1: 438 tests in 158.31s without skips; scientific/report/install evidence checked; all 93 hashed source/test files unchanged. Actual isolated installed CLI capture: nine independently raw-audited calls, two example passes/one preserved miss, complete JSON stdout/arguments/raw exports. Five-frame/75-second looping annotated replay and draft wording checked against source/pixel/artifact hashes; no live-screen, owner CV approval or remote-publication claim. docs/PHASE7.md; external phase7-local-mvp-2026-11-22/acceptance.json and p7-captured-demo-2026-11-22/demo.gif. No new model requests.
+
 #### P7-C1 · Codex · Engineering documentation
 
-Status: todo · Estimate: 7 active hours
+Status: done · Estimate: 7 active hours
 
 **Action:** README, architecture diagrams, API docs, installation troubleshooting, reproducibility commands and known limits.
 
@@ -512,11 +632,15 @@ Status: todo · Estimate: 7 active hours
 
 **Depends on:** P5-C1, P3-C2
 
-**Evidence:** Not recorded
+**Evidence:** 2026-11-22: corrected implemented architecture/contracts and added flow diagram plus local operations/API/troubleshooting guide. Existing phase5-local-interface-v1 freshly passed 408 full-suite tests without skips (120.41s), built a wheel, installed a fresh isolated venv and reproduced CLI/real loopback HTTP with Python -I. 27 actual calls: 18 raw CLI/ZIP calls audited and nine JSON traces matched; target miss retained, server/temp cleanup verified. docs/OPERATIONS.md and external p7-clean-install-2026-11-22/acceptance.json. Completes documentation/install task only; final P7 gate still depends on P6.
+
+**Advisor:** Freebuff · Codex retains writing and automatic acceptance.
+
+Freebuff audits/drafts selected documentation packets; Codex verifies commands, applies changes and runs clean-setup acceptance. Task dependencies permit documentation preparation while final P7 gate remains dependent on P6.
 
 #### P7-C2 · Codex · Technical research report
 
-Status: todo · Estimate: 8 active hours
+Status: done · Estimate: 8 active hours
 
 **Action:** Write method, baselines, results, confidence limits, failure analysis, threats to validity and next steps.
 
@@ -526,11 +650,15 @@ Status: todo · Estimate: 8 active hours
 
 **Depends on:** P3-C2, P4-C2
 
-**Evidence:** Not recorded
+**Evidence:** 2026-11-22: executable scripts/report_research.py checked accepted historical manifests/JUnit/first-replay summaries, counts and holdout outcomes, and independently re-audited local saved replies/65 raw traces without model or SPICE execution. Nine targeted corruption/overwrite regressions passed; 347 unit tests and later 408 full-suite/interface tests passed. Generated versioned report, input hashes/full-precision JSON and visually checked measured SVG in docs/research; reproduction/limits in docs/RESEARCH_REPORT.md. Final report preserves fixed-control wins, target misses, shared factors, unequal candidate opportunities and blocked P6 replay. No fresh historical raw Phase 3/4 audit or full P7 acceptance claimed.
+
+**Advisor:** Freebuff · Codex retains writing and automatic acceptance.
+
+Freebuff may draft from explicitly approved evidence summaries; Codex checks every numeric claim against stored records and preserves failures. No raw experiment uploads or scientific-gate delegation.
 
 #### P7-H1 · Human · Verify demo and claims
 
-Status: todo · Estimate: 4 active hours
+Status: deferred · Estimate: 4 active hours
 
 **Action:** Record 60–90s demo and approve accurate CV wording.
 
@@ -540,7 +668,7 @@ Status: todo · Estimate: 4 active hours
 
 **Depends on:** P7-C1, P7-C2
 
-**Evidence:** Not recorded
+**Evidence:** Owner's automatic technical-review delegation replaces the engineering demo/claim check with tested P7-C3. Actual recorded installed CLI outputs and measured charts form a labeled 75-second annotated replay, independently raw-audited; draft wording is evidence-backed. No completed human review, owner CV approval or external publication is claimed. Personal CV use remains the owner's choice. See docs/PHASE7.md.
 
 ### P8: Decide constrained PCB research
 
@@ -551,6 +679,10 @@ Status: todo · Estimate: 4 active hours
 **Phase dependencies:** P7
 
 **Exit gate:** Explicit feasibility decision with validated model, export test and no industrial claims.
+
+**Gate status:** pending
+
+**Gate evidence:** Not recorded
 
 #### P8-C1 · Codex · Component registry and model compatibility
 
@@ -593,6 +725,22 @@ Status: todo · Estimate: 4 active hours
 **Depends on:** P8-C2
 
 **Evidence:** Not recorded
+
+## Codex and Freebuff collaboration
+
+**Policy:** planning/agent-workflow-verification-2026-11-22.json
+
+**Guide:** docs/AGENT_COLLABORATION.md
+
+**Mode:** Codex-driven interactive terminal; finite queue during an active session
+
+**Limits:** Verification allowance: 1 turn, 600 seconds, zero provider spend, no retry; consumed and closed. Original 3-turn cycle remains separately closed/blocked.
+
+**Acceptance:** Automatic handoff audit passed on a separately authorized one-turn verification; 338 unit tests, matching hashes and timely receipt. Advisory text alone is not engineering acceptance.
+
+**Data consent:** Owner explicitly approved selected task text, documentation and necessary code excerpts to Freebuff cloud on 2026-11-21; secrets, personal files, environment files, Git history and raw experiments excluded
+
+P5-C5 accepted after real one-turn verification. Codex drives bounded terminal handoffs during an active authorized session; existing cycles are closed, no daemon or automatic reset. P6/P7 local engineering gates subsequently passed; stop at the validated local research MVP and report evidence before optional expansion. No new model/provider cycle, remote push or deployment permission.
 
 ## Proposed architecture
 
@@ -733,6 +881,10 @@ All claims backed by versioned fixtures, baseline comparisons, experimental sett
 
 ## Human / Codex working agreement
 
+### Codex and Freebuff collaboration
+
+Codex alone writes the repository, coordinates dependencies and verifies automatic acceptance. Freebuff reviews allowlisted packets via the installed interactive terminal. scripts/agent_workflow.py persists source hashes, consent, pre-dispatch reservations and advisory receipts in an explicit stable ledger directory. Follow planning/agent-workflow.json and docs/AGENT_COLLABORATION.md; continue bounded eligible jobs during an active Codex session without owner copy/paste. No permanent unattended or paid-provider path is configured.
+
 ### Two-person division
 
 Partner A: AI/optimization/backend/evaluation. Partner B: circuit models, ngspice integration, physical fixtures and component compatibility. Both review tests, design constraints and research claims.
@@ -760,7 +912,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md and planning/HANDOFF.md. P0-C1/C2 and P1-C1/C2/C3 have verified evidence. Reproduce tests and complete human P0-H1/H2 and P1-H1 reviews before Phase 2 baseline comparisons. First-slice bounded measured bisection is implemented; random/grid/SciPy remain Phase 2. Do not start PCB or LLM work.
+Read AGENTS.md and planning/HANDOFF.md. Local MVP accepted with 438 tests and unchanged 93-file source/test hashes. Local handoff bundles accepted commit 1ea9bd2: 151 source files, matching 31-file wheel and real demo; py312 ZIP 791661 bytes, SHA-256 538f18e0a93b8918fc7a0edbc071b026d54f2933e4dec97e9edb0b35fbf0807a. Python 3.12/separate ngspice; no new experiments during packaging. Owner subsequently requested GitHub update: reviewed all 375 unpublished blobs/28 commits, matched acceptance hashes, pushed codex/local-mvp-handoff and opened PR #1 (https://github.com/Omidf28/CircuForge/pull/1) to main. Normal integration preserves remote history; no force-push, deployment or local-artifact upload. Prior initial-main-only notes are historical. All model/Freebuff cycles closed; optional P8/PCB/advanced work unstarted. Suggested next scope remains physics-based numerical search, not yet implemented. Source/Git stay on C; ancillary junction unchanged.
 ```
 
 ## Sources

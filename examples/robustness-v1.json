@@ -1,0 +1,35 @@
+{
+  "version": "1.0",
+  "provenance": "Prespecified Phase 4 pilot, frozen before execution. Two feasible variable RC tasks with ideal zero-ohm source and infinite load. Independent uniform R/C errors are illustrative simulation assumptions, not measured manufacturing distributions. No optimizer improvement is assumed.",
+  "tolerance": {"distribution": "independent_uniform", "resistance_fraction": 0.01, "capacitance_fraction": 0.05},
+  "seeds": [7, 42],
+  "training_calls": 64,
+  "training_samples": 7,
+  "holdout_samples": 32,
+  "penalty_weight": 1.0,
+  "max_spice_calls": 2000,
+  "cases": [
+    {
+      "id": "lp-narrow",
+      "spec": {
+        "filter_type": "rc_lowpass", "cutoff_hz": 1000.0,
+        "resistance_ohm": {"minimum": 900.0, "maximum": 1100.0},
+        "capacitance_f": {"minimum": 1.4e-7, "maximum": 1.8e-7},
+        "relative_error_tolerance": 0.001, "max_evaluations": 64,
+        "source_amplitude_v": 1.0, "source_impedance_ohm": 0.0, "load": "infinite", "value_policy": "continuous",
+        "timeout_s": 10.0, "sweep": {"start_hz": 1.0, "stop_hz": 1000000.0, "points_per_decade": 100}
+      }
+    },
+    {
+      "id": "hp-asymmetric",
+      "spec": {
+        "filter_type": "rc_highpass", "cutoff_hz": 2300.0,
+        "resistance_ohm": {"minimum": 470.0, "maximum": 680.0},
+        "capacitance_f": {"minimum": 1e-7, "maximum": 1.5e-7},
+        "relative_error_tolerance": 0.001, "max_evaluations": 64,
+        "source_amplitude_v": 1.0, "source_impedance_ohm": 0.0, "load": "infinite", "value_policy": "continuous",
+        "timeout_s": 10.0, "sweep": {"start_hz": 1.0, "stop_hz": 1000000.0, "points_per_decade": 100}
+      }
+    }
+  ]
+}

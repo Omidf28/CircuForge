@@ -1,5 +1,18 @@
 # Paste this into Codex after opening the extracted CircuForge folder
 
+## Current continuation (2026-11-21)
+
+The original first-slice instructions below are historical. Read AGENTS.md,
+planning/HANDOFF.md, planning/phase-tasks.json and docs/AGENT_COLLABORATION.md.
+Continue the bounded Codex/Freebuff queue in planning/agent-workflow.json without
+owner copy/paste or manual technical signoff. Use one stable explicit --state-dir,
+reserve before dispatch, keep the original cycle caps and record actual advisory
+replies. Codex alone edits source and accepts evidence. No background daemon or
+paid SDK is configured. Keep Phase 6 experiment permissions separate; the full
+P7 release gate still depends on accepted P6 evidence.
+
+## Historical first local slice
+
 Read `AGENTS.md`, `README.md`, `docs/PROJECT_SPEC.md`, `docs/ARCHITECTURE.md`, `docs/DECISIONS.md`, `planning/HANDOFF.md`, and relevant `planning/phase-tasks.json` tasks.
 
 I authorize you to **implement the first local CircuForge MVP vertical slice now**, not merely plan it. Respect task dependencies and `AGENTS.md`.

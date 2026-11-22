@@ -1,4 +1,4 @@
-"""Executable Phase 1 demo with traceable JSON/CSV artifacts."""
+"""Local RC simulation and bounded optimizer comparison commands."""
 
 import argparse
 import csv
@@ -13,9 +13,10 @@ import pydantic
 
 from circuforge import __version__
 from circuforge.domain.specs import CircuitCandidate, DesignSpec
-from circuforge.optimization.search import search
+from circuforge.optimization.search import SearchFailure, search
 from circuforge.simulation.metrics import analytic_cutoff, cutoff_hz
 from circuforge.simulation.ngspice import Ngspice, SimulationError, preflight
+from circuforge.synthesis.rc import netlist
 
 
 def main(argv=None) -> int:
@@ -23,17 +24,59 @@ def main(argv=None) -> int:
     parser.add_argument("--ngspice", help="trusted local executable path (also CIRCUFORGE_NGSPICE)")
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("preflight", help="check actual simulator availability and version")
+    design = sub.add_parser("design", help="shared typed design with JSON/CSV/PNG, raw history and ZIP export")
+    design.add_argument("--request", type=Path, required=True, help="bounded structured design request JSON")
+    design.add_argument("--output", type=Path, required=True, help="new artifact directory")
     sim = sub.add_parser("simulate", help="run an ideal unloaded RC sweep")
     sim.add_argument("--search", action="store_true", help="bounded deterministic R/C search for the spec target")
     sim.add_argument("--spec", type=Path, default=Path("examples/lowpass.json"))
     sim.add_argument("--resistance-ohm", type=float, default=1000.0)
     sim.add_argument("--capacitance-f", type=float, default=100e-9)
     sim.add_argument("--output", type=Path, required=True, help="new artifact directory")
+    for command in ("optimize", "compare"):
+        opt = sub.add_parser(command, help="run bounded baselines with recorded real SPICE evidence")
+        opt.add_argument("--spec", type=Path, default=Path("examples/search.json"))
+        opt.add_argument("--output", type=Path, required=True, help="new artifact directory")
+        opt.add_argument("--seed", type=int, default=42)
+        if command == "optimize":
+            opt.add_argument("--method", choices=["random", "grid", "scipy"], default="scipy")
     args = parser.parse_args(argv)
     try:
         if args.command == "preflight":
             print(json.dumps({"status": "available", **asdict(preflight(args.ngspice))}, indent=2))
             return 0
+        if args.command == "design":
+            from circuforge.application import load_request, run_design
+
+            request = load_request(args.request)
+            if args.output.exists():
+                raise FileExistsError(f"output must be a new directory: {args.output}")
+            result = run_design(request, Ngspice(args.ngspice), args.output)
+            print(result.model_dump_json(indent=2))
+            return 0 if result.status == "passed" else 1 if result.status == "target_missed" else 2
+        if args.command in {"optimize", "compare"}:
+            from circuforge.optimization.baselines import Options, compare, run_baseline
+
+            spec = DesignSpec.model_validate_json(args.spec.read_text(encoding="utf-8"))
+            Options(method=getattr(args, "method", "random"), seed=args.seed)
+            if args.output.exists():
+                raise FileExistsError(f"output must be a new directory: {args.output}")
+            simulator = Ngspice(args.ngspice)
+            results = (compare(spec, simulator, seed=args.seed, output=args.output)
+                       if args.command == "compare" else
+                       [run_baseline(spec, simulator, args.method, seed=args.seed, output=args.output)])
+            summary = {"budget_per_method": spec.max_evaluations, "seed": args.seed,
+                       "matched_actual_calls": len({r.simulator_calls for r in results}) == 1,
+                       "results": [{"method": r.options.method, "simulator_calls": r.simulator_calls,
+                                    "converged": r.converged, "failures": r.failures,
+                                    "target_relative_error": r.best.relative_error if r.best else None,
+                                    "stop_reason": r.stop_reason,
+                                    "candidate": r.best.candidate.model_dump() if r.best else None}
+                                   for r in results]}
+            print(json.dumps(summary, indent=2, allow_nan=False))
+            if args.command == "compare":
+                return 0 if all(r.best is not None for r in results) else 1
+            return 0 if results[0].converged else 1
         spec = DesignSpec.model_validate_json(args.spec.read_text(encoding="utf-8"))
         candidate = CircuitCandidate(topology=spec.filter_type, resistance_ohm=args.resistance_ohm, capacitance_f=args.capacitance_f)
         if not args.search:
@@ -49,7 +92,11 @@ def main(argv=None) -> int:
         (args.output / "circuit.cir").write_text(result.netlist, encoding="ascii")
         (args.output / "stdout.log").write_text(result.stdout, encoding="utf-8")
         (args.output / "stderr.log").write_text(result.stderr, encoding="utf-8")
-        measured = cutoff_hz(result.response, candidate.topology)
+        try:
+            measured = cutoff_hz(result.response, candidate.topology)
+        except ValueError as exc:
+            raise SimulationError("metric_error", str(exc), stdout=result.stdout,
+                                  stderr=result.stderr, returncode=result.returncode) from exc
         analytic = analytic_cutoff(candidate)
         analytic_error = abs(measured / analytic - 1)
         target_error = abs(measured / spec.cutoff_hz - 1)
@@ -82,10 +129,20 @@ def main(argv=None) -> int:
     except SimulationError as exc:
         error = {"status": exc.status, "error": str(exc), "returncode": exc.returncode,
                  "stdout": exc.stdout, "stderr": exc.stderr}
+        if isinstance(exc, SearchFailure):
+            error.update(exc.context())
+        elif getattr(args, "search", False):
+            # Failure during adapter preflight occurs before any AC call.
+            error.update(spec=spec.model_dump(), simulator_calls=0, search_history=[],
+                         search_method="log-bounds bisection")
         if getattr(args, "output", None) and args.output.is_dir():
+            if isinstance(exc, SearchFailure):
+                (args.output / "circuit.cir").write_text(netlist(exc.spec, exc.candidate), encoding="ascii")
+                (args.output / "stdout.log").write_text(exc.stdout, encoding="utf-8")
+                (args.output / "stderr.log").write_text(exc.stderr, encoding="utf-8")
             (args.output / "failure.json").write_text(json.dumps(error, indent=2) + "\n", encoding="utf-8")
         print(json.dumps(error, indent=2), file=sys.stderr)
         return 2
-    except (ValueError, OSError) as exc:
+    except (ValueError, OSError, ImportError) as exc:
         print(json.dumps({"status": "invalid_input_or_artifact", "error": str(exc)}), file=sys.stderr)
         return 2

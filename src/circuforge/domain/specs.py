@@ -32,6 +32,8 @@ class Sweep(Model):
     def bounded(self):
         if not 1e-9 <= self.start_hz < self.stop_hz <= 1e15:
             raise ValueError("sweep must satisfy 1e-9 <= start < stop <= 1e15 Hz")
+        if self.expected_points < 2:
+            raise ValueError("sweep must contain at least two frequency samples")
         if self.expected_points > 20000:
             raise ValueError("sweep exceeds 20000 point budget")
         return self
@@ -55,7 +57,7 @@ class CircuitCandidate(Model):
         return self
 
 
-class DesignSpec(Model):
+class DesignInputs(Model):
     filter_type: Literal["rc_lowpass", "rc_highpass"] = "rc_lowpass"
     cutoff_hz: Positive = 1591.5494309189535
     source_amplitude_v: Annotated[float, Field(strict=True, gt=0, le=1000, allow_inf_nan=False)] = 1.0
@@ -69,16 +71,28 @@ class DesignSpec(Model):
     timeout_s: Annotated[float, Field(strict=True, gt=0, le=30, allow_inf_nan=False)] = 10.0
     sweep: Sweep = Sweep()
 
+
     @model_validator(mode="after")
-    def feasible(self):
+    def supported_inputs(self):
         CircuitCandidate(resistance_ohm=self.resistance_ohm.minimum, capacitance_f=self.capacitance_f.minimum)
         CircuitCandidate(resistance_ohm=self.resistance_ohm.maximum, capacitance_f=self.capacitance_f.maximum)
-        low = 1 / (2 * math.pi * self.resistance_ohm.maximum * self.capacitance_f.maximum)
-        high = 1 / (2 * math.pi * self.resistance_ohm.minimum * self.capacitance_f.minimum)
-        if not low <= self.cutoff_hz <= high:
-            raise ValueError(f"target infeasible within R/C bounds: achievable cutoff [{low:g}, {high:g}] Hz")
         if not self.sweep.start_hz < self.cutoff_hz < self.sweep.stop_hz:
             raise ValueError("target cutoff must be inside the sweep")
+        return self
+
+
+class DesignSpec(DesignInputs):
+    @model_validator(mode="after")
+    def feasible(self):
+        low = 1 / (2 * math.pi * self.resistance_ohm.maximum * self.capacitance_f.maximum)
+        high = 1 / (2 * math.pi * self.resistance_ohm.minimum * self.capacitance_f.minimum)
+        accepted_low = self.cutoff_hz * (1 - self.relative_error_tolerance)
+        accepted_high = self.cutoff_hz * (1 + self.relative_error_tolerance)
+        if high < accepted_low or low > accepted_high:
+            raise ValueError(
+                f"target infeasible within R/C bounds: achievable cutoff [{low:g}, {high:g}] Hz "
+                f"does not overlap accepted cutoff [{accepted_low:g}, {accepted_high:g}] Hz"
+            )
         return self
 
     def validate_candidate(self, candidate: CircuitCandidate) -> None:

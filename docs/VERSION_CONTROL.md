@@ -1,6 +1,67 @@
 # Version control
 
+## GitHub MVP update — 2026-11-22
+
+The owner requested «نمیخوای گیت هاب پروژه رو اپدیت کنی؟». This explicitly
+requested the current reviewed MVP's GitHub synchronization, separately from the
+earlier milestone's local-only permission. Published `codex/local-mvp-handoff`
+and opened [PR #1](https://github.com/Omidf28/CircuForge/pull/1) into main.
+That PR records the resulting main integration and merge commit; future pushes
+still require their own task authorization.
+
+Before the initial publication, fetched current refs and verified main was still
+`20ef58fe266cee5837ed27f24ce6b60d60951c78`, an ancestor of the reviewed head
+`4f4f91f2c5ab78447acfd63766cb6c0f7e378d59`. Scanned all 375 unpublished reachable
+blobs across 28 commits (6069923 bytes): no common credential signatures or
+private/generated paths. Subsequent documentation updates also pass the staged
+scanner. The scan does not guarantee detection of every possible secret.
+
+All 93 accepted source/test hashes still match the actual 438-test JUnit
+evidence. No test rerun, new simulation or model request is claimed for this
+publication. No GitHub CI checks were configured at PR creation; local evidence
+is documented in docs/PHASE7.md. Normal push/PR integration preserves history;
+no force-push, remote overwrite, deployment or new provider cycle is included.
+Raw artifacts, environments, downloaded tools, model weights and credentials
+remain excluded. Publication of the source does not upload the local release ZIP.
+
+## Local milestone before publication — 2026-11-22
+
+The validated local research MVP is complete on feature branches through
+`codex/p7-captured-demo`; evidence and automatic acceptance are documented in
+docs/PHASE7.md. At that milestone these changes were local: no later feature
+branch had been pushed. Public visibility alone had not published the development
+history; only initial main was online then. The later explicit update request
+and PR above supersede that historical publication state.
+
+## Current visibility — 2026-11-21
+
+The owner explicitly requested «repo رو پابلیک کن». Changed
+Omidf28/CircuForge from private to public with GitHub CLI and independently read
+back `private=false`, `visibility=public`. At that point only remote main existed,
+at `20ef58fe266cee5837ed27f24ce6b60d60951c78`; its one reachable commit and 46 blobs
+were checked with the project's common-credential scanner, with zero findings.
+GitHub reported zero Actions runs. This is a common-signature check, not a claim
+to detect every conceivable secret.
+
+Direct CLI API access initially timed out. The command succeeded using the
+already-enabled Windows loopback proxy only for that shell process; no system
+proxy/security settings changed. No new commit/branch was pushed and no remote
+history was overwritten. The following private-repository setup notes are
+historical; future visibility changes still require an explicit owner request.
+
+Public repository: https://github.com/Omidf28/CircuForge. Later local phases are
+not published by changing visibility alone; feature pushes retain their separate
+authorization requirements.
+
 The standalone CircuForge folder is the Git repository. It is separate from the unrelated VideoPlayer project. The initial verified implementation is committed on main. Development after the initial commit uses branches named codex/<task-id>-<description>.
+
+Active checkout: `C:/Users/Home/Documents/ChatGPT/Implement CircuForge`. It was populated from the complete local history; the previous visualization-workspace copy is retained with ignored simulator tools/evidence. Current Phase 1 follow-up branch: `codex/p1-search-failure-evidence`. New local commits on that branch are not covered by the earlier initial-push approval and remain unpushed.
+
+Local setup evidence (2026-11-18): initial commit `20ef58f` is on `main`; follow-up Phase 1 commit `a20044f` is on `codex/p1-pipeline-hardening`. The initial staged scan checked 46 files with no common credential signatures. The hook ran successfully during both commits.
+
+GitHub CLI authentication is confirmed as `Omidf28`. Created and connected [Omidf28/CircuForge](https://github.com/Omidf28/CircuForge); GitHub reports `isPrivate: true`. `origin` uses the HTTPS URL without credentials. A local credential-helper setting invokes GitHub CLI; no token is stored in the repository or remote URL. The remote was verified empty before the initial push.
+
+The owner explicitly approved pushing initial commit `20ef58f`. Executed `git push -u origin main` successfully on 2026-11-18. Remote `refs/heads/main` is `20ef58fe266cee5837ed27f24ce6b60d60951c78`; main tracks origin/main. The repository remains private. Follow-up feature-branch commits have not been pushed; approval covered the initial main commit only. No force-push or remote overwrite occurred.
 
 ## Credentials and generated files
 

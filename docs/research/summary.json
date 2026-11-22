@@ -1,0 +1,569 @@
+{
+  "report_policy": "research-report-v1",
+  "scope": "stored-evidence-reporting",
+  "new_model_requests": 0,
+  "new_spice_calls": 0,
+  "phase6_status": "passed",
+  "phase7_release_accepted": false,
+  "nominal": {
+    "cases": 20,
+    "seeds": 3,
+    "trials": 180,
+    "design_passes": 18,
+    "design_misses": 126,
+    "infeasible_rejections": 36,
+    "audited_calls": 1530,
+    "audited_calls_including_replay": 3060
+  },
+  "fixed_control_passes": 18,
+  "nominal_methods": {
+    "random": {
+      "feasible_trials": 48,
+      "design_passes": 6,
+      "design_misses": 42,
+      "infeasible_rejections": 12,
+      "simulator_calls": 510,
+      "simulation_failures": 0
+    },
+    "grid": {
+      "feasible_trials": 48,
+      "design_passes": 6,
+      "design_misses": 42,
+      "infeasible_rejections": 12,
+      "simulator_calls": 510,
+      "simulation_failures": 0
+    },
+    "scipy": {
+      "feasible_trials": 48,
+      "design_passes": 6,
+      "design_misses": 42,
+      "infeasible_rejections": 12,
+      "simulator_calls": 510,
+      "simulation_failures": 0
+    }
+  },
+  "tolerance_settings": {
+    "distribution": "independent_uniform",
+    "resistance_fraction": 0.01,
+    "capacitance_fraction": 0.05
+  },
+  "robust_q95_improvements": 1,
+  "tolerance_pairs": 4,
+  "tolerance_rows": [
+    {
+      "case": "lp-narrow",
+      "seed": 7,
+      "method": "nominal",
+      "stage": "completed",
+      "simulator_calls": 96,
+      "failures": 0,
+      "candidate": {
+        "topology": "rc_lowpass",
+        "resistance_ohm": 988.5651132658037,
+        "capacitance_f": 1.6065690232199737e-07
+      },
+      "nominal_relative_error": 0.0020886082065723066,
+      "nominal_target_passed": false,
+      "holdout_statistics": {
+        "samples": 32,
+        "quantile_method": "linear",
+        "cutoff_hz": {
+          "q05": 959.3516175403206,
+          "q50": 1017.7442259559384,
+          "q95": 1053.212655126131
+        },
+        "relative_error": {
+          "q05": 0.007098069421937964,
+          "q50": 0.032902116596726816,
+          "q95": 0.05321265512613103
+        },
+        "log_error_q95": 0.052404462480308625,
+        "target_passes": 0,
+        "pass_rate": 0.0
+      }
+    },
+    {
+      "case": "lp-narrow",
+      "seed": 7,
+      "method": "robust",
+      "stage": "completed",
+      "simulator_calls": 96,
+      "failures": 0,
+      "candidate": {
+        "topology": "rc_lowpass",
+        "resistance_ohm": 995.8959789682795,
+        "capacitance_f": 1.608937635085589e-07
+      },
+      "nominal_relative_error": 0.006785084856133383,
+      "nominal_target_passed": false,
+      "holdout_statistics": {
+        "samples": 32,
+        "quantile_method": "linear",
+        "cutoff_hz": {
+          "q05": 950.8898175350128,
+          "q50": 1008.7505788920892,
+          "q95": 1043.9414896803567
+        },
+        "relative_error": {
+          "q05": 0.002912381663785213,
+          "q50": 0.029020624419237917,
+          "q95": 0.05247146757984832
+        },
+        "log_error_q95": 0.05248030749856189,
+        "target_passes": 1,
+        "pass_rate": 0.03125
+      }
+    },
+    {
+      "case": "hp-asymmetric",
+      "seed": 7,
+      "method": "nominal",
+      "stage": "completed",
+      "simulator_calls": 96,
+      "failures": 0,
+      "candidate": {
+        "topology": "rc_highpass",
+        "resistance_ohm": 493.41288874023155,
+        "capacitance_f": 1.4086730343433118e-07
+      },
+      "nominal_relative_error": 0.00442507808365622,
+      "nominal_target_passed": false,
+      "holdout_statistics": {
+        "samples": 32,
+        "quantile_method": "linear",
+        "cutoff_hz": {
+          "q05": 2192.2519524140966,
+          "q50": 2325.776773095882,
+          "q95": 2406.7759594978384
+        },
+        "relative_error": {
+          "q05": 0.003824253061287353,
+          "q50": 0.02870970707197562,
+          "q95": 0.052381777534588274
+        },
+        "log_error_q95": 0.05240705705756225,
+        "target_passes": 1,
+        "pass_rate": 0.03125
+      }
+    },
+    {
+      "case": "hp-asymmetric",
+      "seed": 7,
+      "method": "robust",
+      "stage": "completed",
+      "simulator_calls": 96,
+      "failures": 0,
+      "candidate": {
+        "topology": "rc_highpass",
+        "resistance_ohm": 625.9309374866144,
+        "capacitance_f": 1.0956125986282622e-07
+      },
+      "nominal_relative_error": 0.009106812688628674,
+      "nominal_target_passed": false,
+      "holdout_statistics": {
+        "samples": 32,
+        "quantile_method": "linear",
+        "cutoff_hz": {
+          "q05": 2221.978339713064,
+          "q50": 2357.2209857996604,
+          "q95": 2439.3915624630813
+        },
+        "relative_error": {
+          "q05": 0.004006291508027083,
+          "q50": 0.0332566672499246,
+          "q95": 0.0606050271578615
+        },
+        "log_error_q95": 0.05883952348887969,
+        "target_passes": 1,
+        "pass_rate": 0.03125
+      }
+    },
+    {
+      "case": "lp-narrow",
+      "seed": 42,
+      "method": "nominal",
+      "stage": "completed",
+      "simulator_calls": 96,
+      "failures": 0,
+      "candidate": {
+        "topology": "rc_lowpass",
+        "resistance_ohm": 986.8180847607899,
+        "capacitance_f": 1.6151132937160233e-07
+      },
+      "nominal_relative_error": 0.0014431059071923213,
+      "nominal_target_passed": false,
+      "holdout_statistics": {
+        "samples": 32,
+        "quantile_method": "linear",
+        "cutoff_hz": {
+          "q05": 957.2931825329863,
+          "q50": 985.401966346771,
+          "q95": 1039.0056396856496
+        },
+        "relative_error": {
+          "q05": 0.003884658367755961,
+          "q50": 0.030392565984541597,
+          "q95": 0.04337609947266077
+        },
+        "log_error_q95": 0.04364560652331625,
+        "target_passes": 1,
+        "pass_rate": 0.03125
+      }
+    },
+    {
+      "case": "lp-narrow",
+      "seed": 42,
+      "method": "robust",
+      "stage": "completed",
+      "simulator_calls": 96,
+      "failures": 0,
+      "candidate": {
+        "topology": "rc_lowpass",
+        "resistance_ohm": 917.1705090435795,
+        "capacitance_f": 1.789006092654351e-07
+      },
+      "nominal_relative_error": 0.03008715633712067,
+      "nominal_target_passed": false,
+      "holdout_statistics": {
+        "samples": 32,
+        "quantile_method": "linear",
+        "cutoff_hz": {
+          "q05": 929.8620023824963,
+          "q50": 957.2103644352751,
+          "q95": 1009.2382049832615
+        },
+        "relative_error": {
+          "q05": 0.005194402139803417,
+          "q50": 0.04278963556472487,
+          "q95": 0.07013799761750378
+        },
+        "log_error_q95": 0.07271911739401306,
+        "target_passes": 0,
+        "pass_rate": 0.0
+      }
+    },
+    {
+      "case": "hp-asymmetric",
+      "seed": 42,
+      "method": "nominal",
+      "stage": "completed",
+      "simulator_calls": 96,
+      "failures": 0,
+      "candidate": {
+        "topology": "rc_highpass",
+        "resistance_ohm": 608.7347880367986,
+        "capacitance_f": 1.1350239749535369e-07
+      },
+      "nominal_relative_error": 0.0015676586094448552,
+      "nominal_target_passed": false,
+      "holdout_statistics": {
+        "samples": 32,
+        "quantile_method": "linear",
+        "cutoff_hz": {
+          "q05": 2208.465201852967,
+          "q50": 2273.3701999137684,
+          "q95": 2396.9326056736695
+        },
+        "relative_error": {
+          "q05": 0.0032162344810266474,
+          "q50": 0.028849151677910523,
+          "q95": 0.04511287308488766
+        },
+        "log_error_q95": 0.0441235042811331,
+        "target_passes": 0,
+        "pass_rate": 0.0
+      }
+    },
+    {
+      "case": "hp-asymmetric",
+      "seed": 42,
+      "method": "robust",
+      "stage": "completed",
+      "simulator_calls": 96,
+      "failures": 0,
+      "candidate": {
+        "topology": "rc_highpass",
+        "resistance_ohm": 486.6367977497881,
+        "capacitance_f": 1.485246604760143e-07
+      },
+      "nominal_relative_error": 0.04255853232097051,
+      "nominal_target_passed": false,
+      "holdout_statistics": {
+        "samples": 32,
+        "quantile_method": "linear",
+        "cutoff_hz": {
+          "q05": 2111.1584047928823,
+          "q50": 2173.191535579347,
+          "q95": 2291.3173163459714
+        },
+        "relative_error": {
+          "q05": 0.003775079849577612,
+          "q50": 0.055134114965501246,
+          "q95": 0.08210504139439898
+        },
+        "log_error_q95": 0.08567234766651895,
+        "target_passes": 1,
+        "pass_rate": 0.03125
+      }
+    }
+  ],
+  "local_audit": {
+    "integrity_status": "passed",
+    "phase6_comparison_status": "blocked_incomplete",
+    "model_requests": 25,
+    "reserved_tokens": 57600,
+    "reported_tokens_known": 3079,
+    "requests_with_unknown_usage": 1,
+    "audited_real_spice_calls": 65,
+    "completed_equal_budget_trials": 4,
+    "comparison_data_status": "complete",
+    "attempted_replay_checks": 1,
+    "completed_replay_checks": 0,
+    "runtime_audited_spice_calls": 65,
+    "elapsed_s": 600.030999999959,
+    "cost_microusd": 0,
+    "model_efficacy_established": false,
+    "note": "Integrity does not turn an incomplete comparison into acceptance."
+  },
+  "local_rows": [
+    {
+      "case": "local-lowpass",
+      "seed": 7,
+      "method": "random",
+      "simulator_calls": 4,
+      "relative_error": 0.31086212795545365,
+      "target_passed": false
+    },
+    {
+      "case": "local-lowpass",
+      "seed": 7,
+      "method": "grid",
+      "simulator_calls": 4,
+      "relative_error": 0.30804880612349494,
+      "target_passed": false
+    },
+    {
+      "case": "local-lowpass",
+      "seed": 7,
+      "method": "scipy",
+      "simulator_calls": 4,
+      "relative_error": 0.33170537263149014,
+      "target_passed": false
+    },
+    {
+      "case": "local-lowpass",
+      "seed": 7,
+      "method": "local_ollama",
+      "simulator_calls": 4,
+      "relative_error": 0.5618431826149862,
+      "target_passed": false
+    },
+    {
+      "case": "local-lowpass",
+      "seed": 42,
+      "method": "random",
+      "simulator_calls": 4,
+      "relative_error": 0.4982666040399272,
+      "target_passed": false
+    },
+    {
+      "case": "local-lowpass",
+      "seed": 42,
+      "method": "grid",
+      "simulator_calls": 4,
+      "relative_error": 0.30804880612349494,
+      "target_passed": false
+    },
+    {
+      "case": "local-lowpass",
+      "seed": 42,
+      "method": "scipy",
+      "simulator_calls": 4,
+      "relative_error": 0.1394346385640135,
+      "target_passed": false
+    },
+    {
+      "case": "local-lowpass",
+      "seed": 42,
+      "method": "local_ollama",
+      "simulator_calls": 4,
+      "relative_error": 0.38655135609020896,
+      "target_passed": false
+    },
+    {
+      "case": "local-highpass",
+      "seed": 7,
+      "method": "random",
+      "simulator_calls": 4,
+      "relative_error": 0.3108608779630898,
+      "target_passed": false
+    },
+    {
+      "case": "local-highpass",
+      "seed": 7,
+      "method": "grid",
+      "simulator_calls": 4,
+      "relative_error": 0.3079945228286455,
+      "target_passed": false
+    },
+    {
+      "case": "local-highpass",
+      "seed": 7,
+      "method": "scipy",
+      "simulator_calls": 4,
+      "relative_error": 0.3316274844758623,
+      "target_passed": false
+    },
+    {
+      "case": "local-highpass",
+      "seed": 7,
+      "method": "local_ollama",
+      "simulator_calls": 4,
+      "relative_error": 0.8172176753750784,
+      "target_passed": false
+    },
+    {
+      "case": "local-highpass",
+      "seed": 42,
+      "method": "random",
+      "simulator_calls": 4,
+      "relative_error": 0.4982203629381944,
+      "target_passed": false
+    },
+    {
+      "case": "local-highpass",
+      "seed": 42,
+      "method": "grid",
+      "simulator_calls": 4,
+      "relative_error": 0.3079945228286455,
+      "target_passed": false
+    },
+    {
+      "case": "local-highpass",
+      "seed": 42,
+      "method": "scipy",
+      "simulator_calls": 4,
+      "relative_error": 0.1395139864144206,
+      "target_passed": false
+    },
+    {
+      "case": "local-highpass",
+      "seed": 42,
+      "method": "local_ollama",
+      "simulator_calls": 4,
+      "relative_error": 0.3592570283823483,
+      "target_passed": false
+    }
+  ],
+  "replay_supplement": {
+    "status": "passed",
+    "policy": "phase6-local-supplemental-replay-v1",
+    "acceptance_mode": "automated",
+    "primary_comparison_trials": 4,
+    "primary_model_requests": 25,
+    "primary_spice_attempts": 65,
+    "supplemental_model_requests": 2,
+    "supplemental_spice_attempts": 1,
+    "supplemental_reserved_tokens": 4608,
+    "supplemental_known_reported_tokens": 256,
+    "supplemental_unknown_usage": 0,
+    "completed_replay_observations": 2,
+    "exact_candidate_replays": 1,
+    "original_deadline_failure_preserved": true,
+    "comparisons_rescored": false,
+    "model_efficacy_established": false,
+    "note": "Separate authorized observation window; original ledgers remain unchanged. Candidate differences are reported, never waived or relabeled as exact replay."
+  },
+  "replay_supplement_rows": [
+    {
+      "case": "local-lowpass",
+      "status": "invalid_candidate",
+      "exact_candidate_replay": false,
+      "simulator_calls": 0,
+      "relative_error": null,
+      "target_passed": null
+    },
+    {
+      "case": "local-highpass",
+      "status": "accepted",
+      "exact_candidate_replay": true,
+      "simulator_calls": 1,
+      "relative_error": 0.8172176753750784,
+      "target_passed": false
+    }
+  ],
+  "sources": [
+    {
+      "path": "C:\\Users\\Home\\Documents\\ChatGPT\\Implement CircuForge\\examples\\benchmark-v2.json",
+      "sha256": "e8820894dfd3a88402f88266341171d7e6cb0d112210854b64cf8901efcf3b55"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\phase3-v2-2026-11-19\\acceptance.json",
+      "sha256": "5c87d86c0cbaea9c915a7015036c0d25f927fc318a6638e070cfcef26a86a15c"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\phase3-v2-2026-11-19\\tests.xml",
+      "sha256": "22cdb325e0b454115c39c15af089450cde75a7c0ed6a9f9fa202a4b3df2e639b"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\phase3-v2-2026-11-19\\first\\summary.json",
+      "sha256": "3953419a6d4c7cd19be6bc4ec2d9e15080d354f2c2909dc5a3998d6f0f1c2818"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\phase3-v2-2026-11-19\\replay\\summary.json",
+      "sha256": "b983405cbaedf2788b8b3787b78d5c02cc588fc68664a2384c87671df4a58d2e"
+    },
+    {
+      "path": "C:\\Users\\Home\\Documents\\ChatGPT\\Implement CircuForge\\examples\\robustness-v1.json",
+      "sha256": "e5c2321ce7b154a37c16809be92c520546bf6eade2b936a8719970e0a2340110"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\phase4-final-2026-11-19\\acceptance.json",
+      "sha256": "ea873ead1519dab62decdda6d8d1bdbc1f5a24f0a93b0c683b58ffbd050cc860"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\phase4-final-2026-11-19\\tests.xml",
+      "sha256": "3698a2710aefc6448148eccaafd2f47bffde2ac454b8be1841f98f83619508e8"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\phase4-final-2026-11-19\\first\\summary.json",
+      "sha256": "f794aa6fa7284be8089cab9afc38c439e880a4b293cd8db31c0465caa6ebcbb9"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\phase4-final-2026-11-19\\replay\\summary.json",
+      "sha256": "160f52dbe58ccf0c83865f224245e3570723a0e3386e69358a1e0ea0a3a056be"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\local-llama3-renewal-2026-11-21\\result.json",
+      "sha256": "6c1a054083b6d8fe4cc30b980ce2c29cf27de80a5d45e7616b9b60c18e660c91"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\local-llama3-renewal-2026-11-21\\audit.json",
+      "sha256": "b72f18212174ca98d434461c3c08e094837d485cf053b5a8ad739cf468f1dc49"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\local-llama3-renewal-2026-11-21\\budget.json",
+      "sha256": "f946e4551fa66885439c9f6da9b4ec69aaaaa8e96b8d130291cd28280ba99e30"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\local-llama3-renewal-2026-11-21\\approved-policy.json",
+      "sha256": "48e0c55b91246cc06842269b208bc537d43be9f3a27eb012d6e7bc7e1dce1757"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\local-replay-supplement-2026-11-22\\result.json",
+      "sha256": "b58b82dc0d769beaa7d76295e3db19ffef52f593c31cbd5788e818b54b8424af"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\local-replay-supplement-2026-11-22\\acceptance.json",
+      "sha256": "a3e23bc69acb363d1af5f5a07e42a87bb6eaf76a35643aa24469e41215a21622"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\local-replay-supplement-2026-11-22\\budget.json",
+      "sha256": "ef8522d52599abf23efe389bdc869748a76609d7e90e9837d57bce09f966d21f"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\local-replay-supplement-2026-11-22\\approved-policy.json",
+      "sha256": "fd82912bd5dbf9da9970830f0caca8155592158f9af2dcb8828921764b86a979"
+    }
+  ]
+}

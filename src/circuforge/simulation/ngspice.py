@@ -149,10 +149,18 @@ class Ngspice:
             stdout, stderr, code, elapsed = _execute(self.info.executable, args, workdir, spec.timeout_s)
         try:
             response = parse_ac(stdout, spec.source_amplitude_v, spec.sweep.expected_points)
-            if not np.isclose(response.frequency_hz[0], spec.sweep.start_hz, rtol=1e-6):
-                raise ValueError("AC output starts at unexpected frequency")
-            if response.frequency_hz[-1] > spec.sweep.stop_hz * (1 + 1e-6):
-                raise ValueError("AC output exceeds requested sweep")
+            nominal_grid = spec.sweep.start_hz * np.power(
+                10.0, np.arange(spec.sweep.expected_points) / spec.sweep.points_per_decade
+            )
+            # ngspice-47 distributes noninteger-decade sweeps across both
+            # endpoints. Also accept the traditional fixed decade step grid.
+            endpoint_grid = np.geomspace(spec.sweep.start_hz, spec.sweep.stop_hz,
+                                        spec.sweep.expected_points)
+            # Check the full requested grid; no absolute tolerance that could
+            # hide large relative errors in very low frequency sweeps.
+            if not any(np.allclose(response.frequency_hz, grid, rtol=1e-6, atol=0.0)
+                       for grid in (nominal_grid, endpoint_grid)):
+                raise ValueError("AC output does not match the requested frequency grid")
         except ValueError as exc:
             raise SimulationError("parse_error", str(exc), stdout=stdout, stderr=stderr, returncode=code) from exc
         return SimulationResult(response, text, self.info.executable, self.info.version,
