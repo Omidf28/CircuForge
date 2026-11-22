@@ -1,5 +1,23 @@
 # CircuForge — portable handoff
 
+## GitHub MVP synchronization — 2026-11-22
+
+Owner requested «نمیخوای گیت هاب پروژه رو اپدیت کنی؟», authorizing the current
+reviewed MVP update. Fetched refs; remote main was unchanged initial 20ef58f and
+an ancestor of reviewed local head 4f4f91f. Scanned all 375 unpublished reachable
+blobs across 28 commits (6069923 bytes), no common credential/path findings.
+Verified all 93 code/test hashes still match the actual 438-test acceptance;
+no tests, model calls or simulations were rerun for publication.
+
+Published codex/local-mvp-handoff and opened
+https://github.com/Omidf28/CircuForge/pull/1 into main. The resulting main merge
+is tracked by that PR's GitHub record. Normal push/PR flow, no force-push or
+remote overwrite. Source publication excludes raw artifacts, environments,
+downloaded tools, credentials and model weights; the release ZIP stays local.
+No deployment, new provider cycle, optional PCB or advanced-agent work is implied.
+Earlier 'initial main only/local features' notes below describe their dated
+milestones and are superseded by this explicitly requested publication.
+
 ## Local source/wheel/demo handoff — 2026-11-22
 
 Owner requested `next` after local MVP acceptance, then asked for the recommended

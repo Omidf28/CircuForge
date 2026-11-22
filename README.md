@@ -199,4 +199,8 @@ commands and the separately authorized verification policy.
 
 ## Version control
 
-See [docs/VERSION_CONTROL.md](docs/VERSION_CONTROL.md) for the GitHub setup, owner-requested public visibility, staged credential scan and feature-branch workflow. Generated simulation evidence stays local and is excluded from Git. The initial main commit was pushed with owner approval; later feature branches remain local until separately approved.
+See [docs/VERSION_CONTROL.md](docs/VERSION_CONTROL.md) for setup, public visibility,
+credential checks and feature branches. The owner-requested current MVP update is
+tracked by [PR #1](https://github.com/Omidf28/CircuForge/pull/1). Generated raw
+simulation evidence stays local and excluded from Git. This source update does
+not deploy a service or upload the local release bundle.

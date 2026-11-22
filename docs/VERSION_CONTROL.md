@@ -1,14 +1,37 @@
 # Version control
 
-## Current local milestone — 2026-11-22
+## GitHub MVP update — 2026-11-22
+
+The owner requested «نمیخوای گیت هاب پروژه رو اپدیت کنی؟». This explicitly
+requested the current reviewed MVP's GitHub synchronization, separately from the
+earlier milestone's local-only permission. Published `codex/local-mvp-handoff`
+and opened [PR #1](https://github.com/Omidf28/CircuForge/pull/1) into main.
+That PR records the resulting main integration and merge commit; future pushes
+still require their own task authorization.
+
+Before the initial publication, fetched current refs and verified main was still
+`20ef58fe266cee5837ed27f24ce6b60d60951c78`, an ancestor of the reviewed head
+`4f4f91f2c5ab78447acfd63766cb6c0f7e378d59`. Scanned all 375 unpublished reachable
+blobs across 28 commits (6069923 bytes): no common credential signatures or
+private/generated paths. Subsequent documentation updates also pass the staged
+scanner. The scan does not guarantee detection of every possible secret.
+
+All 93 accepted source/test hashes still match the actual 438-test JUnit
+evidence. No test rerun, new simulation or model request is claimed for this
+publication. No GitHub CI checks were configured at PR creation; local evidence
+is documented in docs/PHASE7.md. Normal push/PR integration preserves history;
+no force-push, remote overwrite, deployment or new provider cycle is included.
+Raw artifacts, environments, downloaded tools, model weights and credentials
+remain excluded. Publication of the source does not upload the local release ZIP.
+
+## Local milestone before publication — 2026-11-22
 
 The validated local research MVP is complete on feature branches through
 `codex/p7-captured-demo`; evidence and automatic acceptance are documented in
-docs/PHASE7.md. These changes are committed locally. No later feature branch has
-been pushed, and no remote history has been overwritten. Public visibility alone
-did not publish this development history; only the initial main commit was online
-at the last authorized remote operation. A new push retains its separate owner
-approval requirement.
+docs/PHASE7.md. At that milestone these changes were local: no later feature
+branch had been pushed. Public visibility alone had not published the development
+history; only initial main was online then. The later explicit update request
+and PR above supersede that historical publication state.
 
 ## Current visibility — 2026-11-21
 
