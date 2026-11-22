@@ -3,6 +3,7 @@
   "title": "CircuForge · Wave2Circuit Research Edition",
   "version": "2.1.0",
   "date": "2026-11-22",
+  "latestMaintenance": "P7-C6 accepted 2026-11-22: caller-relative output/manifest paths are resolved before subprocess cwd changes. Three regressions failed before/passed after. Fresh outside-checkout real acceptance with relative inputs and spaced output: 475 tests in 144.011s without skips/errors/failures, 101 unchanged Python hashes, 384 raw-audited calls including exact numerical replay under unchanged physics-onecall-v1 cap 500. Pass/miss/rejection counts unchanged. Runtime modules/wheel still match (33 files), older 60b1ff9 bundle checksum unchanged. No model request, new install or publication. See docs/ANALYTIC_RC.md and planning/HANDOFF.md; previous 472-test/100-hash records remain source-bound historical evidence.",
   "currentLocalHandoff": "P7-C5 complete: local Python 3.12 v0.2 ZIP from accepted source 60b1ff9, 704988 bytes, SHA-256 d2454298cec0709724d480610c02545979557b9c41ae2a551e37b0e6020350c6. Matched 162 source files, 100 accepted hashes and 33 package files; archive/native checksums/quickstart syntax passed. Includes actual CLI export and acceptance summaries, no complete raw benchmark datasets. Original JUnit and prior v0.1 bundle preserved. No new numerical tests/model calls/simulations or upload during packaging. See docs/LOCAL_RELEASE.md; source identity remains 60b1ff9 despite later documentation commits.",
   "purpose": "Bounded local numerical follow-up P7-C4/v0.2.0 accepted automatically 2026-11-22 under physics-onecall-v1: 472 tests without skips, 100 unchanged Python source/script/test hashes, 384 raw-audited comparison calls including exact replay. Per run analytic_rc passed 42 free-domain and six fixed-control trials; each classical method passed six fixed controls and missed 42 free-domain targets under equal one-call budgets. Known ideal-RC physics and deterministic-repeat limitations explicit. Fresh isolated CLI/real loopback JSON/ZIP passed with three additional calls and matching installed source. Historical v0.1 MVP/438-test demo evidence and all original datasets/bundles unchanged. Owner-requested v0.1 GitHub synchronization merged PR #1; v0.2 remains local on codex/physics-guided-rc. All model/Freebuff cycles closed; P8/PCB/advanced work unstarted. Stop at this bounded result; no deployment or new publication.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
@@ -829,6 +830,22 @@
       ],
       "optional": false,
       "tasks": [
+        {
+          "id": "P7-C6",
+          "owner": "Codex",
+          "title": "Preserve caller paths in analytic acceptance subprocesses",
+          "action": "Resolve the analytic acceptance output and manifest paths before subprocesses change working directory; exercise relative paths from outside the checkout.",
+          "deliverable": "Small checker fix, three orchestration regressions and a fresh real acceptance run using a relative manifest and an output directory containing spaces.",
+          "acceptance": "Regressions fail before the fix and pass after it; full tests without skips and the frozen one-call comparison/replay pass from a different caller directory. Preserve prior source-bound bundles and acceptance; no new package behavior, model traffic or publication.",
+          "effort": 1,
+          "dependsOn": [
+            "P7-C5",
+            "P7-C4"
+          ],
+          "status": "done",
+          "acceptanceMode": "automated",
+          "evidence": "Accepted 2026-11-22: three path regressions failed before and passed after caller-relative resolution (0.69s). Fresh physics-onecall-v1 invoked outside checkout with relative manifest and spaced relative output passed 475 tests in 144.011s without skips/errors/failures, 101 unchanged Python hashes, 384 raw-audited simulator calls and exact numerical replay under unchanged cap 500. First/replay 16.812/16.844s; original pass/miss/rejection counts retained. All 33 package modules still match installed wheel; only checker changed among old 100 hashes, plus one test file. Old source-bound bundle checksum unchanged. No model requests, new install or publication. Evidence: external analytic-paths-2026-11-22/verified results/acceptance.json; docs/ANALYTIC_RC.md."
+        },
         {
           "id": "P7-C5",
           "owner": "Codex",

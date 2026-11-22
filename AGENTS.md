@@ -1,5 +1,15 @@
 # CircuForge — Codex workspace instructions
 
+## Acceptance checker paths repaired (2026-11-22)
+
+P7-C6 resolves caller-relative output/manifest paths before children change cwd.
+Three regressions reproduced the issue before the fix. Actual acceptance from
+outside the checkout, with relative inputs and spaced output, passed 475 tests
+without skips, 101 unchanged Python hashes and 384 raw-audited calls including
+exact replay. See docs/ANALYTIC_RC.md and planning/HANDOFF.md. Runtime/wheel bytes
+and older source-bound bundles are unchanged. Stop/report this local maintenance
+result; no new provider allowance, upload or complex expansion is implied.
+
 ## Local v0.2 handoff (2026-11-22)
 
 P7-C5 packages unchanged accepted source 60b1ff9 and its verified wheel into a

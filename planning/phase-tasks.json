@@ -560,6 +560,19 @@
       "optional": false,
       "tasks": [
         {
+          "id": "P7-C6",
+          "owner": "Codex",
+          "title": "Preserve caller paths in analytic acceptance subprocesses",
+          "action": "Resolve the analytic acceptance output and manifest paths before subprocesses change working directory; exercise relative paths from outside the checkout.",
+          "deliverable": "Small checker fix, three orchestration regressions and a fresh real acceptance run using a relative manifest and an output directory containing spaces.",
+          "acceptance": "Regressions fail before the fix and pass after it; full tests without skips and the frozen one-call comparison/replay pass from a different caller directory. Preserve prior source-bound bundles and acceptance; no new package behavior, model traffic or publication.",
+          "effort": 1,
+          "dependsOn": ["P7-C5", "P7-C4"],
+          "status": "done",
+          "acceptanceMode": "automated",
+          "evidence": "Accepted 2026-11-22: three path regressions failed before and passed after caller-relative resolution (0.69s). Fresh physics-onecall-v1 invoked outside checkout with relative manifest and spaced relative output passed 475 tests in 144.011s without skips/errors/failures, 101 unchanged Python hashes, 384 raw-audited simulator calls and exact numerical replay under unchanged cap 500. First/replay 16.812/16.844s; original pass/miss/rejection counts retained. All 33 package modules still match installed wheel; only checker changed among old 100 hashes, plus one test file. Old source-bound bundle checksum unchanged. No model requests, new install or publication. Evidence: external analytic-paths-2026-11-22/verified results/acceptance.json; docs/ANALYTIC_RC.md."
+        },
+        {
           "id": "P7-C5",
           "owner": "Codex",
           "title": "Local v0.2 accepted-source handoff",

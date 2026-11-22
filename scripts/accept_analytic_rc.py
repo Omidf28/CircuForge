@@ -53,6 +53,9 @@ def main(argv=None):
     decision = dict(status="blocked", policy="physics-onecall-v1", acceptance_mode="automated",
                     manual_review_required=False, model_requests=0)
     try:
+        # Bind CLI paths to the caller before children switch to the project cwd.
+        args.output = args.output.resolve()
+        args.manifest = args.manifest.resolve()
         load_experiment(args.manifest)
         import matplotlib
         info = preflight(args.ngspice)

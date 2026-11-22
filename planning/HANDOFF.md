@@ -1,5 +1,31 @@
 # CircuForge — portable handoff
 
+## Accepted checker path regression — 2026-11-22
+
+Owner's latest `next` continues bounded local maintenance as P7-C6. The analytic
+acceptance script passed caller-relative output/manifest paths unchanged to
+children running from ROOT, causing missing/misplaced evidence outside the
+checkout. Three orchestration regressions reproduced it; resolving both paths
+before any child execution fixes all three (0.69s). These tests use explicitly
+labeled process fixtures, not simulated scientific acceptance.
+
+A fresh full acceptance passed from external
+Automatic_Acceptance/analytic-paths-2026-11-22 with relative manifest
+inputs/physics-onecall-v1.json and relative output 'verified results': **475 tests
+in 144.011s, zero failures/errors/skips, 101 unchanged Python hashes and 384
+raw-audited real calls including exact numerical replay**. Child paths are
+absolute in the caller directory. First/replay times 16.812/16.844s; each method
+spent 48 calls/run and rejected 12 infeasible inputs at zero calls. Analytic
+passed 42 free-domain/six fixed trials; classical methods passed six fixed and
+retained 42 misses, as before. P7-C6 is complete.
+
+Package modules and installed wheel are unchanged (33 files byte-matched); source
+fingerprint stays 68e902d97160e487ca29e1fa49806810d073aef1e749cd13c4b3de6c4c221cf3.
+Old 472-test/100-source acceptance and the 60b1ff9 bundle remain tied to their
+original snapshot, not the new checker/test hashes. Original bundle checksum
+was checked unchanged. No new install, model request, topology or publication
+is claimed. See docs/ANALYTIC_RC.md; do not reopen consumed provider cycles.
+
 ## Current v0.2 local handoff — 2026-11-22
 
 Owner's latest `next` continued the accepted local deliverable as P7-C5, without

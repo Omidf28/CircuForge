@@ -606,6 +606,20 @@ Status: done · Estimate: 2 active hours
 
 **Gate evidence:** phase7-local-research-mvp-v1 passed 2026-11-22: 438 fresh tests without skips, unchanged 93-file source/test hash map, accepted scientific composite/report/source hashes and matching fresh installed package. Independent audit verified nine real demo calls and five-frame/75-second labeled captured-output replay; misses retained. P7-H1 engineering portion superseded by P7-C3 without human/CV/publication approval claims. Local research MVP only; no remote push/deployment or optional PCB/advanced-agent authorization.
 
+#### P7-C6 · Codex · Preserve caller paths in analytic acceptance subprocesses
+
+Status: done · Estimate: 1 active hours
+
+**Action:** Resolve the analytic acceptance output and manifest paths before subprocesses change working directory; exercise relative paths from outside the checkout.
+
+**Deliverable:** Small checker fix, three orchestration regressions and a fresh real acceptance run using a relative manifest and an output directory containing spaces.
+
+**Acceptance:** Regressions fail before the fix and pass after it; full tests without skips and the frozen one-call comparison/replay pass from a different caller directory. Preserve prior source-bound bundles and acceptance; no new package behavior, model traffic or publication.
+
+**Depends on:** P7-C5, P7-C4
+
+**Evidence:** Accepted 2026-11-22: three path regressions failed before and passed after caller-relative resolution (0.69s). Fresh physics-onecall-v1 invoked outside checkout with relative manifest and spaced relative output passed 475 tests in 144.011s without skips/errors/failures, 101 unchanged Python hashes, 384 raw-audited simulator calls and exact numerical replay under unchanged cap 500. First/replay 16.812/16.844s; original pass/miss/rejection counts retained. All 33 package modules still match installed wheel; only checker changed among old 100 hashes, plus one test file. Old source-bound bundle checksum unchanged. No model requests, new install or publication. Evidence: external analytic-paths-2026-11-22/verified results/acceptance.json; docs/ANALYTIC_RC.md.
+
 #### P7-C5 · Codex · Local v0.2 accepted-source handoff
 
 Status: done · Estimate: 1 active hours

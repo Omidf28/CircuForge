@@ -124,3 +124,35 @@ the feature branch has not been pushed.
 A local source/wheel/example handoff from accepted commit `60b1ff9` is now ready
 with a Python 3.12 quickstart and checksums. See [LOCAL_RELEASE.md](LOCAL_RELEASE.md).
 Packaging does not change these tests, measurements or the original source binding.
+
+## Acceptance path maintenance
+
+The checker now resolves `--output` and `--manifest` against the caller's working
+directory before starting children in the project root. Previously relative paths
+could point into a different directory in those children, leaving JUnit or
+comparison evidence missing. Absolute-path invocations and the packaged
+quickstart remain supported. Three regression cases cover relative output,
+relative manifest and both together, including spaces and a caller outside the
+checkout. They reproduced three failures before the fix and all passed afterward
+using explicit orchestration fixtures (0.69 seconds).
+
+P7-C6 passed a fresh real `physics-onecall-v1` acceptance on 2026-11-22:
+**475 tests in 144.011 seconds without failures/errors/skips**, 101 unchanged
+source/script/test hashes, and **384 raw-audited real simulator calls** including
+exact numerical replay. The entry command was run outside the checkout, from
+the external `Automatic_Acceptance/analytic-paths-2026-11-22` directory, with
+`--output "verified results" --manifest inputs/physics-onecall-v1.json`.
+The recorded child commands use resolved absolute paths in that caller's
+directory. First/replay runs took 16.812 and 16.844 seconds; per-method counts
+and preserved target misses match the earlier table. The benchmark policy,
+tolerances and total cap were unchanged. No model request was made.
+
+Evidence is under `analytic-paths-2026-11-22/verified results/`: acceptance JSON,
+JUnit, exact child commands, first/replay raw outputs, plot and frozen source.
+Only the checker changed among the prior 100 hashed files; one regression-test
+file was added. All 33 runtime package modules still match the installed wheel,
+with the same package fingerprint above. No new install is claimed for this
+script-only repair. The earlier 472-test/100-hash records and the source-bound
+60b1ff9 bundle remain unchanged historical evidence. The bundle's documented
+absolute acceptance path works with its original script; this repair is in the
+current repository, not retroactively inserted into that archive.
