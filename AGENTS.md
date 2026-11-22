@@ -1,5 +1,17 @@
 # CircuForge — Codex workspace instructions
 
+## Remaining caller-path repairs accepted (2026-11-22)
+
+P7-C7 fixes typed caller paths in Phase 2/3/4/5/7 acceptance and the installed
+walkthrough. Five regressions reproduced the issue before repair. Actual
+outside-checkout fresh install plus direct relative-source/output verification
+passed 480 tests without skips and 54 CLI/HTTP calls (36 raw audited, 18 JSON
+matched), with 102 unchanged Python hashes and 33 matching package files.
+See docs/OPERATIONS.md. This accepts script/interface maintenance only; earlier
+scientific/model evidence and bundles stay source-bound. Stop/report this local
+result; closed provider cycles, remote publication and complex expansion remain
+outside its scope.
+
 ## Acceptance checker paths repaired (2026-11-22)
 
 P7-C6 resolves caller-relative output/manifest paths before children change cwd.

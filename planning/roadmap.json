@@ -2,7 +2,7 @@
   "title": "CircuForge · Wave2Circuit Research Edition",
   "version": "2.1.0",
   "date": "2026-11-22",
-  "latestMaintenance": "P7-C6 accepted 2026-11-22: caller-relative output/manifest paths are resolved before subprocess cwd changes. Three regressions failed before/passed after. Fresh outside-checkout real acceptance with relative inputs and spaced output: 475 tests in 144.011s without skips/errors/failures, 101 unchanged Python hashes, 384 raw-audited calls including exact numerical replay under unchanged physics-onecall-v1 cap 500. Pass/miss/rejection counts unchanged. Runtime modules/wheel still match (33 files), older 60b1ff9 bundle checksum unchanged. No model request, new install or publication. See docs/ANALYTIC_RC.md and planning/HANDOFF.md; previous 472-test/100-hash records remain source-bound historical evidence.",
+  "latestMaintenance": "P7-C7 accepted 2026-11-22 under local-gate-caller-paths-v1: remaining Phase 2/3/4/5/7 acceptance and installed walkthrough resolve typed paths before child cwd changes. Five regressions failed before/passed after; 31 targeted tests passed. Actual outside-checkout fresh install plus direct relative-source/output walkthrough passed 480 tests in 136.87s (JUnit 133.576s), no skips/errors/failures, 102 unchanged Python hashes and 54 actual CLI/HTTP calls: 36 raw audited, 18 JSON matched. Both walkthroughs retain two passes/one intentional miss and clean shutdown/storage. All 33 package files match source/wheel/installed bytes; fingerprint unchanged. Older numerical acceptance/bundles stay source-bound; no model request, new scientific gate, publication or deployment. See docs/OPERATIONS.md and planning/HANDOFF.md.",
   "currentLocalHandoff": "P7-C5 complete: local Python 3.12 v0.2 ZIP from accepted source 60b1ff9, 704988 bytes, SHA-256 d2454298cec0709724d480610c02545979557b9c41ae2a551e37b0e6020350c6. Matched 162 source files, 100 accepted hashes and 33 package files; archive/native checksums/quickstart syntax passed. Includes actual CLI export and acceptance summaries, no complete raw benchmark datasets. Original JUnit and prior v0.1 bundle preserved. No new numerical tests/model calls/simulations or upload during packaging. See docs/LOCAL_RELEASE.md; source identity remains 60b1ff9 despite later documentation commits.",
   "purpose": "Bounded local numerical follow-up P7-C4/v0.2.0 accepted automatically 2026-11-22 under physics-onecall-v1: 472 tests without skips, 100 unchanged Python source/script/test hashes, 384 raw-audited comparison calls including exact replay. Per run analytic_rc passed 42 free-domain and six fixed-control trials; each classical method passed six fixed controls and missed 42 free-domain targets under equal one-call budgets. Known ideal-RC physics and deterministic-repeat limitations explicit. Fresh isolated CLI/real loopback JSON/ZIP passed with three additional calls and matching installed source. Historical v0.1 MVP/438-test demo evidence and all original datasets/bundles unchanged. Owner-requested v0.1 GitHub synchronization merged PR #1; v0.2 remains local on codex/physics-guided-rc. All model/Freebuff cycles closed; P8/PCB/advanced work unstarted. Stop at this bounded result; no deployment or new publication.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
@@ -829,6 +829,21 @@
       ],
       "optional": false,
       "tasks": [
+        {
+          "id": "P7-C7",
+          "owner": "Codex",
+          "title": "Consistent caller paths across local acceptance tools",
+          "action": "Repair relative evidence/manifest/source paths in the remaining Phase 2/3/4/5/7 acceptance commands and installed walkthrough before child working directories change.",
+          "deliverable": "Six small script repairs, five process/filesystem regressions and actual outside-checkout fresh-install plus direct relative-source CLI/HTTP verification.",
+          "acceptance": "Reproduce failures before the fix; retain failed/skipped/missing-evidence blocking, pass current tests without skips, and independently audit actual installed CLI/JSON/ZIP results and cleanup using caller-relative paths. Preserve historical scientific gates rather than claiming fresh Phase 2/3/4/6/7 experiments.",
+          "effort": 2,
+          "dependsOn": [
+            "P7-C6"
+          ],
+          "status": "done",
+          "acceptanceMode": "automated",
+          "evidence": "Accepted 2026-11-22 under local-gate-caller-paths-v1: five regressions failed before/passed after; 31 targeted path/failure/skip tests passed. Actual outside-checkout relative-output Phase 5 gate passed 480 tests in 136.87s (JUnit 133.576s), no skips/errors/failures, fresh wheel/install and 27 real CLI/HTTP calls. Direct installed -I walkthrough with relative source/output passed another 27: total 54 calls, 36 raw audited and 18 JSON traces matched, two passes/one deliberate target miss per walkthrough, clean server/temp shutdown. All 102 Python hashes unchanged; 33 source/wheel/installed modules matched. No model request, historical scientific-gate reacceptance, bundle overwrite or publication. docs/OPERATIONS.md; external gate-caller-paths-2026-11-22/acceptance.json."
+        },
         {
           "id": "P7-C6",
           "owner": "Codex",

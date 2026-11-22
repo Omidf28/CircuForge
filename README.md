@@ -1,7 +1,7 @@
 # CircuForge — Wave2Circuit Research Edition
 
 Post-MVP v0.2.0 adds `analytic_rc`, a one-measurement proposal using the known
-ideal RC equation. Its latest acceptance passed with **475 tests without skips
+ideal RC equation. Its numerical acceptance passed with **475 tests without skips
 and 384 raw-audited calls including exact replay**. It passed all 48 feasible
 trials per run (42 free-domain, six fixed controls); the three classical methods
 passed only the six fixed controls under this one-call budget. This result is
@@ -10,10 +10,12 @@ hardware superiority. Historical
 v0.1 acceptance below remains tied to its original snapshot. See
 [docs/ANALYTIC_RC.md](docs/ANALYTIC_RC.md).
 
-The acceptance checker also supports caller-relative output/manifest paths when
-invoked outside the checkout, including paths containing spaces. This script
-repair has its own fresh test/raw-replay evidence; the local handoff archive
-retains its explicit earlier source snapshot.
+Acceptance commands also support caller-relative evidence/manifest paths outside
+the checkout, including spaces. The latest script/interface check passed **480
+tests without skips, a fresh install and 54 real CLI/HTTP calls** (36 raw audited,
+18 JSON matched), including direct relative source/output paths. See
+[operation evidence](docs/OPERATIONS.md). Historical numerical records and the
+local handoff archive retain their explicit earlier source snapshots.
 
 Phase 1 implements typed RC low/high-pass specifications, fixed netlists, real ngspice AC simulation, complex response/cutoff extraction, and bounded measured R/C search. Local CPU only; no accounts required.
 

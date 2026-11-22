@@ -27,6 +27,8 @@ def main(argv=None) -> int:
                 "manual_review_required": False}
     commands = []
     try:
+        args.output = args.output.resolve()
+        args.manifest = args.manifest.resolve()
         load_experiment(args.manifest)
         import matplotlib  # optional report extra; fail before starting any expensive experiment
         info = preflight(args.ngspice)

@@ -1,5 +1,33 @@
 # CircuForge — portable handoff
 
+## Accepted remaining caller-path repairs — 2026-11-22
+
+Owner's latest `next` continues bounded script maintenance as P7-C7. Phase
+2/3/4/5/7 acceptance and the installed Phase 5 walkthrough also passed relative
+paths across a child cwd boundary. Resolve their typed output/manifest/evidence/
+source paths in the caller before starting children. Five filesystem/process
+regressions reproduced missing JUnit first; new plus existing failure/skip
+protections now pass (31 tests, 1.57s). Fixture audits deliberately raise a
+blocked result, never substitute for successful science.
+
+Actual full-suite/fresh-install CLI/HTTP verification and the direct installed
+relative-source/output walkthrough passed `local-gate-caller-paths-v1` under
+external Automatic_Acceptance/gate-caller-paths-2026-11-22. **480 tests in 136.87s
+(pytest total; JUnit suite 133.576s), zero skips/errors/failures**. Fresh
+`accept_phase5.py --output 'fresh install'` produced 27 actual interface calls;
+the installed `-I` direct walkthrough with relative source `examples` and output
+`relative walkthrough` produced 27 more. Total **54 calls, 36 raw CLI/ZIP audited,
+18 JSON traces matched**. Each walkthrough retained two example passes and one
+intentional target miss; server/temp cleanup passed. All 102 Python hashes stayed
+unchanged, and 33 package files match source/wheel/fresh installed bytes.
+
+P7-C7 is complete. Source fingerprint stays
+68e902d97160e487ca29e1fa49806810d073aef1e749cd13c4b3de6c4c221cf3;
+rebuilt wheel SHA 59fb63fdcb5d2ed36e78281b820c26c00713fa50e890a1da098d445f44be874f.
+No Phase 2/3/4/6/7 scientific experiment or model cycle was reopened. Runtime
+modules and old source-bound bundles are unchanged; no remote publication.
+See docs/OPERATIONS.md for exact scope and artifacts. Report this bounded result.
+
 ## Accepted checker path regression — 2026-11-22
 
 Owner's latest `next` continues bounded local maintenance as P7-C6. The analytic

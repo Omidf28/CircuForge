@@ -2,9 +2,11 @@
 
 ## Current continuation (2026-11-22)
 
-Latest maintenance P7-C6 repairs relative acceptance paths; fresh outside-checkout
-verification passed 475 tests and 384 raw-audited calls with exact replay. Read
-the current HANDOFF first; earlier 472-test/source-bundle counts remain historical.
+Latest maintenance P7-C7 extends caller-path repair across remaining acceptance
+and installed-walkthrough scripts. Actual outside-checkout verification passed
+480 tests, fresh installation and 54 CLI/HTTP calls with raw/JSON/cleanup checks.
+Read the current HANDOFF and docs/OPERATIONS.md first. Earlier P7-C6 numerical
+replay (475 tests/384 calls) and packaged source counts remain dated evidence.
 
 P7-C5 also supplies a checked local v0.2 Python 3.12 handoff from accepted commit
 60b1ff9. See docs/LOCAL_RELEASE.md for the exact ZIP identity and quickstart;

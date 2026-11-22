@@ -560,6 +560,19 @@
       "optional": false,
       "tasks": [
         {
+          "id": "P7-C7",
+          "owner": "Codex",
+          "title": "Consistent caller paths across local acceptance tools",
+          "action": "Repair relative evidence/manifest/source paths in the remaining Phase 2/3/4/5/7 acceptance commands and installed walkthrough before child working directories change.",
+          "deliverable": "Six small script repairs, five process/filesystem regressions and actual outside-checkout fresh-install plus direct relative-source CLI/HTTP verification.",
+          "acceptance": "Reproduce failures before the fix; retain failed/skipped/missing-evidence blocking, pass current tests without skips, and independently audit actual installed CLI/JSON/ZIP results and cleanup using caller-relative paths. Preserve historical scientific gates rather than claiming fresh Phase 2/3/4/6/7 experiments.",
+          "effort": 2,
+          "dependsOn": ["P7-C6"],
+          "status": "done",
+          "acceptanceMode": "automated",
+          "evidence": "Accepted 2026-11-22 under local-gate-caller-paths-v1: five regressions failed before/passed after; 31 targeted path/failure/skip tests passed. Actual outside-checkout relative-output Phase 5 gate passed 480 tests in 136.87s (JUnit 133.576s), no skips/errors/failures, fresh wheel/install and 27 real CLI/HTTP calls. Direct installed -I walkthrough with relative source/output passed another 27: total 54 calls, 36 raw audited and 18 JSON traces matched, two passes/one deliberate target miss per walkthrough, clean server/temp shutdown. All 102 Python hashes unchanged; 33 source/wheel/installed modules matched. No model request, historical scientific-gate reacceptance, bundle overwrite or publication. docs/OPERATIONS.md; external gate-caller-paths-2026-11-22/acceptance.json."
+        },
+        {
           "id": "P7-C6",
           "owner": "Codex",
           "title": "Preserve caller paths in analytic acceptance subprocesses",

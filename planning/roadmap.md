@@ -606,6 +606,20 @@ Status: done · Estimate: 2 active hours
 
 **Gate evidence:** phase7-local-research-mvp-v1 passed 2026-11-22: 438 fresh tests without skips, unchanged 93-file source/test hash map, accepted scientific composite/report/source hashes and matching fresh installed package. Independent audit verified nine real demo calls and five-frame/75-second labeled captured-output replay; misses retained. P7-H1 engineering portion superseded by P7-C3 without human/CV/publication approval claims. Local research MVP only; no remote push/deployment or optional PCB/advanced-agent authorization.
 
+#### P7-C7 · Codex · Consistent caller paths across local acceptance tools
+
+Status: done · Estimate: 2 active hours
+
+**Action:** Repair relative evidence/manifest/source paths in the remaining Phase 2/3/4/5/7 acceptance commands and installed walkthrough before child working directories change.
+
+**Deliverable:** Six small script repairs, five process/filesystem regressions and actual outside-checkout fresh-install plus direct relative-source CLI/HTTP verification.
+
+**Acceptance:** Reproduce failures before the fix; retain failed/skipped/missing-evidence blocking, pass current tests without skips, and independently audit actual installed CLI/JSON/ZIP results and cleanup using caller-relative paths. Preserve historical scientific gates rather than claiming fresh Phase 2/3/4/6/7 experiments.
+
+**Depends on:** P7-C6
+
+**Evidence:** Accepted 2026-11-22 under local-gate-caller-paths-v1: five regressions failed before/passed after; 31 targeted path/failure/skip tests passed. Actual outside-checkout relative-output Phase 5 gate passed 480 tests in 136.87s (JUnit 133.576s), no skips/errors/failures, fresh wheel/install and 27 real CLI/HTTP calls. Direct installed -I walkthrough with relative source/output passed another 27: total 54 calls, 36 raw audited and 18 JSON traces matched, two passes/one deliberate target miss per walkthrough, clean server/temp shutdown. All 102 Python hashes unchanged; 33 source/wheel/installed modules matched. No model request, historical scientific-gate reacceptance, bundle overwrite or publication. docs/OPERATIONS.md; external gate-caller-paths-2026-11-22/acceptance.json.
+
 #### P7-C6 · Codex · Preserve caller paths in analytic acceptance subprocesses
 
 Status: done · Estimate: 1 active hours
