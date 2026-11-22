@@ -2,6 +2,13 @@
 
 Phase 1 implements typed RC low/high-pass specifications, fixed netlists, real ngspice AC simulation, complex response/cutoff extraction, and bounded measured R/C search. Local CPU only; no accounts required.
 
+Latest local verification (2026-11-22): **408 tests passed without skips**, then a
+fresh isolated install reproduced the CLI and real loopback HTTP with **27 actual
+simulator calls** (18 raw CLI/ZIP calls audited and nine JSON traces matched).
+See [operation/troubleshooting](docs/OPERATIONS.md) and the
+[checked research report](docs/RESEARCH_REPORT.md). P7 documentation/report tasks
+are complete within that scope; the final P7 release remains blocked on P6 replay.
+
 Phase 2 adds measured objectives, seeded random/grid and SciPy baselines with identical SPICE-call caps, exact per-run caching and raw per-call evidence. The owner-authorized **automatic acceptance gate passed with 170 tests and 771 freshly audited real calls**. The five-case comparison and its target misses remain documented in [docs/PHASE2.md](docs/PHASE2.md).
 
 Phase 3 adds 20 normalized-distinct nominal benchmark cases and three-seed comparisons. Its automatic gate passed with **198 tests and 3060 audited real calls including exact numerical replay**. Per run, 18 fixed-control designs passed, 126 free-domain results missed the original tolerance and 36 infeasible requests were rejected before simulation. See [docs/PHASE3.md](docs/PHASE3.md). No manual technical review is required.
@@ -17,8 +24,8 @@ Llama 3 trial was renewed once on November 21 with unchanged limits. The renewal
 completed **four matched-call comparisons and 65 independently audited SPICE
 attempts**, using 25 model requests. All methods missed the 0.1% target. Its
 deadline left the final model replay stage incomplete; P6-C2 and Phase 6 remain
-blocked. Current adapter/audit checks have **293 passing unit tests**, separate
-from historical full-suite acceptance. See
+blocked. At that milestone adapter/audit checks had **293 passing unit tests**;
+the later full-suite/interface check above is separate scientific evidence. See
 [renewed local results](docs/PHASE6_LOCAL_RENEWAL.md) and
 [docs/PHASE6.md](docs/PHASE6.md). The November 20 dataset is retained separately.
 

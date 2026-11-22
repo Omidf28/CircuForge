@@ -1,8 +1,30 @@
-# Initial architecture and interface contracts
+# Implemented architecture and interface contracts
 
 Implementation update (2026-11-19): domain, synthesis, simulation, CLI, bisection, classical baselines and tolerance experiments are implemented and tested. Phase 5 adds shared typed application contracts, JSON/CSV/PNG/ZIP export and a bounded local FastAPI service. optimization/base.py owns constraint/measurement/reference/target evaluation and budgets; optimization/baselines.py owns seeded random/grid/SciPy. evaluation/records.py exports genuine responses and environment fingerprints. See docs/PHASE2.md through docs/PHASE5.md. The optional frontend remains deferred.
 
-## Candidate directories (create during implementation)
+## Implemented flow
+
+```mermaid
+flowchart LR
+    CLI[CLI request] --> Request[Typed DesignRequest]
+    HTTP[Loopback HTTP + request guards] --> Request
+    Request --> Engine[Application + measured evaluator]
+    Engine --> Search[Bounded simulate / random / grid / SciPy]
+    Search --> Candidate[Validated RC candidate]
+    Candidate --> Template[Allowlisted netlist template]
+    Template --> SPICE[Isolated ngspice subprocess]
+    SPICE --> Metrics[Complex AC response + cutoff]
+    Metrics --> Oracle[Independent analytic RC check]
+    Oracle --> Evidence[Result + raw evidence + JSON/CSV/PNG/ZIP]
+```
+
+The optional local proposal experiment has a separate explicit resource policy;
+it can propose only typed candidates and cannot supply netlists or shell tools.
+Development Freebuff review is a different advisory workflow, outside the
+electrical execution path. The read-only research exporter consumes existing
+evidence without invoking either model or simulator.
+
+## Source layout
 
 ```text
 src/circuforge/
@@ -17,9 +39,9 @@ src/circuforge/
   simulation/ngspice.py  # executable preflight, bounded subprocess, parser
   simulation/metrics.py  # complex transfer function, cutoff, errors
   optimization/base.py   # candidate/objective/fitness and budget
-  optimization/baselines.py # seeded random + SciPy later
+  optimization/baselines.py # seeded random/grid/SciPy differential evolution
   optimization/robustness.py # matched-call nominal/robust study with untouched holdout
-  evaluation/records.py  # reproducible experiment result schema
+  evaluation/records.py  # raw response CSV and environment/source fingerprints
   evaluation/acceptance.py # shared raw physics/evidence audits
   evaluation/benchmark.py # typed feasible/infeasible fixtures, multi-seed runs, exact replay
   evaluation/statistics.py # empirical quantiles/pass rates; failures block statistics
@@ -33,19 +55,35 @@ src/circuforge/
  docs/
 ```
 
-Dependencies: Python 3.11+ (planning target), NumPy, SciPy, Pydantic, pytest; FastAPI only after core. `ngspice` is a separate external executable, not assumed preinstalled. Detect executable using PATH / documented override; never hardcode personal paths.
+Runtime core dependencies are NumPy, SciPy and Pydantic on Python 3.11+. Matplotlib,
+FastAPI/HTTPX/Uvicorn and pytest are declared through report/API/test extras;
+the optional local-model extra provides HTTPX. `ngspice` is a separate external
+executable, detected through PATH or a trusted operator override. See
+[OPERATIONS.md](OPERATIONS.md) for setup and failure diagnosis.
 
 ## Contracts
 
-`DesignSpec`: filter_type enum, cutoff_hz positive, allowed topologies, R/C bounds with units, source and load assumptions, tolerance policy, simulation/evaluation limits.
+`DesignInputs` validates the filter kind, positive target, SI R/C bounds, ideal
+source/load, continuous-value policy and sweep/evaluation/resource settings.
+`DesignSpec` additionally checks target feasibility within the declared tolerance.
+Intentionally infeasible benchmark inputs never bypass candidate validation.
 
-`CircuitCandidate`: topology id, component values, netlist generated from internal template, provenance, parameter validity.
+`CircuitCandidate` contains only topology, resistance and capacitance. Netlist
+text is generated separately by the trusted template; it is not a candidate field.
 
-`SimulationResult`: status enum, ngspice version, return code, stdout/stderr (sanitized), frequency_hz, complex transfer arrays, elapsed time, error reason.
+`SimulationResult` retains the parsed `Response`, trusted netlist, executable,
+version, argument tuple, sanitized stdout/stderr, return code, elapsed time and
+success status. `SimulationError` carries subprocess/parser failure details.
 
-`EvaluationResult`: target, measured cutoff, error, constraint status, simulator call count, latency, artifact paths, warnings.
+`Evaluation` records candidate, status, objective, constraints, simulator exit,
+independent verification, target success, measured/analytic errors, charged call,
+latency, artifact and failure reason. These flags are separate: simulator success
+does not imply numerical verification or target success.
 
-`ExperimentRecord`: case ID, optimizer, code/config versions, seed, budget, candidate, result, failure type, token/cost where applicable.
+`DesignRequest`/`DesignResult`/`Waveform` are the shared bounded CLI/API schemas.
+Benchmark and tolerance summaries preserve task/seed/method/call partitions and
+source fingerprints. Proposal usage and provider errors have a separate ledger;
+there is no generic `ExperimentRecord` class claiming to cover every experiment.
 
 ## Test pyramid
 

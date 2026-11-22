@@ -2,7 +2,7 @@
 
 Version 2.1.0 · assembled 2026-11-22 · architecture assumptions to verify in current environment
 
-Phases 1-5 and offline P6-C1 remain accepted in their documented scopes. Explicitly renewed zero-spend local Llama 3 trial completed four matched-call comparisons with 25 model requests and 65 raw-audited SPICE attempts. All target checks missed. Integrity/comparison data passed; final model replay incomplete, so P6-C2/Phase 6 remain blocked. Latest unit checks: 293 passed, separate from historical full-suite acceptance. Both local windows closed and datasets kept separate. GitHub visibility is now public by owner request; only initial main is online, no feature push. See docs/PHASE6_LOCAL_RENEWAL.md.
+P7-C1/C2 documentation/report tasks completed within their explicit prerequisites. Fresh local interface/install acceptance passed 408 tests without skips plus 27 actual installed CLI/HTTP calls (18 raw audited, nine JSON traces matched); checked stored-evidence report/plot preserves negative results. P5-C5 Freebuff handoff accepted separately. Scientific local Llama trial remains four matched comparisons/25 requests/65 raw-audited SPICE attempts, all target misses and incomplete final replay: P6 and final P7 release blocked. Existing model/development cycles closed, no new model calls for reporting/install. GitHub public, only initial main online, no feature push. See docs/OPERATIONS.md and docs/RESEARCH_REPORT.md.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -602,13 +602,13 @@ Status: done · Estimate: 2 active hours
 
 **Exit gate:** Clean setup, tests, reproducible benchmark, demo and research report.
 
-**Gate status:** pending
+**Gate status:** blocked
 
-**Gate evidence:** Not recorded
+**Gate evidence:** P7-C1/C2 documentation/report tasks accepted within their explicit prerequisites with fresh installed CLI/API evidence and checked stored-data report. Final P7 release remains blocked on P6's incomplete model replay and the unfinished demo/claims task P7-H1; no release, push or deployment approval.
 
 #### P7-C1 · Codex · Engineering documentation
 
-Status: doing · Estimate: 7 active hours
+Status: done · Estimate: 7 active hours
 
 **Action:** README, architecture diagrams, API docs, installation troubleshooting, reproducibility commands and known limits.
 
@@ -618,7 +618,7 @@ Status: doing · Estimate: 7 active hours
 
 **Depends on:** P5-C1, P3-C2
 
-**Evidence:** 2026-11-21 documentation increment: actual Freebuff DOC-R1 advisory reviewed by Codex; clarified interpreter/output/platform/evidence guidance and development-agent workflow. Existing test extra already contains FastAPI, so that suggestion was rejected. No fresh clean installation or full P7 documentation acceptance claimed; see docs/AGENT_COLLABORATION.md.
+**Evidence:** 2026-11-22: corrected implemented architecture/contracts and added flow diagram plus local operations/API/troubleshooting guide. Existing phase5-local-interface-v1 freshly passed 408 full-suite tests without skips (120.41s), built a wheel, installed a fresh isolated venv and reproduced CLI/real loopback HTTP with Python -I. 27 actual calls: 18 raw CLI/ZIP calls audited and nine JSON traces matched; target miss retained, server/temp cleanup verified. docs/OPERATIONS.md and external p7-clean-install-2026-11-22/acceptance.json. Completes documentation/install task only; final P7 gate still depends on P6.
 
 **Advisor:** Freebuff · Codex retains writing and automatic acceptance.
 
@@ -626,7 +626,7 @@ Freebuff audits/drafts selected documentation packets; Codex verifies commands, 
 
 #### P7-C2 · Codex · Technical research report
 
-Status: todo · Estimate: 8 active hours
+Status: done · Estimate: 8 active hours
 
 **Action:** Write method, baselines, results, confidence limits, failure analysis, threats to validity and next steps.
 
@@ -636,7 +636,7 @@ Status: todo · Estimate: 8 active hours
 
 **Depends on:** P3-C2, P4-C2
 
-**Evidence:** Not recorded
+**Evidence:** 2026-11-22: executable scripts/report_research.py checked accepted historical manifests/JUnit/first-replay summaries, counts and holdout outcomes, and independently re-audited local saved replies/65 raw traces without model or SPICE execution. Nine targeted corruption/overwrite regressions passed; 347 unit tests and later 408 full-suite/interface tests passed. Generated versioned report, input hashes/full-precision JSON and visually checked measured SVG in docs/research; reproduction/limits in docs/RESEARCH_REPORT.md. Final report preserves fixed-control wins, target misses, shared factors, unequal candidate opportunities and blocked P6 replay. No fresh historical raw Phase 3/4 audit or full P7 acceptance claimed.
 
 **Advisor:** Freebuff · Codex retains writing and automatic acceptance.
 
@@ -726,7 +726,7 @@ Status: todo · Estimate: 4 active hours
 
 **Data consent:** Owner explicitly approved selected task text, documentation and necessary code excerpts to Freebuff cloud on 2026-11-21; secrets, personal files, environment files, Git history and raw experiments excluded
 
-P5-C5 accepted after real one-turn verification. Codex drives bounded terminal handoffs without owner copy/paste during an active session. Existing cycles are closed; no daemon or automatic new cycle. P7-C1 remains doing and final P7 gate still depends on P6.
+P5-C5 accepted after real one-turn verification. Codex drives bounded terminal handoffs without owner copy/paste during an active session. Existing cycles are closed; no daemon or automatic new cycle. Later P7-C1/C2 documentation/report tasks completed with fresh install evidence; final P7 gate still depends on P6 and the unfinished demo.
 
 ## Proposed architecture
 
@@ -898,7 +898,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md and planning/HANDOFF.md. November 21 next renewed one bounded local run with unchanged caps: 25 generation attempts/65 raw-audited SPICE attempts, four matched-call comparisons, 3079 known reported tokens plus one unknown-usage timeout, 57600 reserved tokens retained. Final model replay incomplete; P6-C2/Phase 6 blocked despite complete comparison data. Both windows closed; old dataset separate. Latest 293 tests are unit-only; historical full-suite result remains 319 for P6-C1. No paid/cloud model traffic, download, PCB, deployment or feature push from this experiment. Owner separately made GitHub public, only initial main online. Source/Git stay on C; ancillary artifacts retain their existing C-path junction to D.
+Read AGENTS.md and planning/HANDOFF.md. P7-C1/C2 completed documentation/report prerequisites: fresh 408-test/install acceptance plus 27 installed CLI/API calls (18 raw audited/nine JSON traces matched); read-only report reconciles historical data and preserves P6 incompleteness. Historical P6-C1 acceptance remains 319 tests/four calls. Actual local-model study remains 25 generation attempts/65 raw-audited SPICE attempts, four matched comparisons, 3079 known reported tokens/one unknown usage, 57600 reservations; final replay incomplete and both windows closed. No new model requests for reporting/install. P5-C5 accepted separately; development cycles closed. P6/final P7 release blocked, no paid traffic/PCB/deployment/feature push. GitHub public, initial main only. Source/Git stay on C; ancillary artifacts retain their existing C-path junction to D.
 ```
 
 ## Sources

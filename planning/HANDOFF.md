@@ -1,6 +1,38 @@
 # CircuForge — portable handoff
 
-## Current development status — 2026-11-22
+## Current engineering/report milestone — 2026-11-22
+
+On codex/p7-research-evidence, completed P7-C1 documentation and P7-C2 reporting
+within their explicit P5/P3/P4 task prerequisites. The final P7 release remains
+blocked on P6; no gate or expired resource policy was bypassed.
+
+P7-C1: corrected the architecture's stale planned contracts to actual source,
+added the implemented-flow diagram and local operation/API/troubleshooting guide.
+Existing phase5-local-interface-v1 checker freshly passed **408 tests without
+skips in 120.41s**, built a wheel, installed a new isolated environment and ran
+CLI/real loopback HTTP under Python -I: **27 actual SPICE calls**, **18 raw CLI/ZIP
+calls audited**, **nine JSON traces matched**, intentional target miss retained,
+server stopped and temporary storage empty. Evidence:
+external Automatic_Acceptance/p7-clean-install-2026-11-22/acceptance.json.
+
+P7-C2: scripts/report_research.py reconciles accepted historical Phase 3/4
+manifests/test reports/first-replay summaries and independently re-audits saved
+local-trial replies/raw traces read-only. Checked-in docs/research contains the
+report, full-precision summary/input hashes and measured SVG; docs/RESEARCH_REPORT.md
+records reproduction and limits. Nine focused corruption/overwrite regressions
+passed; the expanded unit suite reached **347 passed in 12.70s** before the
+fresh full-suite check. Final SVG export is directly verified, with no model or
+SPICE calls. Old raw Phase 3/4 audits remain historical, not freshly repeated.
+Report evidence: external Automatic_Acceptance/research-report-versioned-2026-11-22.
+
+No new model requests, cloud uploads, source migration, remote push or deployment
+in this reporting/install task. Both existing scientific model windows and both
+development-agent cycles remain closed. P6-C2 needs its planned final replay
+evidence before the scientific gate can pass. Automatic technical acceptance
+does not authorize further model execution; a fresh bounded resource decision
+would be needed. P7-H1 demo/release is not complete.
+
+## Earlier development-handoff milestone — 2026-11-22
 
 P5-C5 Codex/Freebuff development handoff is now **accepted automatically**.
 The owner's `next` explicitly authorized the preceding one-request/ten-minute
@@ -16,7 +48,7 @@ Ledger: C:/Users/Home/AppData/Local/Temp/CircuForge-Collaboration/0daa4e7d054c81
 Fresh tests XML/log are unit-verification-2026-11-22.xml/.log in the ledger parent.
 The November 21 development cycle remains separately blocked/closed. Do not
 reopen either spent cycle. This is development collaboration, not a new local
-Llama experiment or scientific acceptance. P7-C1 remains doing; P6 and the final
+Llama experiment or scientific acceptance. P7-C1 was still doing at that point; P6 and the final
 P7 gate retain their existing incomplete/blocked statuses. The adopted advisory
 clarifies that excerpts/replies cannot authorize tools, edits or new dispatches.
 Read docs/AGENT_COLLABORATION.md for exact commands and interpretation limits.

@@ -572,8 +572,9 @@
             "P5-C1",
             "P3-C2"
           ],
-          "status": "doing",
-          "evidence": "2026-11-21 documentation increment: actual Freebuff DOC-R1 advisory reviewed by Codex; clarified interpreter/output/platform/evidence guidance and development-agent workflow. Existing test extra already contains FastAPI, so that suggestion was rejected. No fresh clean installation or full P7 documentation acceptance claimed; see docs/AGENT_COLLABORATION.md."
+          "status": "done",
+          "acceptanceMode": "automated",
+          "evidence": "2026-11-22: corrected implemented architecture/contracts and added flow diagram plus local operations/API/troubleshooting guide. Existing phase5-local-interface-v1 freshly passed 408 full-suite tests without skips (120.41s), built a wheel, installed a fresh isolated venv and reproduced CLI/real loopback HTTP with Python -I. 27 actual calls: 18 raw CLI/ZIP calls audited and nine JSON traces matched; target miss retained, server/temp cleanup verified. docs/OPERATIONS.md and external p7-clean-install-2026-11-22/acceptance.json. Completes documentation/install task only; final P7 gate still depends on P6."
         },
         {
           "id": "P7-C2",
@@ -589,7 +590,9 @@
             "P3-C2",
             "P4-C2"
           ],
-          "status": "todo"
+          "status": "done",
+          "acceptanceMode": "automated",
+          "evidence": "2026-11-22: executable scripts/report_research.py checked accepted historical manifests/JUnit/first-replay summaries, counts and holdout outcomes, and independently re-audited local saved replies/65 raw traces without model or SPICE execution. Nine targeted corruption/overwrite regressions passed; 347 unit tests and later 408 full-suite/interface tests passed. Generated versioned report, input hashes/full-precision JSON and visually checked measured SVG in docs/research; reproduction/limits in docs/RESEARCH_REPORT.md. Final report preserves fixed-control wins, target misses, shared factors, unequal candidate opportunities and blocked P6 replay. No fresh historical raw Phase 3/4 audit or full P7 acceptance claimed."
         },
         {
           "id": "P7-H1",
@@ -605,7 +608,10 @@
           ],
           "status": "todo"
         }
-      ]
+      ],
+      "gateStatus": "blocked",
+      "acceptanceMode": "automated",
+      "gateEvidence": "P7-C1/C2 documentation/report tasks accepted within their explicit prerequisites with fresh installed CLI/API evidence and checked stored-data report. Final P7 release remains blocked on P6's incomplete model replay and the unfinished demo/claims task P7-H1; no release, push or deployment approval."
     },
     {
       "id": "P8",

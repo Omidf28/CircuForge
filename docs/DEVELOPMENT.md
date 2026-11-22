@@ -1,5 +1,26 @@
 # Local implementation evidence
 
+## Documentation, report and fresh installation — 2026-11-22
+
+P7-C1/C2 work follows its explicit P5/P3/P4 task prerequisites while the final
+P7 gate still depends on P6. Added source-accurate architecture/flow and the
+operation/API/troubleshooting guide. Existing `scripts/accept_phase5.py` was
+executed with a new output `Automatic_Acceptance/p7-clean-install-2026-11-22`:
+**408 passed in 120.41s**, no skips; newly built wheel/fresh isolated virtualenv
+and actual Python -I CLI/loopback HTTP walkthrough passed. **27 actual calls**,
+**18 raw CLI/ZIP calls audited**, **nine JSON traces matched**, deliberate miss
+preserved, server/temp cleanup verified. See docs/OPERATIONS.md and acceptance.json.
+
+Added `scripts/report_research.py`, nine targeted corruption/overwrite tests,
+checked-in report/full-precision input hashes/measured SVG and reproduction guide.
+The preliminary expanded unit suite passed **347 tests in 12.70s**. Report export
+checked historical accepted summary/manifest/JUnit bindings and re-audited saved
+local-model responses/raw traces without new model or SPICE calls. Historical
+Phase 3/4 raw audits were not rerun. See docs/RESEARCH_REPORT.md and external
+Automatic_Acceptance/research-report-versioned-2026-11-22. No numerical thresholds,
+budgets, failures or old evidence were changed. Scientific replay/release remains
+blocked; no provider allowance, remote push or deployment was inferred.
+
 ## Renewed local trial and public visibility — 2026-11-21
 
 One explicitly renewed local-only run completed four matched-call comparisons
