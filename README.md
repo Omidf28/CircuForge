@@ -23,11 +23,11 @@ See [operation/troubleshooting](docs/OPERATIONS.md) and the
 and demo tasks are complete within the validated local scope. Research target
 misses remain reported failures; optional PCB/advanced work is not started.
 
-A local source/wheel/demo handoff bundle is ready from accepted commit `1ea9bd2`.
-See [docs/LOCAL_RELEASE.md](docs/LOCAL_RELEASE.md) for its contents, integrity checks
-and installation requirements. The pinned bundle targets Python 3.12 and needs
-separately installed ngspice;
-the bundle remains local. The reviewed v0.1 MVP source was subsequently merged
+A local v0.2 source/wheel/example handoff is ready from accepted commit `60b1ff9`,
+with verified checksums, a Python 3.12 quickstart and the actual one-call CLI export.
+See [docs/LOCAL_RELEASE.md](docs/LOCAL_RELEASE.md) for contents and installation
+requirements. It needs separately installed ngspice; the older v0.1 bundle from
+`1ea9bd2` is preserved. Both bundles remain local. The reviewed v0.1 MVP source was merged
 through [GitHub PR #1](https://github.com/Omidf28/CircuForge/pull/1); the v0.2
 follow-up is currently local on its feature branch.
 

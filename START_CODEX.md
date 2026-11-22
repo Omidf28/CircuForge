@@ -2,6 +2,10 @@
 
 ## Current continuation (2026-11-22)
 
+P7-C5 also supplies a checked local v0.2 Python 3.12 handoff from accepted commit
+60b1ff9. See docs/LOCAL_RELEASE.md for the exact ZIP identity and quickstart;
+packaging added no numerical/model cycle and did not publish the branch.
+
 Read AGENTS.md and planning/HANDOFF.md first. The local MVP and bounded numerical
 follow-up P7-C4 are accepted; current v0.2.0 has 472 tests and its own audited
 one-call/replay and fresh installed-interface evidence. v0.1 was published via

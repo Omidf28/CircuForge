@@ -2,6 +2,7 @@
   "title": "CircuForge · Wave2Circuit Research Edition",
   "version": "2.1.0",
   "date": "2026-11-22",
+  "currentLocalHandoff": "P7-C5 complete: local Python 3.12 v0.2 ZIP from accepted source 60b1ff9, 704988 bytes, SHA-256 d2454298cec0709724d480610c02545979557b9c41ae2a551e37b0e6020350c6. Matched 162 source files, 100 accepted hashes and 33 package files; archive/native checksums/quickstart syntax passed. Includes actual CLI export and acceptance summaries, no complete raw benchmark datasets. Original JUnit and prior v0.1 bundle preserved. No new numerical tests/model calls/simulations or upload during packaging. See docs/LOCAL_RELEASE.md; source identity remains 60b1ff9 despite later documentation commits.",
   "purpose": "Bounded local numerical follow-up P7-C4/v0.2.0 accepted automatically 2026-11-22 under physics-onecall-v1: 472 tests without skips, 100 unchanged Python source/script/test hashes, 384 raw-audited comparison calls including exact replay. Per run analytic_rc passed 42 free-domain and six fixed-control trials; each classical method passed six fixed controls and missed 42 free-domain targets under equal one-call budgets. Known ideal-RC physics and deterministic-repeat limitations explicit. Fresh isolated CLI/real loopback JSON/ZIP passed with three additional calls and matching installed source. Historical v0.1 MVP/438-test demo evidence and all original datasets/bundles unchanged. Owner-requested v0.1 GitHub synchronization merged PR #1; v0.2 remains local on codex/physics-guided-rc. All model/Freebuff cycles closed; P8/PCB/advanced work unstarted. Stop at this bounded result; no deployment or new publication.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
   "vision": "Given a validated filter specification, synthesize constrained analog circuit candidates, simulate them using real ngspice runs, optimize component values, quantify tolerance robustness, and report reproducible evidence. AI is an optional, benchmarked proposal mechanism—not the source of numerical truth.",
@@ -827,6 +828,21 @@
       ],
       "optional": false,
       "tasks": [
+        {
+          "id": "P7-C5",
+          "owner": "Codex",
+          "title": "Local v0.2 accepted-source handoff",
+          "action": "Package the unchanged accepted numerical source and verified installed wheel with a quickstart, observed example and integrity/provenance records.",
+          "deliverable": "Local Python 3.12 ZIP with source, wheel, tested constraints, analytic request, actual CLI export, acceptance summaries and checksums.",
+          "acceptance": "Match all accepted hashes and package bytes, verify safe archive membership/CRC/checksums/common credential patterns, preserve historical bundles and evidence, and distinguish packaging checks from historical numerical tests. No upload or new model/simulator cycle.",
+          "effort": 1,
+          "dependsOn": [
+            "P7-C4"
+          ],
+          "status": "done",
+          "acceptanceMode": "automated",
+          "evidence": "Packaged accepted 60b1ff9 as CircuForge-0.2.0-local-60b1ff9-20261122-py312.zip: 704988 bytes, SHA-256 d2454298cec0709724d480610c02545979557b9c41ae2a551e37b0e6020350c6. All 162 source files, 100 acceptance hashes and 33 wheel/installed Python files matched. Eighteen outer members CRC/safe-path/byte checked, no common credential findings; independent native SHA-256 passed for 17 listed members, three PowerShell quickstart blocks parsed. JUnit dummy-credential test names excluded via labeled original-hash/suite summary; original XML unchanged. Prior v0.1 bundle preserved. Zero new tests/simulations/model requests/uploads. See docs/LOCAL_RELEASE.md and external release-check record."
+        },
         {
           "id": "P7-C4",
           "owner": "Codex",

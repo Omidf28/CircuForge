@@ -120,3 +120,7 @@ stopped and temporary request storage was empty.
 external acceptance directory. This is current v0.2 install evidence; the older
 v0.1 release bundle and its demo remain historical. P7-C4 is complete locally;
 the feature branch has not been pushed.
+
+A local source/wheel/example handoff from accepted commit `60b1ff9` is now ready
+with a Python 3.12 quickstart and checksums. See [LOCAL_RELEASE.md](LOCAL_RELEASE.md).
+Packaging does not change these tests, measurements or the original source binding.

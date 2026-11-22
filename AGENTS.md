@@ -1,5 +1,13 @@
 # CircuForge — Codex workspace instructions
 
+## Local v0.2 handoff (2026-11-22)
+
+P7-C5 packages unchanged accepted source 60b1ff9 and its verified wheel into a
+local Python 3.12 handoff. Source/wheel/accepted hashes, archive integrity and
+quickstart syntax passed; no new tests, simulations or model calls were needed.
+See docs/LOCAL_RELEASE.md for the final ZIP/checksum and preserved historical
+evidence. This packaging step does not expand the accepted scope or publish it.
+
 ## Bounded numerical follow-up accepted (2026-11-22)
 
 After the published v0.1 MVP, the owner's `next` continued the recommended local

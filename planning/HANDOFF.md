@@ -1,5 +1,28 @@
 # CircuForge — portable handoff
 
+## Current v0.2 local handoff — 2026-11-22
+
+Owner's latest `next` continued the accepted local deliverable as P7-C5, without
+expanding the physics/model scope. Packaged exact accepted commit
+60b1ff9c31cfc3e99d294260b6dbfbbc44b2317a into external
+Releases/CircuForge-0.2.0-local-60b1ff9-20261122-py312.zip: **704988 bytes**,
+SHA-256 d2454298cec0709724d480610c02545979557b9c41ae2a551e37b0e6020350c6.
+162 source files, 33 matching wheel/installed package files and all 100 accepted
+source/script/test hashes checked. Eighteen outer members, CRC/safe paths/common
+credential scan/byte comparisons passed; native PowerShell independently checked
+the 17 checksummed members. Three quickstart blocks parse. Zero new tests,
+simulations, model requests or uploads during packaging; original 472-test and
+384-call acceptance remains tied to that exact snapshot, not a new experiment.
+
+Includes wheel/constraints/source, analytic request, actual one-call CLI ZIP,
+comparison plot/summaries, unmodified acceptance records and a Python 3.12 guide.
+Raw full benchmark datasets stay separate. Original JUnit is retained outside
+the bundle because scanner-test parameter names contain dummy credential
+signatures; an explicitly labeled suite-count/hash summary is included instead.
+The earlier preparation directories are preserved; use the final ZIP/hash above.
+Historical v0.1 ZIP hash remains unchanged. See docs/LOCAL_RELEASE.md.
+Current branch remains codex/physics-guided-rc; no new remote publication.
+
 ## Active post-MVP numerical follow-up — 2026-11-22
 
 The latest `next` continues the previously recommended local physics-informed RC

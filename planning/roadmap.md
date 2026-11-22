@@ -606,6 +606,20 @@ Status: done · Estimate: 2 active hours
 
 **Gate evidence:** phase7-local-research-mvp-v1 passed 2026-11-22: 438 fresh tests without skips, unchanged 93-file source/test hash map, accepted scientific composite/report/source hashes and matching fresh installed package. Independent audit verified nine real demo calls and five-frame/75-second labeled captured-output replay; misses retained. P7-H1 engineering portion superseded by P7-C3 without human/CV/publication approval claims. Local research MVP only; no remote push/deployment or optional PCB/advanced-agent authorization.
 
+#### P7-C5 · Codex · Local v0.2 accepted-source handoff
+
+Status: done · Estimate: 1 active hours
+
+**Action:** Package the unchanged accepted numerical source and verified installed wheel with a quickstart, observed example and integrity/provenance records.
+
+**Deliverable:** Local Python 3.12 ZIP with source, wheel, tested constraints, analytic request, actual CLI export, acceptance summaries and checksums.
+
+**Acceptance:** Match all accepted hashes and package bytes, verify safe archive membership/CRC/checksums/common credential patterns, preserve historical bundles and evidence, and distinguish packaging checks from historical numerical tests. No upload or new model/simulator cycle.
+
+**Depends on:** P7-C4
+
+**Evidence:** Packaged accepted 60b1ff9 as CircuForge-0.2.0-local-60b1ff9-20261122-py312.zip: 704988 bytes, SHA-256 d2454298cec0709724d480610c02545979557b9c41ae2a551e37b0e6020350c6. All 162 source files, 100 acceptance hashes and 33 wheel/installed Python files matched. Eighteen outer members CRC/safe-path/byte checked, no common credential findings; independent native SHA-256 passed for 17 listed members, three PowerShell quickstart blocks parsed. JUnit dummy-credential test names excluded via labeled original-hash/suite summary; original XML unchanged. Prior v0.1 bundle preserved. Zero new tests/simulations/model requests/uploads. See docs/LOCAL_RELEASE.md and external release-check record.
+
 #### P7-C4 · Codex · Post-MVP physics-informed continuous RC design
 
 Status: done · Estimate: 5 active hours
