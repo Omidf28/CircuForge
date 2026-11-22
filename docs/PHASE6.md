@@ -7,8 +7,12 @@ agent loop. The November 20 partial trial is preserved in
 [historical local results](PHASE6_LOCAL_RESULTS.md). An explicitly renewed
 November 21 trial completed four matched-call comparisons, 25 model requests and
 65 raw-audited SPICE attempts before its unchanged deadline. No method met the
-target; final model replay checks remain incomplete. P6-C2 and the Phase 6 gate
-remain blocked. See [renewed results](PHASE6_LOCAL_RENEWAL.md). Existing
+target; that original window remains incomplete. A separately owner-approved
+November 22 replay supplement completed two observations/one real SPICE attempt
+in 62.656s. Its independent composite gate passed without rescoring comparisons
+or erasing the original timeout. P6-C2 is accepted as engineering evidence, with
+no model-efficacy conclusion. See [supplement evidence](P6_REPLAY_SUPPLEMENT.md)
+and [original renewed results](PHASE6_LOCAL_RENEWAL.md). Existing
 basic design CLI/API, baselines and physics thresholds remain unchanged.
 
 ## Contract and boundaries

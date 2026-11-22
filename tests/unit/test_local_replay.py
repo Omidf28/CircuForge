@@ -20,7 +20,9 @@ def command(name="replay_local_trial"):
 
 
 def policy():
-    return json.loads((Path(__file__).resolve().parents[2] / "examples/local-replay-supplement-v1.json").read_text(encoding="utf-8"))
+    data = json.loads((Path(__file__).resolve().parents[2] / "examples/local-replay-supplement-v1.json").read_text(encoding="utf-8"))
+    data["execution_closed"] = False  # Synthetic fixture only; never reopens the real consumed packet.
+    return data
 
 
 class Clock:
@@ -33,6 +35,17 @@ class Clock:
 def test_pending_policy_stops_before_simulator_or_model(tmp_path, monkeypatch):
     module = command()
     monkeypatch.setattr(module, "Ngspice", lambda *args: pytest.fail("pending approval must not construct simulator"))
+    pending = policy()
+    pending.update(status="pending_owner_approval", inference_approved=False, owner_response=None)
+    path = tmp_path / "pending-policy.json"
+    path.write_text(json.dumps(pending), encoding="utf-8")
+    assert module.main(["--policy", str(path), "--source", str(tmp_path), "--output", str(tmp_path / "new")]) == 2
+    assert not (tmp_path / "new").exists()
+
+
+def test_consumed_policy_stops_before_simulator_or_model(tmp_path, monkeypatch):
+    module = command()
+    monkeypatch.setattr(module, "Ngspice", lambda *args: pytest.fail("closed allowance must not construct simulator"))
     assert module.main(["--source", str(tmp_path), "--output", str(tmp_path / "new")]) == 2
     assert not (tmp_path / "new").exists()
 

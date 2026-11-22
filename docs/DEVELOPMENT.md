@@ -1,5 +1,19 @@
 # Local implementation evidence
 
+## Local replay supplement accepted — 2026-11-22
+
+Owner `next` approved the prepared two-request/120-second/two-SPICE local-only
+envelope. Executed once without source changes: two generation requests, one
+real independently raw-audited SPICE attempt, 62.656s, 4608 reserved/256 known
+tokens, no unknown usage and zero provider cost. The original four comparison
+trials/25 requests/65 calls, timeout, unknown usage and target misses remain
+unchanged. Composite phase6-local-supplemental-replay-v1 passed; original standalone
+policy stays blocked. One exact valid high-pass candidate replay; it still missed
+target by 81.72176754%. No efficacy claim. The packet is now closed and after-status
+reported no loaded models. Final 29 lifecycle/report tests passed in 2.95s.
+Exact commands, source snapshot and evidence paths: docs/P6_REPLAY_SUPPLEMENT.md.
+Updated the research report read-only with separate supplemental provenance.
+
 ## Replay-supplement preparation — 2026-11-22
 
 Prepared a pending, separately bounded two-request local replay policy, guarded

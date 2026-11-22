@@ -22,6 +22,11 @@ outcomes. It also runs the existing read-only local-trial auditor against saved
 model replies and all raw electrical traces. Missing/failed/inconsistent evidence
 blocks export. Existing output directories are preserved and refused.
 
+To include the separately accepted November 22 replay, add
+`--replay-supplement /path/to/local-replay-supplement-2026-11-22`. The independent
+composite auditor checks its raw data and primary linkage. The original timeout
+stays visible; supplemental counts/scores are never pooled into comparisons.
+
 Historical Phase 3/4 raw physics audits remain historical. Checking their stored
 summaries and acceptance/test records is not a fresh raw re-audit or evidence of
 current cross-platform replay. The report's `summary.json` identifies every
@@ -37,8 +42,8 @@ Actual input directories under the existing external `Automatic_Acceptance` root
 - `phase4-final-2026-11-19`: final tolerance experiment only.
 - `local-llama3-renewal-2026-11-21`: renewed model trial only.
 
-Final output: `research-report-versioned-2026-11-22`. Earlier draft/final-image
-exports remain separate. Export made zero model requests or SPICE calls.
+Current output: `research-report-with-supplement-2026-11-22`. Earlier exports
+remain separate. Export made zero model requests or SPICE calls.
 The measured chart was visually inspected for correct units, paired labels and
 readable values. See the checked-in [report](research/report.md) and its
 [source hashes and full-precision summaries](research/summary.json).
@@ -47,8 +52,10 @@ The report gives methods, results, failure analysis and threats to validity.
 Historical benchmark passes came from fixed-component controls; free-domain
 optimization misses remain misses. Robust search's smaller candidate opportunity
 count, shared holdout factors and illustrative independent tolerances are explicit.
-The local-model comparison has complete matched-call data and incomplete final
-replay, with unknown token usage retained separately from known reported usage.
+The original local-model window has complete matched-call data and incomplete
+replay, with unknown usage retained separately. A separately authorized supplement
+completed the two replay observations and passed the composite engineering gate;
+this does not create a model-efficacy or design-success claim.
 No general model/optimizer advantage, hardware yield or manufacturing confidence
 claim is supported by these small studies.
 

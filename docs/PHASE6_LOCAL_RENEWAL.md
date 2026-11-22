@@ -1,5 +1,10 @@
 # Phase 6: renewed local trial — 2026-11-21
 
+Current update (2026-11-22): a separately authorized two-request replay supplement
+and its independent composite audit passed. See
+[P6_REPLAY_SUPPLEMENT.md](P6_REPLAY_SUPPLEMENT.md). The November 21 results and
+original blocked policy below remain unchanged; comparisons are not rescored.
+
 Status: **comparison data complete; overall Phase 6 acceptance blocked**.
 The four prespecified matched-call comparisons completed. The final model replay
 stage did not: its first request timed out at the experiment deadline and its

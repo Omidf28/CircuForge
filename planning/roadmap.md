@@ -2,7 +2,7 @@
 
 Version 2.1.0 · assembled 2026-11-22 · architecture assumptions to verify in current environment
 
-P7-C1/C2 documentation/report tasks completed within their explicit prerequisites. Fresh local interface/install acceptance passed 408 tests without skips plus 27 actual installed CLI/HTTP calls (18 raw audited, nine JSON traces matched); checked stored-evidence report/plot preserves negative results. P5-C5 Freebuff handoff accepted separately. Scientific local Llama trial remains four matched comparisons/25 requests/65 raw-audited SPICE attempts, all target misses and incomplete final replay: P6 and final P7 release blocked. Existing model/development cycles closed, no new model calls for reporting/install. GitHub public, only initial main online, no feature push. See docs/OPERATIONS.md and docs/RESEARCH_REPORT.md.
+P6 composite engineering gate accepted after owner-approved two-request local supplement: two returned replay observations/one exact valid candidate/one SPICE attempt in 62.656s, 256 known tokens/4608 reservations/zero cost. Original four comparisons, deadline failure and target misses remain unchanged; no efficacy claim. P7-C1/C2 documentation/report tasks complete; fresh install evidence remains 408 tests plus 27 CLI/HTTP calls (18 raw audited/nine JSON matched). P7-C3 demo/claims work remains; final P7 gate not yet accepted. All model/development cycles closed. GitHub public, initial main only, no feature push.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -546,9 +546,9 @@ Status: done · Estimate: 5 active hours
 
 **Exit gate:** If paid key/provider inaccessible, mark experiment deferred and preserve reproducible non-LLM result; no claims without trials.
 
-**Gate status:** blocked
+**Gate status:** passed
 
-**Gate evidence:** November 21 renewal integrity passed for 25 model requests/65 real SPICE attempts; all four matched-call comparisons complete, no target passes. Final model replay stage incomplete (one timeout, second unrun), so overall acceptance remains blocked_incomplete. P6-C1 historical full-suite acceptance remains distinct from latest 293 unit tests. P6-H1 records explicit local-only resource decisions; both windows closed, datasets not pooled. No full Phase 6 or model efficacy acceptance.
+**Gate evidence:** phase6-local-supplemental-replay-v1 passed 2026-11-22: original four matched-call comparisons raw-audited plus two separately authorized returned replay observations/one exact valid candidate/one new raw-audited SPICE attempt. Primary 25-request/65-call deadline failure and misses retained; supplement two requests/one call/62.656s/256 known tokens/4608 reservations/no unknown usage. No scores pooled or tolerances changed; no efficacy claim. All allowances closed; original standalone policy remains blocked, composite engineering gate accepted.
 
 #### P6-C1 · Codex · Provider-neutral proposal interface
 
@@ -566,7 +566,7 @@ Status: done · Estimate: 7 active hours
 
 #### P6-C2 · Codex · Equal-budget agent ablation
 
-Status: blocked · Estimate: 9 active hours
+Status: done · Estimate: 9 active hours
 
 **Action:** Run available LLM proposals vs baselines under stated budgets, track tokens, costs, failures and seeds.
 
@@ -576,7 +576,7 @@ Status: blocked · Estimate: 9 active hours
 
 **Depends on:** P6-C1, P3-C2, P6-H1
 
-**Evidence:** Observed renewal 2026-11-21: four matched-call comparisons at 4 actual SPICE attempts/method, 25 model requests/65 raw-audited SPICE attempts; all target checks missed. Seventeen accepted/seven invalid proposals/one unknown-usage timeout; 57600 reserved tokens/3079 known tokens. Final replay timed out, second unrun; original gate blocked. Both original allowances closed, November 20 data separate. On November 22 prepared a separate <=2-request/120-second/2-SPICE local replay envelope, runner and independent composite auditor, currently pending owner resource approval and unexecuted. 364 unit tests plus final 28 targeted replay/report tests passed without model/simulator use. See docs/P6_REPLAY_SUPPLEMENT.md and docs/PHASE6_LOCAL_RENEWAL.md. No actual supplemental result or gate acceptance claimed.
+**Evidence:** Accepted 2026-11-22 under independent phase6-local-supplemental-replay-v1. Original four matched comparisons/25 requests/65 raw-audited SPICE attempts and all misses remain unchanged, including deadline failure and unknown usage. Owner next separately authorized <=2 requests/120 seconds/2 SPICE: completed two replay observations, one valid exact-candidate replay/one raw-audited SPICE attempt in 62.656s; 4608 reserved/256 known tokens, no unknown usage, zero cost. Original policy stays blocked; composite gate passed without rescoring or model-efficacy claims. Supplement now closed. 29 final targeted guard/report tests passed in 2.95s. See docs/P6_REPLAY_SUPPLEMENT.md and external local-replay-supplement-2026-11-22/acceptance.json.
 
 #### P6-H1 · Human · Approve API trial and spending
 
@@ -590,7 +590,7 @@ Status: done · Estimate: 2 active hours
 
 **Depends on:** P6-C1
 
-**Evidence:** Explicit owner response 2026-11-20: تأیید آزمایش فقط محلی با همین سقف‌ها. On November 21 owner answered next to the explicit request for one fresh execution under unchanged caps. Installed local llama3 only, zero provider expenditure, <=32 requests, <=73728 reserved tokens, 600 seconds, 80 SPICE attempts and two CPU threads per window. Both execution windows have ended and their source packets are closed. No paid/cloud/download/personal-file transmission/push/deployment permission from this decision; more model execution needs a fresh bounded resource decision. See docs/PHASE6_LOCAL_TRIAL.md and docs/PHASE6_LOCAL_RENEWAL.md.
+**Evidence:** Explicit owner response November 20: تأیید آزمایش فقط محلی با همین سقف‌ها; November 21 next renewed the unchanged local-only window. On November 22 next explicitly approved the prepared two-request/120-second/two-SPICE/4608-reserved-token supplement, CPU2/GPU0/zero spend, existing pinned model only. All three scientific allowances are now consumed/closed. No paid/cloud/download/personal-file transmission/push/deployment permission from these decisions; further model execution requires a fresh bounded resource decision. See docs/P6_REPLAY_SUPPLEMENT.md and historical trial/renewal documents.
 
 ### P7: Verify demo and claims
 
@@ -604,7 +604,21 @@ Status: done · Estimate: 2 active hours
 
 **Gate status:** blocked
 
-**Gate evidence:** P7-C1/C2 documentation/report tasks accepted within their explicit prerequisites with fresh installed CLI/API evidence and checked stored-data report. Final P7 release remains blocked on P6's incomplete model replay and the unfinished demo/claims task P7-H1; no release, push or deployment approval.
+**Gate evidence:** P6 composite gate and P7-C1/C2 accepted with preserved negative results. Final P7 gate awaits implemented/tested P7-C3 demo/claims acceptance; P7-H1 is not yet superseded. No remote release, push or deployment approval.
+
+#### P7-C3 · Codex · Automatic captured CLI demo and evidence-backed claims
+
+Status: doing · Estimate: 4 active hours
+
+**Action:** Run the installed CLI on supported examples, audit raw physical results, render a labeled 60-90 second replay of captured output and verify artifact/claim provenance with fresh tests.
+
+**Deliverable:** Executable demo/exporter and independent acceptance checker; real transcripts, animated demo, evidence hashes and draft accurate wording.
+
+**Acceptance:** Fresh tests without skips, installed-package provenance, actual bounded raw-audited simulator calls, preserved intentional miss, checked 60-90s animation and evidence-backed draft claims. No fake live-screen recording or invented owner CV approval.
+
+**Depends on:** P7-C1, P7-C2
+
+**Evidence:** Prepared next eligible automatic technical replacement after P6 composite acceptance. Implementation/demo verification not yet complete; P7-H1 is not superseded or accepted yet.
 
 #### P7-C1 · Codex · Engineering documentation
 
@@ -898,7 +912,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md and planning/HANDOFF.md. P7-C1/C2 completed documentation/report prerequisites: fresh 408-test/install acceptance plus 27 installed CLI/API calls (18 raw audited/nine JSON traces matched); read-only report reconciles historical data and preserves P6 incompleteness. Actual local-model study remains 25 generation attempts/65 raw-audited SPICE attempts, four matched comparisons, 3079 known tokens/one unknown usage, 57600 reservations; final replay incomplete and original windows closed. Prepared an unexecuted two-request/120-second/two-SPICE replay supplement with independent auditor; owner resource question pending, inference flag false. 364 unit tests then final 28 targeted replay/report checks passed without model/simulator use. P5-C5 accepted separately; development cycles closed. P6/final P7 release blocked, no paid traffic/PCB/deployment/feature push. GitHub public, initial main only. Source/Git stay on C; ancillary artifacts retain their existing C-path junction to D.
+Read AGENTS.md and planning/HANDOFF.md. P6-C2/composite gate accepted: original four matched comparisons/25 requests/65 raw-audited SPICE attempts preserved with timeout, misses and unknown usage; separate owner-approved supplement completed two observations/one exact valid candidate/one new SPICE attempt in 62.656s, 256 known tokens/4608 reservations/zero unknown usage. Supplement closed; no more inference. Original standalone gate remains blocked, scores not pooled. Research report includes separate supplement; 29 targeted lifecycle/report tests passed. P7-C1/C2 already accepted with fresh 408-test/27-call installed interface evidence. Next P7-C3 demo/claims gate, no invented human CV approval. P5-C5 accepted; Freebuff cycles closed. No paid traffic/PCB/deployment/feature push. Source/Git stay on C; ancillary artifact junction unchanged.
 ```
 
 ## Sources

@@ -1,9 +1,10 @@
 # Proposed bounded replay supplement
 
-Status: **prepared, not approved or executed**. The default packet
-`examples/local-replay-supplement-v1.json` rejects execution before constructing a
-simulator or contacting a model. Existing scientific and development-agent
-allowances remain closed. This proposal is local circuit-model verification,
+Status: **executed once, independently accepted and closed** on 2026-11-22.
+The owner answered `next` to the explicit prepared resource request. The default
+packet `examples/local-replay-supplement-v1.json` is now consumed and rejects
+another execution before simulator/model access. Earlier allowances remain
+closed. This is local circuit-model verification,
 separate from Freebuff development reviews.
 
 ## Exact proposed action
@@ -54,22 +55,70 @@ general determinism, target success or hardware conclusion follows automatically
 Client timeouts are not OS resource quotas; audit permits only bounded record
 cleanup after the request deadline, never another request.
 
-## Commands after explicit resource approval
+## Executed commands and results
 
-The coordinator must first record the owner's actual response in the versioned
-packet and enable only this allowance; the commands below currently refuse it.
-Use new writable paths, the verified simulator and the installed local-model
-dependency:
+The owner's actual `next` response was recorded before enabling this single
+allowance. The following invocation ran once; the now-closed packet refuses a
+second execution. Environment used the existing isolated interpreter, PYTHONPATH=src
+and the verified ngspice-47 console executable. Paths below are under external
+Automatic_Acceptance:
 
 ```text
-python scripts/replay_local_trial.py --source /existing/local-llama3-renewal-2026-11-21 --output /new/local-replay-supplement --ngspice /trusted/ngspice
-python scripts/audit_local_replay.py --source /existing/local-llama3-renewal-2026-11-21 --input /new/local-replay-supplement
+$artifactRoot='C:/Users/Home/.codex/visualizations/2026/11/18/01a1ee7a-3b9d-7eb0-9f38-c053c726b534'
+$python="$artifactRoot/Phase1_Verification/.venv/Scripts/python.exe"
+$source="$artifactRoot/Automatic_Acceptance/local-llama3-renewal-2026-11-21"
+$output="$artifactRoot/Automatic_Acceptance/local-replay-supplement-2026-11-22"
+$env:PYTHONPATH='src'
+& $python scripts/replay_local_trial.py --source $source --output $output --ngspice "$artifactRoot/CircuForge/.tools/Spice64/bin/ngspice_con.exe"
+& $python scripts/audit_local_replay.py --source $source --input $output
 ```
 
 After any real attempt the source packet is closed and the exact results are
 documented; it cannot authorize a second run in another directory. Policy and
 ledger selection remain trusted-coordinator responsibilities, as for the
 existing trial. These local guards are not tamper-proof authorization services.
+
+Actual runner and independent auditor both returned exit 0. The supplement made
+**two model requests and one real SPICE attempt in 62.656 seconds**, reserved
+**4608 tokens**, reported **256 actual tokens**, with **zero unknown-usage
+responses and zero provider expenditure**. No extra generation was sent.
+Read-only `/api/ps` afterward showed no loaded models.
+
+| Original request | Returned observation | Exact valid candidate | SPICE attempts |
+|---|---|---|---:|
+| local-lowpass / seed 7 / proposal 1 | invalid_candidate | false; no valid candidate | 0 |
+| local-highpass / seed 7 / proposal 1 | accepted | true | 1 |
+
+The valid replay used R=560 ohm and C=6.8e-8 F, measured fc=4179.600653363 Hz,
+with analytic-relative error 0.00267022% (physical check passed) and target error
+81.72176754% (target failed). Repeating a valid candidate does not establish
+general model determinism. The rejected low-pass observation is not a design
+or an exact valid-candidate replay. Both observations retain known usage.
+
+The auditor returned `status=passed` under
+`phase6-local-supplemental-replay-v1`: four original matched comparisons plus two
+separately authorized replay observations, one exact valid candidate. It preserved
+the original 25-request/65-SPICE ledger, 600-second failure, unknown usage and all
+target misses. Those comparisons were not rescored. The original policy remains
+`blocked_incomplete`; the composite engineering policy passes without claiming
+model efficacy or changing original budgets/tolerances.
+
+Evidence: `Automatic_Acceptance/local-replay-supplement-2026-11-22` contains
+result/budget/acceptance JSON, copied approval, model request/replies, new raw
+physical trace and residency check. The sibling `-source` snapshot preserves the
+pre-execution package/scripts/policy/tests and environment; source was based on
+commit b14e5c7 plus approval/lifecycle-fixture changes. Package SHA-256 remained
+`0e320d6e4188c9b3a52b23a3da4f278d9103043b3c07e58f1159f305724a7796`.
+No source was edited during the window. Exact stdout logs are sibling
+`local-replay-supplement-2026-11-22-execution.log` and `-audit.log`.
+
+The updated research exporter accepts `--replay-supplement`, independently
+re-audits the linkage and keeps separate primary/supplement tables and source
+hashes. `research-report-with-supplement-2026-11-22` was exported with no new
+model or SPICE calls; its summary/report are synchronized to docs/research.
+After approval closure and report support, **29 targeted tests passed in 2.95s**.
+Earlier 19 approval-guard tests passed in 2.29s before live execution. These are
+unit results, separate from prior full-suite/install evidence.
 
 ## Offline verification
 

@@ -3,7 +3,7 @@
   "scope": "stored-evidence-reporting",
   "new_model_requests": 0,
   "new_spice_calls": 0,
-  "phase6_status": "blocked_incomplete",
+  "phase6_status": "passed",
   "phase7_release_accepted": false,
   "nominal": {
     "cases": 20,
@@ -455,6 +455,43 @@
       "target_passed": false
     }
   ],
+  "replay_supplement": {
+    "status": "passed",
+    "policy": "phase6-local-supplemental-replay-v1",
+    "acceptance_mode": "automated",
+    "primary_comparison_trials": 4,
+    "primary_model_requests": 25,
+    "primary_spice_attempts": 65,
+    "supplemental_model_requests": 2,
+    "supplemental_spice_attempts": 1,
+    "supplemental_reserved_tokens": 4608,
+    "supplemental_known_reported_tokens": 256,
+    "supplemental_unknown_usage": 0,
+    "completed_replay_observations": 2,
+    "exact_candidate_replays": 1,
+    "original_deadline_failure_preserved": true,
+    "comparisons_rescored": false,
+    "model_efficacy_established": false,
+    "note": "Separate authorized observation window; original ledgers remain unchanged. Candidate differences are reported, never waived or relabeled as exact replay."
+  },
+  "replay_supplement_rows": [
+    {
+      "case": "local-lowpass",
+      "status": "invalid_candidate",
+      "exact_candidate_replay": false,
+      "simulator_calls": 0,
+      "relative_error": null,
+      "target_passed": null
+    },
+    {
+      "case": "local-highpass",
+      "status": "accepted",
+      "exact_candidate_replay": true,
+      "simulator_calls": 1,
+      "relative_error": 0.8172176753750784,
+      "target_passed": false
+    }
+  ],
   "sources": [
     {
       "path": "C:\\Users\\Home\\Documents\\ChatGPT\\Implement CircuForge\\examples\\benchmark-v2.json",
@@ -511,6 +548,22 @@
     {
       "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\local-llama3-renewal-2026-11-21\\approved-policy.json",
       "sha256": "48e0c55b91246cc06842269b208bc537d43be9f3a27eb012d6e7bc7e1dce1757"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\local-replay-supplement-2026-11-22\\result.json",
+      "sha256": "b58b82dc0d769beaa7d76295e3db19ffef52f593c31cbd5788e818b54b8424af"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\local-replay-supplement-2026-11-22\\acceptance.json",
+      "sha256": "a3e23bc69acb363d1af5f5a07e42a87bb6eaf76a35643aa24469e41215a21622"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\local-replay-supplement-2026-11-22\\budget.json",
+      "sha256": "ef8522d52599abf23efe389bdc869748a76609d7e90e9837d57bce09f966d21f"
+    },
+    {
+      "path": "D:\\Codex\\Artifacts\\2026\\11\\18\\01a1ee7a-3b9d-7eb0-9f38-c053c726b534\\Automatic_Acceptance\\local-replay-supplement-2026-11-22\\approved-policy.json",
+      "sha256": "fd82912bd5dbf9da9970830f0caca8155592158f9af2dcb8828921764b86a979"
     }
   ]
 }

@@ -1,6 +1,31 @@
 # CircuForge — portable handoff
 
-## Prepared replay supplement — awaiting resource decision
+## Current scientific gate — 2026-11-22
+
+Owner answered `next` to the explicit prepared two-request/120-second/two-SPICE
+local-only supplement. Enabled that single packet, preserved the pre-run source
+snapshot, then executed once: **two model requests, one real SPICE attempt,
+62.656 seconds, 4608 reserved tokens, 256 known reported tokens, no unknown usage,
+zero provider cost**. The low-pass observation was invalid; the high-pass candidate
+exactly repeated R=560/C=6.8e-8 and measured 4179.600653363 Hz. Physics passed;
+target failed by 81.72176754%. No source changes occurred during execution.
+
+Independent phase6-local-supplemental-replay-v1 passed: four original matched
+comparisons plus two separately authorized returned observations/one exact valid
+candidate. Source hashes and original ledgers/deadline/unknown usage/misses remain
+unchanged; original standalone policy remains blocked. No comparison rescoring or
+model-efficacy claim. P6-C2 and the composite Phase 6 engineering gate accepted.
+The supplement is now closed, no more requests; after-status showed no loaded
+models. **29 targeted tests passed in 2.95s** after approval-lifecycle/report updates.
+See docs/P6_REPLAY_SUPPLEMENT.md and external
+Automatic_Acceptance/local-replay-supplement-2026-11-22/acceptance.json.
+
+Research report now includes separate supplement evidence via --replay-supplement;
+the checked-in report/summary was regenerated read-only. Final P7 still awaits
+the demo/claims gate; P7-C3 is the next bounded automatic technical task. No human
+CV review, remote push, deployment, PCB or new development-agent cycle is inferred.
+
+## Earlier prepared replay supplement — historical pending state
 
 Owner requested continued project work on 2026-11-22. Prepared
 examples/local-replay-supplement-v1.json with inference_approved=false and no owner
@@ -16,9 +41,9 @@ Preparation: **364 unit tests passed in 19.33s**; after final unknown-usage and
 envelope/deadline checks, **28 targeted replay/report tests passed in 2.14s**. A restricted
 mock-HTTP unit attempt stalled in Windows asyncio setup; only its identified
 test processes were stopped and it was rerun with local-socket permission.
-No installed model or ngspice was used by those tests. The resource question is
-pending; do not infer approval from continued unrelated work or elapsed time.
-See docs/P6_REPLAY_SUPPLEMENT.md. P6/full P7 remain blocked.
+No installed model or ngspice was used by those preparation tests. The resource
+question was pending at that point; actual subsequent approval/execution is
+recorded above. See docs/P6_REPLAY_SUPPLEMENT.md. P6/P7 were then blocked.
 
 Report-format follow-up: normalized Matplotlib SVG trailing whitespace, checked
 clean diffs and directly regenerated the chart from its saved summary. It matched

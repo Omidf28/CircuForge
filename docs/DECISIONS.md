@@ -1,5 +1,15 @@
 # Decisions and open questions — 2026-11-18
 
+## Local replay resource decision — 2026-11-22
+
+Owner answered `next` to the explicit prepared two-request/120-second/two-SPICE/
+4608-reserved-token local-only request. Recorded that response, executed one
+supplement and closed it after both request reservations were consumed. The
+independent composite policy passed while preserving the old standalone failure
+and all target misses. This is engineering acceptance, not model efficacy or
+new paid/cloud/development-agent/push/deployment permission. See
+[P6_REPLAY_SUPPLEMENT.md](P6_REPLAY_SUPPLEMENT.md).
+
 ## Dated update — 2026-11-21
 
 The owner answered `next` to the explicit request for one fresh local-model

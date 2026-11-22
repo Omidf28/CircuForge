@@ -55,7 +55,7 @@ Robust holdout q95 was lower in 1 of 4 paired comparisons. This is descriptive, 
 
 4 matched-call comparisons; 25 model attempts; 65 actual raw-audited SPICE attempts including pilots.
 Reserved tokens: 57600; known reported tokens: 3079; unknown-usage requests: 1. Known tokens exclude unknown usage.
-Completed replay checks: 0; overall gate: `blocked_incomplete`.
+Primary-window completed replay checks: 0; original gate: `blocked_incomplete`.
 Equal SPICE calls exclude additional inference time. This small two-topology study
 does not establish general LLM superiority or topology synthesis. The earlier
 partial trial is excluded. No expired allowance is reopened by reporting.
@@ -79,6 +79,19 @@ partial trial is excluded. No expired allowance is reopened by reporting.
 | local-highpass | 42 | scipy | 13.951399 | false | 4 |
 | local-highpass | 42 | local_ollama | 35.925703 | false | 4 |
 
+## Separately authorized local replay supplement
+
+Composite gate: `passed`; 2 returned observations, 2 new model requests and 1 new SPICE attempts.
+This separate window reserved 4608 tokens, reported 256 known tokens and retained 0 unknown-usage requests.
+Exact valid-candidate replays: 1. Invalid observations do not become designs.
+The original timeout/deadline and unknown usage remain in their own dataset.
+The new observations do not change comparison scores or establish model efficacy.
+
+| Case | Returned status | Exact valid candidate | Calls | Target error % |
+|---|---|---|---:|---:|
+| local-lowpass | invalid_candidate | false | 0 | not measured |
+| local-highpass | accepted | true | 1 | 81.721768 |
+
 ## Limits and next steps
 
 The plots show observations, not confidence intervals or population estimates.
@@ -87,4 +100,4 @@ physics limit generalization. Source/load nonidealities, discrete components,
 active circuits and physical boards remain unverified. Numerical same-environment
 replay is not a cross-platform promise. Engineering acceptance does not erase
 target failures or grant deployment, remote push or a new provider allowance.
-The scientific Phase 6 replay gap and final Phase 7 release remain open.
+Current Phase 6 evidence status: `passed`. The final Phase 7 release is a separate gate.

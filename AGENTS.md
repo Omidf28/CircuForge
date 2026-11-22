@@ -1,5 +1,15 @@
 # CircuForge — Codex workspace instructions
 
+## Owner update — local replay supplement consumed (2026-11-22)
+
+Owner answered `next` to the explicit prepared two-request/120-second/two-SPICE/
+4608-reserved-token local-only supplement. It executed once: two model requests,
+one SPICE attempt, 62.656 seconds, zero provider cost and known usage on both
+responses. Independent phase6-local-supplemental-replay-v1 passed; P6-C2 accepted
+with original timeout, target misses and ledgers preserved. The supplement packet
+is now closed too. See docs/P6_REPLAY_SUPPLEMENT.md. This is not another model
+allowance, cloud/development-agent cycle, paid API, push, deployment or PCB approval.
+
 ## Owner update — single verification cycle (2026-11-22)
 
 Owner answered `next` to the explicit one-request/ten-minute Freebuff verification

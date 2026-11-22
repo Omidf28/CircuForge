@@ -1,9 +1,12 @@
 {
   "policy": "p6-local-replay-supplement-v1",
-  "status": "pending_owner_approval",
-  "inference_approved": false,
-  "owner_response": null,
-  "execution_closed": false,
+  "status": "approved_local_only",
+  "inference_approved": true,
+  "owner_response": "next",
+  "owner_decision_date": "2026-11-22",
+  "owner_decision_context": "Reply to the explicit prepared two-request/120-second/two-SPICE/4608-reserved-token local-only resource request. This authorizes only one supplemental execution; existing windows stay closed.",
+  "execution_closed": true,
+  "execution_closed_reason": "The one authorized supplement completed two generation requests and one SPICE attempt in 62.656 seconds on 2026-11-22. All two request reservations are consumed. No second run or reset is authorized.",
   "purpose": "Two explicitly new replay observations of the November 21 pilot requests. Preserve the expired primary window and its timeout; do not rerun or rescore comparisons.",
   "limits": {
     "max_model_requests": 2,
