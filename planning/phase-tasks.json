@@ -560,6 +560,19 @@
       "optional": false,
       "tasks": [
         {
+          "id": "P7-C4",
+          "owner": "Codex",
+          "title": "Post-MVP physics-informed continuous RC design",
+          "action": "Add a measured analytic_rc option to the existing local interfaces and compare it with unchanged classical methods in a separately frozen one-call experiment.",
+          "deliverable": "Typed deterministic proposer, CLI/API support, tests, physics-onecall-v1 comparison and independent raw/replay acceptance.",
+          "acceptance": "Fresh tests without skips; bounded 20-case/three-seed/four-method comparison with exactly one actual call per feasible method and zero per infeasible rejection, independent physics audit and exact replay. Preserve target misses and original experiments; no model traffic or general optimizer claim.",
+          "effort": 5,
+          "dependsOn": ["P7-C3", "P2-C3"],
+          "status": "done",
+          "acceptanceMode": "automated",
+          "evidence": "physics-onecall-v1 passed 2026-11-22 on codex/physics-guided-rc, version 0.2.0: 472 tests in 142.587s without skips/errors/failures, 100 unchanged Python source/script/test hashes, 384 raw-audited comparison calls including exact numerical replay under cap 500. Per run each method spent 48 calls and rejected 12 infeasible inputs without calls; analytic_rc passed 42/42 free-domain and 6/6 fixed trials, each classical method passed only six fixed controls and retained 42 target misses. Known-physics/one-call/deterministic-repeat limitations explicit. Fresh isolated installed CLI and real loopback JSON/ZIP passed with three further calls, matching source fingerprint and 33 package files; 2300-Hz target measured 2299.913312912917 Hz, clean shutdown/storage. See docs/ANALYTIC_RC.md and external physics-onecall-2026-11-22 acceptance/provenance. Historical datasets/v0.1 acceptance/bundle unchanged. No new model traffic, remote push or complex expansion."
+        },
+        {
           "id": "P7-C3",
           "owner": "Codex",
           "title": "Automatic captured CLI demo and evidence-backed claims",

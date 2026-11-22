@@ -1,5 +1,17 @@
 # CircuForge — Codex workspace instructions
 
+## Bounded numerical follow-up accepted (2026-11-22)
+
+After the published v0.1 MVP, the owner's `next` continued the recommended local
+physics-informed RC improvement. P7-C4/v0.2.0 passed physics-onecall-v1 with 472
+tests without skips and 384 raw-audited comparison calls including exact replay.
+Fresh isolated CLI/real loopback JSON/ZIP passed with three further calls and
+matching installed source. See docs/ANALYTIC_RC.md and planning/HANDOFF.md for
+results and limits. Historical acceptance/datasets/bundles stay unchanged. This
+feature remains local on codex/physics-guided-rc; the earlier GitHub update
+published v0.1 via PR #1. Stop and report this bounded result. No new model or
+Freebuff cycle, remote publication, deployment, PCB or advanced work is implied.
+
 ## Local research MVP milestone (2026-11-22)
 
 P7-C3 and phase7-local-research-mvp-v1 passed with 438 tests without skips,

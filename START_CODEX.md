@@ -1,5 +1,14 @@
 # Paste this into Codex after opening the extracted CircuForge folder
 
+## Current continuation (2026-11-22)
+
+Read AGENTS.md and planning/HANDOFF.md first. The local MVP and bounded numerical
+follow-up P7-C4 are accepted; current v0.2.0 has 472 tests and its own audited
+one-call/replay and fresh installed-interface evidence. v0.1 was published via
+PR #1; the new feature branch remains local. All model/Freebuff cycles below are
+consumed and closed. Earlier continuation text is historical, not a new cycle.
+Report this local result before complex expansion. See docs/ANALYTIC_RC.md.
+
 ## Current continuation (2026-11-21)
 
 The original first-slice instructions below are historical. Read AGENTS.md,

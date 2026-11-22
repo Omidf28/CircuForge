@@ -2,7 +2,7 @@
 
 Version 2.1.0 · assembled 2026-11-22 · architecture assumptions to verify in current environment
 
-Local research MVP accepted automatically 2026-11-22 under phase7-local-research-mvp-v1: 438 tests without skips, unchanged 93-file source/test hashes, accepted scientific/install/report evidence and 75-second captured-CLI replay with nine raw-audited demo calls. Two example passes/one intentional miss retained. P6 composite accepted without erasing original failures or claiming efficacy. P7-H1 technical check superseded by P7-C3 without owner CV approval. Owner separately requested GitHub synchronization: current MVP branch published through PR #1 to main, normal history-preserving integration. All model/Freebuff cycles closed; P8/PCB/advanced work unstarted. No deployment or release-bundle upload.
+Bounded local numerical follow-up P7-C4/v0.2.0 accepted automatically 2026-11-22 under physics-onecall-v1: 472 tests without skips, 100 unchanged Python source/script/test hashes, 384 raw-audited comparison calls including exact replay. Per run analytic_rc passed 42 free-domain and six fixed-control trials; each classical method passed six fixed controls and missed 42 free-domain targets under equal one-call budgets. Known ideal-RC physics and deterministic-repeat limitations explicit. Fresh isolated CLI/real loopback JSON/ZIP passed with three additional calls and matching installed source. Historical v0.1 MVP/438-test demo evidence and all original datasets/bundles unchanged. Owner-requested v0.1 GitHub synchronization merged PR #1; v0.2 remains local on codex/physics-guided-rc. All model/Freebuff cycles closed; P8/PCB/advanced work unstarted. Stop at this bounded result; no deployment or new publication.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -606,6 +606,20 @@ Status: done · Estimate: 2 active hours
 
 **Gate evidence:** phase7-local-research-mvp-v1 passed 2026-11-22: 438 fresh tests without skips, unchanged 93-file source/test hash map, accepted scientific composite/report/source hashes and matching fresh installed package. Independent audit verified nine real demo calls and five-frame/75-second labeled captured-output replay; misses retained. P7-H1 engineering portion superseded by P7-C3 without human/CV/publication approval claims. Local research MVP only; no remote push/deployment or optional PCB/advanced-agent authorization.
 
+#### P7-C4 · Codex · Post-MVP physics-informed continuous RC design
+
+Status: done · Estimate: 5 active hours
+
+**Action:** Add a measured analytic_rc option to the existing local interfaces and compare it with unchanged classical methods in a separately frozen one-call experiment.
+
+**Deliverable:** Typed deterministic proposer, CLI/API support, tests, physics-onecall-v1 comparison and independent raw/replay acceptance.
+
+**Acceptance:** Fresh tests without skips; bounded 20-case/three-seed/four-method comparison with exactly one actual call per feasible method and zero per infeasible rejection, independent physics audit and exact replay. Preserve target misses and original experiments; no model traffic or general optimizer claim.
+
+**Depends on:** P7-C3, P2-C3
+
+**Evidence:** physics-onecall-v1 passed 2026-11-22 on codex/physics-guided-rc, version 0.2.0: 472 tests in 142.587s without skips/errors/failures, 100 unchanged Python source/script/test hashes, 384 raw-audited comparison calls including exact numerical replay under cap 500. Per run each method spent 48 calls and rejected 12 infeasible inputs without calls; analytic_rc passed 42/42 free-domain and 6/6 fixed trials, each classical method passed only six fixed controls and retained 42 target misses. Known-physics/one-call/deterministic-repeat limitations explicit. Fresh isolated installed CLI and real loopback JSON/ZIP passed with three further calls, matching source fingerprint and 33 package files; 2300-Hz target measured 2299.913312912917 Hz, clean shutdown/storage. See docs/ANALYTIC_RC.md and external physics-onecall-2026-11-22 acceptance/provenance. Historical datasets/v0.1 acceptance/bundle unchanged. No new model traffic, remote push or complex expansion.
+
 #### P7-C3 · Codex · Automatic captured CLI demo and evidence-backed claims
 
 Status: done · Estimate: 4 active hours
@@ -912,7 +926,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md and planning/HANDOFF.md. Local MVP accepted with 438 tests and unchanged 93-file source/test hashes. Local handoff bundles accepted commit 1ea9bd2: 151 source files, matching 31-file wheel and real demo; py312 ZIP 791661 bytes, SHA-256 538f18e0a93b8918fc7a0edbc071b026d54f2933e4dec97e9edb0b35fbf0807a. Python 3.12/separate ngspice; no new experiments during packaging. Owner subsequently requested GitHub update: reviewed all 375 unpublished blobs/28 commits, matched acceptance hashes, pushed codex/local-mvp-handoff and opened PR #1 (https://github.com/Omidf28/CircuForge/pull/1) to main. Normal integration preserves remote history; no force-push, deployment or local-artifact upload. Prior initial-main-only notes are historical. All model/Freebuff cycles closed; optional P8/PCB/advanced work unstarted. Suggested next scope remains physics-based numerical search, not yet implemented. Source/Git stay on C; ancillary junction unchanged.
+Read AGENTS.md, planning/HANDOFF.md and docs/ANALYTIC_RC.md. P7-C4/v0.2.0 analytic_rc is implemented and accepted under physics-onecall-v1: 472 tests, zero skips/errors/failures, 100 source hashes, 384 raw-audited calls including exact numerical replay under cap 500. Same original v2 domains/tolerance; separately frozen one-call experiment. Per run analytic 42/42 free-domain plus 6/6 fixed passes; classical methods 0/42 free-domain and 6/6 fixed. Curated ideal continuous RC/known-physics advantage; no general optimizer/hardware claim. Fresh installed CLI/loopback JSON/ZIP: three calls, same source fingerprint, 33 package files matched, cleanup passed. Evidence under external Automatic_Acceptance/physics-onecall-2026-11-22. Feature branch codex/physics-guided-rc stays local. Historical v0.1 MVP, raw datasets and py312 bundle unchanged; owner-requested prior source publication merged PR #1 into main at 6a2783e017a6cbb21c66a405a332c9d2b8f8a8e0. No force-push, new model/Freebuff cycle, deployment, PCB or advanced work. Stop/report bounded result before expansion. Source/Git stay on C; ancillary junction unchanged.
 ```
 
 ## Sources

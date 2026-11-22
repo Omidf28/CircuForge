@@ -12,7 +12,7 @@ from circuforge.evaluation.records import environment
 from circuforge.optimization.base import BudgetExhausted, Evaluation, Evaluator, ProposalLimit
 from circuforge.simulation.ngspice import Ngspice
 
-Method = Literal["random", "grid", "scipy"]
+Method = Literal["random", "grid", "scipy", "analytic_rc"]
 
 
 class Options(Model):
@@ -84,7 +84,15 @@ def run_baseline(spec: DesignSpec, simulator: Ngspice, method: Method, *, seed: 
     settings = {"parameter_space": "log10 R/C mapped to [0,1]", "early_target_stop": False,
                 "proposal_limit": evaluator.proposal_limit, "grid_seed_used": False if method == "grid" else None}
     try:
-        if space.fixed:
+        if method == "analytic_rc":
+            from circuforge.optimization.analytic import analytic_candidate
+
+            settings.update(analytic_seed_used=False,
+                            candidate_policy="closest feasible RC product; geometric R midpoint",
+                            model="ideal unloaded continuous first-order RC", maximum_actual_calls=1)
+            evaluator.evaluate(analytic_candidate(spec))
+            stop = "analytic_candidate_evaluated"
+        elif space.fixed:
             evaluator.evaluate(space.candidate([0., 0.]))
             stop = "domain_exhausted"
         elif method == "grid":

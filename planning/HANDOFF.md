@@ -1,5 +1,37 @@
 # CircuForge — portable handoff
 
+## Active post-MVP numerical follow-up — 2026-11-22
+
+The latest `next` continues the previously recommended local physics-informed RC
+improvement on codex/physics-guided-rc. P7-C4 is a separate bounded follow-up to
+the accepted v0.1 MVP, not PCB or a new model/Freebuff cycle. Version 0.2.0 adds
+analytic_rc to existing optimize/design/API paths, with one actual measured call
+and preserved simulator/reference/target checks. Original compare/baseline runs
+and datasets are unchanged. Prior 438-test/MVP evidence remains historical and
+must not be relabeled as acceptance of this changed source.
+
+Frozen examples/physics-onecall-v1.json hash-pins the 20-case normalized v2 source:
+same domains/sweeps/targets/tolerances, derived one-call/five-second settings,
+three seeds and four methods. Two actual runs used 384 benchmark calls under a
+500-call combined cap; test fixtures are separate. The analytic method uses privileged
+known physics and its seed repetitions are deterministic controls. No general
+optimizer/hardware claim follows from a win. Full automatic acceptance passed:
+472 tests in 142.587s, no skips/errors/failures, 100 unchanged Python source/test/
+script hashes, all 384 raw calls audited and exact numerical replay. Per run each
+method used 48 calls and rejected 12 infeasible requests at zero calls. Analytic
+passed 42/42 free-domain plus 6/6 fixed-control trials; each classical method
+passed only 6/6 fixed controls, preserving all 42 free-domain misses. Artifacts:
+Automatic_Acceptance/physics-onecall-2026-11-22. Source fingerprint:
+68e902d97160e487ca29e1fa49806810d073aef1e749cd13c4b3de6c4c221cf3.
+Fresh isolated wheel CLI/HTTP verification also passed with three additional
+actual calls (two raw audited, one JSON matched), identical installed source
+fingerprint and 33 matching package files. The 2300-Hz example measured
+2299.913312912917 Hz (0.00377% error), one call per interface, successful cleanup.
+Wheel SHA bc572be74a244f14cddb96ac2dda607ce5c5805fc51e9001b0669e012218c295.
+P7-C4 is done locally; do not push this new branch without publication scope.
+The old v0.1 handoff bundle stays unchanged. No new model/Freebuff allowance or
+P8/PCB/advanced expansion was started. See docs/ANALYTIC_RC.md.
+
 ## GitHub MVP synchronization — 2026-11-22
 
 Owner requested «نمیخوای گیت هاب پروژه رو اپدیت کنی؟», authorizing the current
@@ -41,7 +73,7 @@ source >=3.11 declaration does not make these pins compatible with 3.11. Retaine
 the earlier draft, corrected guide/manifest in a separate final package and
 verified all final checksums/ZIP members again without changing source/wheel bytes.
 
-Recommended next scope: improve ideal-RC numerical design with an explicit
+Historical recommendation, implemented later as P7-C4 above: improve ideal-RC numerical design with an explicit
 physics-based proposal and real verification before adding a GUI, because many
 free-domain baseline trials miss the original target tolerance. This is a
 recommendation, not an implemented new method or a changed benchmark. Preserve

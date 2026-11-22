@@ -1,0 +1,12 @@
+{
+  "policy": "physics-onecall-v1",
+  "source_benchmark": "benchmark-v2.json",
+  "source_sha256": "e8820894dfd3a88402f88266341171d7e6cb0d112210854b64cf8901efcf3b55",
+  "seeds": [7, 42, 2026],
+  "methods": ["random", "grid", "scipy", "analytic_rc"],
+  "calls_per_method": 1,
+  "timeout_s": 5.0,
+  "repetitions": 2,
+  "max_total_spice_calls": 500,
+  "provenance": "New one-call ideal-RC comparison; original v2 domains/sweeps/targets/tolerances unchanged. Only the per-method budget and timeout are explicitly changed for this separate experiment. Analytic/grid seed repetitions are deterministic controls, not independent samples. No model or cloud calls."
+}
