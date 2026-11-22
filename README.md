@@ -13,6 +13,12 @@ See [operation/troubleshooting](docs/OPERATIONS.md) and the
 and demo tasks are complete within the validated local scope. Research target
 misses remain reported failures; optional PCB/advanced work is not started.
 
+A local source/wheel/demo handoff bundle is ready from accepted commit `1ea9bd2`.
+See [docs/LOCAL_RELEASE.md](docs/LOCAL_RELEASE.md) for its contents, integrity checks
+and installation requirements. The pinned bundle targets Python 3.12 and needs
+separately installed ngspice;
+no remote release or push has been performed.
+
 Phase 2 adds measured objectives, seeded random/grid and SciPy baselines with identical SPICE-call caps, exact per-run caching and raw per-call evidence. The owner-authorized **automatic acceptance gate passed with 170 tests and 771 freshly audited real calls**. The five-case comparison and its target misses remain documented in [docs/PHASE2.md](docs/PHASE2.md).
 
 Phase 3 adds 20 normalized-distinct nominal benchmark cases and three-seed comparisons. Its automatic gate passed with **198 tests and 3060 audited real calls including exact numerical replay**. Per run, 18 fixed-control designs passed, 126 free-domain results missed the original tolerance and 36 infeasible requests were rejected before simulation. See [docs/PHASE3.md](docs/PHASE3.md). No manual technical review is required.

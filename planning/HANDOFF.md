@@ -1,5 +1,36 @@
 # CircuForge — portable handoff
 
+## Local source/wheel/demo handoff — 2026-11-22
+
+Owner requested `next` after local MVP acceptance, then asked for the recommended
+direction. Prepared a reversible local handoff from clean accepted commit
+`1ea9bd2`, without starting optional PCB/frontend/provider work. Bundle:
+external Releases/CircuForge-local-mvp-1ea9bd2-20261122-py312.zip, **791661 bytes**,
+SHA-256 538f18e0a93b8918fc7a0edbc071b026d54f2933e4dec97e9edb0b35fbf0807a.
+It contains source ZIP, validated wheel, actual demo, tested constraints, original
+acceptance/JUnit, quickstart and per-file manifests/checksums.
+
+Verified 151 tracked archive files, all 93 accepted source/test hashes and all
+31 wheel package files against source; no common credential signatures or
+private/generated/unsafe archive paths. CRC and every outer member checked.
+No new tests/simulations/model calls were needed for this unchanged accepted code;
+438 tests remain the dated MVP acceptance. Python/ngspice/dependencies/raw datasets
+are not bundled. See docs/LOCAL_RELEASE.md. No remote push/deployment.
+
+Inspected installed NumPy/SciPy metadata: the tested pins require Python >=3.12.
+Final quickstart explicitly targets Python 3.12 (tested 3.12.7); the generic
+source >=3.11 declaration does not make these pins compatible with 3.11. Retained
+the earlier draft, corrected guide/manifest in a separate final package and
+verified all final checksums/ZIP members again without changing source/wheel bytes.
+
+Recommended next scope: improve ideal-RC numerical design with an explicit
+physics-based proposal and real verification before adding a GUI, because many
+free-domain baseline trials miss the original target tolerance. This is a
+recommendation, not an implemented new method or a changed benchmark. Preserve
+the existing experiments and define the next bounded comparison separately when
+the owner selects that direction. P8/PCB and all consumed model/Freebuff cycles
+remain unstarted/closed respectively.
+
 ## Local research MVP accepted — 2026-11-22
 
 On codex/p7-captured-demo, P7-C3 and phase7-local-research-mvp-v1 passed:
