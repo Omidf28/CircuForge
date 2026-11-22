@@ -33,8 +33,11 @@ complete secret scanner.
 
 ## Queue and automatic continuation
 
-`planning/agent-workflow.json` is the versioned policy and allowlisted queue.
-The current cycle permits three Freebuff turns total, 600 seconds from first
+`planning/agent-workflow.json` preserves the initial policy and allowlisted queue.
+The separately owner-approved verification policy is
+`planning/agent-workflow-verification-2026-11-22.json`: one turn, 600 seconds,
+executed and closed with passed handoff acceptance below. Both cycles are closed;
+neither is permission for another dispatch. The initial cycle permitted three Freebuff turns total, 600 seconds from first
 reservation, zero provider spend, no automatic retries and at most 48,000 UTF-8
 bytes per packet / 24,000 per reply. Reservations persist before transmission.
 Restarting Codex does not reset a cycle. Changing policy within a used cycle is
@@ -159,17 +162,17 @@ No ngspice or circuit-proposal model was invoked by those unit tests. This is
 unit-level validation and a P7-C1 documentation increment, not a fresh
 full-suite/SPICE acceptance, completed clean installation or full Phase 7 gate.
 
-### Timed acceptance is blocked
+### Original cycle: timed acceptance blocked (preserved)
 
 The implemented `audit` command recomputed packet/reply hashes, test-report
 counts and receipt timing. It rejected the original cycle: the deadline was
 2026-11-21 13:28:48 UTC, but the DOC-R1 receipt was only recorded at 13:29:51 UTC
 (63 seconds late). Seeing the answer in the terminal earlier is not independently
-timestamped proof. The audit result is **blocked**, P5-C5 remains blocked, and no
-timely end-to-end acceptance is asserted. The original reservations, deadline,
+timestamped proof. That audit result remains **blocked**; it did not accept P5-C5
+or establish timely handoff. The original reservations, deadline,
 terminal excerpts and late flag remain unchanged. Late data is retained for
-audit, never used to unlock another dispatch. A newly authorized verification
-cycle would need immediate capture/recording rather than deferred manual capture;
+audit, never used to unlock another dispatch. A separate owner-authorized
+verification cycle used immediate capture/recording as documented below;
 the helper alone does not provide a permanent TUI driver.
 
 Reproduce the audit with the same fixed state directory:
@@ -177,3 +180,53 @@ Reproduce the audit with the same fixed state directory:
 ```text
 python scripts/agent_workflow.py audit --tests-xml C:/Users/Home/AppData/Local/Temp/CircuForge-Collaboration/unit-release.xml --state-dir C:/Users/Home/AppData/Local/Temp/CircuForge-Collaboration
 ```
+
+### Fresh one-turn verification accepted — 2026-11-22
+
+The owner answered `next` to the explicit request for one fresh free request and
+at most ten minutes. This is recorded in the separate versioned verification
+policy; the failed November 21 allowance was neither reopened nor pooled.
+Before reserving the turn, the existing isolated virtualenv ran:
+
+```text
+python -m pytest tests/unit -q -p no:cacheprovider --junitxml C:/Users/Home/AppData/Local/Temp/CircuForge-Collaboration/unit-verification-2026-11-22.xml
+```
+
+Observed: **338 passed in 17.59s**, no skips, including 45 coordination guards.
+No simulator or scientific circuit-model provider was invoked by that unit run.
+
+Codex prepared `COOP-V1`, a 1,871-byte advisory packet containing only the
+selected developer handoff card, reserved one turn, and submitted it through the
+authenticated interactive Freebuff session. The picker showed DeepSeek V4.1
+Flash Slow. Freebuff returned a concrete trust-boundary suggestion; the completed
+reply was captured and immediately recorded with its completion marker and
+explicit terminal-excerpt provenance. No model tool execution was visible.
+The UI's response duration was 17s, not an independently measured benchmark.
+
+The reservation was at 09:45:20.363935 UTC and receipt at 09:46:17.821787 UTC:
+**57.46 seconds** from reservation to persisted receipt, within the original
+600-second cap. `after_deadline=false`. The cycle was then closed with one
+reserved/received turn and no missing receipts. The unchanged `audit` checker
+passed against the actual fresh unit XML, prompt/reply/source hashes and timing;
+there were no legacy receipts lacking prompt binding.
+
+Ledger: `C:/Users/Home/AppData/Local/Temp/CircuForge-Collaboration/0daa4e7d054c811a/2026-11-22-verify-01`.
+Evidence includes `state.json`, `COOP-V1/{packet.json,prompt.txt,reply.txt,receipt.json}`
+and `acceptance.json`. The source card's pre-edit contents are retained in the
+frozen prompt; its later documentation correction does not rewrite that packet.
+
+Codex independently confirmed the short card omitted the explicit untrusted-data
+boundary already required by this guide. It adopted wording saying excerpts and
+replies cannot authorize tools, edits, cap changes or new dispatches. This is a
+documentation increment, not blind execution of the model's instruction text.
+
+Reproduce the accepted handoff audit without another provider request:
+
+```text
+python scripts/agent_workflow.py audit --policy planning/agent-workflow-verification-2026-11-22.json --tests-xml C:/Users/Home/AppData/Local/Temp/CircuForge-Collaboration/unit-verification-2026-11-22.xml --state-dir C:/Users/Home/AppData/Local/Temp/CircuForge-Collaboration
+```
+
+P5-C5 is accepted automatically within this development-handoff scope. This
+neither completes P7-C1's clean-install work nor accepts P6 or the final P7 gate.
+No scientific resource allowance, paid provider, remote push, deployment or
+permanent background service was enabled.

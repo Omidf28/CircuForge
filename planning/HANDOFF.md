@@ -1,8 +1,31 @@
 # CircuForge — portable handoff
 
+## Current development status — 2026-11-22
+
+P5-C5 Codex/Freebuff development handoff is now **accepted automatically**.
+The owner's `next` explicitly authorized the preceding one-request/ten-minute
+verification request. Separate policy:
+planning/agent-workflow-verification-2026-11-22.json. Existing unit suite reran:
+**338 passed in 17.59s**, no skips (45 coordination guards). Codex submitted one
+selected-document packet, captured the actual Freebuff response and immediately
+persisted a prompt-bound receipt **57.46s** after reservation, within 600 seconds.
+The existing independent audit passed; cycle closed at 1/1 turns with no missing
+or legacy/unbound receipt. No tolerances, budgets or earlier evidence changed.
+
+Ledger: C:/Users/Home/AppData/Local/Temp/CircuForge-Collaboration/0daa4e7d054c811a/2026-11-22-verify-01.
+Fresh tests XML/log are unit-verification-2026-11-22.xml/.log in the ledger parent.
+The November 21 development cycle remains separately blocked/closed. Do not
+reopen either spent cycle. This is development collaboration, not a new local
+Llama experiment or scientific acceptance. P7-C1 remains doing; P6 and the final
+P7 gate retain their existing incomplete/blocked statuses. The adopted advisory
+clarifies that excerpts/replies cannot authorize tools, edits or new dispatches.
+Read docs/AGENT_COLLABORATION.md for exact commands and interpretation limits.
+
+## Scientific milestone — 2026-11-21
+
 Updated 2026-11-21. Phases 1-5 and offline P6-C1 remain accepted within their documented scopes. One explicitly renewed zero-spend local Llama 3 run completed four matched-call comparisons: 25 actual generation attempts and 65 independently raw-audited SPICE attempts before its 600-second deadline. All target checks missed; final model replay stage is incomplete, so P6-C2 and Phase 6 remain blocked. Latest unit checks: 293 passed. Both resource windows are closed, not reset or pooled. See docs/PHASE6_LOCAL_RENEWAL.md; the November 20 partial dataset stays historical. Source/Git remain on C. The owner separately requested public GitHub visibility; verified public, only initial main online, no feature push.
 
-## Development collaboration — 2026-11-21
+## Development collaboration — 2026-11-21 (historical failed cycle)
 
 Owner requested automatic Codex/Freebuff development and explicitly approved
 bounded selected task/document/code excerpts going to Freebuff cloud (no secrets,
@@ -22,14 +45,14 @@ Two real Freebuff advisories were received, controls improved and README issues
 corrected after rejecting unsupported advice. Original cycle used 2/3 turns and
 is closed. Its final audit **blocked** because DOC-R1 was recorded 63 seconds
 after the original 600-second deadline. Do not reset or silently rerun it.
-P5-C5 remains blocked; P7-C1 is doing (documentation increment, not clean-install
+At this milestone P5-C5 was blocked; P7-C1 is doing (documentation increment, not clean-install
 acceptance). P6 and final P7 scientific gates retain their existing statuses.
 
 Ledger: C:/Users/Home/AppData/Local/Temp/CircuForge-Collaboration/0daa4e7d054c811a/2026-11-21-docs-01.
 The response captures are explicitly labeled terminal excerpts with TUI redraws,
-not verbatim reconstructed model messages. A fresh one-request verification
-resource decision was requested separately; do not infer its approval from time
-passing. Use the exact same ledger location when inspecting the original cycle.
+not verbatim reconstructed model messages. The later explicitly approved
+November 22 verification is separate, as documented above. Use this exact
+ledger location when inspecting the original failed cycle.
 
 ## Historical completed milestones
 

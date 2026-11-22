@@ -1,5 +1,14 @@
 # CircuForge — Codex workspace instructions
 
+## Owner update — single verification cycle (2026-11-22)
+
+Owner answered `next` to the explicit one-request/ten-minute Freebuff verification
+request. That separate cycle is now consumed and closed under
+planning/agent-workflow-verification-2026-11-22.json. Its timed handoff audit
+passed; P5-C5 accepted. The original November 21 late-receipt cycle remains
+blocked/closed. Use planning/HANDOFF.md for current evidence; do not reopen either
+allowance or infer new scientific trials, paid APIs, pushes or deployment.
+
 ## Owner update — Codex / Freebuff collaboration (2026-11-21)
 
 The owner requested automatic coordinated roadmap work without manually copying

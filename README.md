@@ -170,6 +170,13 @@ roles, data scope, persistent caps and current execution evidence are in
 [docs/AGENT_COLLABORATION.md](docs/AGENT_COLLABORATION.md). It runs during an active
 Codex session; no permanent background service or paid SDK is configured.
 
+P5-C5's handoff acceptance passed on 2026-11-22: **338 unit tests**, one actual
+Freebuff advisory and a prompt-bound receipt persisted within the declared time
+cap. The earlier late-receipt cycle remains separately recorded as blocked.
+Both development cycles are closed; this does not renew scientific experiments
+or complete the final P7 gate. See the collaboration guide for reproducible audit
+commands and the separately authorized verification policy.
+
 ## Version control
 
 See [docs/VERSION_CONTROL.md](docs/VERSION_CONTROL.md) for the GitHub setup, owner-requested public visibility, staged credential scan and feature-branch workflow. Generated simulation evidence stays local and is excluded from Git. The initial main commit was pushed with owner approval; later feature branches remain local until separately approved.

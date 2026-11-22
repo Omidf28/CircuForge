@@ -402,9 +402,9 @@
           "acceptance": "Fail-closed tests cover prerequisites, consent, changed packets, concurrent/duplicate dispatch, persistent caps and untrusted replies; actual Freebuff receipt recorded separately from engineering acceptance. No paid SDK, daemon or full P7/Phase 6 acceptance claim.",
           "effort": 3,
           "dependsOn": ["P5-C4"],
-          "status": "blocked",
+          "status": "done",
           "acceptanceMode": "automated",
-          "evidence": "Observed 2026-11-21: 338 unit tests passed in 13.26s without skips, including 45 coordination regressions; two actual reserved Freebuff advisories captured and independently reviewed. Final automatic handoff audit correctly blocked: DOC-R1 receipt recorded at 13:29:51 UTC after the original 13:28:48 UTC deadline. Old limits/evidence retained, no fresh cycle silently started. Controls/docs corrections exist but timed end-to-end acceptance is not claimed. See docs/AGENT_COLLABORATION.md. P5-C4 historical scientific gate unchanged."
+          "evidence": "Accepted automatically 2026-11-22 after explicit owner next authorized a separate one-turn/600-second verification cycle. 338 actual unit tests passed in 17.59s without skips, including 45 coordination guards; one real Freebuff response recorded 57.46s after reservation with matching prompt/source/reply hashes and no legacy/unbound receipt. Existing audit passed, cycle closed at 1/1 turns; useful trust-boundary wording was independently checked and adopted. The November 21 late-receipt cycle remains blocked with original counters/evidence. See docs/AGENT_COLLABORATION.md and 2026-11-22-verify-01/acceptance.json. No scientific, clean-install or full P7 gate acceptance implied."
         },
         {
           "id": "P5-C1",

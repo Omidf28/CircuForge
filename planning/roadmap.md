@@ -1,6 +1,6 @@
 # CircuForge · Wave2Circuit Research Edition
 
-Version 2.1.0 · assembled 2026-11-21 · architecture assumptions to verify in current environment
+Version 2.1.0 · assembled 2026-11-22 · architecture assumptions to verify in current environment
 
 Phases 1-5 and offline P6-C1 remain accepted in their documented scopes. Explicitly renewed zero-spend local Llama 3 trial completed four matched-call comparisons with 25 model requests and 65 raw-audited SPICE attempts. All target checks missed. Integrity/comparison data passed; final model replay incomplete, so P6-C2/Phase 6 remain blocked. Latest unit checks: 293 passed, separate from historical full-suite acceptance. Both local windows closed and datasets kept separate. GitHub visibility is now public by owner request; only initial main is online, no feature push. See docs/PHASE6_LOCAL_RENEWAL.md.
 
@@ -450,7 +450,7 @@ Status: done · Estimate: 4 active hours
 
 #### P5-C5 · Codex · Bounded Codex and Freebuff development handoff
 
-Status: blocked · Estimate: 3 active hours
+Status: done · Estimate: 3 active hours
 
 **Action:** Codex drives the existing interactive free-model terminal with selected packets; persist limits and source hashes, receive advisory output, independently check edits and continue eligible jobs automatically within one authorized cycle.
 
@@ -460,7 +460,7 @@ Status: blocked · Estimate: 3 active hours
 
 **Depends on:** P5-C4
 
-**Evidence:** Observed 2026-11-21: 338 unit tests passed in 13.26s without skips, including 45 coordination regressions; two actual reserved Freebuff advisories captured and independently reviewed. Final automatic handoff audit correctly blocked: DOC-R1 receipt recorded at 13:29:51 UTC after the original 13:28:48 UTC deadline. Old limits/evidence retained, no fresh cycle silently started. Controls/docs corrections exist but timed end-to-end acceptance is not claimed. See docs/AGENT_COLLABORATION.md. P5-C4 historical scientific gate unchanged.
+**Evidence:** Accepted automatically 2026-11-22 after explicit owner next authorized a separate one-turn/600-second verification cycle. 338 actual unit tests passed in 17.59s without skips, including 45 coordination guards; one real Freebuff response recorded 57.46s after reservation with matching prompt/source/reply hashes and no legacy/unbound receipt. Existing audit passed, cycle closed at 1/1 turns; useful trust-boundary wording was independently checked and adopted. The November 21 late-receipt cycle remains blocked with original counters/evidence. See docs/AGENT_COLLABORATION.md and 2026-11-22-verify-01/acceptance.json. No scientific, clean-install or full P7 gate acceptance implied.
 
 **Advisor:** Freebuff · Codex retains writing and automatic acceptance.
 
@@ -714,19 +714,19 @@ Status: todo · Estimate: 4 active hours
 
 ## Codex and Freebuff collaboration
 
-**Policy:** planning/agent-workflow.json
+**Policy:** planning/agent-workflow-verification-2026-11-22.json
 
 **Guide:** docs/AGENT_COLLABORATION.md
 
 **Mode:** Codex-driven interactive terminal; finite queue during an active session
 
-**Limits:** One authorized cycle: 3 turns, 600 seconds, zero provider spend, no automatic retries
+**Limits:** Verification allowance: 1 turn, 600 seconds, zero provider spend, no retry; consumed and closed. Original 3-turn cycle remains separately closed/blocked.
 
-**Acceptance:** Automatic tests/checkers; advisory receipt is not engineering acceptance
+**Acceptance:** Automatic handoff audit passed on a separately authorized one-turn verification; 338 unit tests, matching hashes and timely receipt. Advisory text alone is not engineering acceptance.
 
 **Data consent:** Owner explicitly approved selected task text, documentation and necessary code excerpts to Freebuff cloud on 2026-11-21; secrets, personal files, environment files, Git history and raw experiments excluded
 
-Continue eligible job dependencies without owner copy/paste; stop on caps, missing evidence, auth/quota/network or restricted actions. No daemon or automatic new cycle. Final P7 gate still depends on P6.
+P5-C5 accepted after real one-turn verification. Codex drives bounded terminal handoffs without owner copy/paste during an active session. Existing cycles are closed; no daemon or automatic new cycle. P7-C1 remains doing and final P7 gate still depends on P6.
 
 ## Proposed architecture
 
