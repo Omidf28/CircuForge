@@ -393,6 +393,19 @@
       "optional": false,
       "tasks": [
         {
+          "id": "P5-C7",
+          "owner": "Codex",
+          "title": "Keep desktop controls reachable in compact windows",
+          "action": "Fix the reproduced clipped Run button using a scrollable settings viewport, pinned run/progress actions and responsive result text.",
+          "deliverable": "v0.3.1 compact layout repair, real-Tk geometry/scroll checks and screen-independent source/installed widget/raw verification.",
+          "acceptance": "Run/progress/results-folder controls remain within the client at 1040x620, 1040x760 and 1280x900; settings scroll and chart wheel is not hijacked. Following owner's screen-free preference, current full tests, four earlier layout checks and withdrawn source/installed widget/raw audits must pass with no OS input/mapped window; do not claim new pixel QA. Preserve historical scientific evidence.",
+          "effort": 2,
+          "dependsOn": ["P5-C6"],
+          "status": "done",
+          "acceptanceMode": "automated",
+          "evidence": "Accepted 2026-11-23 under phase5-desktop-background-v1 after owner requested no screen interaction. v0.3.1 fixes reproduced clipped Run with scrollable settings/pinned actions/responsive text. Four real Tk size/scroll checks passed (single-window fixture 1.78s; earlier failed multi-root attempt retained). Current core suite 525 passed in 143.17s without skips/errors/failures; 113 Python hashes and 37 source/wheel/installed package files match. Fresh runtime retained 521-test/27-call CLI/HTTP evidence. Withdrawn widget source low/high-pass passes and manual target miss plus installed -I low-pass independently raw-audited: accepted packet 31 actual calls, 22 raw audited, nine JSON matched. One earlier visible compact call preserved/audited separately: maintenance total 32, fixtures separate. Busy/duplicate/invalid/stale/metric states checked without OS input/capture or mapped windows; new pixel QA explicitly not claimed. docs/DESKTOP.md; external desktop-compact-2026-11-22/background-2026-11-23/final-acceptance. No provider cycle, push or deployment."
+        },
+        {
           "id": "P5-C6",
           "owner": "Codex",
           "title": "Owner-selected simple local desktop interface",

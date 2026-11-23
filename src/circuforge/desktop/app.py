@@ -38,7 +38,7 @@ class DesktopApp:
         self.root.title("CircuForge — Local RC Studio")
         self.root.configure(bg=BG)
         self.root.geometry(f"{min(1280, root.winfo_screenwidth() - 80)}x{min(900, root.winfo_screenheight() - 100)}")
-        self.root.minsize(1040, 760)
+        self.root.minsize(1040, 620)
         self.root.protocol("WM_DELETE_WINDOW", self.close)
         self._styles()
         header = tk.Frame(root, bg=INK, height=78)
@@ -51,19 +51,38 @@ class DesktopApp:
         body.pack(fill="both", expand=True, padx=20, pady=18)
         body.columnconfigure(1, weight=1)
         body.rowconfigure(0, weight=1)
-        left = tk.Frame(body, bg="white", padx=18, pady=15, width=330)
-        left.grid(row=0, column=0, sticky="nsew", padx=(0, 16))
+        sidebar = tk.Frame(body, bg="white")
+        sidebar.grid(row=0, column=0, sticky="nsew", padx=(0, 16))
+        sidebar.columnconfigure(0, weight=1)
+        sidebar.rowconfigure(0, weight=1)
+        self.form_canvas = tk.Canvas(sidebar, bg="white", width=330, highlightthickness=0)
+        self.form_canvas.grid(row=0, column=0, sticky="nsew")
+        scrollbar = ttk.Scrollbar(sidebar, orient="vertical", command=self.form_canvas.yview)
+        scrollbar.grid(row=0, column=1, sticky="ns")
+        self.form_canvas.configure(yscrollcommand=scrollbar.set)
+        left = tk.Frame(self.form_canvas, bg="white", padx=18, pady=15)
+        self.form_window = self.form_canvas.create_window(0, 0, anchor="nw", window=left)
+        self.form_canvas.bind("<Configure>", self._form_width)
+        left.bind("<Configure>", lambda event: self.form_canvas.configure(scrollregion=self.form_canvas.bbox("all")))
+        self.root.bind("<MouseWheel>", self._scroll_form, add="+")
         left.columnconfigure(0, weight=1)
         right = tk.Frame(body, bg=BG)
         right.grid(row=0, column=1, sticky="nsew")
         right.columnconfigure(0, weight=1)
         right.rowconfigure(3, weight=1)
         self._form(left)
+        actions = tk.Frame(sidebar, bg="white", padx=18, pady=10)
+        actions.grid(row=1, column=0, columnspan=2, sticky="ew")
+        self.run_button = ttk.Button(actions, text="Run measured design", style="Run.TButton", command=self.run)
+        self.run_button.pack(fill="x", pady=(0, 6))
+        self.progress = ttk.Progressbar(actions, mode="indeterminate")
+        self.progress.pack(fill="x")
         self.badge = tk.Label(right, textvariable=self.status, bg="#e1edf5", fg=INK,
                               font=("Segoe UI", 12, "bold"), anchor="w", padx=14, pady=10)
         self.badge.grid(row=0, column=0, sticky="ew")
-        tk.Label(right, textvariable=self.details, bg=BG, fg=MUTED, justify="left", anchor="w",
-                 wraplength=740, font=("Segoe UI", 10)).grid(row=1, column=0, sticky="ew", pady=(8, 12))
+        self.details_label = tk.Label(right, textvariable=self.details, bg=BG, fg=MUTED, justify="left", anchor="w",
+                                      wraplength=600, font=("Segoe UI", 10))
+        self.details_label.grid(row=1, column=0, sticky="ew", pady=(8, 12))
         metrics = tk.Frame(right, bg=BG)
         metrics.grid(row=2, column=0, sticky="ew", pady=(0, 12))
         self.metrics = {}
@@ -85,10 +104,12 @@ class DesktopApp:
         foot = tk.Frame(right, bg=BG)
         foot.grid(row=4, column=0, sticky="ew", pady=(10, 0))
         foot.columnconfigure(0, weight=1)
-        tk.Label(foot, textvariable=self.saved, bg=BG, fg=MUTED, font=("Segoe UI", 9),
-                 anchor="w", justify="left", wraplength=590).grid(row=0, column=0, sticky="ew")
+        self.saved_label = tk.Label(foot, textvariable=self.saved, bg=BG, fg=MUTED, font=("Segoe UI", 9),
+                                    anchor="w", justify="left", wraplength=420)
+        self.saved_label.grid(row=0, column=0, sticky="ew")
         self.open_button = ttk.Button(foot, text="Open results folder", command=self.open_results, state="disabled")
         self.open_button.grid(row=0, column=1, padx=(10, 0))
+        right.bind("<Configure>", self._right_width)
         for variable in (*self.variables.values(), self.output_root, self.executable):
             variable.trace_add("write", self._changed)
         self.root.after(80, self._poll)
@@ -102,6 +123,21 @@ class DesktopApp:
         style.configure("TButton", padding=(10, 7), font=("Segoe UI", 10))
         style.configure("Run.TButton", background=TEAL, foreground="white", font=("Segoe UI", 11, "bold"), padding=(12, 11))
         style.map("Run.TButton", background=[("disabled", "#96b7b5"), ("active", "#056d68")])
+
+    def _form_width(self, event):
+        self.form_canvas.itemconfigure(self.form_window, width=event.width)
+
+    def _scroll_form(self, event):
+        canvas = self.form_canvas
+        if (canvas.winfo_rootx() <= event.x_root < canvas.winfo_rootx() + canvas.winfo_width() and
+                canvas.winfo_rooty() <= event.y_root < canvas.winfo_rooty() + canvas.winfo_height() and event.delta):
+            units = -int(event.delta / 120) or (-1 if event.delta > 0 else 1)
+            canvas.yview_scroll(units, "units")
+            return "break"
+
+    def _right_width(self, event):
+        self.details_label.configure(wraplength=max(200, event.width - 12))
+        self.saved_label.configure(wraplength=max(200, event.width - self.open_button.winfo_reqwidth() - 20))
 
     def _entry(self, frame, key, label, row, column=0):
         ttk.Label(frame, text=label).grid(row=row, column=column, sticky="w", pady=(5, 3))
@@ -146,23 +182,20 @@ class DesktopApp:
         storage.columnconfigure(0, weight=1)
         ttk.Label(storage, text="Save results in").grid(row=0, column=0, sticky="w")
         entry = ttk.Entry(storage, textvariable=self.output_root, width=26)
+        self.output_entry = entry
         entry.grid(row=1, column=0, sticky="ew", pady=3)
         browse = ttk.Button(storage, text="Browse…", command=self._browse_output)
         browse.grid(row=1, column=1, padx=(5, 0))
         self.controls.extend(((entry, "normal"), (browse, "normal")))
         ttk.Label(storage, text="ngspice executable · optional").grid(row=2, column=0, columnspan=2, sticky="w", pady=(7, 0))
         spice = ttk.Entry(storage, textvariable=self.executable, width=26)
+        self.executable_entry = spice
         spice.grid(row=3, column=0, sticky="ew", pady=3)
         choose = ttk.Button(storage, text="Choose…", command=self._browse_executable)
         choose.grid(row=3, column=1, padx=(5, 0))
         self.controls.extend(((spice, "normal"), (choose, "normal")))
         tk.Label(storage, text="Blank uses CIRCUFORGE_NGSPICE / PATH", bg="white", fg=MUTED,
                  font=("Segoe UI", 8)).grid(row=4, column=0, columnspan=2, sticky="w")
-        self.run_button = ttk.Button(left, text="Run measured design", style="Run.TButton", command=self.run)
-        self.run_button.grid(row=7, column=0, sticky="ew", pady=(14, 5))
-        self.progress = ttk.Progressbar(left, mode="indeterminate")
-        self.progress.grid(row=8, column=0, sticky="ew", pady=(3, 0))
-        left.rowconfigure(9, weight=1)
 
     def _diagram(self, candidate=None):
         canvas = self.diagram

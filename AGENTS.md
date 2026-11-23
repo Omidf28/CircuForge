@@ -1,5 +1,22 @@
 # CircuForge — Codex workspace instructions
 
+## Owner preference — keep the laptop screen free (2026-11-23)
+
+Owner asked «ترجیحا رو اسکرینم کار نکن نیاز دارم به اسکرین لپ تاپ» and requested
+work outside the blue/yellow computer-use overlay. Continue coding and local
+automated checks without native mouse/keyboard input, screen capture or visible
+test windows. Program-owned withdrawn Tk widget tests are permitted; never map
+them or claim pixel/visual QA from them. Preserve prior native evidence and
+distinguish it from the new screen-independent acceptance policy. Do not resume
+native computer use without a new explicit request from the owner.
+
+P5-C7/v0.3.1 passed phase5-desktop-background-v1: compact layout repair, 525
+current core tests without skips, four earlier Tk size/scroll checks, 113 Python
+hashes and 37 matching runtime files. Four withdrawn-widget calls plus 27 real
+CLI/HTTP calls audited; earlier visible compact call retained separately. New
+pixel/visual QA is not claimed. See docs/DESKTOP.md and planning/HANDOFF.md.
+Report this completed local maintenance scope; keep screen-free work preference.
+
 ## Owner-selected simple local desktop interface (2026-11-22)
 
 After being offered the next scope, the owner explicitly selected

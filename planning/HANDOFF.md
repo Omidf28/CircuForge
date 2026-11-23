@@ -1,5 +1,57 @@
 # CircuForge — portable handoff
 
+## Accepted screen-independent compact maintenance — 2026-11-23
+
+Current continuation 2026-11-23: owner needs the laptop screen and explicitly
+requested work outside the computer-use overlay. No native input/capture or
+visible test window is permitted now. Closed only our own visible test process.
+Do not resume Sky/CUA without new explicit owner permission. New
+scripts/check_desktop_background.py invokes our own widgets with root withdrawn
+throughout; actual metrics/busy/invalid/stale states are checked without OS input.
+Source low/high-pass passes and manual high-pass target miss passed (three real
+calls); installed -I low-pass passed (one real call). Existing fresh installed
+runtime passed 521 tests and 27 real CLI/HTTP calls. Runtime modules unchanged.
+
+Screen-independent acceptance policy phase5-desktop-background-v1 requires the
+four earlier actual layout checks plus independently audited withdrawn source/
+installed records, not screenshots. Visual/pixel QA is explicitly not claimed.
+P5-C7/v0.3.1 passed phase5-desktop-background-v1: **525 current core tests in
+143.17s** (JUnit 143.159s), no failures/errors/skips; **four separate earlier Tk
+layout checks** (single-window fixture 1.78s), **113 matching Python hashes** and
+**37 source/wheel/installed package files**. Source/installed withdrawn widget
+states and all raw exports were independently audited. The accepted packet has
+31 operational calls (22 raw audited, nine JSON matched); the earlier visible
+compact call is separately audited in prior-visible-call.json: 32 maintenance
+calls including it, with test fixtures separate. No science scores pooled.
+
+Accepted record: external desktop-compact-2026-11-22/background-2026-11-23/
+final-acceptance/acceptance.json. Current tests/hash map, source/installed UI-state
+records and real exports are in that background directory. Earlier layout checks
+are under layout-checks-v2 and unchanged fresh runtime evidence under fresh-install.
+Final/interface/actual wheel SHA-256 independently matched:
+54ec774faf90a5b705a4911a4b37b69741e4f5e414e497dc2aabc5d937e0e191.
+Package source fingerprint:
+86ea43dd59f368cd286331d0e0df04a1c9c99c5ae2bc576342190b6e9856e143.
+
+Owner's next continues the selected local GUI as P5-C7/v0.3.1. Actual native
+resizing of the old 0.3.0 window reproduced its clipped Run action at minimum
+height; before-clipped.jpg is retained under external desktop-compact-2026-11-22.
+Settings now use a scrollable viewport; Run/progress stay pinned and result text
+wraps with the available width. Four real Tk component checks passed at
+1040x620, 1040x760 and 1280x900 plus scroll routing. These are internal component
+construction/layout checks, not OS-input automation or fake science. Default
+core pytest does not require a display; explicit tests/gui/layout_checks.py does.
+
+An initial repeated-root component attempt hit a Tk initialization error; the
+theme file existed and the app-like single-root resize fixture passed all four
+checks. Failed evidence was retained. Native compact screenshot policy remains
+separate and was not used to pretend the final background checks were pixel QA.
+Electrical tolerance/budgets are unchanged. P5-C7 is done; docs/DESKTOP.md gives
+screen-free commands and limits. Historical science/0.3.0 packets remain intact.
+No model cycle, remote push, broad dashboard or PCB is authorized. Report this
+completed maintenance, keep the laptop screen free and do not reopen native
+automation without a new explicit owner request.
+
 ## Accepted owner-selected desktop — 2026-11-22
 
 After completing the bounded MVP/maintenance, asked for a concrete next scope.

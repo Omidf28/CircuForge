@@ -1,5 +1,14 @@
 # Paste this into Codex after opening the extracted CircuForge folder
 
+## Current continuation (2026-11-23)
+
+Owner needs the laptop screen free. Do not use native mouse/keyboard automation,
+screen capture or visible test windows without a new explicit request. P5-C7/
+v0.3.1 compact layout passed screen-independent acceptance: 525 core tests,
+four earlier layout checks and raw-audited withdrawn source/installed widget
+runs with the matching fresh runtime. New pixel QA is not claimed. Read current
+HANDOFF and docs/DESKTOP.md; older source-bound milestones below remain history.
+
 ## Current continuation (2026-11-22)
 
 Owner explicitly chose a simple local graphical interface. P5-C6/v0.3.0 passed

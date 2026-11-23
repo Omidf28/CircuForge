@@ -1,5 +1,12 @@
 # CircuForge — Wave2Circuit Research Edition
 
+**v0.3.1** fixes compact windows: scrollable settings, pinned Run/progress and
+responsive result text. Acceptance passed with **525 core tests, four separate
+Tk layout checks** and independently audited source/installed widget runs.
+At the owner's request, final functional checks used withdrawn windows without
+native input or screen capture; no new pixel/visual QA is claimed. See
+[screen-independent verification](docs/DESKTOP.md#screen-independent-maintenance--v031).
+
 Owner-selected **v0.3.0 local desktop** is implemented and accepted: RC form,
 one background ngspice run, circuit diagram, measured gain/phase and explicit
 pass/target-miss/error results. **516 tests without skips**, a verified fresh

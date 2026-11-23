@@ -1,9 +1,77 @@
-# Simple local desktop — v0.3.0
+# Simple local desktop — v0.3.1
 
 The owner selected this bounded local graphical interface on 2026-11-22.
 It calls the same measured design engine as the CLI. Tkinter provides the window
 and existing Matplotlib provides the chart; there is no web server or model in
 this flow. Full optimizer-comparison dashboard P5-C3 remains deferred.
+
+## Screen-independent maintenance — v0.3.1
+
+P5-C7 fixes a reproduced layout defect: at v0.3.0's minimum window height, the
+Run button could be clipped. Settings now scroll within their own panel,
+Run/progress remain pinned, and result text wraps with available width. Four
+real Tk component checks passed at 1040×620, 1040×760 and 1280×900, including
+scrolling all settings into view without hijacking chart-wheel events. An
+initial repeated-interpreter test attempt hit a Tk initialization error; the
+actual single-window lifecycle fixture passed all four checks. Failed evidence
+was retained. The ordinary core suite does not collect these display-only checks.
+
+On 2026-11-23 the owner requested that the laptop screen remain free. Native
+input/capture stopped, and only our task-owned test window was closed. Current
+functional verification uses `scripts/check_desktop_background.py`: it creates
+our own Tk widgets, immediately withdraws the root before event processing,
+and asserts it remains unmapped throughout. It invokes widget commands directly;
+there is no OS mouse/keyboard input, screen capture or visible test window.
+The scientific response PNGs it writes are plots, not window screenshots.
+
+The checker exercises disabled inputs/duplicate submission, busy/completed
+states, displayed metrics against independently raw-audited physics, stale-result
+notices and invalid-input rejection without allocating another run. Source
+low/high-pass analytic cases passed; manual high-pass retained its target miss.
+The installed `-I` low-pass check also passed. Native pixel/visual QA was not
+completed after the owner's preference changed, and is not claimed by this gate.
+
+`phase5-desktop-background-v1` passed: **525 core tests in 143.17s** (JUnit
+143.159s), zero skips/errors/failures; **four separate layout checks**; **113
+matching Python source/script/test hashes** and **37 matching package files**.
+The unchanged runtime's fresh installation retained its 521-test/27-real-call
+CLI/HTTP evidence. The final packet contains four withdrawn-widget calls plus
+those 27 interface calls: **31 actual calls, 22 raw audited, nine JSON matched**.
+An earlier visible compact low-pass call before the screen-free request is
+separately audited in `prior-visible-call.json`: **32 operational calls total**
+including that interrupted sequence; test-fixture calls are separate. No scores
+were pooled and no extra model/provider cycle was run.
+
+Current external evidence root: `Automatic_Acceptance/desktop-compact-2026-11-22`.
+Accepted record: `background-2026-11-23/final-acceptance/acceptance.json`;
+current suite/hash map: `background-2026-11-23/current-tests/`; source/installed
+withdrawn UI states and raw exports: `background-2026-11-23/source/` and
+`installed/`; earlier four layout checks: `layout-checks-v2/`. Original failure,
+native partial captures and prior version packets are retained as historical.
+Package fingerprint:
+`86ea43dd59f368cd286331d0e0df04a1c9c99c5ae2bc576342190b6e9856e143`.
+Wheel SHA-256:
+`54ec774faf90a5b705a4911a4b37b69741e4f5e414e497dc2aabc5d937e0e191`.
+Final/installation/actual archive hashes were independently compared.
+
+To check widgets without displaying a window (Tk support still required):
+
+```text
+python scripts/check_desktop_background.py --output /new/background-check --ngspice /path/to/ngspice
+```
+
+Use the fresh installed interpreter with `-I`, `--require-installed` and
+`--only-lowpass` for the installed check. To audit an equivalent evidence packet:
+
+```text
+python scripts/accept_desktop.py --interface-evidence /evidence/fresh-install --tests-evidence /evidence/background/current-tests --source-hashes /evidence/background/current-tests/source-before.json --layout-evidence /evidence/layout-checks-v2 --background-evidence /evidence/background/source --installed-background /evidence/background/installed --output /new/background-acceptance
+```
+
+The native screenshot-based policies are retained separately. Background
+acceptance does not pretend to satisfy their pixel-inspection step. Normal
+`python -m circuforge.desktop` still opens the user-facing application when the
+owner chooses; only our verification mode stays hidden. No native automation
+will resume without a new explicit owner request.
 
 ## Install and open
 
@@ -70,7 +138,7 @@ so extremely small displayed error is a grid-aligned numerical result, not a
 general accuracy claim. This is separate from historical benchmark sweeps and
 does not change or pool their outcomes. No hardware performance is claimed.
 
-## Verification
+## Historical v0.3.0 verification
 
 Targeted tests cover conversion, bad/nonfinite/infeasible inputs, background
 single-job enforcement, failure delivery, optional Tk imports and actual

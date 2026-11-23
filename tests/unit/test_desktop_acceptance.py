@@ -3,6 +3,7 @@ import importlib.util
 from pathlib import Path
 from types import SimpleNamespace
 import zipfile
+import json
 
 import pytest
 from PIL import Image
@@ -88,3 +89,40 @@ def test_install_provenance_tracks_the_wheel_not_a_screenshot(tmp_path, monkeypa
         checker.audit_screenshot(screenshot)
         assert proof == {"wheel_sha256": checker.digest(wheel), "package_python_files": 1}
         assert proof["wheel_sha256"] != checker.digest(screenshot)
+
+
+def test_compact_native_capture_uses_its_explicit_height_policy(tmp_path):
+    path = tmp_path / "synthetic-compact.jpg"
+    Image.new("RGB", (1042, 652), "white").save(path)
+    checker = command()
+    with pytest.raises(ValueError, match="invalid"):
+        checker.audit_screenshot(path)
+    assert checker.audit_screenshot(path, minimum_height=600) == checker.digest(path)
+
+
+@pytest.mark.parametrize("mode", ["missing", "short", "skipped", "passed"])
+def test_layout_packet_cannot_omit_or_skip_a_component_check(tmp_path, mode):
+    checker = command()
+    if mode != "missing":
+        count = 3 if mode == "short" else 4
+        cases = ''.join(f'<testcase name="layout-fixture-{i}">{"<skipped/>" if mode == "skipped" and i == 0 else ""}</testcase>'
+                        for i in range(count))
+        (tmp_path / "tests.xml").write_text(f'<testsuite tests="{count}">{cases}</testsuite>')
+    if mode == "passed":
+        assert checker.audit_layout(tmp_path) == 4
+    else:
+        with pytest.raises((ValueError, OSError)):
+            checker.audit_layout(tmp_path)
+
+
+@pytest.mark.parametrize("field,value", [("window_mapped", True), ("os_input_used", True),
+                                        ("screenshots_created", True), ("invalid_input_rejected", False)])
+def test_background_gate_rejects_screen_use_or_missing_input_check(tmp_path, field, value):
+    checker = command()
+    record = dict(status="passed", policy="desktop-withdrawn-controls-v1", os_input_used=False,
+                  window_mapped=False, screenshots_created=False, visual_qa=False, invalid_input_rejected=True,
+                  environment=checker.environment())
+    record[field] = value
+    (tmp_path / "background.json").write_text(json.dumps(record))
+    with pytest.raises(ValueError, match="background"):
+        checker.audit_background(tmp_path, checker.SOURCE_CASES)

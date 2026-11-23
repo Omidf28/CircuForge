@@ -1,8 +1,8 @@
 # CircuForge · Wave2Circuit Research Edition
 
-Version 2.1.0 · assembled 2026-11-22 · architecture assumptions to verify in current environment
+Version 2.1.0 · assembled 2026-11-23 · architecture assumptions to verify in current environment
 
-Owner-selected simple local desktop P5-C6/v0.3.0 accepted automatically 2026-11-22 under phase5-simple-desktop-v1/final-acceptance-v3: 516 current tests without skips, 111 Python hashes, 37 matching installed package files and 31 real GUI/CLI/HTTP calls (22 raw audited, nine JSON matched). Form, single background one-call RC simulation, measured circuit/response/error and saved evidence implemented. Native states agent-inspected; target misses and failed checker drafts preserved, no owner UX review claimed. Prior v0.1 research MVP, v0.2 numerical results/maintenance and release bundles remain source-bound history. Only v0.1 was published via PR #1; current codex/local-desktop-ui stays local. All model/Freebuff cycles closed; broader comparison dashboard, P8/PCB/advanced work and deployment unstarted. Stop/report this delivered bounded scope.
+Owner-selected simple local desktop and v0.3.1 compact-window repair are accepted within local scope. Latest screen-independent gate: 525 core tests, four earlier Tk layout checks, 113 matching Python hashes, 37 matching package files and 31 operational calls (22 raw audited, nine JSON matched); prior visible compact call separately retained. Final checks used withdrawn widgets and independent raw physics audits after owner requested the laptop screen free; no new pixel/visual QA claimed. Prior research, failures and source-bound bundles remain historical. Only v0.1 source was published via PR #1; codex/local-desktop-ui stays local. All model/Freebuff cycles closed; broad dashboard, PCB/advanced work and deployment unstarted. Stop/report bounded maintenance and preserve no-screen-interaction preference.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -447,6 +447,20 @@ Status: done · Estimate: 4 active hours
 **Gate status:** passed
 
 **Gate evidence:** phase5-local-interface-v1 passed: 279 tests, fresh isolated wheel install and real installed CLI/HTTP walkthrough. 27 actual calls, 18 archived/raw-audited plus 9 JSON traces matched; target miss preserved and server/temp cleanup verified. P5-H1 superseded by P5-C4; optional P5-C3 deferred per START_CODEX.md. No human review/deployment/push approval asserted.
+
+#### P5-C7 · Codex · Keep desktop controls reachable in compact windows
+
+Status: done · Estimate: 2 active hours
+
+**Action:** Fix the reproduced clipped Run button using a scrollable settings viewport, pinned run/progress actions and responsive result text.
+
+**Deliverable:** v0.3.1 compact layout repair, real-Tk geometry/scroll checks and screen-independent source/installed widget/raw verification.
+
+**Acceptance:** Run/progress/results-folder controls remain within the client at 1040x620, 1040x760 and 1280x900; settings scroll and chart wheel is not hijacked. Following owner's screen-free preference, current full tests, four earlier layout checks and withdrawn source/installed widget/raw audits must pass with no OS input/mapped window; do not claim new pixel QA. Preserve historical scientific evidence.
+
+**Depends on:** P5-C6
+
+**Evidence:** Accepted 2026-11-23 under phase5-desktop-background-v1 after owner requested no screen interaction. v0.3.1 fixes reproduced clipped Run with scrollable settings/pinned actions/responsive text. Four real Tk size/scroll checks passed (single-window fixture 1.78s; earlier failed multi-root attempt retained). Current core suite 525 passed in 143.17s without skips/errors/failures; 113 Python hashes and 37 source/wheel/installed package files match. Fresh runtime retained 521-test/27-call CLI/HTTP evidence. Withdrawn widget source low/high-pass passes and manual target miss plus installed -I low-pass independently raw-audited: accepted packet 31 actual calls, 22 raw audited, nine JSON matched. One earlier visible compact call preserved/audited separately: maintenance total 32, fixtures separate. Busy/duplicate/invalid/stale/metric states checked without OS input/capture or mapped windows; new pixel QA explicitly not claimed. docs/DESKTOP.md; external desktop-compact-2026-11-22/background-2026-11-23/final-acceptance. No provider cycle, push or deployment.
 
 #### P5-C6 · Codex · Owner-selected simple local desktop interface
 
@@ -982,7 +996,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md, planning/HANDOFF.md and docs/DESKTOP.md. Owner selected the simple local GUI; P5-C6/v0.3.0 is complete on codex/local-desktop-ui. Optional Tk/Matplotlib desktop calls existing typed engine with one background job/call and persistent raw exports. Final phase5-simple-desktop-v1: 516 tests without skips, 111 current Python hashes, 37 byte-matching source/wheel/installed package files; four actual GUI calls plus 27 installed CLI/HTTP calls, 22 raw audited and nine JSON matched. Analytical low/high-pass passes and manual 30.7976% target miss retained; invalid input starts no job, native states agent-inspected without owner UX claim. Evidence: external desktop-ui-2026-11-22/final-acceptance-v3. Earlier screenshot-format block and v2 incorrect wheel-hash metadata retained/superseded; final wheel/interface/archive hashes independently match. Historical numerical/model evidence and v0.1/v0.2 bundles untouched; only earlier v0.1 source published through PR #1. New branch stays local, no push/model/Freebuff cycle/deployment/PCB/advanced scope. Stop/report completed local feature. Source/Git remain on C; existing artifact junction unchanged.
+Read AGENTS.md, planning/HANDOFF.md and docs/DESKTOP.md. P5-C7/v0.3.1 compact repair is complete on codex/local-desktop-ui: scrollable settings, pinned actions and wrapped text. Owner needs the screen free; do not use Sky/CUA/native input/capture/visible test windows without a new explicit request. Screen-independent gate phase5-desktop-background-v1 passed 525 core tests, four earlier layout checks, 113 Python hashes and 37 matching runtime files. Hidden source/installed widget state and raw physics audited: final packet 31 actual calls, 22 raw audited, nine JSON matched; earlier interrupted visible call separately counted, maintenance total 32. No pixel QA claimed; invalid input/duplicate submission/stale result/target miss retained. Evidence: external desktop-compact-2026-11-22/background-2026-11-23/final-acceptance. Old packets/failures/science/bundles remain historical. No push, provider cycle, deployment, PCB or broad dashboard. Report delivered maintenance and keep screen free. Source/Git stay on C; existing artifact junction unchanged.
 ```
 
 ## Sources
