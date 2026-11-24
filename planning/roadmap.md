@@ -1,8 +1,8 @@
 # CircuForge · Wave2Circuit Research Edition
 
-Version 2.1.0 · assembled 2026-11-23 · architecture assumptions to verify in current environment
+Version 2.1.0 · assembled 2026-11-24 · architecture assumptions to verify in current environment
 
-Owner-selected simple local desktop and v0.3.1 compact-window repair are accepted within local scope. Latest screen-independent gate: 525 core tests, four earlier Tk layout checks, 113 matching Python hashes, 37 matching package files and 31 operational calls (22 raw audited, nine JSON matched); prior visible compact call separately retained. Final checks used withdrawn widgets and independent raw physics audits after owner requested the laptop screen free; no new pixel/visual QA claimed. Prior research, failures and source-bound bundles remain historical. Only v0.1 source was published via PR #1; codex/local-desktop-ui stays local. All model/Freebuff cycles closed; broad dashboard, PCB/advanced work and deployment unstarted. Stop/report bounded maintenance and preserve no-screen-interaction preference.
+Owner-selected simple local desktop and v0.3.1 compact-window repair are accepted within local scope. Latest screen-independent gate: 525 core tests, four earlier Tk layout checks, 113 matching Python hashes, 37 matching package files and 31 operational calls (22 raw audited, nine JSON matched); prior visible compact call separately retained. Final checks used withdrawn widgets and independent raw physics audits after owner requested the laptop screen free; no new pixel/visual QA claimed. Prior research, failures and source-bound bundles remain historical. v0.3.1 was merged into main via PR #2. P5-C3 adds a local HTML comparison report from existing evidence. All model/Freebuff cycles are closed; PCB, advanced work and deployment remain deferred. Preserve the owner's screen preference.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -524,9 +524,9 @@ Status: done · Estimate: 8 active hours
 
 #### P5-C3 · Codex · Engineering dashboard (optional)
 
-Status: deferred · Estimate: 10 active hours · Optional
+Status: done · Estimate: 10 active hours · Optional
 
-**Action:** Minimal plot and comparison view after engine passes gates; keep core package usable without UI.
+**Action:** Render a local HTML baseline comparison from existing audited compare output.
 
 **Deliverable:** working prototype with baseline comparison.
 
@@ -534,7 +534,7 @@ Status: deferred · Estimate: 10 active hours · Optional
 
 **Depends on:** P5-C2
 
-**Evidence:** Historical frontend exclusion was superseded only for the owner's 2026-11-22 selection of a simple local desktop under P5-C6. This broader baseline-comparison dashboard remains deferred; no optimizer-comparison UI completion is claimed.
+**Evidence:** Local comparison-report CLI prototype on 9fa34c4: side-by-side actual calls, best target outcomes and per-candidate audit status/failure reasons. 531 tests without skips; five historical comparisons with 771 raw-audited calls replayed byte-identically from the installed wheel; six fresh installed compare calls cover measured passes and unverified failures. Rendering makes zero simulator calls. See docs/COMPARISON_REPORT.md.
 
 #### P5-H1 · Human · User acceptance walkthrough
 

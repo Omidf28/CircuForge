@@ -1,12 +1,14 @@
 {
   "title": "CircuForge · Wave2Circuit Research Edition",
   "version": "2.1.0",
-  "date": "2026-11-23",
+  "date": "2026-11-24",
+  "latestPublication": "v0.3.1 was merged into main via PR #2 at 276871a6825540ea1a6546b5aa1ff158d10e5f21. The desktop failure-message patch was published for review via PR #3 at 3a4bf9c401ec36d1515e82f82786ab34941d2bb7 and verified open. The optional local comparison report has its own feature branch and acceptance evidence.",
+  "currentComparisonReport": "P5-C3 local HTML prototype passed: the CLI audits saved Random, Grid and SciPy outputs, shows best target outcomes and actual call budgets, and lists failed candidates with reasons. 531 tests with no skips, five historical saved comparisons covering 771 raw-audited calls, byte-identical source and installed HTML, six new installed comparison calls and 38 matching runtime files. Rendering makes zero simulator calls. See docs/COMPARISON_REPORT.md.",
   "screenPreference": "Owner needs the laptop screen free: no native mouse/keyboard automation, screen capture or visible test windows without a new explicit request. Continue coding and program-owned withdrawn Tk tests. Do not claim visual/pixel QA from logical UI tests.",
   "currentDesktopWork": "P5-C7/v0.3.1 compact desktop maintenance accepted 2026-11-23 under phase5-desktop-background-v1 on codex/local-desktop-ui. Fixes clipped Run with scrollable settings, pinned actions and responsive text. Owner requested screen-free work; final source/installed UI widgets remained withdrawn, no native input/capture and no pixel QA claim. 525 core tests in 143.17s without skips, four earlier real Tk layout checks, 113 matching Python hashes and 37 source/wheel/installed package files. Matching fresh runtime retained 521-test/27-call CLI/HTTP proof; hidden widgets added four independently raw-audited calls. Final packet 31 calls, 22 raw audited, nine JSON matched; earlier visible compact call preserved separately, maintenance total 32, fixtures separate. Target misses and failed harness attempts retained. docs/DESKTOP.md; external desktop-compact-2026-11-22/background-2026-11-23/final-acceptance. No provider cycle, publication or complex expansion; report complete and keep screen free.",
   "latestMaintenance": "P7-C7 accepted 2026-11-22 under local-gate-caller-paths-v1: remaining Phase 2/3/4/5/7 acceptance and installed walkthrough resolve typed paths before child cwd changes. Five regressions failed before/passed after; 31 targeted tests passed. Actual outside-checkout fresh install plus direct relative-source/output walkthrough passed 480 tests in 136.87s (JUnit 133.576s), no skips/errors/failures, 102 unchanged Python hashes and 54 actual CLI/HTTP calls: 36 raw audited, 18 JSON matched. Both walkthroughs retain two passes/one intentional miss and clean shutdown/storage. All 33 package files match source/wheel/installed bytes; fingerprint unchanged. Older numerical acceptance/bundles stay source-bound; no model request, new scientific gate, publication or deployment. See docs/OPERATIONS.md and planning/HANDOFF.md.",
   "currentLocalHandoff": "P7-C5 complete: local Python 3.12 v0.2 ZIP from accepted source 60b1ff9, 704988 bytes, SHA-256 d2454298cec0709724d480610c02545979557b9c41ae2a551e37b0e6020350c6. Matched 162 source files, 100 accepted hashes and 33 package files; archive/native checksums/quickstart syntax passed. Includes actual CLI export and acceptance summaries, no complete raw benchmark datasets. Original JUnit and prior v0.1 bundle preserved. No new numerical tests/model calls/simulations or upload during packaging. See docs/LOCAL_RELEASE.md; source identity remains 60b1ff9 despite later documentation commits.",
-  "purpose": "Owner-selected simple local desktop and v0.3.1 compact-window repair are accepted within local scope. Latest screen-independent gate: 525 core tests, four earlier Tk layout checks, 113 matching Python hashes, 37 matching package files and 31 operational calls (22 raw audited, nine JSON matched); prior visible compact call separately retained. Final checks used withdrawn widgets and independent raw physics audits after owner requested the laptop screen free; no new pixel/visual QA claimed. Prior research, failures and source-bound bundles remain historical. Only v0.1 source was published via PR #1; codex/local-desktop-ui stays local. All model/Freebuff cycles closed; broad dashboard, PCB/advanced work and deployment unstarted. Stop/report bounded maintenance and preserve no-screen-interaction preference.",
+  "purpose": "Owner-selected simple local desktop and v0.3.1 compact-window repair are accepted within local scope. Latest screen-independent gate: 525 core tests, four earlier Tk layout checks, 113 matching Python hashes, 37 matching package files and 31 operational calls (22 raw audited, nine JSON matched); prior visible compact call separately retained. Final checks used withdrawn widgets and independent raw physics audits after owner requested the laptop screen free; no new pixel/visual QA claimed. Prior research, failures and source-bound bundles remain historical. v0.3.1 was merged into main via PR #2. P5-C3 adds a local HTML comparison report from existing evidence. All model/Freebuff cycles are closed; PCB, advanced work and deployment remain deferred. Preserve the owner's screen preference.",
   "premise": "Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.",
   "vision": "Given a validated filter specification, synthesize constrained analog circuit candidates, simulate them using real ngspice runs, optimize component values, quantify tolerance robustness, and report reproducible evidence. AI is an optional, benchmarked proposal mechanism—not the source of numerical truth.",
   "schedule": "Provisional 12-week two-person, part-time plan (roughly 12–15 team hours per person weekly). Phase gates and actual test evidence take precedence over dates. An MVP may take longer depending on simulator setup.",
@@ -742,16 +744,16 @@
           "id": "P5-C3",
           "owner": "Codex",
           "title": "Engineering dashboard (optional)",
-          "action": "Minimal plot and comparison view after engine passes gates; keep core package usable without UI.",
+          "action": "Render a local HTML baseline comparison from existing audited compare output.",
           "deliverable": "working prototype with baseline comparison.",
           "acceptance": "Shows verified vs unverified candidates and failure reasons.",
           "effort": 10,
           "dependsOn": [
             "P5-C2"
           ],
-          "status": "deferred",
+          "status": "done",
           "optional": true,
-          "evidence": "Historical frontend exclusion was superseded only for the owner's 2026-11-22 selection of a simple local desktop under P5-C6. This broader baseline-comparison dashboard remains deferred; no optimizer-comparison UI completion is claimed."
+          "evidence": "Local comparison-report CLI prototype on 9fa34c4: side-by-side actual calls, best target outcomes and per-candidate audit status/failure reasons. 531 tests without skips; five historical comparisons with 771 raw-audited calls replayed byte-identically from the installed wheel; six fresh installed compare calls cover measured passes and unverified failures. Rendering makes zero simulator calls. See docs/COMPARISON_REPORT.md."
         },
         {
           "id": "P5-H1",
@@ -1051,5 +1053,5 @@
       ]
     }
   ],
-  "assembledDate": "2026-11-23"
+  "assembledDate": "2026-11-24"
 }

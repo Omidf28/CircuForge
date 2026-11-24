@@ -1,5 +1,22 @@
 # CircuForge — portable handoff
 
+## P5-C3 local baseline comparison report — 2026-11-24
+
+The owner asked Codex to advance the roadmap in complete batches. The local
+prototype on `codex/local-comparison-report` renders a standalone HTML report
+from `compare` output with independently audited measurements, target misses,
+failure reasons, and the actual calls used by each method.
+Acceptance: 531 tests without skips, 771 historical raw calls audited,
+five source/installed HTML replays matching byte for byte, and six fresh
+installed comparison calls for success and failure. All 38 runtime Python
+files match the source archive, wheel and installation. The report command
+uses saved data only. See [COMPARISON_REPORT.md](../docs/COMPARISON_REPORT.md).
+
+The separate verified desktop feedback fix was pushed and opened as
+https://github.com/Omidf28/CircuForge/pull/3 (reviewed head `3a4bf9c`).
+The experiment data, model allowances and published v0.3.1 bundle retain
+their original scope.
+
 ## Accepted screen-independent compact maintenance — 2026-11-23
 
 Current continuation 2026-11-23: owner needs the laptop screen and explicitly

@@ -4,7 +4,7 @@
 
 The typed `DesignRequest`/`DesignResult` contract and `application.run_design` are shared by the new `design` CLI command and local FastAPI endpoints. Requests specify validated electrical values and an allowlisted method (`simulate`, `random`, `grid`, `scipy`). Direct simulation requires an explicit candidate; optimizer requests cannot inject one. Source/load assumptions, physical/component constraints and safe ngspice templates remain the verified core. Existing commands and experiments are preserved.
 
-The optional dashboard P5-C3 is deferred: a frontend is excluded by START_CODEX.md and is unnecessary for the CLI/API acceptance path. PNG exports provide the requested inspectable response plots. No cloud service, deployment, account, API key, PCB or advanced agent is introduced. P5-H1's technical walkthrough is replaced by implemented automatic P5-C4 after it passes; this is not an independent human review or subjective UX signoff.
+The original CLI/API gate used PNG response plots. The later optional P5-C3 prototype adds a [local HTML baseline comparison](COMPARISON_REPORT.md) for saved reports. P5-H1's technical walkthrough was replaced by the automated P5-C4 gate.
 
 ## Install and run
 
