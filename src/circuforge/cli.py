@@ -24,6 +24,9 @@ def main(argv=None) -> int:
     parser.add_argument("--ngspice", help="trusted local executable path (also CIRCUFORGE_NGSPICE)")
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("preflight", help="check actual simulator availability and version")
+    comparison_report = sub.add_parser("comparison-report", help="audit a saved comparison and write a local HTML report")
+    comparison_report.add_argument("--comparison", type=Path, required=True, help="directory created by compare")
+    comparison_report.add_argument("--output", type=Path, required=True, help="new HTML file")
     design = sub.add_parser("design", help="shared typed design with JSON/CSV/PNG, raw history and ZIP export")
     design.add_argument("--request", type=Path, required=True, help="bounded structured design request JSON")
     design.add_argument("--output", type=Path, required=True, help="new artifact directory")
@@ -44,6 +47,12 @@ def main(argv=None) -> int:
     try:
         if args.command == "preflight":
             print(json.dumps({"status": "available", **asdict(preflight(args.ngspice))}, indent=2))
+            return 0
+        if args.command == "comparison-report":
+            from circuforge.evaluation.comparison_report import write_comparison_report
+
+            write_comparison_report(args.comparison, args.output)
+            print(json.dumps({"status": "report_written", "output": str(args.output)}))
             return 0
         if args.command == "design":
             from circuforge.application import load_request, run_design

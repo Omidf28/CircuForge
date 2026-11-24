@@ -1,5 +1,12 @@
 # Paste this into Codex after opening the extracted CircuForge folder
 
+## Current continuation (2026-11-24)
+
+P5-C3 has a tested local HTML prototype for archived baseline comparisons.
+Use `comparison-report` after `compare` and see docs/COMPARISON_REPORT.md and
+planning/HANDOFF.md. Keep the laptop screen free. Existing research gates and
+the published desktop bundle retain their own source and evidence.
+
 ## Current continuation (2026-11-23)
 
 Owner needs the laptop screen free. Do not use native mouse/keyboard automation,

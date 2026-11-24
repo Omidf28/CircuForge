@@ -1,5 +1,35 @@
 # CircuForge — portable handoff
 
+## Local 0.4.0rc1 candidate — 2026-11-24
+
+Branch `codex/v0.4.0rc1` combines the P5-C3 comparison report and the PR #3
+desktop failure feedback. The candidate from source `9bcc9d9` passed 531
+tests without skips, 27 live CLI/loopback HTTP calls, three withdrawn desktop
+calls, one real retry after a controlled failure, and six fresh comparison
+calls. The installed renderer reproduced a historical 192-call comparison.
+After packaging, a second installation from the final ZIP reproduced the
+example report with three calls and passed a one-call withdrawn GUI check.
+All 38 runtime files matched source, wheel and both installs.
+Read [LOCAL_RELEASE.md](../docs/LOCAL_RELEASE.md) for the exact archive digest
+and the recorded recovery from a dependency-download timeout.
+
+## P5-C3 local baseline comparison report — 2026-11-24
+
+The owner asked Codex to advance the roadmap in complete batches. The local
+prototype on `codex/local-comparison-report` renders a standalone HTML report
+from `compare` output with independently audited measurements, target misses,
+failure reasons, and the actual calls used by each method.
+Acceptance: 531 tests without skips, 771 historical raw calls audited,
+five source/installed HTML replays matching byte for byte, and six fresh
+installed comparison calls for success and failure. All 38 runtime Python
+files match the source archive, wheel and installation. The report command
+uses saved data only. See [COMPARISON_REPORT.md](../docs/COMPARISON_REPORT.md).
+
+The separate verified desktop feedback fix was pushed and opened as
+https://github.com/Omidf28/CircuForge/pull/3 (reviewed head `3a4bf9c`).
+The experiment data, model allowances and published v0.3.1 bundle retain
+their original scope.
+
 ## Accepted screen-independent compact maintenance — 2026-11-23
 
 Current continuation 2026-11-23: owner needs the laptop screen and explicitly

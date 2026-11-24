@@ -465,16 +465,16 @@
           "id": "P5-C3",
           "owner": "Codex",
           "title": "Engineering dashboard (optional)",
-          "action": "Minimal plot and comparison view after engine passes gates; keep core package usable without UI.",
+          "action": "Render a local HTML baseline comparison from existing audited compare output.",
           "deliverable": "working prototype with baseline comparison.",
           "acceptance": "Shows verified vs unverified candidates and failure reasons.",
           "effort": 10,
           "dependsOn": [
             "P5-C2"
           ],
-          "status": "deferred",
+          "status": "done",
           "optional": true,
-          "evidence": "Historical frontend exclusion was superseded only for the owner's 2026-11-22 selection of a simple local desktop under P5-C6. This broader baseline-comparison dashboard remains deferred; no optimizer-comparison UI completion is claimed."
+          "evidence": "Local comparison-report CLI prototype on 9fa34c4: side-by-side actual calls, best target outcomes and per-candidate audit status/failure reasons. 531 tests without skips; five historical comparisons with 771 raw-audited calls replayed byte-identically from the installed wheel; six fresh installed compare calls cover measured passes and unverified failures. Rendering makes zero simulator calls. See docs/COMPARISON_REPORT.md."
         },
         {
           "id": "P5-H1",

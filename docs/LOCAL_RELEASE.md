@@ -1,6 +1,44 @@
-# Local handoff bundle — 2026-11-22
+# Local handoff bundles
 
-## Current v0.2.0 handoff
+## CircuForge 0.4.0rc1 local preview
+
+The local artifact workspace contains
+`Releases/CircuForge-0.4.0rc1-local-9bcc9d9-py312.zip` (550,529 bytes).
+Its SHA-256 digest is `6b6a6333122a795477fb9f0225f13d66e8c71d1777c3828ef4982a2a0cabf6a6`.
+Extract it and follow `QUICKSTART.md` for Windows with Python 3.12 and a
+separately installed ngspice console executable. The desktop also needs
+Tcl/Tk. Pip installs the Python dependencies using the included constraints.
+
+The preview combines the audited HTML baseline comparison with the fix
+that identifies diagnostic files after an unsuccessful desktop simulation.
+The ZIP contains the wheel, the 180-file tracked source archive from
+`9bcc9d90299ac9017b33df3657889f4dc77d20be`, example HTML reports,
+checksums and a machine-readable verification summary. All 38 runtime
+Python files matched across source, wheel and the candidate installation.
+
+The source suite passed 531 tests with no skips. The installed walkthrough
+made 27 real CLI/HTTP calls (18 raw audited and nine JSON traces matched).
+The withdrawn desktop check made three real calls, and the separate
+failure-and-retry test passed with one real retry. Two installed baseline
+comparisons made six real calls split between measured passes and
+unmeasurable candidates. One archived comparison re-audited 192 historical
+calls and reproduced the same HTML bytes. Rendering made zero new calls.
+
+Evidence is under `Releases/rc040` in the local artifact workspace.
+The first installation attempt timed out downloading a dependency. Its
+record remains in `accept/acceptance.json`. Installation from a local
+wheelhouse and the independently rerun CLI/HTTP audit passed, with the
+original test and wheel evidence retained in `recovered-cli-http.json`.
+
+The final ZIP was extracted into a separate folder with a space in its path.
+All eight member checksums matched, a fresh `[gui]` install passed
+`pip check`, and the quickstart comparison with three additional real
+calls reproduced the bundled example HTML byte for byte. A withdrawn desktop
+test from that same installation made one additional raw-audited call.
+The final archive digest and all 38 installed runtime files matched again.
+Evidence is in `final-zip-smoke.json`.
+
+## Historical v0.2.0 handoff
 
 P7-C5 packages the accepted `60b1ff9c31cfc3e99d294260b6dbfbbc44b2317a`
 snapshot as `Releases/CircuForge-0.2.0-local-60b1ff9-20261122-py312.zip`

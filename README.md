@@ -59,7 +59,7 @@ Phase 3 adds 20 normalized-distinct nominal benchmark cases and three-seed compa
 
 Phase 4's tolerance-study gate passed with **234 tests and 1536 audited real calls including exact replay**. Nominal and robust methods used matched total simulation budgets and separate holdout samples. No consistent robust improvement was observed; nominal target misses and finite-sample outcomes remain reported in [docs/PHASE4.md](docs/PHASE4.md).
 
-Phase 5 adds a shared typed `design` command and a bounded loopback FastAPI service. Its automatic gate passed with **279 tests and a fresh isolated package install**, followed by **27 real CLI/HTTP calls** (18 raw CLI/ZIP calls audited and nine JSON traces matched). The same request exports JSON/CSV/PNG, raw call history and a checksum-linked ZIP. See [docs/PHASE5.md](docs/PHASE5.md) for setup, HTTP examples, statuses and limits. The optional dashboard remains deferred.
+Phase 5 adds a shared typed `design` command and a bounded loopback FastAPI service. Its automatic gate passed with **279 tests and a fresh isolated package install**, followed by **27 real CLI/HTTP calls** (18 raw CLI/ZIP calls audited and nine JSON traces matched). The same request exports JSON/CSV/PNG, raw call history and a checksum-linked ZIP. See [docs/PHASE5.md](docs/PHASE5.md) for setup, HTTP examples, statuses and limits. The optional [local comparison report](docs/COMPARISON_REPORT.md) turns saved baseline runs into an audited HTML view.
 
 P6-C1 adds the offline proposal contract and conservative usage accounting. Its
 task acceptance passed with **319 tests without skips and four freshly audited
