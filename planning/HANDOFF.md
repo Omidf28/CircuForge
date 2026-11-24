@@ -1,5 +1,18 @@
 # CircuForge — portable handoff
 
+## Local 0.4.0rc1 candidate — 2026-11-24
+
+Branch `codex/v0.4.0rc1` combines the P5-C3 comparison report and the PR #3
+desktop failure feedback. The candidate from source `9bcc9d9` passed 531
+tests without skips, 27 live CLI/loopback HTTP calls, three withdrawn desktop
+calls, one real retry after a controlled failure, and six fresh comparison
+calls. The installed renderer reproduced a historical 192-call comparison.
+After packaging, a second installation from the final ZIP reproduced the
+example report with three calls and passed a one-call withdrawn GUI check.
+All 38 runtime files matched source, wheel and both installs.
+Read [LOCAL_RELEASE.md](../docs/LOCAL_RELEASE.md) for the exact archive digest
+and the recorded recovery from a dependency-download timeout.
+
 ## P5-C3 local baseline comparison report — 2026-11-24
 
 The owner asked Codex to advance the roadmap in complete batches. The local
