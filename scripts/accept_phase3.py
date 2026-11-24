@@ -26,6 +26,8 @@ def main(argv=None) -> int:
                 "manual_review_required": False}
     commands = []
     try:
+        args.output = args.output.resolve()
+        args.manifest = args.manifest.resolve()
         load_benchmark(args.manifest)
         info = preflight(args.ngspice)
         args.output.mkdir(parents=True, exist_ok=False)

@@ -11,7 +11,7 @@ MAX_REQUEST_BYTES = 16 * 1024
 
 class DesignRequest(Model):
     spec: DesignSpec
-    method: Literal["simulate", "random", "grid", "scipy"] = "simulate"
+    method: Literal["simulate", "random", "grid", "scipy", "analytic_rc"] = "simulate"
     seed: Annotated[int, Field(strict=True, ge=0, le=2**32 - 1)] = 42
     candidate: CircuitCandidate | None = None
 

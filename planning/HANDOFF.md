@@ -1,5 +1,217 @@
 # CircuForge — portable handoff
 
+## Accepted screen-independent compact maintenance — 2026-11-23
+
+Current continuation 2026-11-23: owner needs the laptop screen and explicitly
+requested work outside the computer-use overlay. No native input/capture or
+visible test window is permitted now. Closed only our own visible test process.
+Do not resume Sky/CUA without new explicit owner permission. New
+scripts/check_desktop_background.py invokes our own widgets with root withdrawn
+throughout; actual metrics/busy/invalid/stale states are checked without OS input.
+Source low/high-pass passes and manual high-pass target miss passed (three real
+calls); installed -I low-pass passed (one real call). Existing fresh installed
+runtime passed 521 tests and 27 real CLI/HTTP calls. Runtime modules unchanged.
+
+Screen-independent acceptance policy phase5-desktop-background-v1 requires the
+four earlier actual layout checks plus independently audited withdrawn source/
+installed records, not screenshots. Visual/pixel QA is explicitly not claimed.
+P5-C7/v0.3.1 passed phase5-desktop-background-v1: **525 current core tests in
+143.17s** (JUnit 143.159s), no failures/errors/skips; **four separate earlier Tk
+layout checks** (single-window fixture 1.78s), **113 matching Python hashes** and
+**37 source/wheel/installed package files**. Source/installed withdrawn widget
+states and all raw exports were independently audited. The accepted packet has
+31 operational calls (22 raw audited, nine JSON matched); the earlier visible
+compact call is separately audited in prior-visible-call.json: 32 maintenance
+calls including it, with test fixtures separate. No science scores pooled.
+
+Accepted record: external desktop-compact-2026-11-22/background-2026-11-23/
+final-acceptance/acceptance.json. Current tests/hash map, source/installed UI-state
+records and real exports are in that background directory. Earlier layout checks
+are under layout-checks-v2 and unchanged fresh runtime evidence under fresh-install.
+Final/interface/actual wheel SHA-256 independently matched:
+54ec774faf90a5b705a4911a4b37b69741e4f5e414e497dc2aabc5d937e0e191.
+Package source fingerprint:
+86ea43dd59f368cd286331d0e0df04a1c9c99c5ae2bc576342190b6e9856e143.
+
+Owner's next continues the selected local GUI as P5-C7/v0.3.1. Actual native
+resizing of the old 0.3.0 window reproduced its clipped Run action at minimum
+height; before-clipped.jpg is retained under external desktop-compact-2026-11-22.
+Settings now use a scrollable viewport; Run/progress stay pinned and result text
+wraps with the available width. Four real Tk component checks passed at
+1040x620, 1040x760 and 1280x900 plus scroll routing. These are internal component
+construction/layout checks, not OS-input automation or fake science. Default
+core pytest does not require a display; explicit tests/gui/layout_checks.py does.
+
+An initial repeated-root component attempt hit a Tk initialization error; the
+theme file existed and the app-like single-root resize fixture passed all four
+checks. Failed evidence was retained. Native compact screenshot policy remains
+separate and was not used to pretend the final background checks were pixel QA.
+Electrical tolerance/budgets are unchanged. P5-C7 is done; docs/DESKTOP.md gives
+screen-free commands and limits. Historical science/0.3.0 packets remain intact.
+No model cycle, remote push, broad dashboard or PCB is authorized. Report this
+completed maintenance, keep the laptop screen free and do not reopen native
+automation without a new explicit owner request.
+
+## Accepted owner-selected desktop — 2026-11-22
+
+After completing the bounded MVP/maintenance, asked for a concrete next scope.
+Owner selected «رابط گرافیکی محلی ساده (پیشنهاد من)». P5-C6 implements only that
+local desktop on codex/local-desktop-ui, version 0.3.0: Tk form, explicit ohm/nF/
+percent conversion, existing safe DesignRequest engine, background single-job
+one-call simulation, circuit diagram, measured gain/phase, target/error/status
+and unique persistent JSON/CSV/PNG/ZIP outputs. Core/API never require Tk;
+API version metadata now follows the package version. Full comparison dashboard
+P5-C3, providers, PCB and publication remain outside this selection.
+
+P5-C6 passed phase5-simple-desktop-v1. **516 tests in 126.36s** (JUnit suite
+126.335s), zero failures/errors/skips; all **111 current Python hashes** match.
+All **37 package files** match source/wheel/fresh installation. Windows Computer
+Use drove three actual source GUI runs: low/high-pass analytic passes and manual
+high-pass target miss (1 kΩ/100 nF vs 2300 Hz measured 1591.654910 Hz, 30.7976%
+target error). Busy/progress, stale-result labeling, invalid-input rejection and
+normal close were observed; no owner UX review is claimed.
+
+Fresh isolated installation passed 509 tests (156.02s) and the existing real
+27-call CLI/HTTP walkthrough. The installed desktop was launched with Python -I
+and its actual button produced one measured low-pass pass. Four GUI calls total
+(three source, one installed) are separate from unit fixtures and the 27 API/CLI
+calls. **31 total operational calls: 22 raw audited, nine JSON matched**; test
+fixtures are separate. Final evidence root is external
+Automatic_Acceptance/desktop-ui-2026-11-22, accepted record
+**final-acceptance-v3/acceptance.json**. Current full-suite/hash map is under
+current-checker-tests-v3; installation/509-test evidence remains under fresh-install.
+
+Initial read-only desktop gate correctly blocked a capture-format mismatch:
+Windows screenshot bytes are JPEG, while initial .png names/checker assumed
+PNG. Original bytes/drafts and first-check-blocked.json are preserved. Native
+byte-identical .jpg copies are under screenshots/. Checker now validates native
+JPEG/PNG, dimensions, integrity and matching suffix. A second draft incorrectly
+labeled a screenshot digest as the wheel hash due to a reused variable. Original
+final-acceptance-v2 is superseded-invalid-provenance; v2-provenance-defect.json
+documents it. Separate package-proof handling and ten gate tests now cover these
+cases; do not use either draft as acceptance.
+Only scripts/accept_desktop.py and its unit test changed after fresh installation;
+all 37 runtime modules and installed source remain unchanged. Current 516-test
+evidence and source map were used for the final audit alongside the still-matching
+runtime installation. Recorded/fresh-install/actual wheel hashes independently
+match: 41f32d78ae95f2a5b0b1e961f565a1237ec6f2dbae94de6061344874313de8a2.
+Package source fingerprint:
+7c983eed84135d5b4a64212dda568cfe4d5c84d7607013cee1280e11646588ae.
+
+P5-C6 is done. Reproduction and exact checker arguments are in docs/DESKTOP.md.
+The installed desktop remains available for local use; earlier v0.1/v0.2 records
+and bundles stay historical. No model, remote push, deployment or broader
+dashboard/PCB scope is implied. Report this completed owner-selected feature.
+
+## Accepted remaining caller-path repairs — 2026-11-22
+
+Owner's latest `next` continues bounded script maintenance as P7-C7. Phase
+2/3/4/5/7 acceptance and the installed Phase 5 walkthrough also passed relative
+paths across a child cwd boundary. Resolve their typed output/manifest/evidence/
+source paths in the caller before starting children. Five filesystem/process
+regressions reproduced missing JUnit first; new plus existing failure/skip
+protections now pass (31 tests, 1.57s). Fixture audits deliberately raise a
+blocked result, never substitute for successful science.
+
+Actual full-suite/fresh-install CLI/HTTP verification and the direct installed
+relative-source/output walkthrough passed `local-gate-caller-paths-v1` under
+external Automatic_Acceptance/gate-caller-paths-2026-11-22. **480 tests in 136.87s
+(pytest total; JUnit suite 133.576s), zero skips/errors/failures**. Fresh
+`accept_phase5.py --output 'fresh install'` produced 27 actual interface calls;
+the installed `-I` direct walkthrough with relative source `examples` and output
+`relative walkthrough` produced 27 more. Total **54 calls, 36 raw CLI/ZIP audited,
+18 JSON traces matched**. Each walkthrough retained two example passes and one
+intentional target miss; server/temp cleanup passed. All 102 Python hashes stayed
+unchanged, and 33 package files match source/wheel/fresh installed bytes.
+
+P7-C7 is complete. Source fingerprint stays
+68e902d97160e487ca29e1fa49806810d073aef1e749cd13c4b3de6c4c221cf3;
+rebuilt wheel SHA 59fb63fdcb5d2ed36e78281b820c26c00713fa50e890a1da098d445f44be874f.
+No Phase 2/3/4/6/7 scientific experiment or model cycle was reopened. Runtime
+modules and old source-bound bundles are unchanged; no remote publication.
+See docs/OPERATIONS.md for exact scope and artifacts. Report this bounded result.
+
+## Accepted checker path regression — 2026-11-22
+
+Owner's latest `next` continues bounded local maintenance as P7-C6. The analytic
+acceptance script passed caller-relative output/manifest paths unchanged to
+children running from ROOT, causing missing/misplaced evidence outside the
+checkout. Three orchestration regressions reproduced it; resolving both paths
+before any child execution fixes all three (0.69s). These tests use explicitly
+labeled process fixtures, not simulated scientific acceptance.
+
+A fresh full acceptance passed from external
+Automatic_Acceptance/analytic-paths-2026-11-22 with relative manifest
+inputs/physics-onecall-v1.json and relative output 'verified results': **475 tests
+in 144.011s, zero failures/errors/skips, 101 unchanged Python hashes and 384
+raw-audited real calls including exact numerical replay**. Child paths are
+absolute in the caller directory. First/replay times 16.812/16.844s; each method
+spent 48 calls/run and rejected 12 infeasible inputs at zero calls. Analytic
+passed 42 free-domain/six fixed trials; classical methods passed six fixed and
+retained 42 misses, as before. P7-C6 is complete.
+
+Package modules and installed wheel are unchanged (33 files byte-matched); source
+fingerprint stays 68e902d97160e487ca29e1fa49806810d073aef1e749cd13c4b3de6c4c221cf3.
+Old 472-test/100-source acceptance and the 60b1ff9 bundle remain tied to their
+original snapshot, not the new checker/test hashes. Original bundle checksum
+was checked unchanged. No new install, model request, topology or publication
+is claimed. See docs/ANALYTIC_RC.md; do not reopen consumed provider cycles.
+
+## Current v0.2 local handoff — 2026-11-22
+
+Owner's latest `next` continued the accepted local deliverable as P7-C5, without
+expanding the physics/model scope. Packaged exact accepted commit
+60b1ff9c31cfc3e99d294260b6dbfbbc44b2317a into external
+Releases/CircuForge-0.2.0-local-60b1ff9-20261122-py312.zip: **704988 bytes**,
+SHA-256 d2454298cec0709724d480610c02545979557b9c41ae2a551e37b0e6020350c6.
+162 source files, 33 matching wheel/installed package files and all 100 accepted
+source/script/test hashes checked. Eighteen outer members, CRC/safe paths/common
+credential scan/byte comparisons passed; native PowerShell independently checked
+the 17 checksummed members. Three quickstart blocks parse. Zero new tests,
+simulations, model requests or uploads during packaging; original 472-test and
+384-call acceptance remains tied to that exact snapshot, not a new experiment.
+
+Includes wheel/constraints/source, analytic request, actual one-call CLI ZIP,
+comparison plot/summaries, unmodified acceptance records and a Python 3.12 guide.
+Raw full benchmark datasets stay separate. Original JUnit is retained outside
+the bundle because scanner-test parameter names contain dummy credential
+signatures; an explicitly labeled suite-count/hash summary is included instead.
+The earlier preparation directories are preserved; use the final ZIP/hash above.
+Historical v0.1 ZIP hash remains unchanged. See docs/LOCAL_RELEASE.md.
+Current branch remains codex/physics-guided-rc; no new remote publication.
+
+## Active post-MVP numerical follow-up — 2026-11-22
+
+The latest `next` continues the previously recommended local physics-informed RC
+improvement on codex/physics-guided-rc. P7-C4 is a separate bounded follow-up to
+the accepted v0.1 MVP, not PCB or a new model/Freebuff cycle. Version 0.2.0 adds
+analytic_rc to existing optimize/design/API paths, with one actual measured call
+and preserved simulator/reference/target checks. Original compare/baseline runs
+and datasets are unchanged. Prior 438-test/MVP evidence remains historical and
+must not be relabeled as acceptance of this changed source.
+
+Frozen examples/physics-onecall-v1.json hash-pins the 20-case normalized v2 source:
+same domains/sweeps/targets/tolerances, derived one-call/five-second settings,
+three seeds and four methods. Two actual runs used 384 benchmark calls under a
+500-call combined cap; test fixtures are separate. The analytic method uses privileged
+known physics and its seed repetitions are deterministic controls. No general
+optimizer/hardware claim follows from a win. Full automatic acceptance passed:
+472 tests in 142.587s, no skips/errors/failures, 100 unchanged Python source/test/
+script hashes, all 384 raw calls audited and exact numerical replay. Per run each
+method used 48 calls and rejected 12 infeasible requests at zero calls. Analytic
+passed 42/42 free-domain plus 6/6 fixed-control trials; each classical method
+passed only 6/6 fixed controls, preserving all 42 free-domain misses. Artifacts:
+Automatic_Acceptance/physics-onecall-2026-11-22. Source fingerprint:
+68e902d97160e487ca29e1fa49806810d073aef1e749cd13c4b3de6c4c221cf3.
+Fresh isolated wheel CLI/HTTP verification also passed with three additional
+actual calls (two raw audited, one JSON matched), identical installed source
+fingerprint and 33 matching package files. The 2300-Hz example measured
+2299.913312912917 Hz (0.00377% error), one call per interface, successful cleanup.
+Wheel SHA bc572be74a244f14cddb96ac2dda607ce5c5805fc51e9001b0669e012218c295.
+P7-C4 is done locally; do not push this new branch without publication scope.
+The old v0.1 handoff bundle stays unchanged. No new model/Freebuff allowance or
+P8/PCB/advanced expansion was started. See docs/ANALYTIC_RC.md.
+
 ## GitHub MVP synchronization — 2026-11-22
 
 Owner requested «نمیخوای گیت هاب پروژه رو اپدیت کنی؟», authorizing the current
@@ -41,7 +253,7 @@ source >=3.11 declaration does not make these pins compatible with 3.11. Retaine
 the earlier draft, corrected guide/manifest in a separate final package and
 verified all final checksums/ZIP members again without changing source/wheel bytes.
 
-Recommended next scope: improve ideal-RC numerical design with an explicit
+Historical recommendation, implemented later as P7-C4 above: improve ideal-RC numerical design with an explicit
 physics-based proposal and real verification before adding a GUI, because many
 free-domain baseline trials miss the original target tolerance. This is a
 recommendation, not an implemented new method or a changed benchmark. Preserve

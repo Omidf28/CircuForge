@@ -1,5 +1,83 @@
 # CircuForge — Codex workspace instructions
 
+## Owner preference — keep the laptop screen free (2026-11-23)
+
+Owner asked «ترجیحا رو اسکرینم کار نکن نیاز دارم به اسکرین لپ تاپ» and requested
+work outside the blue/yellow computer-use overlay. Continue coding and local
+automated checks without native mouse/keyboard input, screen capture or visible
+test windows. Program-owned withdrawn Tk widget tests are permitted; never map
+them or claim pixel/visual QA from them. Preserve prior native evidence and
+distinguish it from the new screen-independent acceptance policy. Do not resume
+native computer use without a new explicit request from the owner.
+
+P5-C7/v0.3.1 passed phase5-desktop-background-v1: compact layout repair, 525
+current core tests without skips, four earlier Tk size/scroll checks, 113 Python
+hashes and 37 matching runtime files. Four withdrawn-widget calls plus 27 real
+CLI/HTTP calls audited; earlier visible compact call retained separately. New
+pixel/visual QA is not claimed. See docs/DESKTOP.md and planning/HANDOFF.md.
+Report this completed local maintenance scope; keep screen-free work preference.
+
+## Owner-selected simple local desktop interface (2026-11-22)
+
+After being offered the next scope, the owner explicitly selected
+«رابط گرافیکی محلی ساده (پیشنهاد من)». Implement a local desktop form for RC
+specification, background ngspice execution and measured circuit/response/error
+display using the existing validated engine. This supersedes the earlier UI
+exclusion only for this bounded desktop scope. Retain the core without GUI
+dependencies, safe typed templates, one-job limits and automatic technical
+verification. Full optimizer-comparison dashboard, PCB, advanced agents, model
+cycles, remote pushes and deployment remain outside this selection.
+
+P5-C6/v0.3.0 passed phase5-simple-desktop-v1: 516 tests without skips, 111
+unchanged Python hashes, 37 matching source/wheel/installed package files, four
+actual GUI calls plus 27 installed CLI/HTTP calls (22 raw audited, nine JSON
+matched). Native window states were agent-inspected; no owner UX review claimed.
+See docs/DESKTOP.md. Only final-acceptance-v3 is accepted; invalid earlier
+metadata/capture drafts are retained and superseded. Old acceptance/bundles stay
+historical. Report this delivered local scope before further expansion.
+
+## Remaining caller-path repairs accepted (2026-11-22)
+
+P7-C7 fixes typed caller paths in Phase 2/3/4/5/7 acceptance and the installed
+walkthrough. Five regressions reproduced the issue before repair. Actual
+outside-checkout fresh install plus direct relative-source/output verification
+passed 480 tests without skips and 54 CLI/HTTP calls (36 raw audited, 18 JSON
+matched), with 102 unchanged Python hashes and 33 matching package files.
+See docs/OPERATIONS.md. This accepts script/interface maintenance only; earlier
+scientific/model evidence and bundles stay source-bound. Stop/report this local
+result; closed provider cycles, remote publication and complex expansion remain
+outside its scope.
+
+## Acceptance checker paths repaired (2026-11-22)
+
+P7-C6 resolves caller-relative output/manifest paths before children change cwd.
+Three regressions reproduced the issue before the fix. Actual acceptance from
+outside the checkout, with relative inputs and spaced output, passed 475 tests
+without skips, 101 unchanged Python hashes and 384 raw-audited calls including
+exact replay. See docs/ANALYTIC_RC.md and planning/HANDOFF.md. Runtime/wheel bytes
+and older source-bound bundles are unchanged. Stop/report this local maintenance
+result; no new provider allowance, upload or complex expansion is implied.
+
+## Local v0.2 handoff (2026-11-22)
+
+P7-C5 packages unchanged accepted source 60b1ff9 and its verified wheel into a
+local Python 3.12 handoff. Source/wheel/accepted hashes, archive integrity and
+quickstart syntax passed; no new tests, simulations or model calls were needed.
+See docs/LOCAL_RELEASE.md for the final ZIP/checksum and preserved historical
+evidence. This packaging step does not expand the accepted scope or publish it.
+
+## Bounded numerical follow-up accepted (2026-11-22)
+
+After the published v0.1 MVP, the owner's `next` continued the recommended local
+physics-informed RC improvement. P7-C4/v0.2.0 passed physics-onecall-v1 with 472
+tests without skips and 384 raw-audited comparison calls including exact replay.
+Fresh isolated CLI/real loopback JSON/ZIP passed with three further calls and
+matching installed source. See docs/ANALYTIC_RC.md and planning/HANDOFF.md for
+results and limits. Historical acceptance/datasets/bundles stay unchanged. This
+feature remains local on codex/physics-guided-rc; the earlier GitHub update
+published v0.1 via PR #1. Stop and report this bounded result. No new model or
+Freebuff cycle, remote publication, deployment, PCB or advanced work is implied.
+
 ## Local research MVP milestone (2026-11-22)
 
 P7-C3 and phase7-local-research-mvp-v1 passed with 438 tests without skips,

@@ -8,14 +8,25 @@ research-MVP gate passed. `scripts/capture_demo.py`, `scripts/audit_demo.py` and
 artifacts and check the final local gate. They do not add a product frontend,
 provider dependency or public deployment; see [PHASE7.md](PHASE7.md).
 
+## Owner-selected desktop follow-up
+
+The bounded v0.3.0 desktop uses optional Tk/Matplotlib, `desktop/model.py` for
+typed form conversion and a single background job, and `desktop/app.py` for
+main-thread widgets/plotting. It calls the existing application function
+directly, so no browser/API-origin guard needs to be relaxed. Core/API imports
+remain usable without Tk. P5-C6 passed its own acceptance with 516 current tests,
+matching installed package bytes and 31 real GUI/CLI/HTTP calls; prior milestones
+remain dated evidence. See [DESKTOP.md](DESKTOP.md).
+
 ## Implemented flow
 
 ```mermaid
 flowchart LR
     CLI[CLI request] --> Request[Typed DesignRequest]
+    Desktop[Local desktop form] --> Request
     HTTP[Loopback HTTP + request guards] --> Request
     Request --> Engine[Application + measured evaluator]
-    Engine --> Search[Bounded simulate / random / grid / SciPy]
+    Engine --> Search[Bounded simulate / analytic RC / random / grid / SciPy]
     Search --> Candidate[Validated RC candidate]
     Candidate --> Template[Allowlisted netlist template]
     Template --> SPICE[Isolated ngspice subprocess]
@@ -39,6 +50,8 @@ src/circuforge/
   local_provider.py      # optional pinned loopback Ollama client, durable global limits
   application.py         # measured design and traceable export use case
   api.py                 # loopback-only FastAPI, bounded requests/work and temp cleanup
+  desktop/model.py       # optional UI's typed form conversion and single background job
+  desktop/app.py         # Tk widgets, measured circuit/plot/status and saved-result access
   domain/specs.py         # Pydantic specs, units, validity
   domain/tolerance.py     # typed independent multiplicative errors and RNG streams
   synthesis/rc.py        # trusted topology templates -> netlist

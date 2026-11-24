@@ -69,7 +69,7 @@ def audit_design(root: Path, request: DesignRequest) -> DesignResult:
     require(result.history and result.simulator_calls == len(result.history) and result.failures == 0 and
             result.cache_hits == 0, "failed/incomplete reference trace")
     fixed = request.spec.resistance_ohm.minimum == request.spec.resistance_ohm.maximum and request.spec.capacitance_f.minimum == request.spec.capacitance_f.maximum
-    expected_calls = 1 if request.method == "simulate" or fixed else request.spec.max_evaluations
+    expected_calls = 1 if request.method in {"simulate", "analytic_rc"} or fixed else request.spec.max_evaluations
     require(result.simulator_calls == expected_calls <= request.spec.max_evaluations, "incorrect actual call budget")
     names = expected_files(result)
     if request.method == "simulate":

@@ -41,8 +41,8 @@ that negative result is preserved rather than converted to a passing design.
 .\.venv\Scripts\python -m circuforge.api --port 8765
 ```
 
-The server binds to `127.0.0.1`. Open `http://127.0.0.1:8765/docs` for the generated
-request/response schema or GET `/openapi.json` for machine-readable OpenAPI.
+The server binds to `127.0.0.1`. GET `/openapi.json` for its generated
+machine-readable request/response schema. Interactive docs routes are disabled.
 POST `/v1/designs` accepts the same typed request as the CLI; POST
 `/v1/designs/export` returns the complete ZIP. Example from a separate shell:
 
@@ -79,7 +79,74 @@ Historical counts remain dated evidence. Freebuff development
 collaboration has separate persisted allowances in
 [AGENT_COLLABORATION.md](AGENT_COLLABORATION.md); ordinary CLI/API use never starts it.
 
-## Observed current-checkout verification — 2026-11-22
+## Caller-relative acceptance paths
+
+Phase 2/3/4/5/7 acceptance commands resolve their typed output, manifest and
+evidence paths against the directory from which you launch them. The installed
+walkthrough likewise resolves `--source` and `--output` before its isolated CLI
+changes working directory. Paths containing spaces are supported as single
+quoted arguments. The analytic-RC acceptance repair is documented separately in
+[ANALYTIC_RC.md](ANALYTIC_RC.md). Existing output directories remain protected;
+missing evidence and failed/skipped tests still block acceptance.
+
+For example, from a separate writable directory:
+
+```powershell
+& 'C:\path\to\venv\Scripts\python.exe' 'C:\path\to\CircuForge\scripts\accept_phase5.py' --output '.\fresh install' --ngspice 'C:\path\to\Spice64\bin\ngspice_con.exe'
+```
+
+Replace the interpreter, script and simulator paths with your installed paths.
+The child tests/build/install/walkthrough run from the project, while results
+stay in the caller's `fresh install` directory. This command builds a package,
+installs dependencies and performs 27 actual interface simulation calls in
+addition to test fixtures. It makes no model request. A path repair does not
+reaccept historical scientific gates with different source/environment bindings.
+
+## Observed v0.2 caller-path verification — 2026-11-22
+
+P7-C7 passed `local-gate-caller-paths-v1`. Five controlled filesystem/process
+regressions reproduced missing JUnit before the repairs; all five and the
+existing failure/skip gate protections passed afterward (31 targeted tests in
+1.57 seconds). Fixture audits intentionally raise a blocked result. They prove
+path handling, not scientific acceptance.
+
+Actual verification ran from the separate external
+`Automatic_Acceptance/gate-caller-paths-2026-11-22` directory:
+
+- Full suite: **480 passed in 136.87 seconds** (pytest total), zero skips/errors/
+  failures. JUnit suite time was 133.576 seconds.
+- `accept_phase5.py --output "fresh install"` built a wheel and installed it in
+  a fresh Python 3.12 virtualenv, then passed the real 27-call installed
+  CLI/JSON/ZIP walkthrough and independent raw audit.
+- The installed interpreter then ran `walkthrough_phase5.py --source examples
+  --output "relative walkthrough"` from the same caller directory. Both paths
+  were relative; this second actual 27-call walkthrough also passed its raw audit.
+- Combined: **54 actual interface calls**, **36 raw CLI/ZIP calls audited** and
+  **18 JSON traces matched**. In each walkthrough two examples passed and the
+  intentional target miss retained CLI exit 1/HTTP 200/`target_missed`. Both
+  servers stopped and request temporary storage was empty.
+- All **102 Python source/script/test hashes** remained unchanged during the
+  check. All **33 package Python files** match source, wheel and fresh installed
+  bytes. No model request was made. Test-fixture simulator calls are separate
+  from the 54 installed-interface calls.
+
+Evidence root: `acceptance.json`, `source-before.json`, the archived verification
+driver, `fresh install/` (JUnit, build/install logs, source snapshot, wheel and
+first walkthrough) and `relative walkthrough/` (second raw exports and logs).
+The top-level acceptance records the exact commands/caller and hash map.
+The package fingerprint remains
+`68e902d97160e487ca29e1fa49806810d073aef1e749cd13c4b3de6c4c221cf3`.
+The newly built wheel SHA-256 is
+`59fb63fdcb5d2ed36e78281b820c26c00713fa50e890a1da098d445f44be874f`.
+Its package bytes match the previous installed source; a rebuilt archive need
+not have the same wheel digest. The 60b1ff9 release ZIP was not replaced.
+
+This is script/interface maintenance. Historical Phase 2/3/4/6/7 scientific
+acceptance is not rerun or relabeled; the model/Freebuff cycles remain closed.
+Runtime behavior, circuit families, numerical policies and historical target
+misses remain unchanged. No remote publication or deployment was performed.
+
+## Historical v0.1 checkout verification — 2026-11-22
 
 Executed the existing `scripts/accept_phase5.py` checker with the isolated
 Phase1_Verification interpreter, ngspice-47 and a new external output directory:

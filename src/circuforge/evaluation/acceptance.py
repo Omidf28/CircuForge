@@ -110,7 +110,7 @@ def audit_run(root: Path, case: Case, method: str, seed: int, expected_environme
     expected_environment = expected_environment or environment()
     fixed = (case.spec.resistance_ohm.minimum == case.spec.resistance_ohm.maximum and
              case.spec.capacitance_f.minimum == case.spec.capacitance_f.maximum)
-    expected_calls = 1 if fixed else case.spec.max_evaluations
+    expected_calls = 1 if fixed or method == "analytic_rc" else case.spec.max_evaluations
     prefix = f"{case.id}/{method}"
     report = BaselineResult.model_validate(read_json(root, prefix + "/report.json"))
     require(report.spec == case.spec and report.options.method == method and

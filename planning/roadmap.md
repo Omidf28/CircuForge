@@ -1,8 +1,8 @@
 # CircuForge · Wave2Circuit Research Edition
 
-Version 2.1.0 · assembled 2026-11-22 · architecture assumptions to verify in current environment
+Version 2.1.0 · assembled 2026-11-23 · architecture assumptions to verify in current environment
 
-Local research MVP accepted automatically 2026-11-22 under phase7-local-research-mvp-v1: 438 tests without skips, unchanged 93-file source/test hashes, accepted scientific/install/report evidence and 75-second captured-CLI replay with nine raw-audited demo calls. Two example passes/one intentional miss retained. P6 composite accepted without erasing original failures or claiming efficacy. P7-H1 technical check superseded by P7-C3 without owner CV approval. Owner separately requested GitHub synchronization: current MVP branch published through PR #1 to main, normal history-preserving integration. All model/Freebuff cycles closed; P8/PCB/advanced work unstarted. No deployment or release-bundle upload.
+Owner-selected simple local desktop and v0.3.1 compact-window repair are accepted within local scope. Latest screen-independent gate: 525 core tests, four earlier Tk layout checks, 113 matching Python hashes, 37 matching package files and 31 operational calls (22 raw audited, nine JSON matched); prior visible compact call separately retained. Final checks used withdrawn widgets and independent raw physics audits after owner requested the laptop screen free; no new pixel/visual QA claimed. Prior research, failures and source-bound bundles remain historical. Only v0.1 source was published via PR #1; codex/local-desktop-ui stays local. All model/Freebuff cycles closed; broad dashboard, PCB/advanced work and deployment unstarted. Stop/report bounded maintenance and preserve no-screen-interaction preference.
 
 **Unconfirmed premise:** Confirmed project direction: inverse analog circuit design and optimization, not a generic circuit tutoring product. Specific algorithms, hosting and performance targets remain engineering hypotheses.
 
@@ -448,6 +448,34 @@ Status: done · Estimate: 4 active hours
 
 **Gate evidence:** phase5-local-interface-v1 passed: 279 tests, fresh isolated wheel install and real installed CLI/HTTP walkthrough. 27 actual calls, 18 archived/raw-audited plus 9 JSON traces matched; target miss preserved and server/temp cleanup verified. P5-H1 superseded by P5-C4; optional P5-C3 deferred per START_CODEX.md. No human review/deployment/push approval asserted.
 
+#### P5-C7 · Codex · Keep desktop controls reachable in compact windows
+
+Status: done · Estimate: 2 active hours
+
+**Action:** Fix the reproduced clipped Run button using a scrollable settings viewport, pinned run/progress actions and responsive result text.
+
+**Deliverable:** v0.3.1 compact layout repair, real-Tk geometry/scroll checks and screen-independent source/installed widget/raw verification.
+
+**Acceptance:** Run/progress/results-folder controls remain within the client at 1040x620, 1040x760 and 1280x900; settings scroll and chart wheel is not hijacked. Following owner's screen-free preference, current full tests, four earlier layout checks and withdrawn source/installed widget/raw audits must pass with no OS input/mapped window; do not claim new pixel QA. Preserve historical scientific evidence.
+
+**Depends on:** P5-C6
+
+**Evidence:** Accepted 2026-11-23 under phase5-desktop-background-v1 after owner requested no screen interaction. v0.3.1 fixes reproduced clipped Run with scrollable settings/pinned actions/responsive text. Four real Tk size/scroll checks passed (single-window fixture 1.78s; earlier failed multi-root attempt retained). Current core suite 525 passed in 143.17s without skips/errors/failures; 113 Python hashes and 37 source/wheel/installed package files match. Fresh runtime retained 521-test/27-call CLI/HTTP evidence. Withdrawn widget source low/high-pass passes and manual target miss plus installed -I low-pass independently raw-audited: accepted packet 31 actual calls, 22 raw audited, nine JSON matched. One earlier visible compact call preserved/audited separately: maintenance total 32, fixtures separate. Busy/duplicate/invalid/stale/metric states checked without OS input/capture or mapped windows; new pixel QA explicitly not claimed. docs/DESKTOP.md; external desktop-compact-2026-11-22/background-2026-11-23/final-acceptance. No provider cycle, push or deployment.
+
+#### P5-C6 · Codex · Owner-selected simple local desktop interface
+
+Status: done · Estimate: 6 active hours
+
+**Action:** Add a typed RC desktop form, background one-call simulation, circuit and measured response/error display, and access to saved evidence using the existing engine.
+
+**Deliverable:** Optional Python/Tk desktop, unit and real integration tests, actual window evidence, fresh installed package and read-only automatic acceptance checker.
+
+**Acceptance:** Full tests without skips; current installed package matches source; actual GUI low/high-pass passes and a measured target miss audited from raw exports; invalid input rejected before simulation; background work is single-job and core remains usable without Tk. Preserve historical evidence and no owner-review/model/deployment claim.
+
+**Depends on:** P5-C2, P7-C7
+
+**Evidence:** Accepted 2026-11-22 under phase5-simple-desktop-v1/final-acceptance-v3: owner-selected optional v0.3.0 Tk desktop, one background one-call design, existing raw exports. Current full suite 516 passed in 126.36s without skips/errors/failures; all 111 Python hashes match. Fresh installed runtime retained its 509-test/27-real-call CLI/HTTP evidence after checker-only repairs; 37 package files match source/wheel/installation. Three source GUI button runs plus one installed -I GUI run independently raw-audited: low/high-pass analytic passes, retained 30.7976% manual target miss, invalid input creates no run. Combined 31 actual calls: 22 raw audited, nine JSON matched. Actual busy/stale/error/window captures inspected by agent, native image integrity/hashes checked, no owner UX review claimed. Failed format draft and invalid v2 wheel-hash metadata preserved/superseded; final gate/interface/actual wheel hashes independently match. docs/DESKTOP.md; external desktop-ui-2026-11-22/final-acceptance-v3. No model call, remote push or deployment; full comparison dashboard P5-C3 stays deferred.
+
 #### P5-C5 · Codex · Bounded Codex and Freebuff development handoff
 
 Status: done · Estimate: 3 active hours
@@ -506,7 +534,7 @@ Status: deferred · Estimate: 10 active hours · Optional
 
 **Depends on:** P5-C2
 
-**Evidence:** Explicitly optional dashboard deferred: START_CODEX.md excludes a frontend; CLI/API and PNG exports meet the inspectable scientific-result gate without unnecessary UI. No dashboard completion is claimed.
+**Evidence:** Historical frontend exclusion was superseded only for the owner's 2026-11-22 selection of a simple local desktop under P5-C6. This broader baseline-comparison dashboard remains deferred; no optimizer-comparison UI completion is claimed.
 
 #### P5-H1 · Human · User acceptance walkthrough
 
@@ -605,6 +633,62 @@ Status: done · Estimate: 2 active hours
 **Gate status:** passed
 
 **Gate evidence:** phase7-local-research-mvp-v1 passed 2026-11-22: 438 fresh tests without skips, unchanged 93-file source/test hash map, accepted scientific composite/report/source hashes and matching fresh installed package. Independent audit verified nine real demo calls and five-frame/75-second labeled captured-output replay; misses retained. P7-H1 engineering portion superseded by P7-C3 without human/CV/publication approval claims. Local research MVP only; no remote push/deployment or optional PCB/advanced-agent authorization.
+
+#### P7-C7 · Codex · Consistent caller paths across local acceptance tools
+
+Status: done · Estimate: 2 active hours
+
+**Action:** Repair relative evidence/manifest/source paths in the remaining Phase 2/3/4/5/7 acceptance commands and installed walkthrough before child working directories change.
+
+**Deliverable:** Six small script repairs, five process/filesystem regressions and actual outside-checkout fresh-install plus direct relative-source CLI/HTTP verification.
+
+**Acceptance:** Reproduce failures before the fix; retain failed/skipped/missing-evidence blocking, pass current tests without skips, and independently audit actual installed CLI/JSON/ZIP results and cleanup using caller-relative paths. Preserve historical scientific gates rather than claiming fresh Phase 2/3/4/6/7 experiments.
+
+**Depends on:** P7-C6
+
+**Evidence:** Accepted 2026-11-22 under local-gate-caller-paths-v1: five regressions failed before/passed after; 31 targeted path/failure/skip tests passed. Actual outside-checkout relative-output Phase 5 gate passed 480 tests in 136.87s (JUnit 133.576s), no skips/errors/failures, fresh wheel/install and 27 real CLI/HTTP calls. Direct installed -I walkthrough with relative source/output passed another 27: total 54 calls, 36 raw audited and 18 JSON traces matched, two passes/one deliberate target miss per walkthrough, clean server/temp shutdown. All 102 Python hashes unchanged; 33 source/wheel/installed modules matched. No model request, historical scientific-gate reacceptance, bundle overwrite or publication. docs/OPERATIONS.md; external gate-caller-paths-2026-11-22/acceptance.json.
+
+#### P7-C6 · Codex · Preserve caller paths in analytic acceptance subprocesses
+
+Status: done · Estimate: 1 active hours
+
+**Action:** Resolve the analytic acceptance output and manifest paths before subprocesses change working directory; exercise relative paths from outside the checkout.
+
+**Deliverable:** Small checker fix, three orchestration regressions and a fresh real acceptance run using a relative manifest and an output directory containing spaces.
+
+**Acceptance:** Regressions fail before the fix and pass after it; full tests without skips and the frozen one-call comparison/replay pass from a different caller directory. Preserve prior source-bound bundles and acceptance; no new package behavior, model traffic or publication.
+
+**Depends on:** P7-C5, P7-C4
+
+**Evidence:** Accepted 2026-11-22: three path regressions failed before and passed after caller-relative resolution (0.69s). Fresh physics-onecall-v1 invoked outside checkout with relative manifest and spaced relative output passed 475 tests in 144.011s without skips/errors/failures, 101 unchanged Python hashes, 384 raw-audited simulator calls and exact numerical replay under unchanged cap 500. First/replay 16.812/16.844s; original pass/miss/rejection counts retained. All 33 package modules still match installed wheel; only checker changed among old 100 hashes, plus one test file. Old source-bound bundle checksum unchanged. No model requests, new install or publication. Evidence: external analytic-paths-2026-11-22/verified results/acceptance.json; docs/ANALYTIC_RC.md.
+
+#### P7-C5 · Codex · Local v0.2 accepted-source handoff
+
+Status: done · Estimate: 1 active hours
+
+**Action:** Package the unchanged accepted numerical source and verified installed wheel with a quickstart, observed example and integrity/provenance records.
+
+**Deliverable:** Local Python 3.12 ZIP with source, wheel, tested constraints, analytic request, actual CLI export, acceptance summaries and checksums.
+
+**Acceptance:** Match all accepted hashes and package bytes, verify safe archive membership/CRC/checksums/common credential patterns, preserve historical bundles and evidence, and distinguish packaging checks from historical numerical tests. No upload or new model/simulator cycle.
+
+**Depends on:** P7-C4
+
+**Evidence:** Packaged accepted 60b1ff9 as CircuForge-0.2.0-local-60b1ff9-20261122-py312.zip: 704988 bytes, SHA-256 d2454298cec0709724d480610c02545979557b9c41ae2a551e37b0e6020350c6. All 162 source files, 100 acceptance hashes and 33 wheel/installed Python files matched. Eighteen outer members CRC/safe-path/byte checked, no common credential findings; independent native SHA-256 passed for 17 listed members, three PowerShell quickstart blocks parsed. JUnit dummy-credential test names excluded via labeled original-hash/suite summary; original XML unchanged. Prior v0.1 bundle preserved. Zero new tests/simulations/model requests/uploads. See docs/LOCAL_RELEASE.md and external release-check record.
+
+#### P7-C4 · Codex · Post-MVP physics-informed continuous RC design
+
+Status: done · Estimate: 5 active hours
+
+**Action:** Add a measured analytic_rc option to the existing local interfaces and compare it with unchanged classical methods in a separately frozen one-call experiment.
+
+**Deliverable:** Typed deterministic proposer, CLI/API support, tests, physics-onecall-v1 comparison and independent raw/replay acceptance.
+
+**Acceptance:** Fresh tests without skips; bounded 20-case/three-seed/four-method comparison with exactly one actual call per feasible method and zero per infeasible rejection, independent physics audit and exact replay. Preserve target misses and original experiments; no model traffic or general optimizer claim.
+
+**Depends on:** P7-C3, P2-C3
+
+**Evidence:** physics-onecall-v1 passed 2026-11-22 on codex/physics-guided-rc, version 0.2.0: 472 tests in 142.587s without skips/errors/failures, 100 unchanged Python source/script/test hashes, 384 raw-audited comparison calls including exact numerical replay under cap 500. Per run each method spent 48 calls and rejected 12 infeasible inputs without calls; analytic_rc passed 42/42 free-domain and 6/6 fixed trials, each classical method passed only six fixed controls and retained 42 target misses. Known-physics/one-call/deterministic-repeat limitations explicit. Fresh isolated installed CLI and real loopback JSON/ZIP passed with three further calls, matching source fingerprint and 33 package files; 2300-Hz target measured 2299.913312912917 Hz, clean shutdown/storage. See docs/ANALYTIC_RC.md and external physics-onecall-2026-11-22 acceptance/provenance. Historical datasets/v0.1 acceptance/bundle unchanged. No new model traffic, remote push or complex expansion.
 
 #### P7-C3 · Codex · Automatic captured CLI demo and evidence-backed claims
 
@@ -912,7 +996,7 @@ The HTML stores progress only in the browser. Export JSON to share statuses and 
 ## Agent handoff prompt
 
 ```text
-Read AGENTS.md and planning/HANDOFF.md. Local MVP accepted with 438 tests and unchanged 93-file source/test hashes. Local handoff bundles accepted commit 1ea9bd2: 151 source files, matching 31-file wheel and real demo; py312 ZIP 791661 bytes, SHA-256 538f18e0a93b8918fc7a0edbc071b026d54f2933e4dec97e9edb0b35fbf0807a. Python 3.12/separate ngspice; no new experiments during packaging. Owner subsequently requested GitHub update: reviewed all 375 unpublished blobs/28 commits, matched acceptance hashes, pushed codex/local-mvp-handoff and opened PR #1 (https://github.com/Omidf28/CircuForge/pull/1) to main. Normal integration preserves remote history; no force-push, deployment or local-artifact upload. Prior initial-main-only notes are historical. All model/Freebuff cycles closed; optional P8/PCB/advanced work unstarted. Suggested next scope remains physics-based numerical search, not yet implemented. Source/Git stay on C; ancillary junction unchanged.
+Read AGENTS.md, planning/HANDOFF.md and docs/DESKTOP.md. P5-C7/v0.3.1 compact repair is complete on codex/local-desktop-ui: scrollable settings, pinned actions and wrapped text. Owner needs the screen free; do not use Sky/CUA/native input/capture/visible test windows without a new explicit request. Screen-independent gate phase5-desktop-background-v1 passed 525 core tests, four earlier layout checks, 113 Python hashes and 37 matching runtime files. Hidden source/installed widget state and raw physics audited: final packet 31 actual calls, 22 raw audited, nine JSON matched; earlier interrupted visible call separately counted, maintenance total 32. No pixel QA claimed; invalid input/duplicate submission/stale result/target miss retained. Evidence: external desktop-compact-2026-11-22/background-2026-11-23/final-acceptance. Old packets/failures/science/bundles remain historical. No push, provider cycle, deployment, PCB or broad dashboard. Report delivered maintenance and keep screen free. Source/Git stay on C; existing artifact junction unchanged.
 ```
 
 ## Sources

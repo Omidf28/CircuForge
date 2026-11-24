@@ -26,6 +26,7 @@ def main(argv=None) -> int:
     decision = {"status": "blocked", "policy": POLICY, "acceptance_mode": "automated",
                 "manual_review_required": False}
     try:
+        args.output = args.output.resolve()
         # Preflight and all fixed case/resource limits before allocating output.
         cases_path = ROOT / "examples/phase2-review-cases.json"
         cases = TypeAdapter(list[Case]).validate_json(cases_path.read_bytes())

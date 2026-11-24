@@ -9,6 +9,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse, Response
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
+from circuforge import __version__
 from circuforge.application import run_design
 from circuforge.contracts import MAX_REQUEST_BYTES, DesignRequest, DesignResult, ServiceError
 from circuforge.simulation.ngspice import Ngspice, SimulationError
@@ -81,7 +82,7 @@ def check_api_limits(request: DesignRequest) -> None:
 
 
 def create_app(*, ngspice: str | None = None, temporary_root: Path | None = None) -> FastAPI:
-    app = FastAPI(title="CircuForge local research API", version="0.1.0", docs_url=None, redoc_url=None)
+    app = FastAPI(title="CircuForge local research API", version=__version__, docs_url=None, redoc_url=None)
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=["127.0.0.1", "localhost", "[::1]"], www_redirect=False)
     app.add_middleware(LocalRequestGuard)
     gate = BoundedSemaphore(1)

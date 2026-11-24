@@ -44,6 +44,8 @@ def main(argv=None):
                   release_scope="local validated research MVP; no remote publication/deployment", remote_published=False,
                   owner_cv_approved=False, new_model_requests=0, new_demo_spice_calls=0)
     try:
+        for name in ("output", "demo", "interface_evidence", "primary_trial", "replay_supplement"):
+            setattr(args, name, getattr(args, name).resolve())
         initial_sources = source_hashes()
         plan = read(ROOT / "planning/phase-tasks.json")
         tasks = {t["id"]: t for p in plan["phases"] for t in p["tasks"]}

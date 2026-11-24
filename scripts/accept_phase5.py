@@ -28,6 +28,7 @@ def main(argv=None) -> int:
     decision = {"status": "blocked", "policy": POLICY, "acceptance_mode": "automated", "manual_review_required": False}
     commands = []
     try:
+        args.output = args.output.resolve()
         info = preflight(args.ngspice)
         versions = {name: metadata.version(name) for name in ("numpy", "pydantic", "scipy", "matplotlib", "fastapi", "uvicorn", "httpx", "pytest")}
         args.output.mkdir(parents=True, exist_ok=False)

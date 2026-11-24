@@ -1,5 +1,40 @@
 # Paste this into Codex after opening the extracted CircuForge folder
 
+## Current continuation (2026-11-23)
+
+Owner needs the laptop screen free. Do not use native mouse/keyboard automation,
+screen capture or visible test windows without a new explicit request. P5-C7/
+v0.3.1 compact layout passed screen-independent acceptance: 525 core tests,
+four earlier layout checks and raw-audited withdrawn source/installed widget
+runs with the matching fresh runtime. New pixel QA is not claimed. Read current
+HANDOFF and docs/DESKTOP.md; older source-bound milestones below remain history.
+
+## Current continuation (2026-11-22)
+
+Owner explicitly chose a simple local graphical interface. P5-C6/v0.3.0 passed
+phase5-simple-desktop-v1 on codex/local-desktop-ui: 516 tests, fresh matching
+installation and 31 actual GUI/CLI/HTTP calls. Read HANDOFF and docs/DESKTOP.md;
+only external final-acceptance-v3 is accepted, with earlier failed drafts retained.
+This overrides earlier frontend exclusion only for that bounded desktop. Full
+optimizer dashboard, model cycles, PCB and publication remain deferred/separate.
+
+Latest maintenance P7-C7 extends caller-path repair across remaining acceptance
+and installed-walkthrough scripts. Actual outside-checkout verification passed
+480 tests, fresh installation and 54 CLI/HTTP calls with raw/JSON/cleanup checks.
+Read the current HANDOFF and docs/OPERATIONS.md first. Earlier P7-C6 numerical
+replay (475 tests/384 calls) and packaged source counts remain dated evidence.
+
+P7-C5 also supplies a checked local v0.2 Python 3.12 handoff from accepted commit
+60b1ff9. See docs/LOCAL_RELEASE.md for the exact ZIP identity and quickstart;
+packaging added no numerical/model cycle and did not publish the branch.
+
+Read AGENTS.md and planning/HANDOFF.md first. The local MVP and bounded numerical
+follow-up P7-C4 are accepted; current v0.2.0 has 472 tests and its own audited
+one-call/replay and fresh installed-interface evidence. v0.1 was published via
+PR #1; the new feature branch remains local. All model/Freebuff cycles below are
+consumed and closed. Earlier continuation text is historical, not a new cycle.
+Report this local result before complex expansion. See docs/ANALYTIC_RC.md.
+
 ## Current continuation (2026-11-21)
 
 The original first-slice instructions below are historical. Read AGENTS.md,

@@ -1,5 +1,37 @@
 # CircuForge — Wave2Circuit Research Edition
 
+**v0.3.1** fixes compact windows: scrollable settings, pinned Run/progress and
+responsive result text. Acceptance passed with **525 core tests, four separate
+Tk layout checks** and independently audited source/installed widget runs.
+At the owner's request, final functional checks used withdrawn windows without
+native input or screen capture; no new pixel/visual QA is claimed. See
+[screen-independent verification](docs/DESKTOP.md#screen-independent-maintenance--v031).
+
+Owner-selected **v0.3.0 local desktop** is implemented and accepted: RC form,
+one background ngspice run, circuit diagram, measured gain/phase and explicit
+pass/target-miss/error results. **516 tests without skips**, a verified fresh
+installation and **31 real GUI/CLI/HTTP calls** passed the final checks, preserving
+target misses. Install `.[gui]` and run `python -m circuforge.desktop`; see
+[desktop setup and operation](docs/DESKTOP.md). Earlier v0.2 records below remain
+bound to their original source snapshots. The new branch is local.
+
+Post-MVP v0.2.0 adds `analytic_rc`, a one-measurement proposal using the known
+ideal RC equation. Its numerical acceptance passed with **475 tests without skips
+and 384 raw-audited calls including exact replay**. It passed all 48 feasible
+trials per run (42 free-domain, six fixed controls); the three classical methods
+passed only the six fixed controls under this one-call budget. This result is
+limited to ideal continuous RC models and does not imply general optimizer or
+hardware superiority. Historical
+v0.1 acceptance below remains tied to its original snapshot. See
+[docs/ANALYTIC_RC.md](docs/ANALYTIC_RC.md).
+
+Acceptance commands also support caller-relative evidence/manifest paths outside
+the checkout, including spaces. The latest script/interface check passed **480
+tests without skips, a fresh install and 54 real CLI/HTTP calls** (36 raw audited,
+18 JSON matched), including direct relative source/output paths. See
+[operation evidence](docs/OPERATIONS.md). Historical numerical records and the
+local handoff archive retain their explicit earlier source snapshots.
+
 Phase 1 implements typed RC low/high-pass specifications, fixed netlists, real ngspice AC simulation, complex response/cutoff extraction, and bounded measured R/C search. Local CPU only; no accounts required.
 
 The local research MVP gate passed automatically on 2026-11-22: **438 tests
@@ -13,11 +45,13 @@ See [operation/troubleshooting](docs/OPERATIONS.md) and the
 and demo tasks are complete within the validated local scope. Research target
 misses remain reported failures; optional PCB/advanced work is not started.
 
-A local source/wheel/demo handoff bundle is ready from accepted commit `1ea9bd2`.
-See [docs/LOCAL_RELEASE.md](docs/LOCAL_RELEASE.md) for its contents, integrity checks
-and installation requirements. The pinned bundle targets Python 3.12 and needs
-separately installed ngspice;
-no remote release or push has been performed.
+A local v0.2 source/wheel/example handoff is ready from accepted commit `60b1ff9`,
+with verified checksums, a Python 3.12 quickstart and the actual one-call CLI export.
+See [docs/LOCAL_RELEASE.md](docs/LOCAL_RELEASE.md) for contents and installation
+requirements. It needs separately installed ngspice; the older v0.1 bundle from
+`1ea9bd2` is preserved. Both bundles remain local. The reviewed v0.1 MVP source was merged
+through [GitHub PR #1](https://github.com/Omidf28/CircuForge/pull/1); the v0.2
+follow-up is currently local on its feature branch.
 
 Phase 2 adds measured objectives, seeded random/grid and SciPy baselines with identical SPICE-call caps, exact per-run caching and raw per-call evidence. The owner-authorized **automatic acceptance gate passed with 170 tests and 771 freshly audited real calls**. The five-case comparison and its target misses remain documented in [docs/PHASE2.md](docs/PHASE2.md).
 

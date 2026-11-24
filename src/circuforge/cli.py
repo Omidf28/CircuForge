@@ -39,7 +39,7 @@ def main(argv=None) -> int:
         opt.add_argument("--output", type=Path, required=True, help="new artifact directory")
         opt.add_argument("--seed", type=int, default=42)
         if command == "optimize":
-            opt.add_argument("--method", choices=["random", "grid", "scipy"], default="scipy")
+            opt.add_argument("--method", choices=["random", "grid", "scipy", "analytic_rc"], default="scipy")
     args = parser.parse_args(argv)
     try:
         if args.command == "preflight":

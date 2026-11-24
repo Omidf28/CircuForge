@@ -1,8 +1,57 @@
 # Local handoff bundle — 2026-11-22
 
+## Current v0.2.0 handoff
+
+P7-C5 packages the accepted `60b1ff9c31cfc3e99d294260b6dbfbbc44b2317a`
+snapshot as `Releases/CircuForge-0.2.0-local-60b1ff9-20261122-py312.zip`
+under the existing external artifact workspace. Size: **704988 bytes**.
+SHA-256: `d2454298cec0709724d480610c02545979557b9c41ae2a551e37b0e6020350c6`.
+This is a new local handoff; the historical v0.1 bundle below is unchanged.
+
+The 18-member ZIP contains the 162-file tracked source archive, verified
+63,230-byte v0.2 wheel, tested constraints, the analytic-RC request, a PowerShell
+quickstart, the actual one-call installed CLI export and acceptance/summary
+evidence. All **100 accepted source/script/test hashes** match the archived
+commit; all **33 package Python files** match source, wheel and installed bytes.
+The source fingerprint and wheel hash are recorded in [ANALYTIC_RC.md](ANALYTIC_RC.md).
+Nested archives were CRC-tested and checked for unsafe paths, symlinks,
+duplicates, private/generated files and common credential signatures. Every
+outer member was compared to the prepared bytes; a separate native PowerShell
+SHA-256 check also passed for all 17 members listed in `CHECKSUMS.sha256`.
+The checksum file excludes itself. All three PowerShell quickstart blocks parse.
+
+Use Python **3.12**, a separately installed ngspice console executable and a new
+writable result directory. Extract the outer ZIP and follow `QUICKSTART.md`:
+verify checksums, create a virtualenv, install the local wheel with tested
+constraints, set the simulator path and execute `design-analytic-rc.json`.
+The acceptance reproduction command uses an absolute output path because its
+subprocesses run from the archived project directory. Dependencies still need
+installation access; Python/ngspice/model weights are not bundled. This is not
+an offline executable. Windows/Python 3.12.7 are the verified platform.
+
+The included acceptance is unchanged historical evidence from that exact source:
+472 tests without skips, 384 raw-audited benchmark calls including exact replay,
+and three separate installed-interface calls. Packaging performed **zero new
+tests, simulations or model requests**. Benchmark summaries and one complete CLI
+example are included; the complete raw benchmark datasets remain separate.
+Original records retain their workstation paths. The original JUnit XML also
+stays separate: its credential-scanner test names intentionally contain dummy
+credential signatures. `evidence/test-results-summary.json` retains the original
+XML hash and suite counts without those parameter strings; it is explicitly a
+summary. Original XML and negative research results were not altered.
+
+Earlier preparation directories are retained separately; the final filename and
+hash above identify the checked handoff. Its `-checks.json` companion records
+archive counts/hash/provenance. Source/Git remain on C; the existing ancillary
+artifact junction is unchanged. No upload, remote release, push or deployment
+was performed. Later documentation commits do not change the explicit source
+identity of this bundle.
+
+## Historical v0.1.0 handoff
+
 The accepted source snapshot `1ea9bd2` is packaged locally as
 `Releases/CircuForge-local-mvp-1ea9bd2-20261122-py312.zip` under the existing external
-artifact workspace. The application version remains 0.1.0. No source or runtime
+artifact workspace. That archived application version is 0.1.0. No source or runtime
 feature was changed by packaging; no new model, simulator, download, deployment
 or remote push was performed.
 

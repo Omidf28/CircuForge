@@ -27,6 +27,8 @@ def main(argv=None) -> int:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--ngspice", required=True)
     args = parser.parse_args(argv)
+    args.output = args.output.resolve()
+    args.source = args.source.resolve()
     args.output.mkdir(parents=True, exist_ok=False)
     scratch = args.output / "server-temp"
     scratch.mkdir()
