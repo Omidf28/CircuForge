@@ -132,6 +132,16 @@ def run_baseline(spec: DesignSpec, simulator: Ngspice, method: Method, *, seed: 
     return result
 
 
+def comparison_summary(results: list[BaselineResult]) -> dict:
+    """Summarize the three methods in a single comparison export."""
+    return {"seed": results[0].options.seed, "budget_per_method": results[0].spec.max_evaluations,
+            "matched_actual_calls": len({r.simulator_calls for r in results}) == 1,
+            "results": [{"method": r.options.method, "simulator_calls": r.simulator_calls,
+                         "converged": r.converged, "failures": r.failures,
+                         "target_relative_error": r.best.relative_error if r.best else None,
+                         "stop_reason": r.stop_reason} for r in results]}
+
+
 def compare(spec: DesignSpec, simulator: Ngspice, *, seed: int = 0, output: Path | None = None):
     """Independent caches and identical caps; record actual calls for fair review."""
     if output is not None:
@@ -139,11 +149,6 @@ def compare(spec: DesignSpec, simulator: Ngspice, *, seed: int = 0, output: Path
     results = [run_baseline(spec, simulator, method, seed=seed, output=output / method if output else None)
                for method in ("random", "grid", "scipy")]
     if output is not None:
-        summary = {"seed": seed, "budget_per_method": spec.max_evaluations,
-                   "matched_actual_calls": len({r.simulator_calls for r in results}) == 1,
-                   "results": [{"method": r.options.method, "simulator_calls": r.simulator_calls,
-                                "converged": r.converged, "failures": r.failures,
-                                "target_relative_error": r.best.relative_error if r.best else None,
-                                "stop_reason": r.stop_reason} for r in results]}
+        summary = comparison_summary(results)
         (output / "comparison.json").write_text(json.dumps(summary, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     return results
