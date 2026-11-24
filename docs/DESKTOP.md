@@ -114,6 +114,8 @@ core imports; installing `[gui]` supplies the plotting dependency.
 5. Inspect measured cutoff, relative target error, call count, circuit values
    and measured gain/phase. The chart marks target and measured cutoff.
    **PASSED**, **TARGET MISSED** and **SIMULATION FAILED** are distinct outcomes.
+   A completed run without a measured response lists diagnostic JSON and ZIP
+   in the saved-results footer.
    A failed preflight/export is shown as a run error, not a successful circuit.
 6. Open results folder to inspect the ordinary raw/exported evidence. Every run
    gets a new unique subdirectory; prior results are not overwritten.
