@@ -34,7 +34,7 @@ class DesktopApp:
         self.controls = []
         self.status = tk.StringVar(root, value="Ready to design")
         self.details = tk.StringVar(root, value="Choose a target and component bounds, then run a measured design.")
-        self.saved = tk.StringVar(root, value="Results will be saved as JSON, CSV, PNG and ZIP.")
+        self.saved = tk.StringVar(root, value="Measured results are saved as JSON, CSV, PNG and ZIP.")
         self.root.title("CircuForge — Local RC Studio")
         self.root.configure(bg=BG)
         self.root.geometry(f"{min(1280, root.winfo_screenwidth() - 80)}x{min(900, root.winfo_screenheight() - 100)}")
@@ -319,7 +319,8 @@ class DesktopApp:
                 self.saved.set(f"Partial output: {event.output}" if event.output.exists() else "No result was produced. Check ngspice and the output directory.")
             else:
                 self._show_result(event.result)
-                self.saved.set(f"Saved JSON / CSV / PNG / ZIP\n{event.output}")
+                formats = "diagnostic JSON / ZIP" if event.result.waveform is None else "JSON / CSV / PNG / ZIP"
+                self.saved.set(f"Saved {formats}\n{event.output}")
             self.open_button.configure(state="normal" if event.output.is_dir() else "disabled")
         self.root.after(80, self._poll)
 
