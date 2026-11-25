@@ -185,6 +185,46 @@ def test_comparison_report_retains_launch_failure_without_response_csv(tmp_path,
 
 
 @pytest.mark.integration
+def test_compare_html_keeps_exit_one_and_renders_recorded_failures(
+        simulator, unmeasurable_comparison, tmp_path, capsys):
+    spec = tmp_path / "spec.json"
+    grid = json.loads((unmeasurable_comparison / "grid/report.json").read_bytes())
+    spec.write_text(json.dumps(grid["spec"]), encoding="utf-8")
+    output = tmp_path / "new comparison"
+    code = main(["--ngspice", simulator.info.executable, "compare", "--spec", str(spec),
+                 "--seed", "42", "--output", str(output), "--html"])
+    assert code == 1
+    summary = json.loads(capsys.readouterr().out)
+    assert sum(row["simulator_calls"] for row in summary["results"]) == 3
+    integrated = Path(summary["report_html"])
+    assert integrated == output / "comparison.html"
+    assert b"<td>Unverified</td>" in integrated.read_bytes()
+    replay = tmp_path / "replay.html"
+    code, _ = _render(output, replay, capsys)
+    assert code == 0 and integrated.read_bytes() == replay.read_bytes()
+
+
+@pytest.mark.integration
+def test_compare_html_reports_export_error_but_retains_simulator_evidence(
+        simulator, tmp_path, capsys, monkeypatch):
+    def broken_report(*args):
+        raise OSError("controlled HTML write error")
+
+    monkeypatch.setattr("circuforge.evaluation.comparison_report.write_comparison_report", broken_report)
+    spec = Path(__file__).resolve().parents[2] / "examples/fixed-target.json"
+    output = tmp_path / "comparison"
+    code = main(["--ngspice", simulator.info.executable, "compare", "--spec", str(spec),
+                 "--output", str(output), "--html"])
+    assert code == 2
+    captured = capsys.readouterr()
+    assert json.loads(captured.err)["error"] == "controlled HTML write error"
+    assert not captured.out and not (output / "comparison.html").exists()
+    summary = json.loads((output / "comparison.json").read_bytes())
+    assert [row["simulator_calls"] for row in summary["results"]] == [1, 1, 1]
+    assert len(list(output.rglob("response.csv"))) == 3
+
+
+@pytest.mark.integration
 def test_comparison_report_warns_when_actual_call_counts_differ(
         fixed_comparison, tmp_path, capsys):
     root = tmp_path / "unequal calls"
