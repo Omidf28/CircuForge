@@ -1,5 +1,38 @@
 # Local handoff bundles
 
+## CircuForge 0.4.0 Windows handoff — 2026-11-25
+
+The artifact workspace contains
+`Releases/CircuForge-0.4.0-local-a1f170b-py312.zip` (555,886 bytes).
+Its SHA-256 digest is `f15405559ca3ecb8e749a9c061c2b564bf8a654620478c855fafc145a26af114`.
+The ZIP contains the wheel, source from `a1f170beffcc1781d07006f9cfdb075f19b7c8e5`,
+tested constraints, example reports, checksums and `QUICKSTART.md`.
+Use Python 3.12 and a separately installed ngspice executable. The desktop
+also requires Tcl/Tk. Pip installs the Python dependencies.
+
+This release adds `compare --html` and checks that failure diagnostics
+match the per-call evidence before rendering. The original offline
+`comparison-report` command still accepts saved comparisons.
+
+The source suite passed 539 tests with no skips. A fresh installed
+CLI/loopback API walkthrough completed 27 real calls. On the same wheel,
+three installed comparisons used 78 real calls. The fixed case passed,
+the free case retained all target misses and 29 unverified attempts, and
+the unmeasurable case retained exit code 1. Offline rendering reproduced
+the same three pages without running the simulator. All 38 runtime files
+matched, and an independent build from the same source and timestamp
+produced the identical wheel.
+
+The verification artifacts are under `Releases/v040` in the local workspace.
+The first independent build hit a Windows junction error and succeeded
+when rebuilt from the resolved path. The final release binary uses the
+verified wheel digest `a4fec9d66f48dd221aced0adc4ee679cbfad19ce15640ad3551a1f4074e91546`.
+
+The final ZIP was unpacked and installed into a separate Windows environment.
+All eight listed checksums matched. The quickstart comparison performed
+three real calls and reproduced the example HTML. A withdrawn desktop
+check performed one additional raw-audited call and passed.
+
 ## CircuForge 0.4.0rc1 local preview
 
 The local artifact workspace contains

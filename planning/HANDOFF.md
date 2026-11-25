@@ -1,5 +1,21 @@
 # CircuForge — portable handoff
 
+## CircuForge 0.4.0 Windows handoff — 2026-11-25
+
+Branch `codex/v0.4.0` starts from merged main `e022504`. It bundles
+P5-C3 failure evidence consistency and the one-command HTML export. The
+accepted runtime comes from `a1f170b` and identifies itself as 0.4.0.
+The source suite passed 539 tests without skips, the installed CLI/HTTP
+walkthrough passed 27 real calls, and a further 78 comparison calls exercised
+pass, measured miss and unverified outcomes. Three saved HTML replays
+matched byte for byte. The source, wheel and install share all 38 runtime
+files, and a separate build produced an identical wheel. The local ZIP and
+its exact digest are in [LOCAL_RELEASE.md](../docs/LOCAL_RELEASE.md).
+
+An independent install from that final ZIP verified all eight member
+checksums, reproduced the comparison with three calls and passed one
+withdrawn desktop call. See `Releases/v040/zip-install-proof.json`.
+
 ## Local 0.4.0rc1 candidate — 2026-11-24
 
 Branch `codex/v0.4.0rc1` combines the P5-C3 comparison report and the PR #3

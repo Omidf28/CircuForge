@@ -7,11 +7,13 @@ from pathlib import Path
 from circuforge.evaluation.acceptance import METHODS, audit_evaluation, evidence_file, require
 from circuforge.optimization.base import Evaluation
 from circuforge.optimization.baselines import BaselineResult, comparison_summary
+from circuforge.synthesis.rc import netlist
 
 MAX_REPORT_BYTES = 16 * 1024**2
 MAX_EVIDENCE_FILE_BYTES = 8 * 1024**2
 MAX_AUDIT_BYTES = 192 * 1024**2
 LABELS = {"random": "Random", "grid": "Grid", "scipy": "SciPy"}
+CALL_FILES = ("evaluation.json", "circuit.cir", "stdout.log", "stderr.log")
 
 
 def _read_report(root: Path, name: str) -> bytes:
@@ -19,6 +21,27 @@ def _read_report(root: Path, name: str) -> bytes:
         data = stream.read(MAX_REPORT_BYTES + 1)
     require(len(data) <= MAX_REPORT_BYTES, f"report exceeds size limit: {name}")
     return data
+
+
+def _check_failed_call(root: Path, folder: str, run: BaselineResult, evaluation: Evaluation) -> None:
+    """Bind the diagnostic to the saved call without certifying a measurement."""
+    run.spec.validate_candidate(evaluation.candidate)
+    metadata = json.loads(evidence_file(root, f"{folder}/evaluation.json").read_bytes())
+    saved = Evaluation.model_validate({name: metadata[name] for name in Evaluation.model_fields})
+    require(saved == evaluation, f"failed-call record differs from method history: {folder}")
+    require(metadata["spec"] == run.spec.model_dump() and
+            metadata["ngspice_version"] == run.ngspice_version and
+            "ngspice" in run.ngspice_version.lower() and
+            metadata["command"][1:] == ["-n", "-b", "circuit.cir"],
+            f"failed-call provenance differs: {folder}")
+    code = metadata["returncode"]
+    require((code is None or type(code) is int) and (code == 0) == evaluation.simulator_exit_ok and
+            (evaluation.status == "simulation_error" or code == 0),
+            f"failed-call return code differs from recorded status: {folder}")
+    require(evaluation.constraints_satisfied and bool(evaluation.reason and evaluation.failure_type),
+            f"incomplete failed-call diagnostics: {folder}")
+    circuit = evidence_file(root, f"{folder}/circuit.cir").read_text(encoding="ascii")
+    require(circuit == netlist(run.spec, evaluation.candidate), f"failed-call netlist differs: {folder}")
 
 
 def _audit_history(root: Path, method: str, run: BaselineResult, remaining: int) -> int:
@@ -47,17 +70,19 @@ def _audit_history(root: Path, method: str, run: BaselineResult, remaining: int)
         key = (candidate.resistance_ohm, candidate.capacitance_f)
         require(key not in seen, f"duplicate candidate counted as a fresh call: {method}/{call_id}")
         seen.add(key)
-        if not evaluation.verified:
-            failures += 1
-            continue
         folder = f"{method}/evaluations/{call_id}"
-        for name in ("evaluation.json", "circuit.cir", "stdout.log", "stderr.log", "response.csv"):
+        required_files = CALL_FILES if evaluation.status == "simulation_error" else (*CALL_FILES, "response.csv")
+        for name in required_files:
             size = evidence_file(root, f"{folder}/{name}").stat().st_size
             remaining -= size
             require(size <= MAX_EVIDENCE_FILE_BYTES and remaining >= 0,
                     f"raw evidence exceeds audit size limit: {folder}/{name}")
         try:
-            audit_evaluation(root, folder, spec, evaluation, run.ngspice_version)
+            if evaluation.verified:
+                audit_evaluation(root, folder, spec, evaluation, run.ngspice_version)
+            else:
+                _check_failed_call(root, folder, run, evaluation)
+                failures += 1
         except (KeyError, IndexError, TypeError) as exc:
             raise ValueError(f"malformed audit evidence: {folder}") from exc
     require((calls, failures, invalid) == (run.simulator_calls, run.failures, run.invalid_candidates),

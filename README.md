@@ -177,6 +177,11 @@ python scripts/compare_phase2.py --seed 42 --output /new/five-case-review/path
 
 Use OS-appropriate absolute paths. Each method gets the spec's max_evaluations cap and its own cache; actual counts are reported. Fully fixed domains use one call. optimize exits 1 when no design meets tolerance. compare can complete successfully while all methods miss target tolerance; inspect converged and target_relative_error. Reports retain all misses and raw call artifacts. No analytic fitness fallback is used.
 
+Add `--html` to `compare` to save `comparison.html` alongside the raw output
+in the same run. The report uses the saved evidence and makes no additional
+simulator calls. Use [comparison-report](docs/COMPARISON_REPORT.md) to render
+an existing comparison without running ngspice.
+
 In the recorded seed-42 review, each method used 64 calls on each of four free cases and one call on the fixed case: **771 genuine AC attempts total**. None met 0.1% tolerance on the free cases; all passed the fixed case. This is single-seed baseline evidence, not a statistical performance claim. The Phase 1 domain-specific bisection remains available.
 
 ## Historical Phase 1 milestone

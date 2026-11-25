@@ -1,6 +1,6 @@
 # CircuForge · Wave2Circuit Research Edition
 
-Version 2.1.0 · assembled 2026-11-24 · architecture assumptions to verify in current environment
+Version 2.1.0 · assembled 2026-11-25 · architecture assumptions to verify in current environment
 
 Owner-selected simple local desktop and v0.3.1 compact-window repair are accepted within local scope. Latest screen-independent gate: 525 core tests, four earlier Tk layout checks, 113 matching Python hashes, 37 matching package files and 31 operational calls (22 raw audited, nine JSON matched); prior visible compact call separately retained. Final checks used withdrawn widgets and independent raw physics audits after owner requested the laptop screen free; no new pixel/visual QA claimed. Prior research, failures and source-bound bundles remain historical. v0.3.1 was merged into main via PR #2. P5-C3 adds a local HTML comparison report from existing evidence. All model/Freebuff cycles are closed; PCB, advanced work and deployment remain deferred. Preserve the owner's screen preference.
 

@@ -43,6 +43,8 @@ def main(argv=None) -> int:
         opt.add_argument("--seed", type=int, default=42)
         if command == "optimize":
             opt.add_argument("--method", choices=["random", "grid", "scipy", "analytic_rc"], default="scipy")
+        else:
+            opt.add_argument("--html", action="store_true", help="save an audited comparison.html in the output directory")
     args = parser.parse_args(argv)
     try:
         if args.command == "preflight":
@@ -82,6 +84,12 @@ def main(argv=None) -> int:
                                     "stop_reason": r.stop_reason,
                                     "candidate": r.best.candidate.model_dump() if r.best else None}
                                    for r in results]}
+            if args.command == "compare" and args.html:
+                from circuforge.evaluation.comparison_report import write_comparison_report
+
+                report = args.output / "comparison.html"
+                write_comparison_report(args.output, report)
+                summary["report_html"] = str(report)
             print(json.dumps(summary, indent=2, allow_nan=False))
             if args.command == "compare":
                 return 0 if all(r.best is not None for r in results) else 1

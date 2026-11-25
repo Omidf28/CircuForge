@@ -32,15 +32,36 @@ def test_real_baseline_cap_and_replay(method):
 
 
 @pytest.mark.integration
-def test_real_comparison_exports_all_call_evidence_and_preserves_existing_output(tmp_path):
-    simulator()
+@pytest.mark.parametrize("render_html", [False, True])
+def test_real_comparison_exports_all_call_evidence_and_preserves_existing_output(
+        tmp_path, capsys, monkeypatch, render_html):
+    adapter = simulator()
+    real_simulate = Ngspice.simulate
+    attempts = []
+
+    def count_simulation(self, spec, candidate):
+        attempts.append(candidate)
+        return real_simulate(self, spec, candidate)
+
+    monkeypatch.setattr(Ngspice, "simulate", count_simulation)
     spec = tmp_path / "spec.json"
     spec.write_text(json.dumps({"cutoff_hz": 1591.5494,
                                "resistance_ohm": {"minimum": 1000., "maximum": 1000.},
                                "capacitance_f": {"minimum": 1e-7, "maximum": 1e-7}}))
-    output = tmp_path / "comparison"
-    args = ["compare", "--spec", str(spec), "--seed", "7", "--output", str(output)]
+    output = tmp_path / "گزارش مقایسه"
+    args = ["--ngspice", adapter.info.executable, "compare", "--spec", str(spec),
+            "--seed", "7", "--output", str(output)]
+    if render_html:
+        args.append("--html")
     assert main(args) == 0
+    summary = json.loads(capsys.readouterr().out)
+    assert len(attempts) == 3
+    page = output / "comparison.html"
+    if render_html:
+        assert summary["report_html"] == str(page)
+        assert page.read_bytes().count(b"<meter ") == 3
+    else:
+        assert "report_html" not in summary and not page.exists()
     comparison = json.loads((output / "comparison.json").read_text())
     assert comparison["matched_actual_calls"]
     for method in ("random", "grid", "scipy"):
@@ -52,4 +73,5 @@ def test_real_comparison_exports_all_call_evidence_and_preserves_existing_output
         assert (artifact / "stdout.log").stat().st_size > 0
     before = (output / "comparison.json").read_bytes()
     assert main(args) == 2
+    assert len(attempts) == 3
     assert (output / "comparison.json").read_bytes() == before
